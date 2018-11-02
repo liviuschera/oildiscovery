@@ -1,0 +1,39 @@
+:root {
+   //COLORS
+   // --color-primary: orange;
+   --color-primary: ##a6c550;
+   // $color-primary: #0487cc;
+   --color-primary-light: lighten($color-primary, 20%);
+   --color-primary-dark: darken($color-primary, 20%);
+
+   --color-grey-light-1: #9f9f9f;
+
+   --color-grey-dark-1: ##585858;
+
+   --color-white: #fff;
+   --color-black: ##000;
+
+   // SIZES
+
+   --header-width: 120rem;
+   --header-height: 16.5rem;
+
+   --logo-height: 4rem;
+
+   //BOX SHADOWS
+   --shadow-section: 0 2px 5px 0 rgba(0, 0, 0, 0.15),
+      0 2px 1rem 0 rgba(0, 0, 0, 0.11);
+   --shadow-heading: 0 0 0.9rem rgba(0, 0, 0, 0.5);
+   --shadow-img: 0 0 0.5rem rgba(0, 0, 0, 0.4);
+   --shadow-hover: 0 0 0.8rem rgba(0, 0, 0, 0.3), 0 0 1.2rem rgba(0, 0, 0, 0.2);
+
+   // FONT
+   --default-font-size: 1.6rem;
+
+   // GRADIENTS
+   --gradient-default: linear-gradient(
+      to right bottom,
+      var(--color-primary-light),
+      var(--color-primary-dark)
+   );
+}

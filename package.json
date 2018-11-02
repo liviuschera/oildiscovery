@@ -1,25 +1,30 @@
 {
-  "name": "oildiscovery",
-  "version": "1.0.0",
-  "description": "Doterra Oil wellness advocate",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/liviuschera/oildiscovery.git"
-  },
-  "author": "Liviu Schera",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/liviuschera/oildiscovery/issues"
-  },
-  "homepage": "https://github.com/liviuschera/oildiscovery#readme",
-  "devDependencies": {
-    "autoprefixer": "^9.3.1",
-    "node-sass": "^4.9.4",
-    "npm-run-all": "^4.1.3",
-    "postcss-cli": "^6.0.1"
-  }
+   "name": "oildiscovery",
+   "version": "1.0.0",
+   "description": "Doterra Oil wellness advocate",
+   "main": "index.js",
+   "scripts": {
+      "watch:sass": "node-sass src/sass/main.scss src/css/styles.css -w",
+      "devserver": "live-server",
+      "start": "npm-run-all --parallel devserver watch:sass",
+      "compile:sass": "node-sass src/sass/main.scss src/css/style.comp.css",
+      "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o src/css/styles.css",
+      "build:css": "npm-run-all compile:sass prefix:css"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/liviuschera/oildiscovery.git"
+   },
+   "author": "Liviu Schera",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/liviuschera/oildiscovery/issues"
+   },
+   "homepage": "https://github.com/liviuschera/oildiscovery#readme",
+   "devDependencies": {
+      "autoprefixer": "^9.3.1",
+      "node-sass": "^4.9.4",
+      "npm-run-all": "^4.1.3",
+      "postcss-cli": "^6.0.1"
+   }
 }

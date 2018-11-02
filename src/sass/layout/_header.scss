@@ -1,0 +1,16 @@
+.header {
+   display: grid;
+   width: var(--header-width);
+   height: var(--header-height);
+   // background-color: hsla(133, 77%, 77%, 0.2);
+   margin: 0 auto;
+   &__upper-half {
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+   }
+   &__logo {
+      margin: 2rem 0;
+      height: var(--logo-height);
+   }
+}
