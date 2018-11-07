@@ -38,7 +38,8 @@
    &__button-wrapper {
       bottom: 21rem;
       left: 11rem;
-      animation: buttonAnimation 18s linear infinite 0s;
+      // animation: topFadeOut 18s linear infinite 0s;
+      animation: buttonAnimation 18s linear infinite;
    }
    &__title {
       font-family: "Oregano", "Arial Narrow", Arial, sans-serif;

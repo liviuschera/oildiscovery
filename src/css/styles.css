@@ -7,7 +7,7 @@
   --color-grey-dark-1: #585858;
   --color-white: #fff;
   --color-black: #000;
-  --header-width: 120rem;
+  --site-width: 120rem;
   --header-height: 16.5rem;
   --logo-height: 4rem;
   --header-menu-fontsize: 1.4rem;
@@ -26,18 +26,16 @@
     opacity: 1;
     transform: scale(1.1); }
   49% {
-    opacity: 0;
-    transform: scale(1.1) translateY(-20%); }
+    opacity: 0; }
   66% {
-    opacity: 0;
-    transform: scale(1.1) translateY(-100%); }
+    opacity: 0; }
   100% {
     opacity: 0; } }
 
 @keyframes titleAnimation {
   0% {
-    opacity: 0;
-    transform: translateY(-300%); }
+    opacity: 1;
+    transform: translateY(-100%); }
   16% {
     opacity: 1;
     transform: translateY(0%); }
@@ -55,17 +53,25 @@
 @keyframes buttonAnimation {
   0% {
     opacity: 0;
-    transform: translateY(300%); }
-  16% {
+    transform: translateY(100%); }
+  3% {
+    opacity: 1;
+    transform: translateY(0); }
+  98% {
+    opacity: 1;
+    animation-delay: -1s; }
+  99% {
+    opacity: 0; } }
+
+@keyframes topFadeOut {
+  0% {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(100%); }
+  75% {
+    position: absolute;
     opacity: 1;
     transform: translateY(0%); }
-  33% {
-    opacity: 1;
-    transform: translateY(0%); }
-  49% {
-    opacity: 0; }
-  66% {
-    opacity: 0; }
   100% {
     opacity: 0; } }
 
@@ -87,6 +93,50 @@ body {
 body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400; }
+
+button {
+  border: 5px solid transparent;
+  background: #aed6d1;
+  color: #55706d;
+  border-radius: 40px;
+  padding: 15px 30px;
+  overflow: hidden;
+  width: 200px;
+  transition: all 0.6s, border 0.2s 0.4s, box-shadow 0.2s 0.5s;
+  white-space: nowrap;
+  text-indent: 23px;
+  font-weight: bold;
+  cursor: pointer; }
+  button span {
+    display: inline-block;
+    transform: translateX(300px);
+    font-weight: normal;
+    opacity: 0;
+    transition: opacity 0.1s 0.2s, transform 0.2s 0.3s; }
+  button:hover {
+    text-indent: 0;
+    background: #55706d;
+    color: #ffe8a3;
+    width: 250px;
+    border: 10px solid #8dccc4;
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15); }
+    button:hover span {
+      transform: translateX(0);
+      opacity: 1; }
+
+.full-width-section {
+  width: 100%;
+  background-color: rgba(206, 144, 130, 0.2);
+  color: orangered; }
+  .full-width-section__content {
+    display: grid;
+    width: var(--site-width);
+    height: 55rem;
+    margin: 0 auto;
+    background-color: rgba(142, 206, 130, 0.2); }
+    .full-width-section__content--2columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
 
 .slider {
   position: relative;
@@ -119,7 +169,7 @@ body {
   .slider__button-wrapper {
     bottom: 21rem;
     left: 11rem;
-    animation: buttonAnimation 18s linear infinite 0s; }
+    animation: buttonAnimation 18s linear infinite; }
   .slider__title {
     font-family: "Oregano", "Arial Narrow", Arial, sans-serif;
     font-size: 10rem;
@@ -152,39 +202,10 @@ body {
   .slider li div h3 {
     font-size: 50px; } }
 
-button {
-  border: 5px solid transparent;
-  background: #aed6d1;
-  color: #55706d;
-  border-radius: 40px;
-  padding: 15px 30px;
-  overflow: hidden;
-  width: 200px;
-  transition: all 1.2s, border 0.5s 1.2s, box-shadow 0.3s 1.5s;
-  white-space: nowrap;
-  text-indent: 23px;
-  font-weight: bold; }
-  button span {
-    display: inline-block;
-    transform: translateX(300px);
-    font-weight: normal;
-    opacity: 0;
-    transition: opacity 0.1s 0.5s, transform 0.4s 0.5s; }
-  button:hover {
-    text-indent: 0;
-    background: #55706d;
-    color: #ffe8a3;
-    width: 250px;
-    border: 10px solid #8dccc4;
-    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.15); }
-    button:hover span {
-      transform: translateX(0);
-      opacity: 1; }
-
 .header {
   display: grid;
   grid-template-rows: 8rem 1fr;
-  width: var(--header-width);
+  width: var(--site-width);
   height: var(--header-height);
   margin: 0 auto; }
   .header ul {

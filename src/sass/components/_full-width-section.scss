@@ -1,0 +1,17 @@
+.full-width-section {
+   width: 100%;
+   background-color: hsla(11, 44%, 66%, 0.2);
+   color: orangered;
+   &__content {
+      display: grid;
+      width: var(--site-width);
+      height: 55rem;
+      margin: 0 auto;
+      background-color: hsla(111, 44%, 66%, 0.2);
+
+      &--2columns {
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+      }
+   }
+}
