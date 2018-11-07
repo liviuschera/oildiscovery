@@ -94,6 +94,16 @@ body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400; }
 
+.heading-primary,
+.heading-secondary {
+  font-family: "Oregano", cursive;
+  color: var(--color-grey-dark-1);
+  justify-self: center; }
+
+.heading-secondary {
+  font-size: 6rem;
+  font-weight: 400; }
+
 button {
   border: 5px solid transparent;
   background: #aed6d1;
@@ -126,17 +136,20 @@ button {
 
 .full-width-section {
   width: 100%;
-  background-color: rgba(206, 144, 130, 0.2);
-  color: orangered; }
+  background-color: rgba(206, 144, 130, 0.2); }
   .full-width-section__content {
     display: grid;
     width: var(--site-width);
     height: 55rem;
     margin: 0 auto;
     background-color: rgba(142, 206, 130, 0.2); }
-    .full-width-section__content--2columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); }
+  .full-width-section__2cols-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+  .full-width-section__col1 {
+    display: grid;
+    grid-column: 1/2;
+    column-gap: 5rem; }
 
 .slider {
   position: relative;
