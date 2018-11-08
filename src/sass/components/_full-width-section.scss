@@ -1,22 +1,86 @@
 .full-width-section {
    width: 100%;
    background-color: hsla(11, 44%, 66%, 0.2);
-   &__content {
+
+   // Modifier of the .full-width-section
+
+   &--grey-light-bg {
+      background: var(--color-grey-light-1);
+   }
+
+   // Keep it DRY
+
+   &__content,
+   &__2col-wrapper,
+   &__col-text,
+   &__col-img,
+   &__3col-wrapper {
       display: grid;
+   }
+
+   &__2col-wrapper,
+   &__3col-wrapper {
+      padding: 9.5rem 0;
+   }
+
+   // The wrapper
+
+   &__content {
       width: var(--site-width);
-      height: 55rem;
       margin: 0 auto;
       background-color: hsla(111, 44%, 66%, 0.2);
    }
-   &__2cols-wrapper {
-      display: grid;
-      // grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+
+   // Content type: __2col-wrapper
+
+   &__2col-wrapper {
       grid-template-columns: repeat(2, 1fr);
    }
 
-   &__col1 {
-      display: grid;
-      grid-column: 1/2;
-      column-gap: 5rem;
+   &__col-text,
+   &__col-img {
+      padding: 0 1.5rem;
+   }
+
+   &__col-text {
+      padding: 0 6.5rem;
+      align-content: flex-start;
+
+      &--welcome {
+         grid-column: 1/2;
+      }
+
+      .button {
+         justify-self: center;
+         // padding: 1.5rem;
+         height: max-content;
+      }
+   }
+   &__col-img {
+      img {
+         height: 100%;
+         object-fit: scale-down;
+      }
+      &--welcome {
+         grid-column: 2/3;
+      }
+   }
+
+   // Content type: __3col-wrapper
+
+   &__3col-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+
+      .heading-tertiary {
+         grid-row: 1/2;
+         grid-column: 1/-1;
+         width: 60%;
+      }
+      .paragraph {
+         grid-row: 2/3;
+         grid-column: 1/-1;
+         width: 80%;
+      }
    }
 }

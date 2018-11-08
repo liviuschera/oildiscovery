@@ -1,11 +1,12 @@
 button {
-   border: 5px solid transparent;
-   background: #aed6d1;
-   color: #55706d;
-   border-radius: 40px;
-   padding: 15px 30px;
+   // box-sizing: border-box;
+   border: 1rem solid transparent;
+   background: var(--color-primary);
+   color: var(--color-white);
+   border-radius: 4rem;
+   padding: 1.5rem 3rem;
    overflow: hidden;
-   width: 200px;
+   width: 20rem;
    transition: all 0.6s, border 0.2s 0.4s, box-shadow 0.2s 0.5s;
    white-space: nowrap;
    text-indent: 23px;
@@ -14,7 +15,7 @@ button {
 
    span {
       display: inline-block;
-      transform: translateX(300px);
+      transform: translateX(30rem);
       font-weight: normal;
       opacity: 0;
       transition: opacity 0.1s 0.2s, transform 0.2s 0.3s;
@@ -23,8 +24,8 @@ button {
       text-indent: 0;
       background: #55706d;
       color: #ffe8a3;
-      width: 250px;
-      border: 10px solid #8dccc4;
+      width: 25rem;
+      border: 1rem solid #8dccc4;
       box-shadow: 3px 3px 2px rgba(black, 0.15);
       span {
          transform: translateX(0);

@@ -8,13 +8,40 @@ body {
 }
 
 .heading-primary,
-.heading-secondary {
+.heading-secondary,
+.heading-tertiary,
+.paragraph,
+.paragraph-title {
+   text-align: center;
+   justify-self: center;
+   margin-bottom: 2rem;
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
    font-family: "Oregano", cursive;
    color: var(--color-grey-dark-1);
-   justify-self: center;
+   font-weight: 400;
 }
 
 .heading-secondary {
    font-size: 6rem;
-   font-weight: 400;
+}
+
+.heading-tertiary {
+   font-size: 3.6rem;
+}
+
+.paragraph {
+   font-size: 1.4rem;
+   color: var(--color-grey-light-2);
+}
+
+.paragraph-title {
+   font-size: 1.8rem;
+   font-weight: 700;
+   &--primary-color {
+      color: var(--primary-color);
+   }
 }
