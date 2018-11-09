@@ -1,0 +1,29 @@
+.card {
+   width: var(--card-width);
+   background-color: #00ffff10;
+
+   &--with-icons {
+      height: var(--card-with-icons-height);
+      padding: 4rem 6.5rem;
+   }
+
+   &,
+   &__content {
+      display: grid;
+   }
+
+   &__content {
+      align-items: start;
+   }
+
+   &__icon {
+      width: 5rem;
+      height: 5rem;
+      justify-self: center;
+   }
+
+   &__elipsis {
+      justify-self: center;
+      font-size: 3rem;
+   }
+}

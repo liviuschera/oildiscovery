@@ -12,6 +12,8 @@
   --logo-height: 4rem;
   --header-menu-fontsize: 1.4rem;
   --slider-height: 66rem;
+  --card-width: 37rem;
+  --card-with-icons-height: 22rem;
   --default-font-size: 1.6rem; }
 
 @keyframes imageAnimation {
@@ -124,7 +126,7 @@ body {
   font-size: 1.8rem;
   font-weight: 700; }
   .paragraph-title--primary-color {
-    color: var(--primary-color); }
+    color: var(--color-primary); }
 
 button {
   border: 1rem solid transparent;
@@ -156,12 +158,30 @@ button {
       transform: translateX(0);
       opacity: 1; }
 
+.card {
+  width: var(--card-width);
+  background-color: #00ffff10; }
+  .card--with-icons {
+    height: var(--card-with-icons-height);
+    padding: 4rem 6.5rem; }
+  .card, .card__content {
+    display: grid; }
+  .card__content {
+    align-items: start; }
+  .card__icon {
+    width: 5rem;
+    height: 5rem;
+    justify-self: center; }
+  .card__elipsis {
+    justify-self: center;
+    font-size: 3rem; }
+
 .full-width-section {
   width: 100%;
   background-color: rgba(206, 144, 130, 0.2); }
   .full-width-section--grey-light-bg {
     background: var(--color-grey-light-1); }
-  .full-width-section__content, .full-width-section__2col-wrapper, .full-width-section__col-text, .full-width-section__col-img, .full-width-section__3col-wrapper {
+  .full-width-section__content, .full-width-section__2col-wrapper, .full-width-section__col-text, .full-width-section__col-img, .full-width-section__3col-wrapper, .full-width-section__row {
     display: grid; }
   .full-width-section__2col-wrapper, .full-width-section__3col-wrapper {
     padding: 9.5rem 0; }
@@ -197,6 +217,9 @@ button {
       grid-row: 2/3;
       grid-column: 1/-1;
       width: 80%; }
+  .full-width-section__row {
+    grid-template-columns: repeat(3, 1fr);
+    grid-row: 3/4; }
 
 .slider {
   position: relative;

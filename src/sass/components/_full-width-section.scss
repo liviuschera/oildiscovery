@@ -14,7 +14,8 @@
    &__2col-wrapper,
    &__col-text,
    &__col-img,
-   &__3col-wrapper {
+   &__3col-wrapper,
+   &__row {
       display: grid;
    }
 
@@ -82,5 +83,10 @@
          grid-column: 1/-1;
          width: 80%;
       }
+   }
+
+   &__row {
+      grid-template-columns: repeat(3, 1fr);
+      grid-row: 3/4;
    }
 }
