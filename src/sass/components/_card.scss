@@ -1,6 +1,8 @@
 .card {
+   // display: grid;
    width: var(--card-width);
-   background-color: #00ffff10;
+   background-color: #0022ff20;
+   overflow: hidden;
 
    &--with-icons {
       height: var(--card-with-icons-height);
@@ -10,20 +12,46 @@
    &,
    &__content {
       display: grid;
+      grid-template-rows: repeat(3, 1fr);
    }
 
    &__content {
       align-items: start;
+      transition: transform 0.3s ease-in-out, opacity 0.6s;
    }
 
    &__icon {
       width: 5rem;
       height: 5rem;
       justify-self: center;
+      fill: var(--color-primpary);
    }
 
    &__elipsis {
+      // opacity: 1;
+      align-self: start;
       justify-self: center;
       font-size: 3rem;
+      transition: opacity 0.3s;
+   }
+
+   &__info {
+      opacity: 0;
+      transition: all 0.3s;
+
+      .paragraph {
+         min-width: 100%;
+      }
+   }
+
+   &:hover &__content {
+      transform: translateY(-1rem);
+   }
+   &:hover &__elipsis {
+      opacity: 0;
+   }
+   &:hover &__info {
+      opacity: 1;
+      transform: translatey(-5rem);
    }
 }

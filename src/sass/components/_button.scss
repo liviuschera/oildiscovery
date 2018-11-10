@@ -1,35 +1,46 @@
 button {
+   display: flex;
    // box-sizing: border-box;
-   border: 1rem solid transparent;
+   // border: 0.5rem solid transparent;
+   border: transparent;
    background: var(--color-primary);
    color: var(--color-white);
    border-radius: 4rem;
-   padding: 1.5rem 3rem;
+   padding: 1.3rem 2.5rem;
+   width: auto;
    overflow: hidden;
-   width: 20rem;
-   transition: all 0.6s, border 0.2s 0.4s, box-shadow 0.2s 0.5s;
+   // width: 20rem;
    white-space: nowrap;
-   text-indent: 23px;
+   // text-indent: 23px;
+   text-align: center;
    font-weight: bold;
    cursor: pointer;
+   transition: all 0.6s, box-shadow 0.2s 0.5s, flex-basis 500ms ease-in-out;
+   // flex-basis 0.3s 0.4s;
 
    span {
       display: inline-block;
       transform: translateX(30rem);
       font-weight: normal;
       opacity: 0;
-      transition: opacity 0.1s 0.2s, transform 0.2s 0.3s;
+      max-width: 100%;
+      width: 0;
+      transition: opacity 0.2s 0.3s, transform 0.2s 0.3s;
+      // , width 0.3s 0.4s;
    }
    &:hover {
       text-indent: 0;
-      background: #55706d;
-      color: #ffe8a3;
-      width: 25rem;
-      border: 1rem solid #8dccc4;
-      box-shadow: 3px 3px 2px rgba(black, 0.15);
+      background: var(--color-white);
+      color: var(--color-primary);
+      // width: 25rem;
+      // width: 100%;
+      // border: 0.5rem solid var(--color-grey-light-1);
+      box-shadow: 0 0 3rem rgba(black, 0.2);
       span {
-         transform: translateX(0);
          opacity: 1;
+         width: 100%;
+         transform: translateX(0);
+         visibility: initial;
       }
    }
 }
