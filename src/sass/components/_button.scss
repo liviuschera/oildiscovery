@@ -1,4 +1,4 @@
-button {
+.button {
    display: flex;
    // box-sizing: border-box;
    // border: 0.5rem solid transparent;
@@ -17,6 +17,13 @@ button {
    cursor: pointer;
    transition: all 0.6s, box-shadow 0.2s 0.5s, flex-basis 500ms ease-in-out;
    // flex-basis 0.3s 0.4s;
+   margin: 0 1rem;
+
+   &--hollow {
+      border: 2px solid white;
+      // border: 2px solid var(--color-white);
+      background-color: transparent;
+   }
 
    span {
       display: inline-block;
@@ -35,7 +42,13 @@ button {
       // width: 25rem;
       // width: 100%;
       // border: 0.5rem solid var(--color-grey-light-1);
-      box-shadow: 0 0 3rem rgba(black, 0.2);
+      box-shadow: 0 0 2rem rgba(black, 0.1);
+
+      &--hollow {
+         border: 2px solid white !important;
+         // border: 2px solid var(--color-white);
+         background: transparent !important;
+      }
       span {
          opacity: 1;
          width: 100%;

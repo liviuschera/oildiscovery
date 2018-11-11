@@ -1,11 +1,27 @@
 .full-width-section {
    width: 100%;
-   // background-color: hsla(11, 44%, 66%, 0.2);
 
-   // Modifier of the .full-width-section
+   // Modifiers of the .full-width-section
 
    &--grey-light-bg {
       background: var(--color-grey-light-1);
+   }
+
+   &--bg-image {
+      // height: 56rem;
+      background-image: linear-gradient(rgba(black, 0.5), rgba(black, 0.5)),
+         url(../images/backgrounds/background-15-1920x900.jpg);
+      background-blend-mode: multiply;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      .paragraph-title {
+         width: 80%;
+      }
+      .full-width-section__content {
+         padding: 9.5rem 0;
+      }
    }
 
    // Keep it DRY
@@ -29,10 +45,30 @@
    &__content {
       width: var(--site-width);
       margin: 0 auto;
-      // background-color: hsla(111, 44%, 66%, 0.2);
+      // align-self: center;
+      // align-content: center;
+      align-items: center;
+      // .paragraph-title {
+      //    margin-bottom: 0;
+      // }
    }
 
-   // Content type: __2col-wrapper
+   &__wrapper {
+      grid-template-rows: repeat(auto-fit repeat(10rem, 1fr));
+      align-content: center;
+      // align-self: end;
+
+      .heading-tertiary {
+         grid-row: 1/2;
+         // grid-column: 1/-1;
+         width: 60%;
+         // margin-bottom: 0;
+      }
+      .paragraph {
+         grid-row: 2/3;
+         width: 80%;
+      }
+   }
 
    &__2col-wrapper {
       grid-template-columns: repeat(2, 1fr);
@@ -67,32 +103,8 @@
       }
    }
 
-   // Content type: __3col-wrapper
-
-   &__wrapper {
-      // grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(auto-fit repeat(10rem, 1fr));
-      align-content: start;
-
-      .heading-tertiary {
-         grid-row: 1/2;
-         // grid-column: 1/-1;
-         width: 60%;
-      }
-      .paragraph {
-         grid-row: 2/3;
-         // grid-column: 1/-1;
-         width: 80%;
-         // padding-bottom: 3rem;
-      }
-   }
-
    &__row {
-      grid-row: 3/4;
-      grid-template-columns: repeat(3, 1fr);
-      justify-items: center;
-      // column-gap: 1.5rem;
-      // justify-content: space-around;
-      // grid-auto-flow: row;
+      display: flex;
+      justify-content: center;
    }
 }

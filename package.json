@@ -9,7 +9,9 @@
       "start": "npm-run-all --parallel devserver watch:sass",
       "compile:sass": "node-sass src/sass/main.scss src/css/style.comp.css",
       "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o src/css/styles.css",
-      "build:css": "npm-run-all compile:sass prefix:css"
+      "build:css": "npm-run-all compile:sass prefix:css",
+      "surge:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o build/css/styles.css",
+      "surge": "npm-run-all compile:sass surge:css"
    },
    "repository": {
       "type": "git",
