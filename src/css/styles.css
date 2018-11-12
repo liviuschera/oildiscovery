@@ -14,6 +14,7 @@
   --slider-height: 66rem;
   --card-width: 37rem;
   --card-with-icons-height: 22rem;
+  --card-with-blogpost-height: 36.5rem;
   --default-font-size: 1.6rem; }
 
 @keyframes imageAnimation {
@@ -146,7 +147,8 @@ body {
   color: var(--color-white);
   border-radius: 4rem;
   padding: 1.3rem 2.5rem;
-  width: auto;
+  width: min-content;
+  width: min-content;
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
@@ -194,6 +196,8 @@ body {
   .card--with-icons {
     height: var(--card-with-icons-height);
     padding: 4rem 6.5rem; }
+  .card--with-blogpost {
+    height: var(--card-with-blogpost-height); }
   .card__content {
     transition: transform 0.3s ease-in-out, opacity 0.6s; }
     .card__content .paragraph-title {
@@ -209,25 +213,33 @@ body {
     fill: var(--color-primary);
     margin-bottom: 0.5rem; }
   .card__blogpost-title-date {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
     font-size: 1.4rem;
-    font-weight: 700; }
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.7rem; }
   .card__icon-post {
     width: 1.8rem;
     height: 1.8rem;
     fill: var(--color-grey-dark-1);
-    transition: fill 0.3s; }
-    .card__icon-post:hover {
-      fill: var(--color-primary); }
+    transition: fill 0.3s;
+    margin-left: 1rem; }
   .card__link, .card__link:link, .card__link:visited {
+    display: flex;
     text-decoration: none;
     color: var(--color-grey-dark-1);
     transition: color 0.3s; }
   .card__link:hover {
     color: var(--color-primary); }
+  .card__link:hover + svg {
+    fill: var(--color-primary); }
   .card__date {
-    border-left: 1px solid var(--color-grey-light-1);
-    color: var(--color-grey-light-2); }
+    border-left: 0.1rem solid var(--color-grey-light-1);
+    color: var(--color-grey-light-2);
+    width: 100%;
+    text-align: center; }
   .card__elipsis {
     display: grid;
     align-self: start;
@@ -282,6 +294,8 @@ body {
     .full-width-section__wrapper .paragraph {
       grid-row: 2/3;
       width: 80%; }
+    .full-width-section__wrapper .button {
+      margin: 3rem auto 0; }
   .full-width-section__2col-wrapper {
     grid-template-columns: repeat(2, 1fr); }
   .full-width-section__col-text, .full-width-section__col-img {

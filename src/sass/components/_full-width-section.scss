@@ -56,6 +56,7 @@
    &__wrapper {
       grid-template-rows: repeat(auto-fit repeat(10rem, 1fr));
       align-content: center;
+
       // align-self: end;
 
       .heading-tertiary {
@@ -67,6 +68,10 @@
       .paragraph {
          grid-row: 2/3;
          width: 80%;
+      }
+
+      .button {
+         margin: 3rem auto 0;
       }
    }
 

@@ -12,9 +12,6 @@
    &__content {
       display: grid;
       grid-template-rows: repeat(auto-fit, repeat(1rem, min-content));
-      // &__row {
-
-      // }
    }
 
    // card modifiers
@@ -25,8 +22,13 @@
    }
 
    &--with-blogpost {
-      // height: var(--card-with-icons-height);
+      height: var(--card-with-blogpost-height);
+
+      // .button {
+      //    margin: 1rem auto;
+      // }
       // padding: 4rem 6.5rem;
+      // background-color: var(--color-grey-light-1);
    }
 
    // ~~~ ~~~
@@ -54,9 +56,13 @@
    }
 
    &__blogpost-title-date {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
       font-size: 1.4rem;
       font-weight: 700;
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
    }
 
    &__icon-post {
@@ -64,31 +70,40 @@
       height: 1.8rem;
       fill: var(--color-grey-dark-1);
       transition: fill 0.3s;
+      margin-left: 1rem;
 
-      &:hover {
-         fill: var(--color-primary);
-      }
+      // &:hover {
+      //    fill: var(--color-primary);
+      // }
    }
 
    &__link {
       &,
       &:link,
       &:visited {
+         display: flex;
          text-decoration: none;
          color: var(--color-grey-dark-1);
          // font-size: 1.4rem;
          transition: color 0.3s;
+         // background-color: white;
       }
 
       &:hover {
          color: var(--color-primary);
       }
+
+      // TODO: animate the icon
+      &:hover + svg {
+         fill: var(--color-primary);
+      }
    }
 
    &__date {
-      border-left: 1px solid var(--color-grey-light-1);
-      // padding-left: 1rem;
+      border-left: 0.1rem solid var(--color-grey-light-1);
       color: var(--color-grey-light-2);
+      width: 100%;
+      text-align: center;
    }
 
    &__elipsis {
