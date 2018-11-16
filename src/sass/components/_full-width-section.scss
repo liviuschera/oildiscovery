@@ -69,18 +69,15 @@
          grid-row: 2/3;
          width: 80%;
       }
-
-      .button {
-         margin: 3rem auto 0;
-      }
    }
 
    &__2col-wrapper {
       grid-template-columns: repeat(2, 1fr);
    }
-
+   .img-testimonials,
    &__col-text,
-   &__col-img {
+   &__col-img,
+   &__carousel {
       padding: 0 1.5rem;
    }
 
@@ -94,7 +91,6 @@
 
       .button {
          justify-self: center;
-         // padding: 1.5rem;
          height: max-content;
       }
    }
@@ -111,5 +107,39 @@
    &__row {
       display: flex;
       justify-content: center;
+   }
+
+   .img-testimonials {
+      height: 27rem;
+   }
+
+   &__carousel {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: repeat(4, 1fr);
+      width: calc(var(--site-width) / 2);
+      height: 31rem;
+      background-color: hsla(33, 77%, 55%, 0.3);
+
+      & > :nth-child(n + 2):nth-child(-n + 4),
+      & > :nth-child(3) p {
+         width: 100%;
+         text-align: justify;
+      }
+      & > :nth-child(1) {
+         grid-row: 1/2;
+      }
+      & > :nth-child(2) {
+         grid-row: 2/3;
+      }
+      .quote {
+         grid-row: 3/4;
+      }
+      & > :nth-child(4) {
+         grid-row: 4/5;
+      }
+      & > :nth-child(4) .occupation {
+         display: block;
+      }
    }
 }

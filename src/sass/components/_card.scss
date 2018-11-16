@@ -31,6 +31,29 @@
       // background-color: var(--color-grey-light-1);
    }
 
+   &--with-invisible-bg {
+      background-color: transparent;
+      height: min-content;
+      width: max-content;
+      padding: 0 1rem;
+
+      .card__icon {
+         fill: var(--color-white);
+         height: 6rem;
+         width: 6rem;
+      }
+
+      .heading-secondary {
+         margin-bottom: 0;
+      }
+
+      .paragraph-title {
+         line-height: 3rem;
+         // text-align: center;
+         // width: 50%;
+      }
+   }
+
    // ~~~ ~~~
 
    &__content {
@@ -94,9 +117,9 @@
       }
 
       // TODO: animate the icon
-      &:hover + svg {
-         fill: var(--color-primary);
-      }
+      // &:hover + .card__icon-post {
+      //    fill: var(--color-primary);
+      // }
    }
 
    &__date {

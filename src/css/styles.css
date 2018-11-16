@@ -108,7 +108,8 @@ body {
 
 .heading-primary,
 .heading-secondary,
-.heading-tertiary {
+.heading-tertiary,
+.quote::before {
   font-family: "Oregano", cursive;
   color: var(--color-grey-dark-1);
   font-weight: 400; }
@@ -125,11 +126,25 @@ body {
 
 .paragraph-title {
   font-size: 1.8rem; }
-  .paragraph-title--primary-color {
-    color: var(--color-primary); }
+
+.quote {
+  padding-left: 3rem;
+  position: relative;
+  padding-bottom: 0; }
+
+.quote::before {
+  font-family: "Oregano", cursive;
+  content: '"';
+  position: absolute;
+  font-size: 10rem;
+  top: 0;
+  left: -1rem; }
 
 .u-bold {
   font-weight: 700; }
+
+.u-normal {
+  font-weight: normal; }
 
 .u-color-white {
   color: var(--color-white); }
@@ -137,8 +152,14 @@ body {
 .u-color-primary {
   color: var(--color-primary); }
 
+.u-color-grey-dark-1 {
+  color: var(--color-color-grey-dark-1); }
+
 .u-border-color-white {
   border: 1px solid var(--color-white); }
+
+.u-no-hover {
+  pointer-events: none; }
 
 .button {
   display: flex;
@@ -148,7 +169,6 @@ body {
   border-radius: 4rem;
   padding: 1.3rem 2.5rem;
   width: min-content;
-  width: min-content;
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
@@ -157,8 +177,10 @@ body {
   transition: all 0.6s, box-shadow 0.2s 0.5s, flex-basis 500ms ease-in-out;
   margin: 0 1rem; }
   .button--hollow {
-    border: 2px solid white;
+    border: 2px solid var(--color-white);
     background-color: transparent; }
+  .button--center {
+    margin: 3rem auto 0; }
   .button span {
     display: inline-block;
     transform: translateX(30rem);
@@ -198,6 +220,19 @@ body {
     padding: 4rem 6.5rem; }
   .card--with-blogpost {
     height: var(--card-with-blogpost-height); }
+  .card--with-invisible-bg {
+    background-color: transparent;
+    height: min-content;
+    width: max-content;
+    padding: 0 1rem; }
+    .card--with-invisible-bg .card__icon {
+      fill: var(--color-white);
+      height: 6rem;
+      width: 6rem; }
+    .card--with-invisible-bg .heading-secondary {
+      margin-bottom: 0; }
+    .card--with-invisible-bg .paragraph-title {
+      line-height: 3rem; }
   .card__content {
     transition: transform 0.3s ease-in-out, opacity 0.6s; }
     .card__content .paragraph-title {
@@ -233,8 +268,6 @@ body {
     transition: color 0.3s; }
   .card__link:hover {
     color: var(--color-primary); }
-  .card__link:hover + svg {
-    fill: var(--color-primary); }
   .card__date {
     border-left: 0.1rem solid var(--color-grey-light-1);
     color: var(--color-grey-light-2);
@@ -294,11 +327,9 @@ body {
     .full-width-section__wrapper .paragraph {
       grid-row: 2/3;
       width: 80%; }
-    .full-width-section__wrapper .button {
-      margin: 3rem auto 0; }
   .full-width-section__2col-wrapper {
     grid-template-columns: repeat(2, 1fr); }
-  .full-width-section__col-text, .full-width-section__col-img {
+  .full-width-section .img-testimonials, .full-width-section__col-text, .full-width-section__col-img, .full-width-section__carousel {
     padding: 0 1.5rem; }
   .full-width-section__col-text {
     padding: 0 6.5rem;
@@ -316,6 +347,29 @@ body {
   .full-width-section__row {
     display: flex;
     justify-content: center; }
+  .full-width-section .img-testimonials {
+    height: 27rem; }
+  .full-width-section__carousel {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, 1fr);
+    width: calc(var(--site-width) / 2);
+    height: 31rem;
+    background-color: rgba(229, 149, 52, 0.3); }
+    .full-width-section__carousel > :nth-child(n + 2):nth-child(-n + 4),
+    .full-width-section__carousel > :nth-child(3) p {
+      width: 100%;
+      text-align: justify; }
+    .full-width-section__carousel > :nth-child(1) {
+      grid-row: 1/2; }
+    .full-width-section__carousel > :nth-child(2) {
+      grid-row: 2/3; }
+    .full-width-section__carousel .quote {
+      grid-row: 3/4; }
+    .full-width-section__carousel > :nth-child(4) {
+      grid-row: 4/5; }
+    .full-width-section__carousel > :nth-child(4) .occupation {
+      display: block; }
 
 .slider {
   position: relative;
