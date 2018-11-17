@@ -15,11 +15,26 @@
 }
 
 .u-color-grey-dark-1 {
-   color: var(--color-color-grey-dark-1);
+   color: var(--color-grey-dark-1);
 }
 
 .u-border-color-white {
    border: 1px solid var(--color-white);
+}
+
+.u-background-white {
+   background-color: var(--color-white);
+}
+
+.u-max-content {
+   width: max-content;
+}
+.u-width-60 {
+   width: 60%;
+}
+
+.u-div-center {
+   margin: 0 auto;
 }
 
 .u-no-hover {

@@ -55,3 +55,17 @@ body {
    top: 0;
    left: -1rem;
 }
+
+.link {
+   &,
+   &:link,
+   &:visited {
+      text-decoration: none;
+      // color: var(--color-primary);
+      // font-size: var(--default-font-size);
+   }
+
+   // &:hover {
+   //    color: darken(#0487cc, 20%);
+   // }
+}
