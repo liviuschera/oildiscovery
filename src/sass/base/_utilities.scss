@@ -1,9 +1,13 @@
-.u-bold {
+.u-txt-bold {
    font-weight: 700;
 }
 
-.u-normal {
+.u-txt-normal {
    font-weight: normal;
+}
+
+.u-txt-align-left {
+   text-align: left;
 }
 
 .u-color-white {
@@ -31,6 +35,10 @@
 }
 .u-width-60 {
    width: 60%;
+}
+
+.u-padding-reset {
+   padding: 0;
 }
 
 .u-div-center {

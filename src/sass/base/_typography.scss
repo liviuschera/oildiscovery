@@ -34,10 +34,19 @@ body {
 .paragraph {
    font-size: 1.4rem;
    color: var(--color-grey-light-2);
+   &--left {
+      text-align: left;
+      margin-bottom: 1rem;
+   }
 }
 
 .paragraph-title {
    font-size: 1.8rem;
+   &--contact {
+      text-align: left;
+      font-weight: 700;
+      // margin-bottom: 1rem;
+   }
 }
 
 .quote {

@@ -15,7 +15,8 @@
    text-align: center;
    font-weight: bold;
    cursor: pointer;
-   transition: all 0.6s, box-shadow 0.2s 0.5s, flex-basis 500ms ease-in-out;
+   transition: all 0.2s;
+   // transition: all 0.6s, box-shadow 0.2s 0.5s;
    // flex-basis 0.3s 0.4s;
    margin: 0 1rem;
 
@@ -45,12 +46,12 @@
       // width: 25rem;
       // width: 100%;
       // border: 0.5rem solid var(--color-grey-light-1);
-      box-shadow: 0 0 2rem rgba(black, 0.1);
+      // box-shadow: var(--shadow-blur);
+      box-shadow: 0rem 0rem 2rem rgba(black, 0.1);
 
       &--hollow {
-         border: 2px solid white !important;
          // border: 2px solid var(--color-white);
-         background: transparent !important;
+         background: transparent;
       }
       span {
          opacity: 1;
