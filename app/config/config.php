@@ -9,7 +9,7 @@ define('DB_NAME', 'oildiscovery');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root
-define('URLROOT', rtrim('C://wamp64/www/oildiscovery/'));
+define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
 
 // Website Name
 

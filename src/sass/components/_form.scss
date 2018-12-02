@@ -1,5 +1,6 @@
 .form {
-   width: max-content;
+   // width: max-content;
+   width: 60rem;
    // background-color: rgba(#00f, 0.2);
 
    &__row {
@@ -12,7 +13,7 @@
    &__input,
    &__textarea {
       width: 100%;
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       transition: all 0.3s;
       // display: block;
       border: 0.1rem solid var(--color-grey-light-1);

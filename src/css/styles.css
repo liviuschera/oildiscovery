@@ -15,6 +15,8 @@
   --card-width: 37rem;
   --card-with-icons-height: 22rem;
   --card-with-blogpost-height: 36.5rem;
+  --shadow-subtle: 0 1rem 2rem rgba(black, 0.1);
+  --shadow-blur: 0 0 2rem rgba(black, 0.1);
   --default-font-size: 1.6rem; }
 
 @keyframes imageAnimation {
@@ -109,7 +111,8 @@ body {
 .heading-primary,
 .heading-secondary,
 .heading-tertiary,
-.quote::before {
+.quote::before,
+.cursive {
   font-family: "Oregano", cursive;
   color: var(--color-grey-dark-1);
   font-weight: 400; }
@@ -123,9 +126,15 @@ body {
 .paragraph {
   font-size: 1.4rem;
   color: var(--color-grey-light-2); }
+  .paragraph--left {
+    text-align: left;
+    margin-bottom: 1rem; }
 
 .paragraph-title {
   font-size: 1.8rem; }
+  .paragraph-title--contact {
+    text-align: left;
+    font-weight: 700; }
 
 .quote {
   padding-left: 3rem;
@@ -143,11 +152,14 @@ body {
 .link, .link:link, .link:visited {
   text-decoration: none; }
 
-.u-bold {
+.u-txt-bold {
   font-weight: 700; }
 
-.u-normal {
+.u-txt-normal {
   font-weight: normal; }
+
+.u-txt-align-left {
+  text-align: left; }
 
 .u-color-white {
   color: var(--color-white); }
@@ -170,6 +182,9 @@ body {
 .u-width-60 {
   width: 60%; }
 
+.u-padding-reset {
+  padding: 0; }
+
 .u-div-center {
   margin: 0 auto; }
 
@@ -189,7 +204,7 @@ body {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.6s, box-shadow 0.2s 0.5s, flex-basis 500ms ease-in-out;
+  transition: all 0.2s;
   margin: 0 1rem; }
   .button--hollow {
     border: 2px solid var(--color-white);
@@ -208,10 +223,9 @@ body {
     text-indent: 0;
     background: var(--color-white);
     color: var(--color-primary);
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1); }
+    box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1); }
     .button:hover--hollow {
-      border: 2px solid white !important;
-      background: transparent !important; }
+      background: transparent; }
     .button:hover span {
       opacity: 1;
       width: 100%;
@@ -370,6 +384,28 @@ body {
     justify-content: center; }
   .full-width-section .img-testimonials {
     height: 27rem; }
+  .full-width-section__contact-details {
+    display: flex;
+    flex-direction: column;
+    width: max-content; }
+    .full-width-section__contact-details .link {
+      color: var(--color-primary);
+      transition: all 0.2s; }
+      .full-width-section__contact-details .link:hover {
+        color: var(--color-grey-dark-1); }
+  .full-width-section__photo-galery {
+    margin-left: 3rem; }
+    .full-width-section__photo-galery--container {
+      display: grid;
+      grid-gap: 0.3rem;
+      grid-template-columns: repeat(3, minmax(1rem, 8.5rem)); }
+      .full-width-section__photo-galery--container .thumbnail {
+        width: 8.5rem;
+        height: 8.5rem;
+        transition: all 0.25s; }
+        .full-width-section__photo-galery--container .thumbnail:hover {
+          transform: scale(1.01);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
   .full-width-section__carousel {
     display: grid;
     grid-template-columns: 100%;
@@ -390,6 +426,34 @@ body {
       grid-row: 4/5; }
     .full-width-section__carousel > :nth-child(4) .occupation {
       display: block; }
+
+.form {
+  width: 60rem; }
+  .form__row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    margin: 1rem 0; }
+  .form__input, .form__textarea {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    transition: all 0.3s;
+    border: 0.1rem solid var(--color-grey-light-1); }
+  .form__input {
+    font-family: inherit;
+    font-size: 1.4rem;
+    color: var(--color-grey-dark-1); }
+  .form__textarea {
+    font-family: inherit; }
+  .form__input:focus, .form__textarea:focus {
+    outline: none;
+    border: 0.1rem solid var(--color-primary);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
+  .form__input::placeholder, .form__textarea::placeholder {
+    color: var(--color-grey-light-2); }
+  .form .button {
+    margin-top: 1rem;
+    margin-left: auto; }
 
 .slider {
   position: relative;
@@ -454,6 +518,13 @@ body {
 @media screen and (max-width: 600px) {
   .slider li div h3 {
     font-size: 50px; } }
+
+.footer {
+  padding: 1.5rem;
+  background-color: var(--color-grey-light-1);
+  vertical-align: middle; }
+  .footer .paragraph {
+    margin-bottom: 0; }
 
 .header {
   display: grid;

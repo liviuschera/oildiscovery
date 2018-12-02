@@ -17,7 +17,8 @@ body {
 .heading-primary,
 .heading-secondary,
 .heading-tertiary,
-.quote::before {
+.quote::before,
+.cursive {
    font-family: "Oregano", cursive;
    color: var(--color-grey-dark-1);
    font-weight: 400;

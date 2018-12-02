@@ -1,11 +1,9 @@
 <?php
-
-// App Core Class
-
-// Creates URL & loads core controller
-
-// URL format: /controller/method/params
-
+/* 
+App Core Class
+Creates URL & loads core controller
+URL format: /controller/method/params 
+ */
 class Core
 {
     protected $currentController = 'Pages';
@@ -26,7 +24,7 @@ class Core
         }
 
         // require the controller
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        // require_once '../app/controllers/' . $this->currentController . '.php';
         require_once "../app/controllers/{$this->currentController}.php";
 
         // instantiate controller class
