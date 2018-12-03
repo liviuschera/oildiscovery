@@ -21,10 +21,11 @@
       z-index: 0;
       backface-visibility: hidden;
       animation: imageAnimation 18s linear infinite 0s;
+      z-index: 1;
    }
    &__title-wrapper,
    &__button-wrapper {
-      z-index: 1000;
+      z-index: 10;
       position: absolute;
       width: 100%;
       opacity: 0;
