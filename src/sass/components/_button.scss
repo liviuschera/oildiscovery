@@ -1,5 +1,7 @@
 .button {
    display: flex;
+   height: min-content;
+
    // box-sizing: border-box;
    // border: 0.5rem solid transparent;
    border: transparent;
@@ -29,35 +31,27 @@
       margin: 3rem auto 0;
    }
 
-   span {
-      display: inline-block;
-      transform: translateX(30rem);
-      font-weight: normal;
-      opacity: 0;
-      max-width: 100%;
-      width: 0;
-      transition: opacity 0.2s 0.3s, transform 0.2s 0.3s;
-      // , width 0.3s 0.4s;
+   &--tag {
+      border: 0.2rem solid var(--color-grey-light-1);
+      padding: 0.5rem 1.5rem;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      font-weight: 400;
    }
+
    &:hover {
       text-indent: 0;
       background: var(--color-white);
       color: var(--color-primary);
-      // width: 25rem;
-      // width: 100%;
-      // border: 0.5rem solid var(--color-grey-light-1);
-      // box-shadow: var(--shadow-blur);
       box-shadow: 0rem 0rem 2rem rgba(black, 0.1);
 
       &--hollow {
-         // border: 2px solid var(--color-white);
          background: transparent;
       }
-      span {
-         opacity: 1;
-         width: 100%;
-         transform: translateX(0);
-         visibility: initial;
+
+      &--tag {
+         background-color: var(--color-primary);
+         color: var(--color-white);
       }
    }
 }

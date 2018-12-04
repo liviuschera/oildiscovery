@@ -15,6 +15,7 @@
   --card-width: 37rem;
   --card-with-icons-height: 22rem;
   --card-with-blogpost-height: 36.5rem;
+  --card--for-3col-blog-height: 62rem;
   --shadow-subtle: 0 1rem 2rem rgba(black, 0.1);
   --shadow-blur: 0 0 2rem rgba(black, 0.1);
   --default-font-size: 1.6rem; }
@@ -130,9 +131,9 @@ body {
     text-align: left;
     margin-bottom: 1rem; }
 
-.paragraph-title {
+.heading6 {
   font-size: 1.8rem; }
-  .paragraph-title--contact {
+  .heading6--contact {
     text-align: left;
     font-weight: 700; }
 
@@ -160,6 +161,12 @@ body {
 
 .u-txt-align-left {
   text-align: left; }
+
+.u-txt-align-center {
+  text-align: center; }
+
+.u-txt-uppercase {
+  text-transform: uppercase; }
 
 .u-color-white {
   color: var(--color-white); }
@@ -193,6 +200,7 @@ body {
 
 .button {
   display: flex;
+  height: min-content;
   border: transparent;
   background: var(--color-primary);
   color: var(--color-white);
@@ -211,14 +219,12 @@ body {
     background-color: transparent; }
   .button--center {
     margin: 3rem auto 0; }
-  .button span {
-    display: inline-block;
-    transform: translateX(30rem);
-    font-weight: normal;
-    opacity: 0;
-    max-width: 100%;
-    width: 0;
-    transition: opacity 0.2s 0.3s, transform 0.2s 0.3s; }
+  .button--tag {
+    border: 0.2rem solid var(--color-grey-light-1);
+    padding: 0.5rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-weight: 400; }
   .button:hover {
     text-indent: 0;
     background: var(--color-white);
@@ -226,13 +232,12 @@ body {
     box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1); }
     .button:hover--hollow {
       background: transparent; }
-    .button:hover span {
-      opacity: 1;
-      width: 100%;
-      transform: translateX(0);
-      visibility: initial; }
+    .button:hover--tag {
+      background-color: var(--color-primary);
+      color: var(--color-white); }
 
 .card {
+  position: relative;
   display: grid;
   width: var(--card-width);
   background-color: var(--color-white);
@@ -262,13 +267,37 @@ body {
       margin-bottom: 0; }
     .card--with-invisible-bg .paragraph-title {
       line-height: 3rem; }
+  .card--for-3col-blog {
+    height: var(--card--for-3col-blog-height);
+    border: 0.1rem solid var(--color-grey-light-1); }
   .card__content {
     transition: transform 0.3s ease-in-out, opacity 0.6s; }
     .card__content .paragraph-title {
       margin-bottom: 0; }
-  .card__img {
+  .card__img-wrapper {
     width: 37rem;
-    height: 26rem; }
+    height: 26rem;
+    overflow: hidden; }
+  .card__img {
+    width: inherit;
+    height: inherit;
+    transition: all 0.5s ease-in-out;
+    position: relative; }
+    .card__img--for-3col-blog:hover {
+      transform: scale(1.05);
+      filter: brightness(80%); }
+  .card__icon-round {
+    background-color: var(--color-white);
+    border-radius: 8rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -3.5rem;
+    padding: 2rem;
+    z-index: 1; }
+    .card__icon-round svg {
+      height: 4rem;
+      width: 4rem;
+      fill: var(--color-grey-light-2); }
   .card__icon {
     width: 5rem;
     height: 5rem;
@@ -290,6 +319,12 @@ body {
     fill: var(--color-grey-dark-1);
     transition: fill 0.3s;
     margin-left: 1rem; }
+  .card__heading-link {
+    text-decoration: none; }
+    .card__heading-link .heading6 {
+      transition: all 0.3s; }
+      .card__heading-link .heading6:hover {
+        color: var(--color-grey-dark-1); }
   .card__link, .card__link:link, .card__link:visited {
     display: flex;
     text-decoration: none;
@@ -312,16 +347,31 @@ body {
     color: var(--color-primary); }
   .card__info {
     opacity: 0;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    padding: 1rem 2rem; }
+    .card__info--for-3col-blog {
+      opacity: 1;
+      height: 12rem; }
     .card__info .paragraph {
+      text-align: justify;
+      text-justify: inter-word;
       min-width: 100%; }
+  .card__row {
+    margin-top: 2rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: row; }
   .card:hover .card__content {
     transform: translateY(-1rem); }
+    .card:hover .card__content--for-3col-blog {
+      transform: translateY(0); }
   .card:hover .card__elipsis {
     opacity: 0; }
   .card:hover .card__info {
     opacity: 1;
     transform: translatey(-4.5rem); }
+    .card:hover .card__info--for-3col-blog {
+      transform: translatey(0); }
   .card:hover {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); }
 
