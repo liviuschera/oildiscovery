@@ -1,10 +1,8 @@
 :root {
    //COLORS
-   // --color-primary: orange;
    --color-primary: #a6c550;
-   // $color-primary: #0487cc;
-   --color-primary-light: lighten($color-primary, 20%);
-   --color-primary-dark: darken($color-primary, 20%);
+   // --color-primary-light: lighten($color-primary, 20%);
+   // --color-primary-dark: darken($color-primary, 20%);
 
    --color-grey-light-1: #f3f3f3;
    --color-grey-light-2: #9f9f9f;
@@ -38,3 +36,7 @@
 
    // GRADIENTS
 }
+
+$color-primary: #a6c550;
+$color-primary-light: lighten($color-primary, 20%);
+$color-primary-dark: darken($color-primary, 10%);
