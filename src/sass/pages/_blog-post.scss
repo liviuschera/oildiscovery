@@ -1,0 +1,12 @@
+.blog-post {
+   display: grid;
+   grid-template-columns: 80rem 1fr;
+   width: var(--site-width);
+   background-color: rgba(#00f000, 0.1);
+   margin: 0 auto;
+   &__main {
+      display: grid;
+      background-color: rgba(#0000f0, 0.1);
+      justify-content: center;
+   }
+}

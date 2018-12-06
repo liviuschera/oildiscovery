@@ -53,6 +53,11 @@
       height: var(--card--for-3col-blog-height);
       border: 0.1rem solid var(--color-grey-light-1);
    }
+
+   &--full-width-blogpost {
+      width: 100%;
+   }
+
    //
    // card modifiers - end
    //
@@ -68,6 +73,13 @@
       width: 37rem;
       height: 26rem;
       overflow: hidden;
+
+      &--full-width-blogpost {
+         width: 78.5rem;
+         height: 48rem;
+         transition: none;
+         // object-fit: cover;
+      }
    }
    &__img {
       width: inherit;
@@ -79,6 +91,12 @@
          &:hover {
             transform: scale(1.05);
             filter: brightness(80%);
+         }
+         &--full-width-blogpost {
+            // width: 78.5rem;
+            // height: 48rem;
+            // transition: none;
+            // object-fit: fill;
          }
       }
    }
