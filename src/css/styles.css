@@ -277,7 +277,8 @@ body {
     height: var(--card--for-3col-blog-height);
     border: 0.1rem solid var(--color-grey-light-1); }
   .card--full-width-blogpost {
-    width: 100%; }
+    width: 100%;
+    margin: 0; }
   .card__content {
     transition: transform 0.3s ease-in-out, opacity 0.6s; }
     .card__content .heading6 {
@@ -289,7 +290,9 @@ body {
     .card__img-wrapper--full-width-blogpost {
       width: 78.5rem;
       height: 48rem;
-      transition: none; }
+      transition: none;
+      justify-self: center;
+      margin-bottom: 3rem; }
   .card__img {
     width: inherit;
     height: inherit;
@@ -317,15 +320,15 @@ body {
     align-self: start;
     fill: var(--color-primary);
     margin-bottom: 0.5rem; }
-  .card__blogpost-title-date {
+  .card__details-wrapper {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     justify-items: center;
     font-size: 1.4rem;
     font-weight: 700;
-    margin-top: 1.5rem;
+    margin-top: 2.5rem;
     margin-bottom: 0.7rem; }
-    .card__blogpost-title-date .paragraph {
+    .card__details-wrapper .paragraph {
       margin-bottom: 0; }
   .card__icon-post {
     width: 1.8rem;
@@ -389,6 +392,8 @@ body {
       transform: translatey(0); }
   .card:hover {
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); }
+  .card--full-width-blogpost:hover {
+    box-shadow: none; }
 
 .form {
   width: 60rem; }
@@ -667,12 +672,23 @@ body {
         color: var(--color-grey-dark-1); }
 
 .blog-post {
-  display: grid;
-  grid-template-columns: 80rem 1fr;
+  grid-template-columns: 80rem 35rem;
   width: var(--site-width);
   background-color: rgba(0, 240, 0, 0.1);
   margin: 0 auto; }
+  .blog-post, .blog-post__main, .blog-post__aside, .blog-post__about {
+    display: grid; }
   .blog-post__main {
-    display: grid;
     background-color: rgba(0, 0, 240, 0.1);
-    justify-content: center; }
+    margin: 0;
+    padding: 0; }
+  .blog-post__aside {
+    width: 100%;
+    align-self: start;
+    justify-items: center; }
+    .blog-post__aside .form {
+      width: 100%; }
+  .blog-post__about {
+    margin-top: 3rem;
+    align-content: start;
+    justify-items: center; }
