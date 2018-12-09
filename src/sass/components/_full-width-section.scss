@@ -117,6 +117,10 @@
    &__row {
       display: flex;
       justify-content: center;
+
+      &--for-3col-blog {
+         margin-bottom: 3rem;
+      }
    }
 
    .img-testimonials {

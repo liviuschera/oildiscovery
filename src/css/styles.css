@@ -485,6 +485,8 @@ body {
   .full-width-section__row {
     display: flex;
     justify-content: center; }
+    .full-width-section__row--for-3col-blog {
+      margin-bottom: 3rem; }
   .full-width-section .img-testimonials {
     height: 27rem; }
   .full-width-section__contact-details {
