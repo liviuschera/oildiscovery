@@ -39,5 +39,7 @@
 }
 
 $color-primary: #a6c550;
+$color-black: #000;
+
 $color-primary-light: lighten($color-primary, 20%);
 $color-primary-dark: darken($color-primary, 10%);
