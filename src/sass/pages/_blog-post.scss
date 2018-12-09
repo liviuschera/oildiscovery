@@ -1,12 +1,12 @@
 .blog-post {
    &,
    &__main,
-   &__aside,
+   // &__aside,
    &__about {
       display: grid;
    }
 
-   grid-template-columns: 80rem 35rem;
+   grid-template-columns: 80rem 40rem;
    width: var(--site-width);
    margin: 0 auto;
 
@@ -151,19 +151,23 @@
    // /////////////////////////////////
 
    &__aside {
+      margin-right: 4rem;
+      // display: bl
       width: 100%;
       align-self: start;
+      // margin: 0 auto;
+      // justify-self: center;
       // justify-items: center;
-      justify-content: center;
+      // justify-content: center;
       .form {
-         justify-self: center;
+         // justify-self: center;
          width: 100%;
       }
    }
 
    &__about {
       margin-top: 3rem;
-      align-content: start;
+      // align-content: start;
       justify-items: center;
    }
 }

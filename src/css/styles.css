@@ -679,10 +679,10 @@ body {
         color: var(--color-grey-dark-1); }
 
 .blog-post {
-  grid-template-columns: 80rem 35rem;
+  grid-template-columns: 80rem 40rem;
   width: var(--site-width);
   margin: 0 auto; }
-  .blog-post, .blog-post__main, .blog-post__aside, .blog-post__about {
+  .blog-post, .blog-post__main, .blog-post__about {
     display: grid; }
   .blog-post .social-media-buttons {
     display: grid; }
@@ -797,13 +797,11 @@ body {
         height: 1.2rem;
         fill: var(--color-grey-light-2); }
   .blog-post__aside {
+    margin-right: 4rem;
     width: 100%;
-    align-self: start;
-    justify-content: center; }
+    align-self: start; }
     .blog-post__aside .form {
-      justify-self: center;
       width: 100%; }
   .blog-post__about {
     margin-top: 3rem;
-    align-content: start;
     justify-items: center; }
