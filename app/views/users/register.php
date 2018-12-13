@@ -1,59 +1,123 @@
-<?php require APPROOT . '../views/includes/header.php'; ?>
-<?php require APPROOT . '../views/includes/navbar.php'; ?>
-
+<?php require APPROOT .
+    '../views/includes/header.php'; ?> <?php require APPROOT .
+     '../views/includes/navbar.php'; ?>
 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 
-<form action="<?php echo URLROOT; ?>/users/register" class="form u-div-center">
-<h3 class="heading-tertiary">Register</h3>
+<form
+   action="<?php echo URLROOT; ?>/users/register"
+   class="form u-div-center"
+   method="post"
+>
+   <h3 class="heading-tertiary">Create an account</h3>
+   <p class="paragraph">Please fill out this form to register.</p>
+   <!-- <pre><?php echo var_dump($data); ?></pre> -->
    <div class="form__row">
-      <input
-         type="text"
-         class="form__input"
-         placeholder="First name"
-         id="first-name"
-         required
-      />
-
-      <input
-         type="text"
-         class="form__input"
-         placeholder="Last name"
-         id="last-name"
-         required
-      />
+      <div class="form__group">
+         <input
+            type="text"
+            class="form__input <?php echo !empty($data['first_name_error'])
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['first_name']; ?>"
+            placeholder="First name"
+            id="first-name"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'first_name_error'
+         ]; ?></span>
+      </div>
+      <div class="form__group">
+         <input
+            type="text"
+            class="form__input <?php echo !empty($data['last_name_error'])
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['last_name']; ?>"
+            placeholder="Last name"
+            id="last-name"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'last_name_error'
+         ]; ?></span>
+      </div>
    </div>
    <div class="form__row">
-      <input
-         type="email"
-         class="form__input"
-         placeholder="Email"
-         id="email"
-         required
-      />
-
-      <input
-         type="tel"
-         class="form__input"
-         placeholder="Phone"
-         id="phone"
-         required
-      />
+      <div class="form__group">
+         <input
+            type="email"
+            class="form__input <?php echo !empty($data['email_error'])
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['email']; ?>"
+            placeholder="Email"
+            id="email"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'email_error'
+         ]; ?></span>
+      </div>
+      <div class="form__group">
+         <input
+            type="tel"
+            class="form__input <?php echo !empty($data['phone_error'])
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['phone']; ?>"
+            placeholder="Phone"
+            id="phone"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'phone_error'
+         ]; ?></span>
+      </div>
    </div>
 
    <div class="form__row">
-      <input type="password" class="form__input" placeholder="Password" />
-      <input
-         type="password"
-         class="form__input"
-         placeholder="Confirm Password"
-      />
+      <div class="form__group">
+         <input
+            type="password"
+            class="form__input <?php echo !empty($data['password_error'])
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['password']; ?>"
+            placeholder="Password"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'password_error'
+         ]; ?></span>
+      </div>
+      <div class="form__group">
+         <input
+            type="password"
+            class="form__input <?php echo !empty(
+                $data['confirm_password_error']
+            )
+                ? 'form__invalid'
+                : ''; ?>"
+            value="<?php echo $data['confirm_password']; ?>"
+            placeholder="Confirm Password"
+         />
+         <span class="form__invalid-feedback"><?php echo $data[
+             'confirm_password_error'
+         ]; ?></span>
+      </div>
    </div>
    <div class="form__row">
-      <button class="button" formaction="<?php echo URLROOT; ?>/users/login" type="submit">Have an account? Login</button>
-      <button class="button" formaction="<?php echo URLROOT; ?>/users/register" type="submit">Register</button>
+      <button
+         class="button"
+         formaction="<?php echo URLROOT; ?>/users/login"
+         type="submit"
+      >
+         Have an account? Login
+      </button>
+      <button
+         class="button"
+         formaction="<?php echo URLROOT; ?>/users/register"
+         type="submit"
+      >
+         Register
+      </button>
    </div>
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
-
-

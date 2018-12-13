@@ -43,6 +43,22 @@
    &__textarea::placeholder {
       color: var(--color-grey-light-2);
    }
+   &__group {
+      position: relative;
+   }
+   &__invalid {
+      border: 0.1rem solid var(--color-is-invalid-border);
+   }
+
+   &__invalid-feedback {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-top: 0.3rem;
+      padding-right: 1rem;
+      font-size: 1rem;
+      color: var(--color-is-invalid-text);
+   }
 
    .button {
       margin-top: 1rem;

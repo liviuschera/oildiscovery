@@ -3,6 +3,8 @@
   --color-grey-light-1: #f3f3f3;
   --color-grey-light-2: #9f9f9f;
   --color-grey-dark-1: #585858;
+  --color-is-invalid-text: #a94442;
+  --color-is-invalid-border: #f2dede;
   --color-white: #fff;
   --color-black: #000;
   --site-width: 120rem;
@@ -102,7 +104,7 @@ body {
 .heading-secondary,
 .heading-tertiary,
 .paragraph,
-.paragraph-title {
+.heading6 {
   text-align: center;
   justify-self: center;
   margin-bottom: 2.5rem; }
@@ -424,6 +426,18 @@ body {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
   .form__input::placeholder, .form__textarea::placeholder {
     color: var(--color-grey-light-2); }
+  .form__group {
+    position: relative; }
+  .form__invalid {
+    border: 0.1rem solid var(--color-is-invalid-border); }
+  .form__invalid-feedback {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 0.3rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+    color: var(--color-is-invalid-text); }
   .form .button {
     margin-top: 1rem;
     margin-left: auto; }
