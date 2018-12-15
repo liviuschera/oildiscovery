@@ -1,14 +1,15 @@
 <?php
 class Users extends Controller
 {
-    public function __constructor()
+    public function __construct()
     {
+        $this->userModel = $this->model('User');
     }
 
-    public function index()
-    {
-        $this->view('users/login');
-    }
+    // public function index()
+    // {
+    //     $this->view('users/login');
+    // }
 
     public function register()
     {
@@ -26,9 +27,10 @@ class Users extends Controller
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
+            echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
-                'first_name' => trim($_POST['first_name']),
+                'first_name' => trim($_POST['first_name']) ?? '',
                 'last_name' => trim($_POST['last_name']),
                 'email' => trim($_POST['email']),
                 'phone' => trim($_POST['phone']),
@@ -41,7 +43,7 @@ class Users extends Controller
                 'password_error' => '',
                 'confirm_password_error' => ''
             ];
-            echo "<pre>" . var_dump($data) . "</pre>";
+            echo "<pre> post init: " . var_dump($data) . "</pre>";
 
             // Validate first name
             if (empty($data['first_name'])) {
@@ -55,6 +57,11 @@ class Users extends Controller
             // Validate email
             if (empty($data['email'])) {
                 $data['email_error'] = "Please enter email.";
+            } else {
+                // Check if the email is unique
+                if (!empty($this->userModel->findUserByEmail($data['email']))) {
+                    $data['email_error'] = "Email is already taken.";
+                }
             }
 
             // Validate phone
@@ -84,12 +91,23 @@ class Users extends Controller
                 empty($data['first_name_error']) &&
                 empty($data['last_name_error']) &&
                 empty($data['email_error']) &&
-                empty(['phone_error']) &&
+                empty($data['phone_error']) &&
                 empty($data['password_error']) &&
-                emtpy($data['confirm_password_error'])
+                empty($data['confirm_password_error'])
             ) {
                 // Successfuly validated
-                die('SUCCESS');
+                // Hash password
+                $data['password'] = password_hash(
+                    $data['password'],
+                    PASSWORD_DEFAULT
+                );
+
+                // Register user
+                if ($this->userModel->registerUser($data)) {
+                    redirectTo('/users/login');
+                } else {
+                    die('Something went wrong');
+                }
             } else {
                 echo "<pre>" . var_dump($data) . "</pre>";
 
@@ -123,12 +141,43 @@ class Users extends Controller
         // Check for post
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process the form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            echo "naked post: " . var_dump($_POST);
+
+            // Init data
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'email_error' => '',
+                'password_error' => ''
+            ];
+
+            // Validate Email
+            if (empty($data['email'])) {
+                $data['email_error'] = 'Please enter email';
+            }
+
+            // Validate Password
+            if (empty($data['password'])) {
+                $data['password_error'] = 'Please enter password';
+            }
+
+            // Make sure errors are empty
+            if (empty($data['email_error']) && empty($data['password_error'])) {
+                // Validated
+                die('SUCCESS');
+            } else {
+                // Load view with errors
+                $this->view('users/login', $data);
+            }
         } else {
             // Init data
             $data = [
                 'email' => '',
-                'email_error' => '',
                 'password' => '',
+                'email_error' => '',
                 'password_error' => ''
             ];
 

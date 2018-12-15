@@ -21,7 +21,8 @@
                 : ''; ?>"
             value="<?php echo $data['first_name']; ?>"
             placeholder="First name"
-            id="first-name"
+            name="first_name"
+
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'first_name_error'
@@ -35,7 +36,7 @@
                 : ''; ?>"
             value="<?php echo $data['last_name']; ?>"
             placeholder="Last name"
-            id="last-name"
+            name="last_name"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'last_name_error'
@@ -51,7 +52,7 @@
                 : ''; ?>"
             value="<?php echo $data['email']; ?>"
             placeholder="Email"
-            id="email"
+            name="email"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'email_error'
@@ -65,7 +66,7 @@
                 : ''; ?>"
             value="<?php echo $data['phone']; ?>"
             placeholder="Phone"
-            id="phone"
+            name="phone"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'phone_error'
@@ -82,6 +83,7 @@
                 : ''; ?>"
             value="<?php echo $data['password']; ?>"
             placeholder="Password"
+            name="password"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'password_error'
@@ -97,6 +99,7 @@
                 : ''; ?>"
             value="<?php echo $data['confirm_password']; ?>"
             placeholder="Confirm Password"
+            name="confirm_password"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'confirm_password_error'
@@ -104,6 +107,18 @@
       </div>
    </div>
    <div class="form__row">
+      <!-- <a
+         class="button"
+         href="<?php echo URLROOT; ?>/users/login"
+         type="submit"
+      >
+         Have an account? Login
+      </a> -->
+      <!-- <input
+         class="button"
+         type="submit"
+         value="Register"
+      > -->
       <button
          class="button"
          formaction="<?php echo URLROOT; ?>/users/login"

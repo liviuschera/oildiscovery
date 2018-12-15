@@ -91,7 +91,7 @@ class Database
     }
 
     // Get a single record as object
-    public function getResult()
+    public function getSingleResult()
     {
         $this->executeStmt();
         return $this->stmt->fetch();

@@ -21,7 +21,7 @@
                 : ''; ?>"
             value="<?php echo $data['email']; ?>"
             placeholder="Email"
-            id="email"
+            name="email"
          />
          <span class="form__invalid-feedback"
             ><?php echo $data['email_error']; ?></span
@@ -35,6 +35,7 @@
                 : ''; ?>"
             value="<?php echo $data['password']; ?>"
             placeholder="Password"
+            name="password"
          />
          <span class="form__invalid-feedback"
             ><?php echo $data['password_error']; ?></span
@@ -43,12 +44,25 @@
    </div>
 
    <div class="form__row">
-      <button
+      <!-- <a
+         class="button"
+         href="<?php echo URLROOT; ?>/users/register"
+         type="submit"
+      >
+         No account? Register
+      </a>
+      <input
+         class="button"
+         type="submit"
+         value="Login"
+      >
+   </div> -->
+   <button
          class="button"
          formaction="<?php echo URLROOT; ?>/users/register"
          type="submit"
       >
-         No account? Register
+      No account? Register
       </button>
       <button
          class="button"
@@ -57,6 +71,5 @@
       >
          Login
       </button>
-   </div>
 </form>
 <!-- ~~~ LOGIN FORM end ~~~ -->
