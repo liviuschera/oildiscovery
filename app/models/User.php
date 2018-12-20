@@ -13,14 +13,14 @@ class User
     {
         // Query database
         $this->db->queryDB(
-            'INSERT INTO users (first_name, last_name, email, phone, password) VALUES (:first_name, :last_name, :email, :phone, :password)'
+            'INSERT INTO users (first_name, last_name, email, phone, passw) VALUES (:first_name, :last_name, :email, :phone, :passw)'
         );
         // Bind values
         $this->db->bindVal(':first_name', $data['first_name']);
         $this->db->bindVal(':last_name', $data['last_name']);
         $this->db->bindVal(':email', $data['email']);
         $this->db->bindVal(':phone', $data['phone']);
-        $this->db->bindVal(':password', $data['password']);
+        $this->db->bindVal(':passw', $data['passw']);
 
         // Execute the prepared statement
         if ($this->db->executeStmt()) {

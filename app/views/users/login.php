@@ -29,16 +29,16 @@
       </div>
       <div class="form__group">
          <input
-            type="password"
-            class="form__input <?php echo !empty($data['password_error'])
+            type="passw"
+            class="form__input <?php echo !empty($data['passw_error'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['password']; ?>"
-            placeholder="Password"
-            name="password"
+            value="<?php echo $data['passw']; ?>"
+            placeholder="passw"
+            name="passw"
          />
          <span class="form__invalid-feedback"
-            ><?php echo $data['password_error']; ?></span
+            ><?php echo $data['passw_error']; ?></span
          >
       </div>
    </div>

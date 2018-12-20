@@ -44,7 +44,7 @@ class Database
             );
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
-            echo $this->error;
+            echo "Ups! {$this->error}";
         }
     }
 
@@ -58,7 +58,7 @@ class Database
     public function bindVal($param, $value, $type = null)
     {
         if (is_null($type)) {
-            switch ($type) {
+            switch (true) {
                 case is_int($value):
                     $type = PDO::PARAM_INT;
                     break;
@@ -74,7 +74,8 @@ class Database
         }
         /* Binds a value to a corresponding named or question mark
          placeholder in the SQL statement that was used to prepare the statement.  */
-        $this->stmt->bindValue($param, $value, $type);
+        $this->stmt->bindParam($param, $value, $type);
+        // $this->stmt->bindValue($param, $value, $type);
     }
 
     // Execute the prepared statement

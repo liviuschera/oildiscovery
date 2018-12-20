@@ -22,6 +22,7 @@
             value="<?php echo $data['first_name']; ?>"
             placeholder="First name"
             name="first_name"
+            id="first_name"
 
          />
          <span class="form__invalid-feedback"><?php echo $data[
@@ -37,6 +38,7 @@
             value="<?php echo $data['last_name']; ?>"
             placeholder="Last name"
             name="last_name"
+            id="last_name"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'last_name_error'
@@ -53,6 +55,7 @@
             value="<?php echo $data['email']; ?>"
             placeholder="Email"
             name="email"
+            id="email"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'email_error'
@@ -67,6 +70,7 @@
             value="<?php echo $data['phone']; ?>"
             placeholder="Phone"
             name="phone"
+            id="phone"
          />
          <span class="form__invalid-feedback"><?php echo $data[
              'phone_error'
@@ -78,48 +82,48 @@
       <div class="form__group">
          <input
             type="password"
-            class="form__input <?php echo !empty($data['password_error'])
+            class="form__input <?php echo !empty($data['passw_error'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['password']; ?>"
+            value="<?php echo $data['passw']; ?>"
             placeholder="Password"
-            name="password"
+            name="passw"
+            id="passw"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'password_error'
+             'passw_error'
          ]; ?></span>
       </div>
       <div class="form__group">
          <input
             type="password"
-            class="form__input <?php echo !empty(
-                $data['confirm_password_error']
-            )
+            class="form__input <?php echo !empty($data['confirm_passw_error'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['confirm_password']; ?>"
-            placeholder="Confirm Password"
-            name="confirm_password"
+            value="<?php echo $data['confirm_passw']; ?>"
+            placeholder="Confirm password"
+            name="confirm_passw"
+            id="confirm_passw"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'confirm_password_error'
+             'confirm_passw_error'
          ]; ?></span>
       </div>
    </div>
    <div class="form__row">
-      <!-- <a
+      <a
          class="button"
          href="<?php echo URLROOT; ?>/users/login"
          type="submit"
       >
          Have an account? Login
-      </a> -->
-      <!-- <input
+      </a>
+      <input
          class="button"
          type="submit"
          value="Register"
-      > -->
-      <button
+      >
+      <!-- <button
          class="button"
          formaction="<?php echo URLROOT; ?>/users/login"
          type="submit"
@@ -132,7 +136,7 @@
          type="submit"
       >
          Register
-      </button>
+      </button> -->
    </div>
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->

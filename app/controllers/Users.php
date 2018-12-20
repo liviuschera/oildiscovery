@@ -27,23 +27,23 @@ class Users extends Controller
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            echo "naked post: " . var_dump($_POST);
+            // echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
                 'first_name' => trim($_POST['first_name']) ?? '',
                 'last_name' => trim($_POST['last_name']),
                 'email' => trim($_POST['email']),
                 'phone' => trim($_POST['phone']),
-                'password' => trim($_POST['password']),
-                'confirm_password' => trim($_POST['confirm_password']),
+                'passw' => trim($_POST['passw']),
+                'confirm_passw' => trim($_POST['confirm_passw']),
                 'first_name_error' => '',
                 'last_name_error' => '',
                 'email_error' => '',
                 'phone_error' => '',
-                'password_error' => '',
-                'confirm_password_error' => ''
+                'passw_error' => '',
+                'confirm_passw_error' => ''
             ];
-            echo "<pre> post init: " . var_dump($data) . "</pre>";
+            // echo "<pre> post init: " . var_dump($data) . "</pre>";
 
             // Validate first name
             if (empty($data['first_name'])) {
@@ -69,20 +69,19 @@ class Users extends Controller
                 $data['phone_error'] = "Please enter phone.";
             }
 
-            // Validate password
-            if (empty($data['password'])) {
-                $data['password_error'] = "Please enter password.";
-            } elseif (strlen($data['password']) < 6) {
-                $data['password_error'] =
-                    "Password must be at least 6 charaters.";
+            // Validate passw
+            if (empty($data['passw'])) {
+                $data['passw_error'] = "Please enter passw.";
+            } elseif (strlen($data['passw']) < 6) {
+                $data['passw_error'] = "passw must be at least 6 charaters.";
             }
 
-            // Validate confirm password
-            if (empty($data['confirm_password'])) {
-                $data['confirm_password_error'] = "Please confirm password.";
+            // Validate confirm passw
+            if (empty($data['confirm_passw'])) {
+                $data['confirm_passw_error'] = "Please confirm passw.";
             } else {
-                if ($data['password'] !== $data['confirm_password']) {
-                    $data['confirm_password_error'] = "Passwords do not match.";
+                if ($data['passw'] !== $data['confirm_passw']) {
+                    $data['confirm_passw_error'] = "passws do not match.";
                 }
             }
 
@@ -92,24 +91,36 @@ class Users extends Controller
                 empty($data['last_name_error']) &&
                 empty($data['email_error']) &&
                 empty($data['phone_error']) &&
-                empty($data['password_error']) &&
-                empty($data['confirm_password_error'])
+                empty($data['passw_error']) &&
+                empty($data['confirm_passw_error'])
             ) {
                 // Successfuly validated
-                // Hash password
-                $data['password'] = password_hash(
-                    $data['password'],
+                // Hash the password
+                $data['passw'] = password_hash(
+                    $data['passw'],
                     PASSWORD_DEFAULT
                 );
 
                 // Register user
-                if ($this->userModel->registerUser($data)) {
-                    redirectTo('/users/login');
-                } else {
-                    die('Something went wrong');
+                try {
+                    if ($this->userModel->registerUser($data)) {
+                        redirectTo('users/login');
+                    }
+                    //  else {
+                    //     die('Something went wrong');
+                    // }
+                    $this->userModel->registerUser($data);
+                } catch (Exception $e) {
+                    // } catch (PDOException $e) {
+                    $this->error = $e->getMessage();
+                    $this->code = $e->getCode();
+                    if ($this->code === '23000') {
+                        redirectTo('users/login');
+                    }
+                    echo "<strong>Error message:</strong> {$this->error}";
                 }
             } else {
-                echo "<pre>" . var_dump($data) . "</pre>";
+                // echo "<pre> view with errors" . var_dump($data) . "</pre>";
 
                 // Load view with errors
                 $this->view('users/register', $data);
@@ -121,14 +132,14 @@ class Users extends Controller
                 'last_name' => '',
                 'email' => '',
                 'phone' => '',
-                'password' => '',
-                'confirm_password' => '',
+                'passw' => '',
+                'confirm_passw' => '',
                 'first_name_error' => '',
                 'last_name_error' => '',
                 'email_error' => '',
                 'phone_error' => '',
-                'password_error' => '',
-                'confirm_password_error' => ''
+                'passw_error' => '',
+                'confirm_passw_error' => ''
             ];
 
             // Load view;
@@ -144,14 +155,14 @@ class Users extends Controller
 
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            echo "naked post: " . var_dump($_POST);
+            // echo "fitered post: " . var_dump($_POST);
 
             // Init data
             $data = [
                 'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
+                'passw' => trim($_POST['passw']),
                 'email_error' => '',
-                'password_error' => ''
+                'passw_error' => ''
             ];
 
             // Validate Email
@@ -159,13 +170,13 @@ class Users extends Controller
                 $data['email_error'] = 'Please enter email';
             }
 
-            // Validate Password
-            if (empty($data['password'])) {
-                $data['password_error'] = 'Please enter password';
+            // Validate passw
+            if (empty($data['passw'])) {
+                $data['passw_error'] = 'Please enter passw';
             }
 
             // Make sure errors are empty
-            if (empty($data['email_error']) && empty($data['password_error'])) {
+            if (empty($data['email_error']) && empty($data['passw_error'])) {
                 // Validated
                 die('SUCCESS');
             } else {
@@ -176,9 +187,9 @@ class Users extends Controller
             // Init data
             $data = [
                 'email' => '',
-                'password' => '',
+                'passw' => '',
                 'email_error' => '',
-                'password_error' => ''
+                'passw_error' => ''
             ];
 
             // Load view;
