@@ -60,17 +60,18 @@
    </div> -->
    <button
          class="button"
-         formaction="<?php echo URLROOT; ?>/users/register"
-         type="submit"
-      >
-      No account? Register
-      </button>
-      <button
-         class="button"
          formaction="<?php echo URLROOT; ?>/users/login"
          type="submit"
       >
          Login
       </button>
+   <button
+         class="button"
+         formaction="<?php echo URLROOT; ?>/users/register"
+         type="submit"
+      >
+      No account? Register
+      </button>
+      
 </form>
 <!-- ~~~ LOGIN FORM end ~~~ -->

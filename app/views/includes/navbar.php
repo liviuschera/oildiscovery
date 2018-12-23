@@ -59,7 +59,11 @@
             <li><a href="">Blog</a></li>
             <li><a href="">Shop</a></li>
             <li><a href="">Contact me</a></li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+            <li><a href="<?php echo URLROOT; ?>/users/logout">Logout</a></li>
+            <?php else: ?>
             <li><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
+            <?php endif; ?>
          </ul>
       </nav>
    </div>
