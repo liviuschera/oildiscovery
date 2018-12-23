@@ -438,6 +438,21 @@ body {
     padding-right: 1rem;
     font-size: 1rem;
     color: var(--color-is-invalid-text); }
+  .form__alert-success, .form__alert-failed {
+    margin: 3rem 0;
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 1.6rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); }
+  .form__alert-success {
+    margin: 3rem 0;
+    background-color: rgba(166, 197, 80, 0.1);
+    color: var(--color-primary);
+    border: 0.1rem solid rgba(166, 197, 80, 0.5); }
+  .form__alert-failed {
+    background-color: rgba(169, 68, 66, 0.1);
+    color: var(--color-is-invalid-text);
+    border: 0.1rem solid rgba(169, 68, 66, 0.5); }
   .form .button {
     margin-top: 1rem;
     margin-left: auto; }

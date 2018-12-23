@@ -104,6 +104,10 @@ class Users extends Controller
                 // Register user
                 try {
                     if ($this->userModel->registerUser($data)) {
+                        flash(
+                            'register_success',
+                            'You are registered and can log in now'
+                        );
                         redirectTo('users/login');
                     }
                     //  else {
@@ -115,6 +119,10 @@ class Users extends Controller
                     $this->error = $e->getMessage();
                     $this->code = $e->getCode();
                     if ($this->code === '23000') {
+                        flash(
+                            'register_success',
+                            'You are registered and can log in now'
+                        );
                         redirectTo('users/login');
                     }
                     echo "<strong>Error message:</strong> {$this->error}";
@@ -170,9 +178,17 @@ class Users extends Controller
                 $data['email_error'] = 'Please enter email';
             }
 
-            // Validate passw
+            // Validate password
             if (empty($data['passw'])) {
                 $data['passw_error'] = 'Please enter passw';
+            }
+
+            // Check for user/email
+            if ($this->userModel->findUserByEmail($data['email'])) {
+                // User found
+                // Check and set logged in user
+            } else {
+                $data['email_error'] = 'No user found';
             }
 
             // Make sure errors are empty

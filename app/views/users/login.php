@@ -9,6 +9,7 @@
    class="form u-div-center"
    method="post"
 >
+   <?php flash('register_success'); ?>
    <h3 class="heading-tertiary">Login</h3>
    <code><?php echo var_dump($data); ?></code>
 
@@ -29,7 +30,7 @@
       </div>
       <div class="form__group">
          <input
-            type="passw"
+            type="password"
             class="form__input <?php echo !empty($data['passw_error'])
                 ? 'form__invalid'
                 : ''; ?>"

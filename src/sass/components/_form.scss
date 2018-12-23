@@ -60,6 +60,26 @@
       color: var(--color-is-invalid-text);
    }
 
+   &__alert-success,
+   &__alert-failed {
+      margin: 3rem 0;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 1.6rem;
+      box-shadow: 0 0.5rem 1rem rgba(#000000, 0.1);
+   }
+   &__alert-success {
+      margin: 3rem 0;
+      background-color: rgba($color-primary, 0.1);
+      color: var(--color-primary);
+      border: 0.1rem solid rgba($color-primary, 0.5);
+   }
+   &__alert-failed {
+      background-color: rgba($color-is-invalid-text, 0.1);
+      color: var(--color-is-invalid-text);
+      border: 0.1rem solid rgba($color-is-invalid-text, 0.5);
+   }
+
    .button {
       margin-top: 1rem;
       margin-left: auto;

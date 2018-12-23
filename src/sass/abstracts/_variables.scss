@@ -43,6 +43,8 @@
 
 $color-primary: #a6c550;
 $color-black: #000;
+$color-is-invalid-text: #a94442;
+$color-is-invalid-border: #f2dede;
 
 $color-primary-light: lighten($color-primary, 20%);
 $color-primary-dark: darken($color-primary, 10%);
