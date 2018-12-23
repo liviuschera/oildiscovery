@@ -58,7 +58,7 @@
          <div
             class="full-width-section__col-img full-width-section__col-img--welcome"
          >
-            <img src="images/pages/home-01-570x350.jpg" alt="" class="" />
+            <img src="<?php echo URLROOT; ?>/images/pages/home-01-570x350.jpg" alt="" class="" />
          </div>
       </div>
    </div>
@@ -86,7 +86,7 @@
             <figure class="card card--with-icons">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-coffee"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
                   <h6 class="heading6 u-color-primary u-txt-bold">
                      Nutrition Strategy
@@ -106,7 +106,7 @@
             <figure class="card card--with-icons">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-coffee"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
                   <p class="heading6 u-color-primary u-txt-bold">
                      Nutrition Strategy
@@ -126,7 +126,7 @@
             <figure class="card card--with-icons">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-coffee"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
                   <h6 class="heading6 u-color-primary u-txt-bold">
                      Nutrition Strategy
@@ -185,7 +185,7 @@
                   <div class="card__img-wrapper">
                      <a href="">
                         <img
-                           src="images/pages/events-01-390x289.jpg"
+                           src="<?php echo URLROOT; ?>/images/pages/events-01-390x289.jpg"
                            alt=""
                            class="card__img"
                         />
@@ -195,7 +195,7 @@
                      <a class="card__link bold" href=""
                         >Street Workout
                         <svg class="card__icon-post">
-                           <use href="images/sprite.svg#icon-camera"></use>
+                           <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera"></use>
                         </svg>
                      </a>
                      <span class="card__date">September, 12, 2016</span>
@@ -218,7 +218,7 @@
                   <div class="card__img-wrapper">
                      <a href="">
                         <img
-                           src="images/pages/events-02-390x289.jpg"
+                           src="<?php echo URLROOT; ?>/images/pages/events-02-390x289.jpg"
                            alt=""
                            class="card__img"
                         />
@@ -228,7 +228,7 @@
                      <a class="card__link bold" href=""
                         >Seasonal Diet
                         <svg class="card__icon-post">
-                           <use href="images/sprite.svg#icon-camera"></use>
+                           <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera"></use>
                         </svg>
                      </a>
                      <span class="card__date">September, 12, 2016</span>
@@ -251,7 +251,7 @@
                   <div class="card__img-wrapper">
                      <a href="">
                         <img
-                           src="images/pages/events-03-390x289.jpg"
+                           src="<?php echo URLROOT; ?>/images/pages/events-03-390x289.jpg"
                            alt=""
                            class="card__img"
                         />
@@ -262,7 +262,7 @@
                      <a class="card__link bold" href=""
                         >How to eat
                         <svg class="card__icon-post">
-                           <use href="images/sprite.svg#icon-camera"></use>
+                           <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera"></use>
                         </svg>
                      </a>
                      <span class="card__date">September, 12, 2016</span>
@@ -295,7 +295,7 @@
             <figure class="card card--with-invisible-bg u-no-hover">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-diamond"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-diamond"></use>
                   </svg>
                   <h2 class="heading-secondary u-color-white">12</h2>
                   <h6 class="heading6 u-color-white ">Years of experience</h6>
@@ -307,7 +307,7 @@
             <figure class="card card--with-invisible-bg u-no-hover">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-portfolio"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-portfolio"></use>
                   </svg>
                   <h2 class="heading-secondary u-color-white">15</h2>
                   <h6 class="heading6 u-color-white ">Kinds of methodics</h6>
@@ -319,7 +319,7 @@
             <figure class="card card--with-invisible-bg u-no-hover">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-sportive"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-sportive"></use>
                   </svg>
                   <h2 class="heading-secondary u-color-white">7</h2>
                   <h6 class="heading6 u-color-white ">
@@ -333,7 +333,7 @@
             <figure class="card card--with-invisible-bg u-no-hover">
                <div class="card__content">
                   <svg class="card__icon">
-                     <use href="images/sprite.svg#icon-user2"></use>
+                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-user2"></use>
                   </svg>
                   <h2 class="heading-secondary u-color-white">2377</h2>
                   <h6 class="heading6 u-color-white ">Happy customers</h6>
@@ -355,12 +355,12 @@
          <h3 class="heading-tertiary">Success Stories</h3>
          <div class="full-width-section__row">
             <img
-               src="./images/pages/praise-01-269x278.jpg"
+               src="<?php echo URLROOT; ?>/images/pages/praise-01-269x278.jpg"
                alt=""
                class="img-testimonials"
             />
             <img
-               src="./images/pages/praise-02-269x278.jpg"
+               src="<?php echo URLROOT; ?>/images/pages/praise-02-269x278.jpg"
                alt=""
                class="img-testimonials"
             />
