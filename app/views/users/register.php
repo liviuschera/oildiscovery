@@ -16,32 +16,32 @@
       <div class="form__group">
          <input
             type="text"
-            class="form__input <?php echo !empty($data['first_name_error'])
+            class="form__input <?php echo !empty($data['firstNameError'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['first_name']; ?>"
+            value="<?php echo $data['firstName']; ?>"
             placeholder="First name"
-            name="first_name"
-            id="first_name"
+            name="firstName"
+            id="firstName"
 
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'first_name_error'
+             'firstNameError'
          ]; ?></span>
       </div>
       <div class="form__group">
          <input
             type="text"
-            class="form__input <?php echo !empty($data['last_name_error'])
+            class="form__input <?php echo !empty($data['lastNameError'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['last_name']; ?>"
+            value="<?php echo $data['lastName']; ?>"
             placeholder="Last name"
-            name="last_name"
-            id="last_name"
+            name="lastName"
+            id="lastName"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'last_name_error'
+             'lastNameError'
          ]; ?></span>
       </div>
    </div>
@@ -49,7 +49,7 @@
       <div class="form__group">
          <input
             type="email"
-            class="form__input <?php echo !empty($data['email_error'])
+            class="form__input <?php echo !empty($data['emailError'])
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['email']; ?>"
@@ -58,13 +58,13 @@
             id="email"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'email_error'
+             'emailError'
          ]; ?></span>
       </div>
       <div class="form__group">
          <input
             type="tel"
-            class="form__input <?php echo !empty($data['phone_error'])
+            class="form__input <?php echo !empty($data['phoneError'])
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['phone']; ?>"
@@ -73,7 +73,7 @@
             id="phone"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'phone_error'
+             'phoneError'
          ]; ?></span>
       </div>
    </div>
@@ -82,7 +82,7 @@
       <div class="form__group">
          <input
             type="password"
-            class="form__input <?php echo !empty($data['passw_error'])
+            class="form__input <?php echo !empty($data['passwError'])
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['passw']; ?>"
@@ -91,22 +91,22 @@
             id="passw"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'passw_error'
+             'passwError'
          ]; ?></span>
       </div>
       <div class="form__group">
          <input
             type="password"
-            class="form__input <?php echo !empty($data['confirm_passw_error'])
+            class="form__input <?php echo !empty($data['confirmPasswError'])
                 ? 'form__invalid'
                 : ''; ?>"
-            value="<?php echo $data['confirm_passw']; ?>"
+            value="<?php echo $data['confirmPassw']; ?>"
             placeholder="Confirm password"
-            name="confirm_passw"
-            id="confirm_passw"
+            name="confirmPassw"
+            id="confirmPassw"
          />
          <span class="form__invalid-feedback"><?php echo $data[
-             'confirm_passw_error'
+             'confirmPasswError'
          ]; ?></span>
       </div>
    </div>

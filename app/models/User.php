@@ -13,11 +13,11 @@ class User
     {
         // Query database
         $this->db->queryDB(
-            'INSERT INTO users (first_name, last_name, email, phone, passw) VALUES (:first_name, :last_name, :email, :phone, :passw)'
+            'INSERT INTO users (firstName, lastName, email, phone, passw) VALUES (:firstName, :lastName, :email, :phone, :passw)'
         );
         // Bind values
-        $this->db->bindVal(':first_name', $data['first_name']);
-        $this->db->bindVal(':last_name', $data['last_name']);
+        $this->db->bindVal(':firstName', $data['firstName']);
+        $this->db->bindVal(':lastName', $data['lastName']);
         $this->db->bindVal(':email', $data['email']);
         $this->db->bindVal(':phone', $data['phone']);
         $this->db->bindVal(':passw', $data['passw']);

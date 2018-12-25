@@ -30,69 +30,69 @@ class Users extends Controller
             // echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
-                'first_name' => trim($_POST['first_name']) ?? '',
-                'last_name' => trim($_POST['last_name']),
+                'firstName' => trim($_POST['firstName']) ?? '',
+                'lastName' => trim($_POST['lastName']),
                 'email' => trim($_POST['email']),
                 'phone' => trim($_POST['phone']),
                 'passw' => trim($_POST['passw']),
-                'confirm_passw' => trim($_POST['confirm_passw']),
-                'first_name_error' => '',
-                'last_name_error' => '',
-                'email_error' => '',
-                'phone_error' => '',
-                'passw_error' => '',
-                'confirm_passw_error' => ''
+                'confirmPassw' => trim($_POST['confirmPassw']),
+                'firstNameError' => '',
+                'lastNameError' => '',
+                'emailError' => '',
+                'phoneError' => '',
+                'passwError' => '',
+                'confirmPasswError' => ''
             ];
             // echo "<pre> post init: " . var_dump($data) . "</pre>";
 
             // Validate first name
-            if (empty($data['first_name'])) {
-                $data['first_name_error'] = "Please enter first name.";
+            if (empty($data['firstName'])) {
+                $data['firstNameError'] = "Please enter first name.";
             }
             // Validate last name
-            if (empty($data['last_name'])) {
-                $data['last_name_error'] = "Please enter last name.";
+            if (empty($data['lastName'])) {
+                $data['lastNameError'] = "Please enter last name.";
             }
 
             // Validate email
             if (empty($data['email'])) {
-                $data['email_error'] = "Please enter email.";
+                $data['emailError'] = "Please enter email.";
             } else {
                 // Check if the email is unique
                 if (!empty($this->userModel->findUserByEmail($data['email']))) {
-                    $data['email_error'] = "Email is already taken.";
+                    $data['emailError'] = "Email is already taken.";
                 }
             }
 
             // Validate phone
             if (empty($data['phone'])) {
-                $data['phone_error'] = "Please enter phone.";
+                $data['phoneError'] = "Please enter phone.";
             }
 
             // Validate passw
             if (empty($data['passw'])) {
-                $data['passw_error'] = "Please enter passw.";
+                $data['passwError'] = "Please enter passw.";
             } elseif (strlen($data['passw']) < 6) {
-                $data['passw_error'] = "passw must be at least 6 charaters.";
+                $data['passwError'] = "passw must be at least 6 charaters.";
             }
 
             // Validate confirm passw
-            if (empty($data['confirm_passw'])) {
-                $data['confirm_passw_error'] = "Please confirm passw.";
+            if (empty($data['confirmPassw'])) {
+                $data['confirmPasswError'] = "Please confirm passw.";
             } else {
-                if ($data['passw'] !== $data['confirm_passw']) {
-                    $data['confirm_passw_error'] = "passws do not match.";
+                if ($data['passw'] !== $data['confirmPassw']) {
+                    $data['confirmPasswError'] = "passws do not match.";
                 }
             }
 
             // Make sure errors are empty
             if (
-                empty($data['first_name_error']) &&
-                empty($data['last_name_error']) &&
-                empty($data['email_error']) &&
-                empty($data['phone_error']) &&
-                empty($data['passw_error']) &&
-                empty($data['confirm_passw_error'])
+                empty($data['firstNameError']) &&
+                empty($data['lastNameError']) &&
+                empty($data['emailError']) &&
+                empty($data['phoneError']) &&
+                empty($data['passwError']) &&
+                empty($data['confirmPasswError'])
             ) {
                 // Successfuly validated
                 // Hash the password
@@ -136,18 +136,18 @@ class Users extends Controller
         } else {
             // Init data
             $data = [
-                'first_name' => '',
-                'last_name' => '',
+                'firstName' => '',
+                'lastName' => '',
                 'email' => '',
                 'phone' => '',
                 'passw' => '',
-                'confirm_passw' => '',
-                'first_name_error' => '',
-                'last_name_error' => '',
-                'email_error' => '',
-                'phone_error' => '',
-                'passw_error' => '',
-                'confirm_passw_error' => ''
+                'confirmPassw' => '',
+                'firstNameError' => '',
+                'lastNameError' => '',
+                'emailError' => '',
+                'phoneError' => '',
+                'passwError' => '',
+                'confirmPasswError' => ''
             ];
 
             // Load view;
@@ -169,18 +169,18 @@ class Users extends Controller
             $data = [
                 'email' => trim($_POST['email']),
                 'passw' => trim($_POST['passw']),
-                'email_error' => '',
-                'passw_error' => ''
+                'emailError' => '',
+                'passwError' => ''
             ];
 
             // Validate Email
             if (empty($data['email'])) {
-                $data['email_error'] = 'Please enter email';
+                $data['emailError'] = 'Please enter email';
             }
 
             // Validate password
             if (empty($data['passw'])) {
-                $data['passw_error'] = 'Please enter passw';
+                $data['passwError'] = 'Please enter passw';
             }
 
             // Check for user/email
@@ -188,11 +188,11 @@ class Users extends Controller
                 // User found
             } else {
                 // User not found
-                $data['email_error'] = 'No user found';
+                $data['emailError'] = 'No user found';
             }
 
             // Make sure errors are empty
-            if (empty($data['email_error']) && empty($data['passw_error'])) {
+            if (empty($data['emailError']) && empty($data['passwError'])) {
                 // Validated
                 // Check and set logged in user
                 $loggedInUser = $this->userModel->login(
@@ -204,7 +204,7 @@ class Users extends Controller
                     // Create session
                     $this->createUserSession($loggedInUser);
                 } else {
-                    $data['passw_error'] = 'Password incorrect';
+                    $data['passwError'] = 'Password incorrect';
                     $this->view('users/login', $data);
                 }
             } else {
@@ -216,8 +216,8 @@ class Users extends Controller
             $data = [
                 'email' => '',
                 'passw' => '',
-                'email_error' => '',
-                'passw_error' => ''
+                'emailError' => '',
+                'passwError' => ''
             ];
 
             // Load view;
@@ -230,7 +230,7 @@ class Users extends Controller
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
-        redirectTo('pages/index');
+        redirectTo('posts');
     }
 
     public function logout()
@@ -239,7 +239,7 @@ class Users extends Controller
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
         session_destroy();
-        redirectTo('pages/login');
+        redirectTo('users/login');
     }
 }
 ?>

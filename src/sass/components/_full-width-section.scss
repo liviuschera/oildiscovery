@@ -117,6 +117,7 @@
    &__row {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
 
       &--for-3col-blog {
          margin-bottom: 3rem;

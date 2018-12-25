@@ -17,7 +17,7 @@
       <div class="form__group">
          <input
             type="email"
-            class="form__input <?php echo !empty($data['email_error'])
+            class="form__input <?php echo !empty($data['emailError'])
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['email']; ?>"
@@ -25,13 +25,13 @@
             name="email"
          />
          <span class="form__invalid-feedback"
-            ><?php echo $data['email_error']; ?></span
+            ><?php echo $data['emailError']; ?></span
          >
       </div>
       <div class="form__group">
          <input
             type="password"
-            class="form__input <?php echo !empty($data['passw_error'])
+            class="form__input <?php echo !empty($data['passwError'])
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['passw']; ?>"
@@ -39,7 +39,7 @@
             name="passw"
          />
          <span class="form__invalid-feedback"
-            ><?php echo $data['passw_error']; ?></span
+            ><?php echo $data['passwError']; ?></span
          >
       </div>
    </div>
