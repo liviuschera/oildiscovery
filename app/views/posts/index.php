@@ -54,7 +54,9 @@
                                        href="images/sprite.svg#icon-calendar"
                                     ></use>
                                  </svg>
-                                 <?php echo $post->createdAt; ?></span
+                                 <?php echo formatDate(
+                                     $post->createdAt
+                                 ); ?></span
                               >
                               <p class="paragraph u-txt-align-left">
                                  <svg class="card__icon-post">
