@@ -10,7 +10,10 @@ class Post
 
     public function getPosts()
     {
-        $this->db->queryDB('SELECT * FROM posts');
+        $this->db->queryDB('SELECT *
+        FROM users
+        JOIN posts ON users.id=posts.userId
+        JOIN body ON posts.id = body.postId ORDER BY posts.createdAt DESC');
         $restuls = $this->db->getResultSet();
         return $restuls;
     }

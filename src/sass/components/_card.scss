@@ -7,8 +7,12 @@
    grid-template-rows: repeat(3, 1fr);
    box-shadow: 0 0 0 rgba(black, 0.1);
    transition: box-shadow 0.5s;
-   margin: 0 1.5rem;
+   margin: 1.5rem;
+   color: var(--color-grey-dark-1);
 
+   .paragraph {
+      color: var(--color-grey-dark-1);
+   }
    &,
    &__content {
       display: grid;
@@ -88,7 +92,6 @@
          transition: none;
          justify-self: center;
          margin-bottom: 3rem;
-         // object-fit: cover;
       }
    }
 
@@ -130,6 +133,7 @@
       fill: var(--color-primary);
       margin-bottom: 0.5rem;
    }
+
    // /////////////////////////////////
    // info date/time/author start
    // /////////////////////////////////
@@ -137,32 +141,30 @@
    &__details-wrapper {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-      justify-items: center;
       font-size: 1.4rem;
-      font-weight: 700;
-      margin-top: 2.5rem;
-      margin-bottom: 0.7rem;
+      margin: 2.5rem 2rem 0.7rem;
 
       &--pos-rel {
          position: relative;
       }
       .paragraph {
          margin-bottom: 0;
+         justify-self: left;
       }
    }
 
    &__icon-post {
-      position: absolute;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
       fill: var(--color-grey-dark-1);
       transition: fill 0.3s;
-      margin-left: 1rem;
       left: -3.3rem;
+      vertical-align: middle;
    }
 
    &__heading-link {
       text-decoration: none;
+      margin-left: 2rem;
       .heading6 {
          transition: all 0.3s;
          &:hover {
@@ -177,10 +179,9 @@
       &:visited {
          display: inline-flex;
          text-decoration: none;
-         color: var(--color-grey-dark-1);
-         // font-size: 1.4rem;
+         color: var(--color-grey-light-2);
+         font-weight: 700;
          transition: color 0.3s;
-         // background-color: white;
       }
 
       &:hover {
@@ -194,10 +195,9 @@
    }
 
    &__date {
-      border-left: 0.1rem solid var(--color-grey-light-1);
       color: var(--color-grey-light-2);
       width: 100%;
-      text-align: center;
+      font-weight: 700;
    }
    // /////////////////////////////////
    // info date/time/author start
@@ -225,8 +225,9 @@
          height: 12rem;
 
          .paragraph {
-            text-align: justify;
-            text-justify: inter-word;
+            text-align: left;
+            width: inherit;
+            // text-justify: inter-word;
          }
       }
 
