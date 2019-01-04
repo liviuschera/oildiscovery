@@ -29,6 +29,57 @@
       font-family: inherit;
    }
 
+   &__checkbox {
+      // line-height: 1.8rem;
+      // line-height: var(--font-paragraph-size);
+      font-size: var(--font-paragraph-size);
+      input[type="checkbox"] {
+         display: none;
+      }
+      label {
+         // line-height: 1.8rem;
+         cursor: pointer;
+         span {
+            // line-height: 1.8rem;
+            /* position: relative; */
+            /* margin-left: 2rem; */
+            margin-bottom: -0.4rem;
+            margin-right: 0.6rem;
+            padding-right: 1rem;
+            display: inline-block;
+            height: 1.8rem;
+            width: 1.8rem;
+            // height: var(--font-paragraph-size);
+            // width: var(--font-paragraph-size);
+            background: var(--color-grey-light-1);
+            border-radius: 50%;
+
+            &::before {
+               content: "\2714";
+               /* display: block; */
+               position: absolute;
+               line-height: var(--font-paragraph-size);
+               width: inherit;
+               height: inherit;
+               height: var(--font-paragraph-size);
+               width: var(--font-paragraph-size);
+               // width: inherit;
+               // height: inherit;
+               border-radius: inherit;
+               color: var(--color-primary);
+               padding-left: 3px;
+               padding-top: 2px;
+               background-color: var(--color-grey-light-1);
+               opacity: 0;
+               transition: all 0.2s;
+            }
+         }
+      }
+      input:checked + label span::before {
+         opacity: 1;
+      }
+   }
+
    &__input:focus,
    &__textarea:focus {
       outline: none;
@@ -45,6 +96,7 @@
    }
    &__group {
       position: relative;
+      margin: 1rem 0;
    }
    &__invalid {
       border: 0.1rem solid var(--color-is-invalid-border);

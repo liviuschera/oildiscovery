@@ -9,96 +9,95 @@
          <div
          class="full-width-section__row full-width-section__row--for-3col-blog"
          >
+         <a class="button" href="<?php echo URLROOT; ?>/posts/add">Add page</a>
          <?php echo var_dump($data['posts']); ?>
          <?php foreach ($data['posts'] as $post): ?>
-                  <!-- ~~~ CARD start -->
-                  <figure class="card card--for-3col-blog">
-                     <div class="card__content card__content--for-3col-blog">
-                        <div class="card__img-wrapper">
-                           <a href="">
-                              <img
-                                 src="images/pages/events-01-390x289.jpg"
-                                 alt=""
-                                 class="card__img card__img--for-3col-blog"
-                              />
-                           </a>
-                        </div>
+            <!-- ~~~ CARD start -->
+            <figure class="card card--for-3col-blog">
+               <div class="card__content card__content--for-3col-blog">
+                  <div class="card__img-wrapper">
+                     <a href="">
+                        <img
+                           src="images/pages/events-01-390x289.jpg"
+                           alt=""
+                           class="card__img card__img--for-3col-blog"
+                        />
+                     </a>
+                  </div>
 
-                        <div class="card__icon-round">
-                           <svg>
-                              <use href="images/sprite.svg#icon-pencil2"></use>
-                           </svg>
-                        </div>
+                  <div class="card__icon-round">
+                     <svg>
+                        <use href="images/sprite.svg#icon-pencil2"></use>
+                     </svg>
+                  </div>
 
-                           <a href="" class="card__heading-link">
-                              <h6
-                                 class="heading6 u-txt-uppercase  u-color-primary"
-                              >
-                                 <?php echo $post->title; ?>
-                              </h6>
-                           </a>
-
-                           <div class="card__details-wrapper">
-                              <span class="card__author">
-                                 <svg class="card__icon-post">
-                                    <use
-                                       href="images/sprite.svg#icon-user"
-                                    ></use>
-                                 </svg>
-                                 By:
-                                 <a class="card__link" href=""> <?php echo "{$post->firstName} {$post->lastName}"; ?> </a>
-                              </span>
-                              <span class="card__date">
-                                 <svg class="card__icon-post">
-                                    <use
-                                       href="images/sprite.svg#icon-calendar"
-                                    ></use>
-                                 </svg>
-                                 <?php echo formatDate(
-                                     $post->createdAt
-                                 ); ?></span
-                              >
-                              <p class="paragraph u-txt-align-left">
-                                 <svg class="card__icon-post">
-                                    <use
-                                       href="images/sprite.svg#icon-chat"
-                                    ></use>
-                                 </svg>
-                                 <span class="card__comments"> Comments: </span>
-                                 <a class="card__link u-txt-bold" href="">3 </a>
-                              </p>
-                           </div>
-
-                        <figcaption
-                           class="card__info card__info--for-3col-blog"
+                     <a href="" class="card__heading-link">
+                        <h6
+                           class="heading6 u-txt-uppercase  u-color-primary"
                         >
-                           <p class="paragraph">
-                              <?php echo $post->content; ?>
-                           </p>
-                        </figcaption>
+                           <?php echo $post->title; ?>
+                        </h6>
+                     </a>
 
-                        <div class="card__row">
-                           <button class="button button--tag">
-                              Permission
-                           </button>
-                           <button class="button button--tag">Health</button>
-                           <button class="button button--tag">Coach</button>
-                        </div>
-                  </figure>
-                  <!-- ~~~ CARD end -->
-                  <?php endforeach; ?>
+                     <div class="card__details-wrapper">
+                        <span class="card__author">
+                           <svg class="card__icon-post">
+                              <use
+                                 href="images/sprite.svg#icon-user"
+                              ></use>
+                           </svg>
+                           By:
+                           <a class="card__link" href=""> <?php echo "{$post->firstName} {$post->lastName}"; ?> </a>
+                        </span>
+                        <span class="card__date">
+                           <svg class="card__icon-post">
+                              <use
+                                 href="images/sprite.svg#icon-calendar"
+                              ></use>
+                           </svg>
+                           <?php echo formatDate($post->createdAt); ?></span
+                        >
+                        <p class="paragraph u-txt-align-left">
+                           <svg class="card__icon-post">
+                              <use
+                                 href="images/sprite.svg#icon-chat"
+                              ></use>
+                           </svg>
+                           <span class="card__comments"> Comments: </span>
+                           <a class="card__link u-txt-bold" href="">3 </a>
+                        </p>
+                     </div>
 
-               </div>
-               <div class="full-width-section__row u-margin-top-big">
-                  <a href="" class="button button--pagination">Prev</a>
-                  <a href="" class="button button--pagination">1</a>
-                  <a href="" class="button button--pagination">2</a>
-                  <a href="" class="button button--pagination">3</a>
-                  <a href="" class="button button--pagination">Next</a>
-               </div>
-            </section>
-         </section>
+                  <figcaption
+                     class="card__info card__info--for-3col-blog"
+                  >
+                     <p class="paragraph">
+                        <?php echo $post->content; ?>
+                     </p>
+                  </figcaption>
+
+                  <div class="card__row">
+                     <button class="button button--tag">
+                        Permission
+                     </button>
+                     <button class="button button--tag">Health</button>
+                     <button class="button button--tag">Coach</button>
+                  </div>
+            </figure>
+            <!-- ~~~ CARD end -->
+            <?php endforeach; ?>
+
+         </div>
+         <div class="full-width-section__row u-margin-top-big">
+            <a href="" class="button button--pagination">Prev</a>
+            <a href="" class="button button--pagination">1</a>
+            <a href="" class="button button--pagination">2</a>
+            <a href="" class="button button--pagination">3</a>
+            <a href="" class="button button--pagination">Next</a>
+         </div>
       </section>
-      <!-- ~~~ BLOG ARTICLES SECTION  end~~~ -->
+   </section>
+</section>
+<!-- ~~~ BLOG ARTICLES SECTION  end~~~ -->
 
 <?php require APPROOT . '../views/includes/footer.php'; ?> 

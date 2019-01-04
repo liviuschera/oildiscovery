@@ -19,5 +19,21 @@ class Posts extends Controller
 
         $this->view('posts/index', $data);
     }
+
+    public function add()
+    {
+        $data = [
+            'active' => '',
+            'priv' => '',
+            'title' => '',
+            'content' => '',
+            'activeError' => '',
+            'privError' => '',
+            'titleError' => '',
+            'contentError' => ''
+        ];
+
+        $this->view('posts/add', $data);
+    }
 }
 ?>

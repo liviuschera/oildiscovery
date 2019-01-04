@@ -35,7 +35,7 @@
                 ? 'form__invalid'
                 : ''; ?>"
             value="<?php echo $data['passw']; ?>"
-            placeholder="passw"
+            placeholder="Enter password"
             name="passw"
          />
          <span class="form__invalid-feedback"
@@ -47,7 +47,9 @@
    <div class="form__row">
       <!-- <a
          class="button"
-         href="<?php echo URLROOT; ?>/users/register"
+         href="<?php
+//echo URLROOT;
+?>/users/register"
          type="submit"
       >
          No account? Register

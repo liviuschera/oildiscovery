@@ -16,11 +16,13 @@
    // text-indent: 23px;
    text-align: center;
    font-weight: bold;
+   font-size: 1.4rem;
    cursor: pointer;
    transition: all 0.3s ease-in-out;
    // transition: all 0.6s, box-shadow 0.2s 0.5s;
    // flex-basis 0.3s 0.4s;
    margin: 0 1rem;
+   text-decoration: none;
 
    &--hollow {
       border: 2px solid var(--color-white);

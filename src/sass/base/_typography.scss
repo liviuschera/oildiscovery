@@ -26,15 +26,15 @@ body {
 }
 
 .heading-secondary {
-   font-size: 6rem;
+   font-size: var(--font-heding-secondary-size);
 }
 
 .heading-tertiary {
-   font-size: 3.6rem;
+   font-size: var(--font-heding-tertiary-size);
 }
 
 .paragraph {
-   font-size: 1.4rem;
+   font-size: var(--font-paragraph-size);
    color: var(--color-grey-light-2);
    &--left {
       text-align: left;
@@ -43,7 +43,7 @@ body {
 }
 
 .heading6 {
-   font-size: 1.8rem;
+   font-size: var(--font-heading6-size);
    &--contact {
       text-align: left;
       font-weight: 700;
