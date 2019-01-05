@@ -10,8 +10,17 @@
       margin: 1rem 0;
    }
 
+   &__group {
+      position: relative;
+      vertical-align: middle;
+      display: flex;
+      // margin: 1rem 0;
+   }
+
    &__input,
-   &__textarea {
+   &__textarea,
+   &__select {
+      outline: none;
       width: 100%;
       padding: 1.5rem 2rem;
       transition: all 0.3s;
@@ -29,21 +38,32 @@
       font-family: inherit;
    }
 
-   &__checkbox {
-      // line-height: 1.8rem;
-      // line-height: var(--font-paragraph-size);
+   &__select {
+      margin-left: 40%;
+      font-family: inherit;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+   }
+
+   &__select + label {
+      align-self: center;
+      position: absolute;
       font-size: var(--font-paragraph-size);
+   }
+
+   &__checkbox {
+      font-size: var(--font-paragraph-size);
+      align-self: center;
+
       input[type="checkbox"] {
          display: none;
       }
+
       label {
-         // line-height: 1.8rem;
          cursor: pointer;
          span {
-            // line-height: 1.8rem;
-            /* position: relative; */
-            /* margin-left: 2rem; */
-            margin-bottom: -0.4rem;
+            margin-bottom: -0.3rem;
             margin-right: 0.6rem;
             padding-right: 1rem;
             display: inline-block;
@@ -56,15 +76,12 @@
 
             &::before {
                content: "\2714";
-               /* display: block; */
                position: absolute;
                line-height: var(--font-paragraph-size);
                width: inherit;
                height: inherit;
                height: var(--font-paragraph-size);
                width: var(--font-paragraph-size);
-               // width: inherit;
-               // height: inherit;
                border-radius: inherit;
                color: var(--color-primary);
                padding-left: 3px;
@@ -81,23 +98,18 @@
    }
 
    &__input:focus,
-   &__textarea:focus {
+   &__textarea:focus,
+   &__select:focus {
       outline: none;
       border: 0.1rem solid var(--color-primary);
-      // box-shadow: var(--shadow-subtle);
       box-shadow: 0 1rem 2rem rgba(black, 0.1);
-      // box-shadow: 0 1rem 2rem rgba(var(--color-black), 0.2);
-      // border-bottom: 2px solid green;
    }
 
    &__input::placeholder,
    &__textarea::placeholder {
       color: var(--color-grey-light-2);
    }
-   &__group {
-      position: relative;
-      margin: 1rem 0;
-   }
+
    &__invalid {
       border: 0.1rem solid var(--color-is-invalid-border);
    }

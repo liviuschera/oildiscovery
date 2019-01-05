@@ -11,7 +11,7 @@
 >
    <h3 class="heading-tertiary">Add Post</h3>
    <p class="paragraph">Please fill out all the fields.</p>
-   <!-- <pre><?php echo var_dump($data); ?></pre> -->
+   <pre><?php echo var_dump($data); ?></pre>
    
    <!-- Post TITLE -->
       <div class="form__group">
@@ -47,11 +47,14 @@
          
    
    <!-- Post PRIV -->
-   <select class="form__select">
-      <option value="0">User</option>
-      <option value="1">Admin</option>
-      <option value="2">Owner</option>
-   </select>
+   <div class="form__group">
+      <select name="priv" class="form__select">
+         <option value="0">User</option>
+         <option value="1">Admin</option>
+         <option value="2">Owner</option>
+      </select>
+      <label for="priv">Privilege:</label>
+   </div>
    </div>
 
       
