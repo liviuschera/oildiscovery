@@ -171,6 +171,14 @@ body {
 .u-txt-uppercase {
   text-transform: uppercase; }
 
+.u-div-align-left {
+  margin-left: auto;
+  justify-self: start; }
+
+.u-div-align-right {
+  margin-left: auto;
+  justify-self: end; }
+
 .u-color-white {
   color: var(--color-white); }
 
