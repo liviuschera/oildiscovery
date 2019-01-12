@@ -11,7 +11,7 @@
 >
    <h3 class="heading-tertiary">Create an account</h3>
    <p class="paragraph">Please fill out this form to register.</p>
-   <!-- <pre><?php echo var_dump($data); ?></pre> -->
+   <pre><?php echo var_dump($data); ?></pre>
    <div class="form__row">
       <div class="form__group">
          <input

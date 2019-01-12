@@ -11,21 +11,23 @@ class User
     // Register user
     public function registerUser($data)
     {
-        // Query database
-        $this->db->queryDB(
-            'INSERT INTO users (firstName, lastName, email, phone, passw) VALUES (:firstName, :lastName, :email, :phone, :passw)'
-        );
-        // Bind values
-        $this->db->bindVal(':firstName', $data['firstName']);
-        $this->db->bindVal(':lastName', $data['lastName']);
-        $this->db->bindVal(':email', $data['email']);
-        $this->db->bindVal(':phone', $data['phone']);
-        $this->db->bindVal(':passw', $data['passw']);
+        try {
+            // Query database
+            $this->db->queryDB(
+                'INSERT INTO users (firstName, lastName, email, phone, passw) VALUES (:firstName, :lastName, :email, :phone, :passw)'
+            );
+            // Bind values
+            $this->db->bindVal(':firstName', $data['firstName']);
+            $this->db->bindVal(':lastName', $data['lastName']);
+            $this->db->bindVal(':email', $data['email']);
+            $this->db->bindVal(':phone', $data['phone']);
+            $this->db->bindVal(':passw', $data['passw']);
 
-        // Execute the prepared statement
-        if ($this->db->executeStmt()) {
+            // Execute the prepared statement
+            $this->db->executeStmt();
             return true;
-        } else {
+        } catch (Exception $e) {
+            echo "Failed to execute statement: " . $e->getMessage();
             return false;
         }
     }

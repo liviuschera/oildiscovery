@@ -25,10 +25,11 @@ class Database
         Persistent Database Connections
         http://www.php.net/manual/en/features.persistent-connections.php 
          */
-        $options = array(
+        $options = [
             PDO::ATTR_PERSISTENT => true,
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        );
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+        ];
 
         // Create a PDO instance
         try {
@@ -37,10 +38,6 @@ class Database
                 $this->user,
                 $this->pass,
                 $options
-            );
-            $this->PDOhandler->setAttribute(
-                PDO::ATTR_DEFAULT_FETCH_MODE,
-                PDO::FETCH_OBJ
             );
         } catch (PDOException $e) {
             $this->error = $e->getMessage();
@@ -74,8 +71,26 @@ class Database
         }
         /* Binds a value to a corresponding named or question mark
          placeholder in the SQL statement that was used to prepare the statement.  */
-        $this->stmt->bindParam($param, $value, $type);
-        // $this->stmt->bindValue($param, $value, $type);
+        // $this->stmt->bindParam($param, $value, $type);
+        $this->stmt->bindValue($param, $value, $type);
+    }
+
+    // Start transaction
+    public function startTransaction()
+    {
+        $this->PDOhandler->beginTransaction();
+    }
+
+    // Commit transaction
+    public function commitTransaction()
+    {
+        $this->PDOhandler->commit();
+    }
+
+    // Roll Back transaction
+    public function rollBackTransaction()
+    {
+        $this->PDOhandler->rollBack();
     }
 
     // Execute the prepared statement

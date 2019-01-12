@@ -5,7 +5,7 @@
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 
 <form
-   action="<?php echo URLROOT; ?>/post/add"
+   action="<?php echo URLROOT; ?>/posts/add"
    class="form u-div-center"
    method="post"
 >
@@ -44,19 +44,19 @@
          
    <!-- Post PRIV -->
    <div class="form__group">
-      <?php $privArray = ['0' => 'User', '1' => 'Admin', '2' => 'Owner'];
-// Set an array contining user privilege levels
-?>
       <select id="priv" name="priv" class="form__select">
-         <?php foreach ($privArray as $key => $value) {
+         <?php
+         // Set an array contining user privilege levels
+         $privArray = ['0' => 'User', '1' => 'Admin', '2' => 'Owner'];
+         // display the values in the form
+         foreach ($privArray as $key => $value) {
              echo "<option value={$key}";
              if ((string) $data['priv'] === (string) $key) {
                  echo " selected";
              }
              echo ">{$value}</option>";
-         } ?>
-         <!-- <option value="1">Admin</option>
-         <option value="2">Owner</option> -->
+         }
+         ?>
       </select>
       <label for="priv">Privilege:</label>
    </div>

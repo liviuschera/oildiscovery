@@ -55,8 +55,8 @@
             <li><a href="<?php echo URLROOT; ?>">Home</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Join My Team</a></li>
-            <li><a href="">doTERRA Oils as a Business</a></li>
-            <li><a href="">Blog</a></li>
+            <li><a href="#">doTERRA Oils as a Business</a></li>
+            <li><a href="<?php echo URLROOT; ?>/posts">Blog</a></li>
             <li><a href="">Shop</a></li>
             <li><a href="">Contact me</a></li>
             <?php if (isset($_SESSION['user_id'])): ?>

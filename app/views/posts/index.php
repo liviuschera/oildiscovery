@@ -9,6 +9,7 @@
          <div
          class="full-width-section__row full-width-section__row--for-3col-blog"
          >
+         <?php flash('post_message'); ?>
          <a class="button" href="<?php echo URLROOT; ?>/posts/add">Add page</a>
          <?php echo var_dump($data['posts']); ?>
          <?php foreach ($data['posts'] as $post): ?>

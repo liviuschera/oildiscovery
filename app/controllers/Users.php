@@ -6,10 +6,11 @@ class Users extends Controller
         $this->userModel = $this->model('User');
     }
 
-    // public function index()
-    // {
-    //     $this->view('users/login');
-    // }
+    public function index()
+    {
+        $data = ["title" => "Wellcome to Homepage"];
+        $this->view('pages/index', $data);
+    }
 
     public function register()
     {
@@ -30,7 +31,7 @@ class Users extends Controller
             // echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
-                'firstName' => trim($_POST['firstName']) ?? '',
+                'firstName' => trim($_POST['firstName']),
                 'lastName' => trim($_POST['lastName']),
                 'email' => trim($_POST['email']),
                 'phone' => trim($_POST['phone']),
@@ -103,33 +104,17 @@ class Users extends Controller
 
                 // Register user
                 try {
-                    if ($this->userModel->registerUser($data)) {
-                        flash(
-                            'register_success',
-                            'You are registered and can log in now'
-                        );
-                        redirectTo('users/login');
-                    }
-                    //  else {
-                    //     die('Something went wrong');
-                    // }
                     $this->userModel->registerUser($data);
+                    flash(
+                        'register_success',
+                        'You are registered and can log in now'
+                    );
+                    redirectTo('users/login');
                 } catch (Exception $e) {
-                    // } catch (PDOException $e) {
                     $this->error = $e->getMessage();
-                    $this->code = $e->getCode();
-                    if ($this->code === '23000') {
-                        flash(
-                            'register_success',
-                            'You are registered and can log in now'
-                        );
-                        redirectTo('users/login');
-                    }
                     echo "<strong>Error message:</strong> {$this->error}";
                 }
             } else {
-                // echo "<pre> view with errors" . var_dump($data) . "</pre>";
-
                 // Load view with errors
                 $this->view('users/register', $data);
             }

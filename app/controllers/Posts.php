@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 class Posts extends Controller
 {
     public function __construct()
@@ -32,8 +34,6 @@ class Posts extends Controller
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
                 'userId' => $_SESSION['user_id'],
-                'activeError' => '',
-                'privError' => '',
                 'titleError' => '',
                 'contentError' => ''
             ];
@@ -48,11 +48,18 @@ class Posts extends Controller
                 $data['contentError'] = 'Please enter content';
             }
 
-            if (empty($data['titleError'] && empty($data['contentError']))) {
-                # code...
+            if (empty($data['titleError']) && empty($data['contentError'])) {
+                try {
+                    $this->postModel->addPost($data);
+                    flash('post_message', 'Post added.');
+                    redirectTo('posts');
+                } catch (Throwable $e) {
+                    $this->error = $e->getMessage();
+                    echo "<strong>Throwable message:</strong> {$this->error}";
+                }
             } else {
                 // Load the view with errors
-                $this->view('post/add', $data);
+                $this->view('posts/add', $data);
             }
         } else {
             // Display the blank form
@@ -61,8 +68,6 @@ class Posts extends Controller
                 'priv' => '0',
                 'title' => '',
                 'content' => '',
-                'activeError' => '',
-                'privError' => '',
                 'titleError' => '',
                 'contentError' => ''
             ];
