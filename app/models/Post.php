@@ -12,10 +12,15 @@ class Post
     {
         $this->db->queryDB('SELECT *
         FROM users
-        JOIN posts ON users.id=posts.userId
-        JOIN body ON posts.id = body.postId ORDER BY posts.createdAt DESC');
+        JOIN posts ON users.id=posts.userID
+        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC');
         $restuls = $this->db->getResultSet();
         return $restuls;
+    }
+
+    public function getLastInsertId()
+    {
+        return $this->db->retrieveLastInsertId();
     }
 
     public function addPost($data)
@@ -24,16 +29,27 @@ class Post
             $this->db->startTransaction();
             // Query database
             $this->db->queryDB(
-                'INSERT INTO posts (userId, title, active, priv) VALUES (:userId, :title, :active, :priv)'
+                "INSERT INTO posts (userID, title, active, priv) VALUES (:loggedUserId, :title, :active, :priv)"
             );
+
             // Bind values
-            $this->db->bindVal(':userId', $data['userId']);
+            $this->db->bindVal(':loggedUserId', $data['loggedUserId']);
             $this->db->bindVal(':title', $data['title']);
             $this->db->bindVal(':active', $data['active']);
             $this->db->bindVal(':priv', $data['priv']);
 
-            // Execute the prepared statement
+            $_SESSION['last_id'] = $this->db->executeStmt();
+
+            $last_post_id = $this->db->executeStmt();
+
+            $this->db->queryDB(
+                "INSERT INTO post_body (postID, content) VALUES (:postID, :content)"
+            );
+            $this->db->bindVal(':postID', $last_post_id);
+            // $this->db->bindVal(':postID', $_SESSION['last_id']);
+            $this->db->bindVal(':content', $data['content']);
             $this->db->executeStmt();
+            // Execute the prepared statement
             $this->db->commitTransaction();
             return true;
         } catch (Exception $e) {

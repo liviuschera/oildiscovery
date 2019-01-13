@@ -212,17 +212,17 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_email'] = $user->email;
-        $_SESSION['user_name'] = $user->firstName;
+        $_SESSION['login_user_id'] = $user->id;
+        $_SESSION['login_user_email'] = $user->email;
+        $_SESSION['login_user_name'] = $user->firstName;
         redirectTo('posts');
     }
 
     public function logout()
     {
-        unset($_SESSION['user_id']);
-        unset($_SESSION['user_email']);
-        unset($_SESSION['user_name']);
+        unset($_SESSION['login_user_id']);
+        unset($_SESSION['login_user_email']);
+        unset($_SESSION['login_user_name']);
         session_destroy();
         redirectTo('users/login');
     }

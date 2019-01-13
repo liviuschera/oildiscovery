@@ -33,7 +33,8 @@ class Posts extends Controller
                 'priv' => trim($_POST['priv']),
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),
-                'userId' => $_SESSION['user_id'],
+                'loggedUserId' => $_SESSION['login_user_id'],
+                'postID' => '',
                 'titleError' => '',
                 'contentError' => ''
             ];
@@ -51,7 +52,7 @@ class Posts extends Controller
             if (empty($data['titleError']) && empty($data['contentError'])) {
                 try {
                     $this->postModel->addPost($data);
-                    flash('post_message', 'Post added.');
+                    flash('post_message', "Post added.");
                     redirectTo('posts');
                 } catch (Throwable $e) {
                     $this->error = $e->getMessage();

@@ -1,4 +1,5 @@
 <?php
+// ob_start(); // output buffering is turned on
 session_start();
 // Flash message helper
 // Example: flash('register_success, 'Your are registered');
@@ -31,6 +32,6 @@ function flash($name = '', $message = '', $class = 'form__alert-success')
 
 function isLoggedIn()
 {
-    return isset($_SESSION['user_id']) ? true : false;
+    return isset($_SESSION['login_user_id']) ? true : false;
 }
 ?>

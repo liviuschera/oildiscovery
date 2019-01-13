@@ -8,6 +8,9 @@
                alt="Logo of Oildiscovery website"
                class="header__img"
             />
+            <span>Hello,
+            <?php echo $_SESSION['login_user_name'] ?? 'User'; ?>
+            </span>
             <nav class="header__nav-social">
                <ul>
                   <li>
@@ -50,6 +53,7 @@
             </nav>
          </div>
       </div>
+      
       <nav class="header__nav-site">
          <ul>
             <li><a href="<?php echo URLROOT; ?>">Home</a></li>
@@ -59,7 +63,7 @@
             <li><a href="<?php echo URLROOT; ?>/posts">Blog</a></li>
             <li><a href="">Shop</a></li>
             <li><a href="">Contact me</a></li>
-            <?php if (isset($_SESSION['user_id'])): ?>
+            <?php if (isset($_SESSION['login_user_id'])): ?>
             <li><a href="<?php echo URLROOT; ?>/users/logout">Logout</a></li>
             <?php else: ?>
             <li><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>

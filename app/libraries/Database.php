@@ -97,6 +97,7 @@ class Database
     public function executeStmt()
     {
         $this->stmt->execute();
+        return $this->PDOhandler->lastInsertId();
     }
 
     // Get result set as array of objects
@@ -117,6 +118,12 @@ class Database
     public function getRowCount()
     {
         return $this->stmt->rowCount();
+    }
+
+    // Retrieve last inserted id in the `posts` table
+    public function retrieveLastInsertId()
+    {
+        return $this->PDOhandler->lastInsertId();
     }
 }
 ?>
