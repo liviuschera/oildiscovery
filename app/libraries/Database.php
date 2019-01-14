@@ -97,7 +97,7 @@ class Database
     public function executeStmt()
     {
         $this->stmt->execute();
-        return $this->PDOhandler->lastInsertId();
+        // return $this->PDOhandler->lastInsertId();
     }
 
     // Get result set as array of objects

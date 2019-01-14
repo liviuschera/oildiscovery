@@ -17,7 +17,7 @@
             <figure class="card card--for-3col-blog">
                <div class="card__content card__content--for-3col-blog">
                   <div class="card__img-wrapper">
-                     <a href="">
+                     <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>">
                         <img
                            src="images/pages/events-01-390x289.jpg"
                            alt=""
@@ -32,7 +32,7 @@
                      </svg>
                   </div>
 
-                     <a href="" class="card__heading-link">
+                     <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>" class="card__heading-link">
                         <h6
                            class="heading6 u-txt-uppercase  u-color-primary"
                         >
@@ -44,7 +44,7 @@
                         <span class="card__author">
                            <svg class="card__icon-post">
                               <use
-                                 href="images/sprite.svg#icon-user"
+                                 href="<?php echo URLROOT; ?>/images/sprite.svg#icon-user"
                               ></use>
                            </svg>
                            By:
@@ -53,7 +53,7 @@
                         <span class="card__date">
                            <svg class="card__icon-post">
                               <use
-                                 href="images/sprite.svg#icon-calendar"
+                                 href="<?php echo URLROOT; ?>/images/sprite.svg#icon-calendar"
                               ></use>
                            </svg>
                            <?php echo formatDate($post->createdAt); ?></span
@@ -61,7 +61,7 @@
                         <p class="paragraph u-txt-align-left">
                            <svg class="card__icon-post">
                               <use
-                                 href="images/sprite.svg#icon-chat"
+                                 href="<?php echo URLROOT; ?>/images/sprite.svg#icon-chat"
                               ></use>
                            </svg>
                            <span class="card__comments"> Comments: </span>

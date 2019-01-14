@@ -18,11 +18,6 @@ class Post
         return $restuls;
     }
 
-    public function getLastInsertId()
-    {
-        return $this->db->retrieveLastInsertId();
-    }
-
     public function addPost($data)
     {
         try {
@@ -38,9 +33,8 @@ class Post
             $this->db->bindVal(':active', $data['active']);
             $this->db->bindVal(':priv', $data['priv']);
 
-            $_SESSION['last_id'] = $this->db->executeStmt();
-
-            $last_post_id = $this->db->executeStmt();
+            $this->db->executeStmt();
+            $last_post_id = $this->db->retrieveLastInsertId();
 
             $this->db->queryDB(
                 "INSERT INTO post_body (postID, content) VALUES (:postID, :content)"
@@ -63,6 +57,33 @@ class Post
         // } else {
         //     return false;
         // }
+    }
+
+    public function getPostById($id)
+    {
+        $this->db->queryDB('SELECT 
+        users.id AS userID,
+        users.firstName AS fName,
+        users.lastName AS lName,
+        users.createdAt AS userCreatedAt, 
+        users.modified AS userModified, 
+        users.priv AS userPriv, 
+        users.active AS userActive, 
+        posts.id AS postID,
+        posts.title AS title,
+        posts.createdAt AS postCreatedAt,
+        posts.modified AS postModified, 
+        posts.priv AS postPriv, 
+        posts.active AS postActive,
+        post_body.content AS content
+        FROM users
+        JOIN posts ON users.id = posts.userID
+        JOIN post_body ON posts.id = post_body.postID WHERE posts.id =:id');
+
+        $this->db->bindVal(':id', $id);
+
+        $row = $this->db->getSingleResult();
+        return $row;
     }
 }
 ?>
