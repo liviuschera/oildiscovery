@@ -24,6 +24,23 @@
    margin: 0 1rem;
    text-decoration: none;
 
+   &:hover {
+      text-indent: 0;
+      background: $color-primary-dark;
+      box-shadow: 0rem 0rem 5rem rgba(black, 0.1);
+      // color: $color-primary-dark;
+
+      // &--hollow {
+      //    background: transparent;
+      // }
+
+      // &--tag {
+      //    background-color: var(--color-primary);
+      //    background-color: red;
+      //    color: var(--color-white);
+      // }
+   }
+
    &--hollow {
       border: 2px solid var(--color-white);
       background-color: transparent;
@@ -68,20 +85,25 @@
       }
    }
 
-   &:hover {
-      text-indent: 0;
-      background: $color-primary-dark;
-      // color: $color-primary-dark;
-      box-shadow: 0rem 0rem 5rem rgba(black, 0.1);
+   &--success {
+      background-color: $color-success;
 
-      // &--hollow {
-      //    background: transparent;
-      // }
+      &:hover {
+         background-color: $color-success-dark;
+      }
+   }
 
-      // &--tag {
-      //    background-color: var(--color-primary);
-      //    background-color: red;
-      //    color: var(--color-white);
-      // }
+   &--info {
+      background-color: $color-info;
+      &:hover {
+         background-color: $color-info-dark;
+      }
+   }
+
+   &--danger {
+      background-color: $color-danger;
+      &:hover {
+         background: $color-danger-dark;
+      }
    }
 }

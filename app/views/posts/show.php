@@ -1,8 +1,8 @@
 <?php require APPROOT . '../views/includes/header.php'; ?> 
 <?php require APPROOT . '../views/includes/navbar.php'; ?>
+      <?php var_dump($data['post']); ?>
 
       <!-- ~~~ BLOG POST SECTION  start~~~ -->
-      <?php var_dump($data['post']); ?>
       <div class="blog-post">
          <main class="blog-post__main">
             <!-- ~~~ BLOG POST CARD  start -->
@@ -55,27 +55,7 @@
                            <a class="card__link u-txt-bold" href="">3 </a>
                         </p>
                      </div>
-                  <!-- <div class="card__details-wrapper">
-                     <a
-                        class="card__link bold  card__details-wrapper--pos-rel"
-                        href=""
-                        ><?php echo "{$data['post']->fName} {$data['post']->lName}"; ?>
-                        <svg class="card__icon-post">
-                           <use href="<?php echo URLROOT; ?> /images/sprite.svg#icon-user"></use>
-                        </svg>
-                     </a>
-                     <p class="card__date"><?php echo formatDate(
-                         $data['post']->postCreatedAt
-                     ); ?></p>
-/                     <p
-                        class="paragraph u-txt-align-left card__details-wrapper--pos-rel"
-                     >
-                        <svg class="card__icon-post">
-                           <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-chat"></use>
-                        </svg>
-                        Comments: <a class="card__link bold" href="">3 </a>
-                     </p>
-                  </div> -->
+                 
                   <p class="paragraph">
                   <?php echo $data['post']->content; ?>
                   </p>
@@ -110,6 +90,21 @@
                </div>
             </figure>
             <!-- ~~~ BLOG POST CARD end -->
+
+            <!-- ~~~ Display Edit and Delete buttons START -->
+
+<?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
+
+<a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
+    ->userID; ?>" class="button button--success">Edit</a>
+
+    <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']
+    ->userID; ?>" method="POSR">
+    <input type="submit" value="Delete" class="button button--danger">
+    </form>
+                        <?php endif; ?>
+
+            <!-- ~~~ Display Edit and Delete buttons END -->
 
             <!-- ~~~ BLOG POST NAV SOCIAL start -->
 

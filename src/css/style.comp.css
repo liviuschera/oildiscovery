@@ -3,8 +3,6 @@
   --color-grey-light-1: #f3f3f3;
   --color-grey-light-2: #9f9f9f;
   --color-grey-dark-1: #585858;
-  --color-is-invalid-text: #a94442;
-  --color-is-invalid-border: #f2dede;
   --color-white: #fff;
   --color-black: #000;
   --font-paragraph-size: 1.4rem;
@@ -230,6 +228,10 @@ body {
   transition: all 0.3s ease-in-out;
   margin: 0 1rem;
   text-decoration: none; }
+  .button:hover {
+    text-indent: 0;
+    background: #8caa38;
+    box-shadow: 0rem 0rem 5rem rgba(0, 0, 0, 0.1); }
   .button--hollow {
     border: 2px solid var(--color-white);
     background-color: transparent; }
@@ -252,10 +254,18 @@ body {
     transition: all 0.3s ease-in-out;
     padding: 1.5rem 2rem;
     font-weight: 700; }
-  .button:hover {
-    text-indent: 0;
-    background: #8caa38;
-    box-shadow: 0rem 0rem 5rem rgba(0, 0, 0, 0.1); }
+  .button--success {
+    background-color: #a6c550; }
+    .button--success:hover {
+      background-color: #8caa38; }
+  .button--info {
+    background-color: #517cc8; }
+    .button--info:hover {
+      background-color: #3762af; }
+  .button--danger {
+    background-color: #a94442; }
+    .button--danger:hover {
+      background: #843534; }
 
 .card {
   position: relative;
@@ -488,17 +498,17 @@ body {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
   .form__input::placeholder, .form__textarea::placeholder {
     color: var(--color-grey-light-2); }
-  .form__invalid {
-    border: 0.1rem solid var(--color-is-invalid-border); }
-  .form__invalid-feedback {
+  .form__failed {
+    border: 0.1rem solid var(--color-danger); }
+  .form__failed-feedback {
     position: absolute;
     top: 0;
     right: 0;
     padding-top: 0.3rem;
     padding-right: 1rem;
     font-size: 1rem;
-    color: var(--color-is-invalid-text); }
-  .form__alert-success, .form__alert-failed {
+    color: var(--color-danger); }
+  .form__alert-success, .form__alert-failed, .form__alert-info {
     margin: 3rem 0;
     text-align: center;
     padding: 1.5rem 2rem;
@@ -507,11 +517,16 @@ body {
   .form__alert-success {
     margin: 3rem 0;
     background-color: rgba(166, 197, 80, 0.1);
-    color: var(--color-primary);
+    color: var(--color-success);
     border: 0.1rem solid rgba(166, 197, 80, 0.5); }
+  .form__alert-info {
+    margin: 3rem 0;
+    background-color: rgba(81, 124, 200, 0.1);
+    color: var(--color-info);
+    border: 0.1rem solid rgba(81, 124, 200, 0.5); }
   .form__alert-failed {
     background-color: rgba(169, 68, 66, 0.1);
-    color: var(--color-is-invalid-text);
+    color: var(--color-danger);
     border: 0.1rem solid rgba(169, 68, 66, 0.5); }
   .form .button {
     margin-top: 1rem;

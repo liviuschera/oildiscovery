@@ -9,8 +9,8 @@
 
    --color-grey-dark-1: #585858;
 
-   --color-is-invalid-text: #a94442;
-   --color-is-invalid-border: #f2dede;
+   // --color-is-invalid-text: #a94442;
+   // --color-is-invalid-border: #f2dede;
 
    --color-white: #fff;
    --color-black: #000;
@@ -51,8 +51,13 @@
 
 $color-primary: #a6c550;
 $color-black: #000;
-$color-is-invalid-text: #a94442;
-$color-is-invalid-border: #f2dede;
+$color-success: #a6c550;
+$color-danger: #a94442;
+$color-info: #517cc8;
 
 $color-primary-light: lighten($color-primary, 20%);
 $color-primary-dark: darken($color-primary, 10%);
+
+$color-success-dark: darken($color-success, 10%);
+$color-info-dark: darken($color-info, 10%);
+$color-danger-dark: darken($color-danger, 10%);

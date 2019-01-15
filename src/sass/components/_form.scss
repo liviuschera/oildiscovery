@@ -110,22 +110,23 @@
       color: var(--color-grey-light-2);
    }
 
-   &__invalid {
-      border: 0.1rem solid var(--color-is-invalid-border);
+   &__failed {
+      border: 0.1rem solid var(--color-danger);
    }
 
-   &__invalid-feedback {
+   &__failed-feedback {
       position: absolute;
       top: 0;
       right: 0;
       padding-top: 0.3rem;
       padding-right: 1rem;
       font-size: 1rem;
-      color: var(--color-is-invalid-text);
+      color: var(--color-danger);
    }
 
    &__alert-success,
-   &__alert-failed {
+   &__alert-failed,
+   &__alert-info {
       margin: 3rem 0;
       text-align: center;
       padding: 1.5rem 2rem;
@@ -134,14 +135,21 @@
    }
    &__alert-success {
       margin: 3rem 0;
-      background-color: rgba($color-primary, 0.1);
-      color: var(--color-primary);
-      border: 0.1rem solid rgba($color-primary, 0.5);
+      background-color: rgba($color-success, 0.1);
+      color: var(--color-success);
+      border: 0.1rem solid rgba($color-success, 0.5);
+   }
+
+   &__alert-info {
+      margin: 3rem 0;
+      background-color: rgba($color-info, 0.1);
+      color: var(--color-info);
+      border: 0.1rem solid rgba($color-info, 0.5);
    }
    &__alert-failed {
-      background-color: rgba($color-is-invalid-text, 0.1);
-      color: var(--color-is-invalid-text);
-      border: 0.1rem solid rgba($color-is-invalid-text, 0.5);
+      background-color: rgba($color-danger, 0.1);
+      color: var(--color-danger);
+      border: 0.1rem solid rgba($color-danger, 0.5);
    }
 
    .button {
