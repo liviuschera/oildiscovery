@@ -34,4 +34,28 @@ function isLoggedIn()
 {
     return isset($_SESSION['login_user_id']) ? true : false;
 }
+
+function isAdmin()
+{
+    if (
+        isset($_SESSION['login_user_priv']) &&
+        $_SESSION['login_user_priv'] > 0
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isSuperAdmin()
+{
+    if (
+        isset($_SESSION['login_user_priv']) &&
+        $_SESSION['login_user_priv'] > 1
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>
