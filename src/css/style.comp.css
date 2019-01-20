@@ -499,7 +499,7 @@ body {
   .form__input::placeholder, .form__textarea::placeholder {
     color: var(--color-grey-light-2); }
   .form__failed {
-    border: 0.1rem solid var(--color-danger); }
+    border: 0.1rem solid #a94442; }
   .form__failed-feedback {
     position: absolute;
     top: 0;
@@ -507,7 +507,7 @@ body {
     padding-top: 0.3rem;
     padding-right: 1rem;
     font-size: 1rem;
-    color: var(--color-danger); }
+    color: #a94442; }
   .form__alert-success, .form__alert-failed, .form__alert-info {
     margin: 3rem 0;
     text-align: center;
@@ -526,7 +526,7 @@ body {
     border: 0.1rem solid rgba(81, 124, 200, 0.5); }
   .form__alert-failed {
     background-color: rgba(169, 68, 66, 0.1);
-    color: var(--color-danger);
+    color: #a94442;
     border: 0.1rem solid rgba(169, 68, 66, 0.5); }
   .form .button {
     margin-top: 1rem;

@@ -96,10 +96,10 @@
 <?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
 
 <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
-    ->userID; ?>" class="button button--success">Edit</a>
+    ->postID; ?>" class="button button--success">Edit</a>
 
     <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']
-    ->userID; ?>" method="POSR">
+    ->postID; ?>" method="POST">
     <input type="submit" value="Delete" class="button button--danger">
     </form>
                         <?php endif; ?>

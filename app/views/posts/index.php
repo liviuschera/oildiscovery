@@ -11,7 +11,6 @@
          >
          <?php flash('post_message'); ?>
          <a class="button" href="<?php echo URLROOT; ?>/posts/add">Add page</a>
-         <?php echo var_dump($data['posts']); ?>
          <?php foreach ($data['posts'] as $post): ?>
             <!-- ~~~ CARD start -->
             <figure class="card card--for-3col-blog">

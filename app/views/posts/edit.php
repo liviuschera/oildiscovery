@@ -5,11 +5,11 @@
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 
 <form
-   action="<?php echo URLROOT; ?>/posts/add"
+   action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['postID']; ?>"
    class="form u-div-center"
    method="post"
 >
-   <h3 class="heading-tertiary">Add Post</h3>
+   <h3 class="heading-tertiary">Edit Post</h3>
    <p class="paragraph">Please fill out all the fields.</p>
    <pre><?php echo var_dump($data); ?></pre>
 
@@ -92,12 +92,14 @@
    <!-- Post SUBMIT Button -->
       <input
          class="button"
-         formaction="<?php echo URLROOT; ?>/posts/add"
+         formaction="<?php echo URLROOT; ?>/posts/edit/<?php echo $data[
+    'postID'
+]; ?>"
          type="submit"
          value="Submit"
       >
-         <!-- Add Post
-      </button> -->
+         <!-- Edit Post -->
+      <!-- </button> -->
 
       
    </div>

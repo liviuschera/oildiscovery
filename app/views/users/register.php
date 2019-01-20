@@ -25,7 +25,7 @@
             id="firstName"
 
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'firstNameError'
          ]; ?></span>
       </div>
@@ -40,7 +40,7 @@
             name="lastName"
             id="lastName"
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'lastNameError'
          ]; ?></span>
       </div>
@@ -57,7 +57,7 @@
             name="email"
             id="email"
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'emailError'
          ]; ?></span>
       </div>
@@ -72,7 +72,7 @@
             name="phone"
             id="phone"
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'phoneError'
          ]; ?></span>
       </div>
@@ -90,7 +90,7 @@
             name="passw"
             id="passw"
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'passwError'
          ]; ?></span>
       </div>
@@ -105,12 +105,17 @@
             name="confirmPassw"
             id="confirmPassw"
          />
-         <span class="form__invalid-feedback"><?php echo $data[
+         <span class="form__failed-feedback"><?php echo $data[
              'confirmPasswError'
          ]; ?></span>
       </div>
    </div>
    <div class="form__row">
+      <input
+         class="button"
+         type="submit"
+         value="Register"
+      >
       <a
          class="button"
          href="<?php echo URLROOT; ?>/users/login"
@@ -118,25 +123,6 @@
       >
          Have an account? Login
       </a>
-      <input
-         class="button"
-         type="submit"
-         value="Register"
-      >
-      <!-- <button
-         class="button"
-         formaction="<?php echo URLROOT; ?>/users/login"
-         type="submit"
-      >
-         Have an account? Login
-      </button>
-      <button
-         class="button"
-         formaction="<?php echo URLROOT; ?>/users/register"
-         type="submit"
-      >
-         Register
-      </button> -->
    </div>
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->

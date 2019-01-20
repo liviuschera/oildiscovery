@@ -111,7 +111,7 @@
    }
 
    &__failed {
-      border: 0.1rem solid var(--color-danger);
+      border: 0.1rem solid $color-danger;
    }
 
    &__failed-feedback {
@@ -121,7 +121,7 @@
       padding-top: 0.3rem;
       padding-right: 1rem;
       font-size: 1rem;
-      color: var(--color-danger);
+      color: $color-danger;
    }
 
    &__alert-success,
@@ -136,19 +136,19 @@
    &__alert-success {
       margin: 3rem 0;
       background-color: rgba($color-success, 0.1);
-      color: var(--color-success);
+      color: $color-success;
       border: 0.1rem solid rgba($color-success, 0.5);
    }
 
    &__alert-info {
       margin: 3rem 0;
       background-color: rgba($color-info, 0.1);
-      color: var(--color-info);
+      color: $color-info;
       border: 0.1rem solid rgba($color-info, 0.5);
    }
    &__alert-failed {
       background-color: rgba($color-danger, 0.1);
-      color: var(--color-danger);
+      color: $color-danger;
       border: 0.1rem solid rgba($color-danger, 0.5);
    }
 

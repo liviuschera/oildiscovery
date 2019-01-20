@@ -13,7 +13,7 @@ class Post
         $this->db->queryDB('SELECT *
         FROM users
         JOIN posts ON users.id=posts.userID
-        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC');
+        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC;');
         $restuls = $this->db->getResultSet();
         return $restuls;
     }
@@ -24,7 +24,7 @@ class Post
             $this->db->startTransaction();
             // Query database
             $this->db->queryDB(
-                "INSERT INTO posts (userID, title, active, priv) VALUES (:loggedUserId, :title, :active, :priv)"
+                "INSERT INTO posts (userID, title, active, priv) VALUES (:loggedUserId, :title, :active, :priv);"
             );
 
             // Bind values
@@ -37,7 +37,7 @@ class Post
             $last_post_id = $this->db->retrieveLastInsertId();
 
             $this->db->queryDB(
-                "INSERT INTO post_body (postID, content) VALUES (:postID, :content)"
+                'INSERT INTO post_body (postID, content) VALUES (:postID, :content);'
             );
             $this->db->bindVal(':postID', $last_post_id);
             // $this->db->bindVal(':postID', $_SESSION['last_id']);
@@ -48,15 +48,60 @@ class Post
             return true;
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
-            echo "Failed to execute transaction: " . $e->getMessage();
+            echo "Failed to execute ADD post transaction: " . $e->getMessage();
             return false;
         }
+    }
 
-        // if ($this->db->executeStmt()) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
+    public function updatePost($data)
+    {
+        try {
+            $this->db->startTransaction();
+            // Query database
+            $this->db->queryDB(
+                "UPDATE posts SET title = :title, active = :active, priv = :priv WHERE id = :postID;"
+            );
+            // Bind values
+            $this->db->bindVal(':postID', $data['postID']);
+            $this->db->bindVal(':title', $data['title']);
+            $this->db->bindVal(':active', $data['active']);
+            $this->db->bindVal(':priv', $data['priv']);
+
+            $this->db->executeStmt();
+
+            $this->db->queryDB(
+                "UPDATE post_body SET content = :content WHERE postID = :postID;"
+            );
+            $this->db->bindVal(':postID', $data['postID']);
+            $this->db->bindVal(':content', $data['content']);
+            $this->db->executeStmt();
+            if ($this->db->commitTransaction()) {
+                return true;
+            } else {
+                $this->db->rollBackTransaction();
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Failed to execute UPDATE post transaction: " .
+                $e->getMessage();
+        }
+    }
+
+    public function deletePost($id)
+    {
+        try {
+            //Query database
+            $this->db->queryDB("DELETE FROM posts WHERE id = :postID;");
+            // Bind values
+            $this->db->bindVal(':postID', $id);
+            if ($this->db->executeStmt()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Failed to execute DELETE post: " . $e->getMessage();
+        }
     }
 
     public function getPostById($id)
@@ -78,7 +123,7 @@ class Post
         post_body.content AS content
         FROM users
         JOIN posts ON users.id = posts.userID
-        JOIN post_body ON posts.id = post_body.postID WHERE posts.id =:id');
+        JOIN post_body ON posts.id = post_body.postID WHERE posts.id =:id;');
 
         $this->db->bindVal(':id', $id);
 

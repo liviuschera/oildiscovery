@@ -24,7 +24,7 @@
             placeholder="Email"
             name="email"
          />
-         <span class="form__invalid-feedback"
+         <span class="form__failed-feedback"
             ><?php echo $data['emailError']; ?></span
          >
       </div>
@@ -38,42 +38,25 @@
             placeholder="Enter password"
             name="passw"
          />
-         <span class="form__invalid-feedback"
+         <span class="form__failed-feedback"
             ><?php echo $data['passwError']; ?></span
          >
       </div>
    </div>
 
    <div class="form__row">
-      <!-- <a
+    
+   <input
          class="button"
-         href="<?php
-//echo URLROOT;
-?>/users/register"
-         type="submit"
-      >
-         No account? Register
-      </a>
-      <input
-         class="button"
-         type="submit"
          value="Login"
-      >
-   </div> -->
-   <button
-         class="button"
-         formaction="<?php echo URLROOT; ?>/users/login"
          type="submit"
       >
-         Login
-      </button>
-   <button
+   <a
          class="button"
-         formaction="<?php echo URLROOT; ?>/users/register"
+         href="<?php echo URLROOT; ?>/users/register"
          type="submit"
       >
       No account? Register
-      </button>
-      
+      </a>
 </form>
 <!-- ~~~ LOGIN FORM end ~~~ -->
