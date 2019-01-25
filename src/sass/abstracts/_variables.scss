@@ -7,6 +7,8 @@
 
    --color-grey-dark-1: #585858;
 
+   --color-admin-bg: #f8f9fa;
+
    --color-white: #fff;
    --color-black: #000;
 
@@ -27,6 +29,8 @@
 
    --slider-height: 66rem;
 
+   --admin-header-height: 5rem;
+
    // SIZES - cards
 
    --card-width: 37rem;
@@ -36,8 +40,8 @@
    --card--for-3col-blog-height: 62rem;
 
    //BOX SHADOWS
-   --shadow-subtle: 0 1rem 2rem rgba(black, 0.1);
-   --shadow-blur: 0 0 2rem rgba(black, 0.1);
+   --shadow-subtle: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+   --shadow-blur: 0 0 2rem rgba(0, 0, 0, 0.1);
    // FONT
    --default-font-size: 1.6rem;
 
