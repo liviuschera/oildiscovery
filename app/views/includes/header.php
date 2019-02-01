@@ -7,10 +7,10 @@
       <meta name="description" content="Oil Discovery with Michelle" />
       <meta name="keywords" content="oil, michelle" />
       <meta name="author" content="Liviu Schera" />
-      <link
+      <!-- <link
          href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700|Oregano"
          rel="stylesheet"
-      />
+      /> -->
       <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.css" />
       <title><?php echo SITENAME; ?></title>
    </head>

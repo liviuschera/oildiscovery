@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,700|Oregano");
 :root {
   --color-primary: #a6c550;
   --color-grey-light-1: #f3f3f3;
   --color-grey-light-2: #9f9f9f;
   --color-grey-dark-1: #585858;
+  --color-admin-bg: #f8f9fa;
   --color-white: #fff;
   --color-black: #000;
   --font-paragraph-size: 1.4rem;
@@ -14,12 +16,13 @@
   --logo-height: 4rem;
   --header-menu-fontsize: 1.4rem;
   --slider-height: 66rem;
+  --admin-header-height: 5rem;
   --card-width: 37rem;
   --card-with-icons-height: 22rem;
   --card-with-blogpost-height: 36.5rem;
   --card--for-3col-blog-height: 62rem;
-  --shadow-subtle: 0 1rem 2rem rgba(black, 0.1);
-  --shadow-blur: 0 0 2rem rgba(black, 0.1);
+  --shadow-subtle: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  --shadow-blur: 0 0 2rem rgba(0, 0, 0, 0.1);
   --default-font-size: 1.6rem; }
 
 @keyframes imageAnimation {
@@ -102,12 +105,13 @@ body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400; }
 
+[class^="heading"] {
+  color: red; }
+
 .heading-primary,
 .heading-secondary,
 .heading-tertiary,
 .paragraph {
-  text-align: center;
-  justify-self: center;
   margin-bottom: 2.5rem; }
 
 .heading-primary,
@@ -164,7 +168,8 @@ body {
   text-align: left; }
 
 .u-txt-align-center {
-  text-align: center; }
+  text-align: center;
+  justify-self: center; }
 
 .u-txt-uppercase {
   text-transform: uppercase; }
@@ -192,8 +197,11 @@ body {
 .u-background-white {
   background-color: var(--color-white); }
 
-.u-max-content {
-  width: max-content; }
+.u-font-open-sans {
+  font-family: "Open Sans"; }
+
+.u-font-oregano {
+  font-family: "Oregano"; }
 
 .u-width-60 {
   width: 60%; }
@@ -209,6 +217,9 @@ body {
 
 .u-margin-top-big {
   margin-top: 5rem; }
+
+.u-max-content {
+  width: max-content; }
 
 .button {
   display: flex;
@@ -512,17 +523,16 @@ body {
     margin: 3rem 0;
     text-align: center;
     padding: 1.5rem 2rem;
-    font-size: 1.6rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); }
+    font-size: 1.6rem; }
   .form__alert-success {
     margin: 3rem 0;
     background-color: rgba(166, 197, 80, 0.1);
-    color: var(--color-success);
+    color: #a6c550;
     border: 0.1rem solid rgba(166, 197, 80, 0.5); }
   .form__alert-info {
     margin: 3rem 0;
     background-color: rgba(81, 124, 200, 0.1);
-    color: var(--color-info);
+    color: #517cc8;
     border: 0.1rem solid rgba(81, 124, 200, 0.5); }
   .form__alert-failed {
     background-color: rgba(169, 68, 66, 0.1);
@@ -784,6 +794,72 @@ body {
         padding: 1.8rem 5rem 1.8rem 0; }
       .header__nav-site ul a {
         color: var(--color-grey-dark-1); }
+
+.admin {
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.4rem; }
+  .admin span {
+    font-weight: 700; }
+  .admin__content {
+    display: flex; }
+  .admin__header {
+    display: flex;
+    align-items: center;
+    height: var(--admin-header-height);
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-grey-light-1); }
+  .admin__logo {
+    font-family: "Oregano", cursive;
+    font-size: 3rem;
+    color: #a6c550;
+    padding-left: 2rem; }
+    .admin__logo span {
+      font-family: "Open Sans", sans-serif;
+      color: var(--color-grey-dark-1);
+      font-size: 1.5rem; }
+  .admin__user-name {
+    padding-right: 2rem; }
+  .admin .sidebar {
+    display: flex;
+    flex: 0 0 15%;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - var(--admin-header-height));
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    z-index: 1; }
+  .admin .side-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    flex-direction: column;
+    margin-top: 4rem;
+    width: 100%; }
+    .admin .side-nav__item {
+      width: 100%; }
+    .admin .side-nav__link:link, .admin .side-nav__link:visited {
+      display: block;
+      color: var(--color-grey-dark-1);
+      text-decoration: none;
+      padding: 1rem 0;
+      margin: 0.5rem 0;
+      transition: all 0.2s; }
+    .admin .side-nav__link:hover {
+      background-color: #cdde9d; }
+    .admin .side-nav__link:active {
+      background-color: #8caa38;
+      color: var(--color-white); }
+    .admin .side-nav__link--active:link, .admin .side-nav__link--active:visited {
+      background-color: #a6c550;
+      color: var(--color-white); }
+  .admin .legal {
+    font-size: 1.2rem;
+    color: var(--color-grey-light-2);
+    padding-bottom: 3rem; }
+  .admin__main {
+    flex-grow: 1;
+    background-color: var(--color-admin-bg); }
 
 .blog-post {
   grid-template-columns: 80rem 40rem;

@@ -3,9 +3,9 @@ class Admins extends Controller
 {
     public function __construct()
     {
-        if (!isAdmin()) {
-            redirectTo('users/login');
-        }
+        // if (!isAdmin()) {
+        //     redirectTo('users/login');
+        // }
     }
 
     public function index()

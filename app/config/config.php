@@ -14,4 +14,5 @@ define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
 // Website Name
 
 define('SITENAME', 'Oil Discovery with Michelle');
+define('ADMIN_DASHBOARD_NAME', 'Oil Discovery Admin Dashboard');
 ?>

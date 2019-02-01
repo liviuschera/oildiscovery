@@ -1,16 +1,15 @@
-<?php require APPROOT . '../views/includes/header.php'; ?> 
-<?php require APPROOT . '../views/includes/navbar.php'; ?>
+<?php require APPROOT . '/views/includes/header.php'; ?> 
+<?php require APPROOT . '/views/includes/navbar.php'; ?>
 
 
 <!-- ~~~ BLOG ARTICLES SECTION  start~~~ -->
 <section class="full-width-section">
    <section class="full-width-section__content">
       <section class="full-width-section__wrapper">
+         <?php flash('post_message'); ?>
          <div
          class="full-width-section__row full-width-section__row--for-3col-blog"
          >
-         <?php flash('post_message'); ?>
-         <a class="button" href="<?php echo URLROOT; ?>/posts/add">Add page</a>
          <?php foreach ($data['posts'] as $post): ?>
             <!-- ~~~ CARD start -->
             <figure class="card card--for-3col-blog">
@@ -100,4 +99,4 @@
 </section>
 <!-- ~~~ BLOG ARTICLES SECTION  end~~~ -->
 
-<?php require APPROOT . '../views/includes/footer.php'; ?> 
+<?php require APPROOT . '/views/includes/footer.php'; ?> 

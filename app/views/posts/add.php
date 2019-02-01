@@ -1,9 +1,10 @@
-<?php require APPROOT .
-    '../views/includes/header.php'; ?> <?php require APPROOT .
-     '../views/includes/navbar.php'; ?>
+
+<?php require APPROOT . '../views/includes/header_admin.php'; ?> 
+<?php require APPROOT . '../views/includes/navbar_admin.php'; ?> 
+
+<main class="admin__main">
 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
-
 <form
    action="<?php echo URLROOT; ?>/posts/add"
    class="form u-div-center"
@@ -101,6 +102,13 @@
 
       
    </div>
-
+   <!-- <script>
+         CKEDITOR.replace('content');
+      </script> -->
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
+
+</main>
+
+
+<?php require APPROOT . '../views/includes/footer_admin.php'; ?> 

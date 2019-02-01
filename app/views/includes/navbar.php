@@ -11,13 +11,10 @@
             <span>Hello,
             <?php echo $_SESSION['login_user_name'] ?? 'User'; ?>
             </span>
-            <?php if (
-                isset($_SESSION['login_user_priv']) &&
-                $_SESSION['login_user_priv'] > 0
-            ): ?>
+            <?php if (isset($_SESSION['login_user_priv'])): ?>
 
             <span>Go to <a href="<?php echo URLROOT; ?>/admins">Admin area</a></span>
-<?php endif; ?>
+            <?php endif; ?>
             <nav class="header__nav-social">
                <ul>
                   <li>

@@ -1,12 +1,12 @@
-<?php require APPROOT . '../views/includes/header.php'; ?> 
-<?php require APPROOT . '../views/includes/navbar.php'; ?>
-      <?php var_dump($data['post']); ?>
+<?php require APPROOT . '/views/includes/header.php'; ?> 
+<?php require APPROOT . '/views/includes/navbar.php'; ?>
+      <!-- <?php var_dump($data['post']); ?> -->
 
       <!-- ~~~ BLOG POST SECTION  start~~~ -->
       <div class="blog-post">
          <main class="blog-post__main">
             <!-- ~~~ BLOG POST CARD  start -->
-            <figure class="card card--full-width-blogpost">
+            <!-- <figure class="card card--full-width-blogpost">
                <div class="card__content card__content--for-3col-blog">
                   <div
                      class="card__img-wrapper card__img-wrapper--full-width-blogpost"
@@ -88,9 +88,9 @@
                      dolor, dicta ullam atque?
                   </p>
                </div>
-            </figure>
+            </figure> -->
             <!-- ~~~ BLOG POST CARD end -->
-
+            <?php echo $data['post']->content; ?>
             <!-- ~~~ Display Edit and Delete buttons START -->
 
 <?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
@@ -345,4 +345,4 @@
 
       <!-- ~~~ BLOG POST SECTION  end~~~ -->
 
-<?php require APPROOT . '../views/includes/footer.php'; ?> 
+<?php require APPROOT . '/views/includes/footer.php'; ?> 
