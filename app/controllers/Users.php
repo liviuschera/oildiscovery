@@ -28,7 +28,6 @@ class Users extends Controller
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            // echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
                 'firstName' => trim($_POST['firstName']),
@@ -44,7 +43,6 @@ class Users extends Controller
                 'passwError' => '',
                 'confirmPasswError' => ''
             ];
-            // echo "<pre> post init: " . var_dump($data) . "</pre>";
 
             // Validate first name
             if (empty($data['firstName'])) {
@@ -95,7 +93,7 @@ class Users extends Controller
                 empty($data['passwError']) &&
                 empty($data['confirmPasswError'])
             ) {
-                // Successfuly validated
+                // Successfully validated
                 // Hash the password
                 $data['passw'] = password_hash(
                     $data['passw'],
@@ -137,6 +135,129 @@ class Users extends Controller
 
             // Load view;
             $this->view('users/register', $data);
+        }
+    }
+    public function edit($id)
+    {
+        // Check for post
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process the form
+
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // echo "naked post: " . var_dump($_POST);
+            // Init data
+            $data = [
+                'firstName' => trim($_POST['firstName']),
+                'lastName' => trim($_POST['lastName']),
+                'email' => trim($_POST['email']),
+                'phone' => trim($_POST['phone']),
+                'passw' => trim($_POST['passw']),
+                'confirmPassw' => trim($_POST['confirmPassw']),
+                'firstNameError' => '',
+                'lastNameError' => '',
+                'emailError' => '',
+                'phoneError' => '',
+                'passwError' => '',
+                'confirmPasswError' => ''
+            ];
+            echo "<pre> post edit user init: " . var_dump($data) . "</pre>";
+
+            // Validate first name
+            if (empty($data['firstName'])) {
+                $data['firstNameError'] = "Please enter first name.";
+            }
+            // Validate last name
+            if (empty($data['lastName'])) {
+                $data['lastNameError'] = "Please enter last name.";
+            }
+
+            // Validate email
+            if (empty($data['email'])) {
+                $data['emailError'] = "Please enter email.";
+            } else {
+                // Check if the email is unique
+                if (!empty($this->userModel->findUserByEmail($data['email']))) {
+                    $data['emailError'] = "Email is already taken.";
+                }
+            }
+
+            // Validate phone
+            if (empty($data['phone'])) {
+                $data['phoneError'] = "Please enter phone.";
+            }
+
+            // Validate passw
+            if (empty($data['passw'])) {
+                $data['passwError'] = "Please enter passw.";
+            } elseif (strlen($data['passw']) < 6) {
+                $data['passwError'] = "passw must be at least 6 charaters.";
+            }
+
+            // Validate confirm passw
+            if (empty($data['confirmPassw'])) {
+                $data['confirmPasswError'] = "Please confirm passw.";
+            } else {
+                if ($data['passw'] !== $data['confirmPassw']) {
+                    $data['confirmPasswError'] = "passws do not match.";
+                }
+            }
+
+            // Make sure errors are empty
+            if (
+                empty($data['firstNameError']) &&
+                empty($data['lastNameError']) &&
+                empty($data['emailError']) &&
+                empty($data['phoneError']) &&
+                empty($data['passwError']) &&
+                empty($data['confirmPasswError'])
+            ) {
+                // Successfully validated
+                // Hash the password
+                $data['passw'] = password_hash(
+                    $data['passw'],
+                    PASSWORD_DEFAULT
+                );
+
+                // Register user
+                try {
+                    $this->userModel->editUser($data);
+                    flash('edit_success', 'Edit successful');
+                    redirectTo('users/login');
+                } catch (Exception $e) {
+                    $this->error = $e->getMessage();
+                    echo "<strong>Error message:</strong> {$this->error}";
+                }
+            } else {
+                // Load view with errors
+                $this->view('users/edit', $data);
+            }
+        } else {
+            // Find user
+            $user = $this->userModel->getUserById($id);
+            if ($user->id !== $_SESSION['login_user_id']) {
+                redirectTo('users/login');
+            }
+            // Init data
+            $data = [
+                'id' => $id,
+                'firstName' => $user->firstName,
+                'lastName' => $user->lastName,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'passw' => '',
+                'confirmPassw' => '',
+                'firstNameError' => '',
+                'lastNameError' => '',
+                'emailError' => '',
+                'phoneError' => '',
+                'passwError' => '',
+                'confirmPasswError' => ''
+            ];
+
+            // Load view;
+            $this->view('users/edit', $data);
         }
     }
 

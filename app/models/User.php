@@ -66,5 +66,19 @@ class User
         }
         //   $this->db->getRowCount() > 0 ? true : false;
     }
+
+    // Get user by id
+
+    public function getUserById($id)
+    {
+        // Query Database
+        $this->db->queryDB('SELECT * FROM users WHERE id = :id');
+        // Bind value
+        $this->db->bindVal(':id', $id);
+        // Retrieve from database
+        $row = $this->db->getSingleResult();
+
+        return $row;
+    }
 }
 ?>

@@ -32,7 +32,7 @@
 
                      <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>" class="card__heading-link">
                         <h6
-                           class="heading6 u-txt-uppercase  u-color-primary"
+                           class="h-6 u-txt-bold u-txt-uppercase  u-color-primary"
                         >
                            <?php echo $post->title; ?>
                         </h6>

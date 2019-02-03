@@ -11,6 +11,13 @@
   --font-heading6-size: 1.8rem;
   --font-heding-secondary-size: 6rem;
   --font-heding-tertiary-size: 3.6rem;
+  --font-size-h1: 6rem;
+  --font-size-h2: 3.6rem;
+  --font-size-h3: 3rem;
+  --font-size-h4: 4.8rem;
+  --font-size-h5: 2.9rem;
+  --font-size-h6: 1.8rem;
+  --font-size-p: 1.4rem;
   --site-width: 120rem;
   --header-height: 16rem;
   --logo-height: 4rem;
@@ -103,44 +110,38 @@ body {
 
 body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  color: var(--color-grey-dark-1); }
+
+.h-1 {
+  font-size: var(--font-size-h1); }
+
+.h-2 {
+  font-size: var(--font-size-h2); }
+
+.h-3 {
+  font-size: var(--font-size-h3); }
+
+.h-4 {
+  font-size: var(--font-size-h4); }
+
+.h-5 {
+  font-size: var(--font-size-h5); }
+
+.h-6 {
+  font-size: var(--font-size-h6); }
+
+.h-1,
+.h-2,
+.h-3 {
+  font-family: "Oregano", cursive; }
+
+[class^="h-"] {
   font-weight: 400; }
 
-[class^="heading"] {
-  color: red; }
-
-.heading-primary,
-.heading-secondary,
-.heading-tertiary,
 .paragraph {
-  margin-bottom: 2.5rem; }
-
-.heading-primary,
-.heading-secondary,
-.heading-tertiary,
-.quote::before,
-.cursive {
-  font-family: "Oregano", cursive;
-  color: var(--color-grey-dark-1);
-  font-weight: 400; }
-
-.heading-secondary {
-  font-size: var(--font-heding-secondary-size); }
-
-.heading-tertiary {
-  font-size: var(--font-heding-tertiary-size); }
-
-.paragraph {
-  font-size: var(--font-paragraph-size);
+  font-size: var(--font-size-p);
   color: var(--color-grey-light-2); }
-  .paragraph--left {
-    text-align: left;
-    margin-bottom: 1rem; }
-
-.heading6 {
-  font-size: var(--font-heading6-size); }
-  .heading6--contact {
-    text-align: left;
-    font-weight: 700; }
 
 .quote {
   padding-left: 3rem;
@@ -215,8 +216,23 @@ body {
 .u-no-hover {
   pointer-events: none; }
 
-.u-margin-top-big {
-  margin-top: 5rem; }
+.u-mb-small {
+  margin-bottom: 1rem; }
+
+.u-mb-medium {
+  margin-bottom: 2rem; }
+
+.u-mb-big {
+  margin-bottom: 3rem; }
+
+.u-mt-small {
+  margin-top: 1rem; }
+
+.u-mt-medium {
+  margin-top: 2rem; }
+
+.u-mt-big {
+  margin-top: 3rem; }
 
 .u-max-content {
   width: max-content; }
@@ -228,12 +244,12 @@ body {
   background: var(--color-primary);
   color: var(--color-white);
   border-radius: 4rem;
-  padding: 1.3rem 2.5rem;
+  padding: 1rem 2.5rem;
   width: min-content;
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 1.4rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
@@ -357,7 +373,7 @@ body {
     width: 5rem;
     height: 5rem;
     justify-self: center;
-    align-self: start;
+    align-self: flex-start;
     fill: var(--color-primary);
     margin-bottom: 0.5rem; }
   .card__details-wrapper {
@@ -398,7 +414,7 @@ body {
     font-weight: 700; }
   .card__elipsis {
     display: grid;
-    align-self: start;
+    align-self: flex-start;
     justify-self: center;
     font-size: 3rem;
     transition: opacity 0.3s;
@@ -867,6 +883,9 @@ body {
   margin: 0 auto; }
   .blog-post, .blog-post__main, .blog-post__about {
     display: grid; }
+  .blog-post .buttons-wrapper {
+    display: flex;
+    margin: 3rem 0; }
   .blog-post .social-media-buttons {
     display: grid; }
     .blog-post .social-media-buttons__wrapper {
@@ -958,7 +977,7 @@ body {
         background-color: transparent; }
       .blog-post .user-comments__content header p {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         grid-gap: 1rem; }
     .blog-post .user-comments__user-link {
       font-weight: 700; }
@@ -982,7 +1001,7 @@ body {
   .blog-post__aside {
     margin-right: 4rem;
     width: 100%;
-    align-self: start; }
+    align-self: flex-start; }
     .blog-post__aside .form {
       width: 100%; }
   .blog-post__about {

@@ -37,7 +37,7 @@
          <div
             class="full-width-section__col-text full-width-section__col-text--welcome"
          >
-            <h2 class="heading-secondary">Welcome!</h2>
+            <h2 class="h-1 u-txt-align-center">Welcome!</h2>
             <p class="paragraph">
                I am a dedicated Doterra Oil wellness advocate, focused on
                everyone's health, bringing you super-practical support to help
@@ -45,7 +45,7 @@
                process. I don’t tell my clients what to do, I teach them what to
                do.
             </p>
-            <h6 class="heading6 u-txt-bold">
+            <h6 class="h-6 u-txt-align-center u-txt-bold u-mt-medium u-mb-medium">
                A fresh & fun approach to your life health and happiness in your
                life.
             </h6>
@@ -68,11 +68,11 @@
 <section class="full-width-section full-width-section--grey-light-bg">
    <div class="full-width-section__content">
       <div class="full-width-section__wrapper">
-         <h3 class="heading-tertiary">
+         <h2 class="h-2 u-txt-align-center u-mb-medium">
             Are you ready to harness the power of vibrant health to fuel your
             extraordinary life?
-         </h3>
-         <p class="paragraph">
+         </h2>
+         <p class="paragraph u-mb-medium u-txt-align-center">
             I'm a health and lifestyle coach to smart (and busy!) women who want
             to look and feel their best, but who don't have a ton of time to
             exercise, shop for speciality foods, or cook tons of meals every
@@ -87,15 +87,14 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
-                  <h6 class="heading6 u-color-primary u-txt-bold">
+                  <h6 class="h-6 u-txt-align-center u-color-primary u-txt-bold">
                      Nutrition Strategy
                   </h6>
                   <span class="card__elipsis">&#8943;</span>
                </div>
                <figcaption class="card__info">
                   <p class="paragraph">
-                     Get a simple, doable tweak to your habits, that will make
-                     you a healthy, vibrant version of yourself.
+                     Get a simple, doable tweak to your habits, that will make you a healthy, vibrant version of yourself.
                   </p>
                </figcaption>
             </figure>
@@ -107,7 +106,7 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
-                  <p class="heading6 u-color-primary u-txt-bold">
+                  <p class="h-6 u-txt-align-center u-color-primary u-txt-bold">
                      Nutrition Strategy
                   </p>
                   <span class="card__elipsis">&#8943;</span>
@@ -127,7 +126,7 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee"></use>
                   </svg>
-                  <h6 class="heading6 u-color-primary u-txt-bold">
+                  <h6 class="h-6 u-txt-align-center u-color-primary u-txt-bold">
                      Nutrition Strategy
                   </h6>
                   <span class="card__elipsis">&#8943;</span>
@@ -150,10 +149,10 @@
 <section class="full-width-section full-width-section--bg-image">
    <div class="full-width-section__content">
       <div class="full-width-section__wrapper u-border-color-white">
-         <h2 class="heading-secondary u-color-white">
+         <h2 class="h-1 u-txt-align-center u-color-white">
             3 months with a Health Coach
          </h2>
-         <h6 class="heading6 u-color-white">
+         <h6 class="h-6 u-txt-align-center u-color-white u-mt-medium u-mb-medium u-width-60">
             Start working on your body today, and with the individual fitness
             program, already in 90 days you will see a totally different girl in
             the mirror!
@@ -176,7 +175,7 @@
 <section class="full-width-section">
    <section class="full-width-section__content">
       <section class="full-width-section__wrapper">
-         <h3 class="heading-tertiary">News & Articles</h3>
+         <h2 class="h-2 u-txt-align-center">News & Articles</h2>
          <div class="full-width-section__row">
             <!-- ~~~ CARD start -->
             <figure class="card card--with-blogpost">
@@ -296,8 +295,8 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-diamond"></use>
                   </svg>
-                  <h2 class="heading-secondary u-color-white">12</h2>
-                  <h6 class="heading6 u-color-white ">Years of experience</h6>
+                  <h2 class="h-1 u-txt-align-center u-color-white">12</h2>
+                  <h6 class="h-6 u-txt-align-center u-color-white ">Years of experience</h6>
                </div>
             </figure>
             <!-- ~~~ CARD end -->
@@ -308,8 +307,8 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-portfolio"></use>
                   </svg>
-                  <h2 class="heading-secondary u-color-white">15</h2>
-                  <h6 class="heading6 u-color-white ">Kinds of methodics</h6>
+                  <h2 class="h-1 u-txt-align-center u-color-white">15</h2>
+                  <h6 class="h-6 u-txt-align-center u-color-white ">Kinds of methodics</h6>
                </div>
             </figure>
             <!-- ~~~ CARD end -->
@@ -320,8 +319,8 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-sportive"></use>
                   </svg>
-                  <h2 class="heading-secondary u-color-white">7</h2>
-                  <h6 class="heading6 u-color-white ">
+                  <h2 class="h-1 u-txt-align-center u-color-white">7</h2>
+                  <h6 class="h-6 u-txt-align-center u-color-white ">
                      International cetificates
                   </h6>
                </div>
@@ -334,8 +333,8 @@
                   <svg class="card__icon">
                      <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-user2"></use>
                   </svg>
-                  <h2 class="heading-secondary u-color-white">2377</h2>
-                  <h6 class="heading6 u-color-white ">Happy customers</h6>
+                  <h2 class="h-1 u-txt-align-center u-color-white">2377</h2>
+                  <h6 class="h-6 u-txt-align-center u-color-white ">Happy customers</h6>
                </div>
             </figure>
             <!-- ~~~ CARD end -->
@@ -351,7 +350,7 @@
 <section class="full-width-section">
    <div class="full-width-section__content">
       <div class="full-width-section__wrapper">
-         <h3 class="heading-tertiary">Success Stories</h3>
+         <h2 class="h-2 u-txt-align-center u-mb-big">Success Stories</h2>
          <div class="full-width-section__row">
             <img
                src="<?php echo URLROOT; ?>/images/pages/praise-01-269x278.jpg"
@@ -364,7 +363,7 @@
                class="img-testimonials"
             />
             <article class="full-width-section__carousel">
-               <h6 class="heading6 u-txt-bold u-color-primary">
+               <h6 class="h-6 u-txt-align-center u-txt-bold u-color-primary">
                   Rita Jefferson lost 10 pounds and 1 size
                </h6>
                <p class="paragraph">
@@ -407,8 +406,8 @@
       <div
          class="full-width-section__wrapper full-width-section__wrapper--bg-white"
       >
-         <h2 class="heading-secondary u-color-primary">Visit my shop</h2>
-         <h6 class="heading6 u-color-grey-dark-1">
+         <h1 class="h-1 u-txt-align-center u-color-primary">Visit my shop</h1>
+         <h6 class="h-6 u-txt-align-center u-color-grey-dark-1 u-mb-medium u-mt-medium">
             You will find many interesting things that can strengthen your body
          </h6>
          <div class="full-width-section__row">

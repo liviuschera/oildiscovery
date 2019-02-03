@@ -33,22 +33,46 @@ CKEDITOR.stylesSet.add("default", [
 	{ name: 'Address',			element: 'address' },
 	*/
 
-   { name: "Italic Title", element: "h2", styles: { "font-style": "italic" } },
-   {
-      name: "Subtitle",
-      element: "h3",
-      styles: { color: "#aaa", "font-style": "italic" }
-   },
+   // { name: "Italic Title", element: "h2", styles: { "font-style": "italic" } },
+   // {
+   //    name: "Subtitle",
+   //    element: "h3",
+   //    styles: { color: "#aaa", "font-style": "italic" }
+   // },
    {
       name: "Paragraph",
       element: "p",
-      // styles: { color: "#9f9f9f", "font-family": "Comic Sans MS" }
       attributes: { class: "paragraph" }
+   },
+   {
+      name: "Heading 1",
+      element: "h1",
+      attributes: { class: "h-1" }
    },
    {
       name: "Heading 2",
       element: "h2",
-      attributes: { class: "heading-secondary" }
+      attributes: { class: "h-2" }
+   },
+   {
+      name: "Heading 3",
+      element: "h3",
+      attributes: { class: "h-3" }
+   },
+   {
+      name: "Heading 4",
+      element: "h4",
+      attributes: { class: "h-4" }
+   },
+   {
+      name: "Heading 5",
+      element: "h5",
+      attributes: { class: "h-5" }
+   },
+   {
+      name: "Heading 6",
+      element: "h6",
+      attributes: { class: "h-6" }
    },
 
    {

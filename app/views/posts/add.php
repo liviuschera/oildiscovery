@@ -7,10 +7,10 @@
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 <form
    action="<?php echo URLROOT; ?>/posts/add"
-   class="form u-div-center"
+   class="form u-div-center u-txt-align-center"
    method="post"
 >
-   <h3 class="heading-tertiary">Add Post</h3>
+   <h2 class="h-2">Add Post</h2>
    <p class="paragraph">Please fill out all the fields.</p>
    <pre><?php echo var_dump($data); ?></pre>
 
@@ -93,22 +93,17 @@
    <!-- Post SUBMIT Button -->
       <input
          class="button"
-         formaction="<?php echo URLROOT; ?>/posts/add"
          type="submit"
          value="Submit"
-      >
-         <!-- Add Post
-      </button> -->
-
-      
+         >
    </div>
+   
    <!-- <script>
-         CKEDITOR.replace('content');
-      </script> -->
+      CKEDITOR.replace('content');
+   </script> -->
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
 
 </main>
-
 
 <?php require APPROOT . '../views/includes/footer_admin.php'; ?> 

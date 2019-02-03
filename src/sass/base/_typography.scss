@@ -6,74 +6,76 @@ body {
    color: var(--color-grey-dark-1);
 }
 
-.h1 {
+.h-1 {
    font-size: var(--font-size-h1);
 }
-.h2 {
+.h-2 {
    font-size: var(--font-size-h2);
 }
-.h3 {
+.h-3 {
    font-size: var(--font-size-h3);
 }
-.h4 {
+.h-4 {
    font-size: var(--font-size-h4);
 }
-.h5 {
+.h-5 {
    font-size: var(--font-size-h5);
 }
-.h6 {
+.h-6 {
    font-size: var(--font-size-h6);
 }
 
-.h1,
-.h2,
-.h3 {
+.h-1,
+.h-2,
+.h-3 {
    font-family: "Oregano", cursive;
+}
+
+[class^="h-"] {
    font-weight: 400;
 }
+// .heading-primary,
+// .heading-secondary,
+// .heading-tertiary,
+// .paragraph,
+// // .heading6
+//  {
+//    // text-align: center;
+//    // justify-self: center;
+//    margin-bottom: 2.5rem;
+// }
 
-.heading-primary,
-.heading-secondary,
-.heading-tertiary,
-.paragraph,
-// .heading6 
- {
-   // text-align: center;
-   // justify-self: center;
-   margin-bottom: 2.5rem;
-}
+// .heading-primary,
+// .heading-secondary,
+// .heading-tertiary,
+// .quote::before,
+// .cursive {
+//    color: var(--color-grey-dark-1);
+//    font-family: "Oregano", cursive;
+//    font-weight: 400;
+// }
 
-.heading-primary,
-.heading-secondary,
-.heading-tertiary,
-.quote::before,
-.cursive {
-   color: var(--color-grey-dark-1);
-   font-family: "Oregano", cursive;
-   font-weight: 400;
-}
+// .heading-secondary {
+//    font-size: var(--font-heding-secondary-size);
+// }
 
-.heading-secondary {
-   font-size: var(--font-heding-secondary-size);
-}
-
-.heading-tertiary {
-   font-size: var(--font-heding-tertiary-size);
-}
+// .heading-tertiary {
+//    font-size: var(--font-heding-tertiary-size);
+// }
 
 .paragraph {
    font-size: var(--font-size-p);
    color: var(--color-grey-light-2);
 }
 
-.heading6 {
-   font-size: var(--font-heading6-size);
-   &--contact {
-      text-align: left;
-      font-weight: 700;
-      // margin-bottom: 1rem;
-   }
-}
+// .heading6 {
+//    font-size: var(--font-heading6-size);
+//    &--contact {
+//       text-align: left;
+//       font-weight: 700;
+//       // margin-bottom: 1rem;
+//    }
+// }
 
 .quote {
    padding-left: 3rem;

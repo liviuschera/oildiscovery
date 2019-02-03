@@ -1,15 +1,16 @@
-<?php require APPROOT .
-    '../views/includes/header.php'; ?> <?php require APPROOT .
-     '../views/includes/navbar.php'; ?>
+<?php require APPROOT . '../views/includes/header_admin.php'; ?> 
+<?php require APPROOT . '../views/includes/navbar_admin.php'; ?> 
+
+<main class="admin__main">
 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 
 <form
    action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['postID']; ?>"
-   class="form u-div-center"
+   class="form u-div-center u-txt-align-center"
    method="post"
 >
-   <h3 class="heading-tertiary">Edit Post</h3>
+   <h2 class="h-2">Edit Post</h2>
    <p class="paragraph">Please fill out all the fields.</p>
    <pre><?php echo var_dump($data); ?></pre>
 
@@ -73,6 +74,7 @@
          name="content"
          id="content"
       ><?php echo $data['content']; ?></textarea>
+   
       <span class="form__failed-feedback"><?php echo $data[
           'contentError'
       ]; ?></span>
@@ -81,28 +83,26 @@
       
    <div class="form__row">
       <!-- Back Button -->
-      <button
+      <a
          class="button"
-         formaction="<?php echo URLROOT; ?>/posts"
+         href="<?php echo URLROOT; ?>/posts"
          type="submit"
       >
        &laquo; Back
-      </button>
+      </a>
 
    <!-- Post SUBMIT Button -->
       <input
          class="button"
-         formaction="<?php echo URLROOT; ?>/posts/edit/<?php echo $data[
-    'postID'
-]; ?>"
          type="submit"
          value="Submit"
       >
-         <!-- Edit Post -->
-      <!-- </button> -->
-
-      
+     
    </div>
-
+   
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
+
+</main>
+
+<?php require APPROOT . '../views/includes/footer_admin.php'; ?> 

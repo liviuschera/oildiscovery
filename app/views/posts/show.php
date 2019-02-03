@@ -91,18 +91,22 @@
             </figure> -->
             <!-- ~~~ BLOG POST CARD end -->
             <?php echo $data['post']->content; ?>
+            
             <!-- ~~~ Display Edit and Delete buttons START -->
 
-<?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
-
-<a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
+            <?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
+            <div class="buttons-wrapper">
+            <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
     ->postID; ?>" class="button button--success">Edit</a>
 
-    <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']
-    ->postID; ?>" method="POST">
-    <input type="submit" value="Delete" class="button button--danger">
-    </form>
-                        <?php endif; ?>
+               <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data[
+    'post'
+]->postID; ?>" method="POST">
+               <input type="submit" value="Delete" class="button button--danger">
+               </form>
+            </div>
+
+            <?php endif; ?>
 
             <!-- ~~~ Display Edit and Delete buttons END -->
 
@@ -110,7 +114,7 @@
 
             <section class="social-media-buttons">
                <div class="social-media-buttons__wrapper">
-                  <h6 class="heading6">Share this post:</h6>
+                  <h6 class="h-6 u-txt-bold">Share this post:</h6>
                   <nav class="social-buttons">
                      <ul>
                         <li>

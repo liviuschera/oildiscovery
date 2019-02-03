@@ -129,7 +129,8 @@
       width: 5rem;
       height: 5rem;
       justify-self: center;
-      align-self: start;
+      // align-self: start;
+      align-self: flex-start;
       fill: var(--color-primary);
       margin-bottom: 0.5rem;
    }
@@ -205,7 +206,7 @@
 
    &__elipsis {
       display: grid;
-      align-self: start;
+      align-self: flex-start;
       justify-self: center;
       font-size: 3rem;
       transition: opacity 0.3s;

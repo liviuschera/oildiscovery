@@ -10,6 +10,11 @@
    width: var(--site-width);
    margin: 0 auto;
 
+   .buttons-wrapper {
+      display: flex;
+      margin: 3rem 0;
+   }
+
    // /////////////////////////////////
    // social media buttons - start
    // /////////////////////////////////
@@ -21,7 +26,7 @@
       @include social-buttons;
    }
    // /////////////////////////////////
-   // social media buttons - ens
+   // social media buttons - end
    // /////////////////////////////////
 
    // /////////////////////////////////
@@ -107,7 +112,7 @@
          header {
             p {
                display: flex;
-               justify-content: start;
+               justify-content: flex-start;
                grid-gap: 1rem;
             }
          }
@@ -154,7 +159,7 @@
       margin-right: 4rem;
       // display: bl
       width: 100%;
-      align-self: start;
+      align-self: flex-start;
       // margin: 0 auto;
       // justify-self: center;
       // justify-items: center;

@@ -6,7 +6,7 @@
             <div class="full-width-section__row">
                <!-- ~~~ CONTACT DETAILS start ~~~ -->
                <aside class="full-width-section__contact-details">
-                  <h6 class="heading6 heading6--contact">Address</h6>
+                  <h6 class="h-6 u-txt-align-center u-txt-bold u-mb-big">Address</h6>
                   <p class="paragraph u-txt-align-left">
                      4578 Marmora St, Chicago D04 89GR.
                   </p>
@@ -22,7 +22,7 @@
                <!-- ~~~ FORM start ~~~ -->
 
                <form action="" class="form">
-                  <h6 class="heading6 heading6--contact">Get in touch</h6>
+                  <h6 class="h-6 u-txt-align-center u-txt-bold u-mb-big">Get in touch</h6>
                   <div class="form__row">
                      <input
                         type="text"
@@ -72,7 +72,7 @@
                <!-- ~~~ FORM end ~~~ -->
 
                <aside class="full-width-section__photo-galery">
-                  <h6 class="heading6 heading6--contact">Flikr</h6>
+                  <h6 class="h-6 u-txt-align-center u-txt-bold u-mb-big">Flikr</h6>
                   <div class="full-width-section__photo-galery--container">
                      <a href="" class="link"
                         ><img

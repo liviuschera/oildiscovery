@@ -2,15 +2,15 @@
     '../views/includes/header.php'; ?> <?php require APPROOT .
      '../views/includes/navbar.php'; ?>
 
-<!-- ~~~ REGISTRATION FORM start ~~~ -->
+<!-- ~~~ EDIT FORM start ~~~ -->
 
 <form
-   action="<?php echo URLROOT; ?>/users/register"
+   action="<?php echo URLROOT; ?>/users/edit/<?php echo $data['id']; ?>"
    class="form u-div-center u-txt-align-center"
    method="post"
 >
-   <h3 class="h-2">Create an account</h3>
-   <p class="paragraph">Please fill out this form to register.</p>
+   <h3 class="h-2">Edit an username</h3>
+   <p class="paragraph">Edit the necessary fields.</p>
    <pre><?php echo var_dump($data); ?></pre>
    <div class="form__row">
       <div class="form__group">
@@ -114,15 +114,9 @@
       <input
          class="button"
          type="submit"
-         value="Register"
+         value="Edit"
       >
-      <a
-         class="button"
-         href="<?php echo URLROOT; ?>/users/login"
-         type="submit"
-      >
-         Have an account? Login
-      </a>
+     
    </div>
 </form>
-<!-- ~~~ REGISTRATION FORM end ~~~ -->
+<!-- ~~~ EDIT FORM end ~~~ -->

@@ -6,11 +6,11 @@
 
 <form
    action="<?php echo URLROOT; ?>/users/login"
-   class="form u-div-center"
+   class="form u-div-center u-txt-align-center"
    method="post"
 >
    <?php flash('register_success'); ?>
-   <h3 class="heading-tertiary">Login</h3>
+   <h3 class="h-2">Login</h3>
    <code><?php echo var_dump($data); ?></code>
 
    <div class="form__row">
