@@ -17,7 +17,7 @@
                <a class="side-nav__link " href="<?php echo URLROOT; ?>/posts/add">Add page</a>
             </li>
             <li class="side-nav__item">
-               <a class="side-nav__link" href="#">Menu itme </a>
+               <a class="side-nav__link" href="<?php echo URLROOT; ?>/users/search">Search users</a>
             </li>
          </ul>
          <span class="legal">&copy; 2018</span>

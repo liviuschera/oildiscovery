@@ -68,7 +68,6 @@ class User
     }
 
     // Get user by id
-
     public function getUserById($id)
     {
         // Query Database
@@ -79,6 +78,52 @@ class User
         $row = $this->db->getSingleResult();
 
         return $row;
+    }
+
+    public function searchUsers($data)
+    {
+        // Query Database
+        if (!empty($data)) {
+            $search = "%{$data['keyword']}%";
+            $priv = $_SESSION['login_user_priv'];
+
+            // Query without LIMIT clause
+            $rows = "SELECT
+            users.id AS id,
+            users.firstName AS firstName,
+            users.lastName AS lastName,
+            users.email AS email,
+            users.phone AS phone,
+            users.createdAt AS createdAt,
+            users.modified AS modified,
+            users.priv AS priv,
+            users.active AS active 
+             FROM users WHERE 
+                (lower(firstName) LIKE :search 
+                OR lower(lastName) LIKE :search 
+                OR lower(email) LIKE :search) 
+                AND priv <= :priv ORDER BY lastName
+                ";
+
+            $this->db->queryDB($rows);
+
+            // Bind value
+            $this->db->bindVal(':search', $search);
+            $this->db->bindVal(':priv', $priv);
+            $this->db->executeStmt();
+            $_SESSION['row_count'] = $this->db->getRowCount();
+
+            // Now add LIMIT clause to the main query after retrieving row_count
+            $limit = " LIMIT " . $data['offset'] . "," . ROWS_PER_PAGE_USERS;
+            $this->db->queryDB($rows . $limit);
+
+            $this->db->bindVal(':search', $search);
+            $this->db->bindVal(':priv', $priv);
+
+            // Retrieve results
+            $results = $this->db->getResultSet();
+            return $results;
+        }
     }
 }
 ?>

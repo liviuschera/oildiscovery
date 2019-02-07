@@ -35,27 +35,8 @@ function isLoggedIn()
     return isset($_SESSION['login_user_id']) ? true : false;
 }
 
-function isAdmin()
+function hasPrivLevel($priv_level = 0)
 {
-    if (
-        isset($_SESSION['login_user_priv']) &&
-        $_SESSION['login_user_priv'] > 0
-    ) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function isSuperAdmin()
-{
-    if (
-        isset($_SESSION['login_user_priv']) &&
-        $_SESSION['login_user_priv'] > 1
-    ) {
-        return true;
-    } else {
-        return false;
-    }
+    return $_SESSION['login_user_priv'] >= $priv_level ? true : false;
 }
 ?>

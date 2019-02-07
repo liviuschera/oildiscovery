@@ -14,8 +14,8 @@ class Post
         FROM users
         JOIN posts ON users.id=posts.userID
         JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC;');
-        $restuls = $this->db->getResultSet();
-        return $restuls;
+        $results = $this->db->getResultSet();
+        return $results;
     }
 
     public function addPost($data)

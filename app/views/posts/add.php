@@ -79,7 +79,6 @@
       ]; ?></span>
    </div>
 
-      
    <div class="form__row">
       <!-- Back Button -->
       <button
@@ -98,9 +97,9 @@
          >
    </div>
    
-   <!-- <script>
+   <script>
       CKEDITOR.replace('content');
-   </script> -->
+   </script>
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
 

@@ -99,7 +99,9 @@
       >
      
    </div>
-   
+   <script>
+      CKEDITOR.replace('content');
+   </script>
 </form>
 <!-- ~~~ REGISTRATION FORM end ~~~ -->
 

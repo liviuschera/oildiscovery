@@ -1,4 +1,5 @@
 <?php
+
 class Users extends Controller
 {
     public function __construct()
@@ -8,8 +9,9 @@ class Users extends Controller
 
     public function index()
     {
-        $data = ["title" => "Wellcome to Homepage"];
-        $this->view('pages/index', $data);
+        // $users = $this->userModel();
+        $data = ['title' => 'Index title'];
+        $this->view('users/index', $data);
     }
 
     public function register()
@@ -72,7 +74,7 @@ class Users extends Controller
             if (empty($data['passw'])) {
                 $data['passwError'] = "Please enter passw.";
             } elseif (strlen($data['passw']) < 6) {
-                $data['passwError'] = "passw must be at least 6 charaters.";
+                $data['passwError'] = "passw must be at least 6 characters.";
             }
 
             // Validate confirm passw
@@ -80,7 +82,7 @@ class Users extends Controller
                 $data['confirmPasswError'] = "Please confirm passw.";
             } else {
                 if ($data['passw'] !== $data['confirmPassw']) {
-                    $data['confirmPasswError'] = "passws do not match.";
+                    $data['confirmPasswError'] = "Password do not match.";
                 }
             }
 
@@ -269,7 +271,6 @@ class Users extends Controller
 
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            // echo "fitered post: " . var_dump($_POST);
 
             // Init data
             $data = [
@@ -328,6 +329,33 @@ class Users extends Controller
 
             // Load view;
             $this->view('users/login', $data);
+        }
+    }
+
+    public function search()
+    {
+        if (!isLoggedIn()) {
+            redirectTo('users/login');
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            if (isset($_POST['search'])) {
+                $_SESSION['search'] = $_POST['search'];
+            }
+
+            $data = [
+                'keyword' =>
+                    $_POST['search'] ??
+                        trim($_POST['search'] ?? $_SESSION['search']),
+                'offset' => $_POST['page'] ?? 0
+            ];
+
+            $search_result = $this->userModel->searchUsers($data);
+            $this->view('users/search', $search_result);
+        } else {
+            $this->view('users/search');
         }
     }
 
