@@ -9,7 +9,8 @@
          <input class="form__input" type="text" name="search" value="" placeholder="Search users">
       </form>
 <?php var_dump($data); ?>
-<?php echo "row count: " . $_SESSION['row_count'] ?? "row count not set"; ?>
+<?php echo "row count: " . $_SESSION['row_count_users'] ??
+    "row count not set"; ?>
       <?php if (!empty($data)): ?>
       <table class="table u-div-center table--users u-mt-big">
          <thead>
@@ -45,7 +46,7 @@
 <?php endforeach; ?>
          </tbody>
       </table>
-      <?php echo paginate($_SESSION['row_count']); ?>
+      <?php echo paginate($_SESSION['row_count_users']); ?>
       <?php endif; ?>
 
       <?php endif; ?>

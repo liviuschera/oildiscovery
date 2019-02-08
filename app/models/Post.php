@@ -8,12 +8,21 @@ class Post
         $this->db = new Database();
     }
 
-    public function getPosts()
+    public function getPosts($offset = 0)
     {
-        $this->db->queryDB('SELECT *
+        $rows = 'SELECT *
         FROM users
         JOIN posts ON users.id=posts.userID
-        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC;');
+        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC';
+
+        // First get the row count
+        $this->db->queryDB($rows);
+        $this->db->executeStmt();
+        $_SESSION['row_count_posts'] = $this->db->getRowCount();
+
+        // Now add the LIMIT clause
+        $limit = " LIMIT " . $offset . "," . ROWS_PER_PAGE_POSTS;
+        $this->db->queryDB($rows . $limit);
         $results = $this->db->getResultSet();
         return $results;
     }

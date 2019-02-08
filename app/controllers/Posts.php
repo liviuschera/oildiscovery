@@ -14,11 +14,9 @@ class Posts extends Controller
 
     public function index()
     {
-        // Get posts
-        $posts = $this->postModel->getPosts();
-
+        // getPost($offset = $_POST['page'])
+        $posts = $this->postModel->getPosts($_POST['page'] ?? 0);
         $data = ['posts' => $posts];
-
         $this->view('posts/index', $data);
     }
 

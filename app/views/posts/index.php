@@ -87,13 +87,8 @@
             <?php endforeach; ?>
 
          </div>
-         <div class="full-width-section__row u-mt-big">
-            <a href="" class="button button--pagination">Prev</a>
-            <a href="" class="button button--pagination">1</a>
-            <a href="" class="button button--pagination">2</a>
-            <a href="" class="button button--pagination">3</a>
-            <a href="" class="button button--pagination">Next</a>
-         </div>
+         <?php echo paginate($_SESSION['row_count_posts']); ?>
+
       </section>
    </section>
 </section>

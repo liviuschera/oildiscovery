@@ -111,7 +111,7 @@ class User
             $this->db->bindVal(':search', $search);
             $this->db->bindVal(':priv', $priv);
             $this->db->executeStmt();
-            $_SESSION['row_count'] = $this->db->getRowCount();
+            $_SESSION['row_count_users'] = $this->db->getRowCount();
 
             // Now add LIMIT clause to the main query after retrieving row_count
             $limit = " LIMIT " . $data['offset'] . "," . ROWS_PER_PAGE_USERS;

@@ -18,5 +18,5 @@ define('ADMIN_DASHBOARD_NAME', 'Oil Discovery Admin Dashboard');
 
 // Pagination
 define('ROWS_PER_PAGE_USERS', 2);
-define('ROW_PER_PAGE_POSTS', 2);
+define('ROWS_PER_PAGE_POSTS', 6);
 ?>
