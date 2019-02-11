@@ -37,7 +37,7 @@ class User
         try {
             // Query database
             $this->db->queryDB(
-                'UPDATE users SET firstName = :firstName, lastName = :lastName, email = :email, phone = :phone, passw = :passw, priv = :priv, active = :active WHERE id = :id'
+                'UPDATE users SET firstName = :firstName, lastName = :lastName, email = :email, phone = :phone, passw = :passw, priv = :priv, active = :active, modified = now() WHERE id = :id'
             );
             // Bind values
             $this->db->bindVal(':id', $data['id']);
