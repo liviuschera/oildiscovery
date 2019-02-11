@@ -2,6 +2,7 @@
 <?php require APPROOT . '../views/includes/navbar_admin.php'; ?> 
      
    <main class="admin__main">
+   <?php flash('user_message'); ?>
       <!-- Check if user is at least admin. -->
       <?php if (hasPrivLevel(0)): ?>
 
@@ -11,43 +12,8 @@
 <?php var_dump($data); ?>
 <?php echo "row count: " . $_SESSION['row_count_users'] ??
     "row count not set"; ?>
-      <?php if (!empty($data)): ?>
-      <table class="table u-div-center table--users u-mt-big">
-         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Created At</th>
-                <th>Modified At</th>
-                <th>Priv</th>
-                <th>Active</th>
-                <th colspan="2"></th>
-            </tr>
-         </thead>
-         <tbody>
-         <?php foreach ($data as $row): ?>
-            <tr>
-               <td><?php echo $row->id; ?></td>
-               <td><?php echo $row->lastName; ?></td>
-               <td><?php echo $row->firstName; ?></td>
-               <td><?php echo $row->email; ?></td>
-               <td><?php echo $row->phone; ?></td>
-               <td><?php echo formatDate($row->createdAt, 'd-M-Y, H:i'); ?></td>
-               <!-- <td><?php echo $row->modified; ?></td> -->
-               <td><?php echo isset($row->modified)
-                   ? formatDate($row->modified, 'd-M-Y, H:i')
-                   : "Never"; ?></td>               
-               <td><?php echo $row->priv; ?></td>
-               <td><?php echo $row->active == "y" ? "Yes" : "No"; ?></td>
-            </tr>
-<?php endforeach; ?>
-         </tbody>
-      </table>
-      <?php echo paginate($_SESSION['row_count_users']); ?>
-      <?php endif; ?>
+     
+     <?php echo showUserTable($data); ?>
 
       <?php endif; ?>
    </main>

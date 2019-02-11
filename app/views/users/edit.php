@@ -77,7 +77,7 @@
          ]; ?></span>
       </div>
    </div>
-
+<!-- Set Password and Confirm Password -->
    <div class="form__row">
       <div class="form__group">
          <input
@@ -109,6 +109,37 @@
              'confirmPasswError'
          ]; ?></span>
       </div>
+   </div>
+   <!-- Set PRIV and ACTIVE -->
+      <div class="form__row">
+
+   <!-- User ACTIVE -->
+   <div class="form__group">
+         <div class="form__checkbox">
+            <input type="checkbox" name="active" id="active" value="y"
+            <?php echo $data['active'] === 'y' ? 'checked' : ''; ?>/>
+            <label for="active"><span></span>Active user</label>
+         </div>
+      </div>
+      <!-- User PRIV -->
+   <div class="form__group">
+      <select id="priv" name="priv" class="form__select">
+         <?php
+         // Set an array contining user privilege levels
+         $privArray = ['0' => 'User', '1' => 'Admin', '2' => 'Owner'];
+         // display the values in the form
+         foreach ($privArray as $key => $value) {
+             echo "<option value={$key}";
+             if ((string) $data['priv'] === (string) $key) {
+                 echo " selected";
+             }
+             echo ">{$value}</option>";
+         }
+         ?>
+      </select>
+      <label for="priv">Privilege:</label>
+   </div>
+      
    </div>
    <div class="form__row">
       <input

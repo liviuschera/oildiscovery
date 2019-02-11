@@ -31,6 +31,32 @@ class User
             return false;
         }
     }
+    // Edit user
+    public function editUser($data)
+    {
+        try {
+            // Query database
+            $this->db->queryDB(
+                'UPDATE users SET firstName = :firstName, lastName = :lastName, email = :email, phone = :phone, passw = :passw, priv = :priv, active = :active WHERE id = :id'
+            );
+            // Bind values
+            $this->db->bindVal(':id', $data['id']);
+            $this->db->bindVal(':firstName', $data['firstName']);
+            $this->db->bindVal(':lastName', $data['lastName']);
+            $this->db->bindVal(':email', $data['email']);
+            $this->db->bindVal(':phone', $data['phone']);
+            $this->db->bindVal(':passw', $data['passw']);
+            $this->db->bindVal(':priv', $data['priv']);
+            $this->db->bindVal(':active', $data['active']);
+
+            // Execute the prepared statement
+            $this->db->executeStmt();
+            return true;
+        } catch (Exception $e) {
+            echo "Failed to execute statement: " . $e->getMessage();
+            return false;
+        }
+    }
 
     // Login user
     public function login($email, $passw)
@@ -57,13 +83,13 @@ class User
         $this->db->bindVal(':email', $email);
         // Retrieve row from database
         $row = $this->db->getSingleResult();
-
-        //   Check if DB has any record with the $email
-        if ($this->db->getRowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return $row;
+        // //   Check if DB has any record with the $email
+        // if ($this->db->getRowCount() > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
         //   $this->db->getRowCount() > 0 ? true : false;
     }
 
@@ -123,6 +149,23 @@ class User
             // Retrieve results
             $results = $this->db->getResultSet();
             return $results;
+        }
+    }
+
+    public function deleteUser($id)
+    {
+        try {
+            //Query database
+            $this->db->queryDB("DELETE FROM users WHERE id = :id;");
+            // Bind values
+            $this->db->bindVal(':id', $id);
+            if ($this->db->executeStmt()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Failed to execute DELETE user: " . $e->getMessage();
         }
     }
 }

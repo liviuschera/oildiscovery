@@ -148,15 +148,17 @@ class Users extends Controller
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-            // echo "naked post: " . var_dump($_POST);
             // Init data
             $data = [
+                'id' => $id,
                 'firstName' => trim($_POST['firstName']),
                 'lastName' => trim($_POST['lastName']),
                 'email' => trim($_POST['email']),
                 'phone' => trim($_POST['phone']),
                 'passw' => trim($_POST['passw']),
                 'confirmPassw' => trim($_POST['confirmPassw']),
+                'priv' => trim($_POST['priv']),
+                'active' => trim($_POST['active']),
                 'firstNameError' => '',
                 'lastNameError' => '',
                 'emailError' => '',
@@ -164,7 +166,6 @@ class Users extends Controller
                 'passwError' => '',
                 'confirmPasswError' => ''
             ];
-            echo "<pre> post edit user init: " . var_dump($data) . "</pre>";
 
             // Validate first name
             if (empty($data['firstName'])) {
@@ -180,24 +181,34 @@ class Users extends Controller
                 $data['emailError'] = "Please enter email.";
             } else {
                 // Check if the email is unique
-                if (!empty($this->userModel->findUserByEmail($data['email']))) {
+                $check_if_email_exists = $this->userModel->findUserByEmail(
+                    $data['email']
+                );
+                echo "email exists";
+                var_dump($check_if_email_exists);
+                var_dump(empty($check_if_email_exists));
+                if (
+                    // !empty($check_if_email_exists) &&
+                    $id !== $check_if_email_exists->id
+                ) {
                     $data['emailError'] = "Email is already taken.";
                 }
             }
+            // !empty($check_if_email_exists) &&
 
             // Validate phone
             if (empty($data['phone'])) {
                 $data['phoneError'] = "Please enter phone.";
             }
 
-            // Validate passw
+            // Validate password
             if (empty($data['passw'])) {
                 $data['passwError'] = "Please enter passw.";
             } elseif (strlen($data['passw']) < 6) {
                 $data['passwError'] = "passw must be at least 6 charaters.";
             }
 
-            // Validate confirm passw
+            // Validate confirm password
             if (empty($data['confirmPassw'])) {
                 $data['confirmPasswError'] = "Please confirm passw.";
             } else {
@@ -226,7 +237,7 @@ class Users extends Controller
                 try {
                     $this->userModel->editUser($data);
                     flash('edit_success', 'Edit successful');
-                    redirectTo('users/login');
+                    redirectTo('users/search');
                 } catch (Exception $e) {
                     $this->error = $e->getMessage();
                     echo "<strong>Error message:</strong> {$this->error}";
@@ -238,9 +249,20 @@ class Users extends Controller
         } else {
             // Find user
             $user = $this->userModel->getUserById($id);
-            if ($user->id !== $_SESSION['login_user_id']) {
+
+            // Check for if user has the right to edit
+            if (
+                $_SESSION['login_user_priv'] < $user->priv ??
+                $user->id !== $_SESSION['login_user_id']
+            ) {
                 redirectTo('users/login');
             }
+
+            // if ($_SESSION['login_user_priv'] < $user->priv) {
+            //     if ($user->id !== $_SESSION['login_user_id']) {
+            //         redirectTo('users/login');
+            //     }
+            // }
             // Init data
             $data = [
                 'id' => $id,
@@ -249,6 +271,8 @@ class Users extends Controller
                 'email' => $user->email,
                 'phone' => $user->phone,
                 'passw' => '',
+                'priv' => $user->priv,
+                'active' => $user->active,
                 'confirmPassw' => '',
                 'firstNameError' => '',
                 'lastNameError' => '',
@@ -356,6 +380,22 @@ class Users extends Controller
             $this->view('users/search', $search_result);
         } else {
             $this->view('users/search');
+        }
+    }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            try {
+                $this->userModel->deleteUser($id);
+                flash('user_message', "User deleted");
+                redirectTo('users/search');
+            } catch (Throwable $e) {
+                $this->error = $e->getMessage();
+                echo "<strong>Delete from users error:</strong> {$this->error}";
+            }
+        } else {
+            redirectTo('users/search');
         }
     }
 

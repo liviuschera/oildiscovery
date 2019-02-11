@@ -245,7 +245,7 @@ body {
   background: var(--color-primary);
   color: var(--color-white);
   border-radius: 4rem;
-  padding: 1rem 2.5rem;
+  padding: 0.7rem 2rem;
   width: min-content;
   overflow: hidden;
   white-space: nowrap;
