@@ -68,7 +68,7 @@ class Post
             $this->db->startTransaction();
             // Query database
             $this->db->queryDB(
-                "UPDATE posts SET title = :title, active = :active, priv = :priv WHERE id = :postID;"
+                "UPDATE posts SET title = :title, active = :active, priv = :priv, modified = now() WHERE id = :postID;"
             );
             // Bind values
             $this->db->bindVal(':postID', $data['postID']);

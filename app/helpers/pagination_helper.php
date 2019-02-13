@@ -12,10 +12,16 @@ function paginate($row_count)
     $page = 1;
     $offset = 0;
 
-    if ($row_count === $_SESSION['row_count_users']) {
+    if (
+        isset($_SESSION['row_count_users']) &&
+        $row_count === $_SESSION['row_count_users']
+    ) {
         $row_count = $_SESSION['row_count_users'];
         $max_row_per_page = ROWS_PER_PAGE_USERS;
-    } elseif ($row_count === $_SESSION['row_count_posts']) {
+    } elseif (
+        isset($_SESSION['row_count_posts']) &&
+        $row_count === $_SESSION['row_count_posts']
+    ) {
         $row_count = $_SESSION['row_count_posts'];
         $max_row_per_page = ROWS_PER_PAGE_POSTS;
     }

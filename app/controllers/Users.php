@@ -414,7 +414,7 @@ class Users extends Controller
         unset($_SESSION['login_user_priv']);
         unset($_SESSION['login_user_email']);
         unset($_SESSION['login_user_name']);
-        session_destroy();
+        // session_destroy();
         redirectTo('users/login');
     }
 }

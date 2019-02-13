@@ -8,9 +8,19 @@
                alt="Logo of Oildiscovery website"
                class="header__img"
             />
+            <!-- Greet user -->
             <span>Hello,
             <?php echo $_SESSION['login_user_name'] ?? 'User'; ?>
             </span>
+            <!-- Login/Logout  -->
+            <span>
+            <?php if (isset($_SESSION['login_user_id'])): ?>
+               <a href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+               <?php else: ?>
+               <a href="<?php echo URLROOT; ?>/users/login">Login</a>
+                           <?php endif; ?>
+            </span>
+            <!-- If user has enough privilege show link to admin area -->
             <?php if (isset($_SESSION['login_user_priv'])): ?>
 
             <span>Go to <a href="<?php echo URLROOT; ?>/admins">Admin area</a></span>
@@ -60,19 +70,31 @@
       
       <nav class="header__nav-site">
          <ul>
-            <li><a href="<?php echo URLROOT; ?>">Home</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Join My Team</a></li>
-            <li><a href="#">doTERRA Oils as a Business</a></li>
-            <li><a href="<?php echo URLROOT; ?>/posts">Blog</a></li>
-            <li><a href="">Shop</a></li>
-            <li><a href="">Contact me</a></li>
-            <?php if (isset($_SESSION['login_user_id'])): ?>
-            <li><a href="<?php echo URLROOT; ?>/users/logout">Logout</a></li>
-            <?php else: ?>
-            <li><a href="<?php echo URLROOT; ?>/users/login">Login</a></li>
-            <?php endif; ?>
+            <?php foreach ($_SESSION['pages'] as $page): ?>
+               <li><a href="<?php echo URLROOT .
+                   $page->link; ?>"><?php echo $page->navbar_title; ?></a></li>
+            <?php endforeach; ?>
          </ul>
       </nav>
    </div>
 </header>
+
+<!-- <li><a href="<?php echo URLROOT; ?>">Home</a></li>
+               <li><a href="">About</a></li>
+               <li><a href="">Join my team</a></li>
+               <li><a href="#">doTERRA Oils as a Business</a></li>
+               <li><a href="<?php echo URLROOT; ?>/posts">Blog</a></li>
+               <li><a href="">Shop</a></li>
+               <li><a href="">Contact me</a></li>
+               <?php
+// if (isset($_SESSION['login_user_id'])) :
+?>
+               <li><a href="<?php
+// echo URLROOT;
+?>/users/logout">Logout</a></li>
+               <?php
+// else :
+?>
+               <li><a href="<?php
+// echo URLROOT;
+?>/users/login">Login</a></li> -->
