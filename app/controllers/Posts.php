@@ -1,6 +1,5 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+
 class Posts extends Controller
 {
     public function __construct()
@@ -14,8 +13,13 @@ class Posts extends Controller
 
     public function index()
     {
-        // getPost($offset = $_POST['page'])
-        $posts = $this->postModel->getPosts($_POST['page'] ?? 0);
+        $offset = "";
+        if (!isset($_POST['page']) || $_POST['page'] == '1') {
+            $offset = 0;
+        } else {
+            $offset = $_POST['page'];
+        }
+        $posts = $this->postModel->getPosts($offset);
         $data = ['posts' => $posts];
         $this->view('posts/index', $data);
     }

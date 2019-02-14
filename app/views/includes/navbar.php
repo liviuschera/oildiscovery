@@ -78,23 +78,3 @@
       </nav>
    </div>
 </header>
-
-<!-- <li><a href="<?php echo URLROOT; ?>">Home</a></li>
-               <li><a href="">About</a></li>
-               <li><a href="">Join my team</a></li>
-               <li><a href="#">doTERRA Oils as a Business</a></li>
-               <li><a href="<?php echo URLROOT; ?>/posts">Blog</a></li>
-               <li><a href="">Shop</a></li>
-               <li><a href="">Contact me</a></li>
-               <?php
-// if (isset($_SESSION['login_user_id'])) :
-?>
-               <li><a href="<?php
-// echo URLROOT;
-?>/users/logout">Logout</a></li>
-               <?php
-// else :
-?>
-               <li><a href="<?php
-// echo URLROOT;
-?>/users/login">Login</a></li> -->

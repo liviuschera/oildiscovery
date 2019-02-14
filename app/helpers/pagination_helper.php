@@ -3,7 +3,7 @@
 /**
  * Paginate content
  *
- * @param int $row_count
+ * @param int $row_count number of rows to be displayed
  * @return string
  */
 function paginate($row_count)

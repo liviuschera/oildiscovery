@@ -34,10 +34,10 @@ function showUserTable($data)
                <td><?php echo $row->priv; ?></td>
                <td><?php echo $row->active == "y" ? "Yes" : "No"; ?></td>
             
-               <td><a class="button button--success" href="<?php echo URLROOT; ?>/users/edit/<?php echo $row->id; ?>">Edit</a></td>
+               <td><a class="button button--thin button--success" href="<?php echo URLROOT; ?>/users/edit/<?php echo $row->id; ?>">Edit</a></td>
                <td>
                   <form action="<?php echo URLROOT; ?>/users/delete/<?php echo $row->id; ?>" method="POST">
-                  <input type="submit" value="Delete" class="button button--danger">
+                  <input type="submit" value="Delete" class="button button--thin button--danger">
                   </form>
                </td>
             </tr>

@@ -245,7 +245,7 @@ body {
   background: var(--color-primary);
   color: var(--color-white);
   border-radius: 4rem;
-  padding: 0.7rem 2rem;
+  padding: 1.3rem 3rem;
   width: min-content;
   overflow: hidden;
   white-space: nowrap;
@@ -267,6 +267,8 @@ body {
       background: transparent; }
   .button--center {
     margin: 3rem auto 0; }
+  .button--thin {
+    padding: 0.3rem 1.1rem; }
   .button--tag, .button__pagination, .button__pagination:link, .button__pagination:visited {
     border: 0.2rem solid var(--color-grey-light-1);
     padding: 0.5rem 1.5rem;
