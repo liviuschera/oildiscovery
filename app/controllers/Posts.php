@@ -86,7 +86,8 @@ class Posts extends Controller
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
-                'active' => $_POST['active'],
+                // 'active' => $_POST['active'],
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'priv' => $_POST['priv'],
                 'title' => trim($_POST['title']),
                 'content' => trim($_POST['content']),

@@ -54,11 +54,11 @@ class Post
             $this->db->executeStmt();
             // Execute the prepared statement
             $this->db->commitTransaction();
-            return true;
+            // return true;
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
             echo "Failed to execute ADD post transaction: " . $e->getMessage();
-            return false;
+            // return false;
         }
     }
 
@@ -84,15 +84,12 @@ class Post
             $this->db->bindVal(':postID', $data['postID']);
             $this->db->bindVal(':content', $data['content']);
             $this->db->executeStmt();
-            if ($this->db->commitTransaction()) {
-                return true;
-            } else {
-                $this->db->rollBackTransaction();
-                return false;
-            }
+            $this->db->commitTransaction();
         } catch (Exception $e) {
-            echo "Failed to execute UPDATE post transaction: " .
-                $e->getMessage();
+            $this->db->rollBackTransaction();
+            die(
+                "Failed to execute UPDATE post transaction: {$e->getMessage()}"
+            );
         }
     }
 
@@ -100,7 +97,8 @@ class Post
     {
         try {
             //Query database
-            $this->db->queryDB("DELETE FROM posts WHERE id = :postID;");
+            $this->db->queryDB(" DELETE FROM posts WHERE id = : postID;
+            ");
             // Bind values
             $this->db->bindVal(':postID', $id);
             if ($this->db->executeStmt()) {
@@ -109,7 +107,7 @@ class Post
                 return false;
             }
         } catch (Exception $e) {
-            echo "Failed to execute DELETE post: " . $e->getMessage();
+            echo " Failed to execute DELETE post : " . $e->getMessage();
         }
     }
 
