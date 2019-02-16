@@ -151,6 +151,10 @@
       &--pos-rel {
          position: relative;
       }
+
+      &--full-width-blogpost {
+         margin-bottom: 2.5rem;
+      }
       .paragraph {
          margin-bottom: 0;
          justify-self: left;
@@ -220,8 +224,8 @@
    &__info {
       opacity: 0;
       transition: all 0.3s;
-      padding: 1rem 2rem;
-      // TODO: make justify work
+      // padding: 1rem 2rem;
+      padding: 0 2rem;
 
       &--for-3col-blog {
          // margin-top: 1rem;

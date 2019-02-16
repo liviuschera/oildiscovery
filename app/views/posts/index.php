@@ -71,7 +71,9 @@
                      class="card__info card__info--for-3col-blog"
                   >
                      <p class="paragraph">
-                        <?php echo $post->content; ?>
+                        <?php echo strlen($post->content) > 270
+                            ? substr($post->content, 0, 280) . "..."
+                            : $post->content; ?>
                      </p>
                   </figcaption>
 

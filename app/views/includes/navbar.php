@@ -70,6 +70,7 @@
       
       <nav class="header__nav-site">
          <ul>
+            <?php $_SESSION['pages'] ?? redirectTo('pages'); ?>
             <?php foreach ($_SESSION['pages'] as $page): ?>
                <li><a href="<?php echo URLROOT .
                    $page->link; ?>"><?php echo $page->navbar_title; ?></a></li>

@@ -142,7 +142,8 @@ body {
 
 .paragraph {
   font-size: var(--font-size-p);
-  color: var(--color-grey-light-2); }
+  color: var(--color-grey-light-2);
+  margin-bottom: 1.5rem; }
 
 .quote {
   padding-left: 3rem;
@@ -391,6 +392,8 @@ body {
     margin: 2.5rem 2rem 0.7rem; }
     .card__details-wrapper--pos-rel {
       position: relative; }
+    .card__details-wrapper--full-width-blogpost {
+      margin-bottom: 2.5rem; }
     .card__details-wrapper .paragraph {
       margin-bottom: 0;
       justify-self: left; }
@@ -431,7 +434,7 @@ body {
   .card__info {
     opacity: 0;
     transition: all 0.3s;
-    padding: 1rem 2rem; }
+    padding: 0 2rem; }
     .card__info--for-3col-blog {
       opacity: 1;
       height: 12rem; }
@@ -625,7 +628,8 @@ body {
     justify-content: center;
     flex-wrap: wrap; }
     .full-width-section__row--for-3col-blog {
-      margin-bottom: 3rem; }
+      margin-bottom: 3rem;
+      align-content: flex-start; }
   .full-width-section .img-testimonials {
     height: 27rem; }
   .full-width-section__contact-details {

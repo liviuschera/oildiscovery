@@ -3,16 +3,17 @@
 <?php require APPROOT . '../views/includes/navbar_admin.php'; ?> 
 
 <main class="admin__main">
-
+  <?php var_dump($data); ?> 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 <form
    action="<?php echo URLROOT; ?>/posts/add"
    class="form u-div-center u-txt-align-center"
    method="post"
+   enctype="multipart/form-data"
 >
    <h2 class="h-2">Add Post</h2>
    <p class="paragraph">Please fill out all the fields.</p>
-   <pre><?php echo var_dump($data); ?></pre>
+ 
 
    
    <!-- Post TITLE -->
@@ -63,6 +64,19 @@
    </div>
    </div>
 
+   <!-- Post IMAGE -->
+   <div class="form__row">
+      
+      <div class="form__group">
+         <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
+             'imgName'
+         ]; ?>">
+         <span class="form__failed-feedback"><?php echo $data[
+             'imgError'
+         ]; ?></span>
+      </div>
+   </div>
+   
    <!-- Post CONTENT -->
    <div class="form__group">
       <textarea

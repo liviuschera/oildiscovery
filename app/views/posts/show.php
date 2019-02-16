@@ -25,7 +25,7 @@
                         <?php echo $data['post']->title; ?>
                      </h6>
                   </a>
-                  <div class="card__details-wrapper">
+                  <div class="card__details-wrapper card__details-wrapper--full-width-blogpost">
                         <span class="card__author">
                            <svg class="card__icon-post">
                               <use

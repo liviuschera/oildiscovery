@@ -30,14 +30,17 @@ class Posts extends Controller
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             var_dump($_POST);
+            var_dump($_FILES);
             $data = [
                 'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'priv' => trim($_POST['priv']),
                 'title' => trim($_POST['title']),
+                'imgName' => $_FILES['imgFile']['name'] ?? '',
                 'content' => trim($_POST['content']),
                 'loggedUserId' => $_SESSION['login_user_id'],
                 'postID' => '',
                 'titleError' => '',
+                'imgError' => '',
                 'contentError' => ''
             ];
 
@@ -49,6 +52,11 @@ class Posts extends Controller
             // Validate content
             if (empty($data['content'])) {
                 $data['contentError'] = 'Please enter content';
+            }
+
+            // Validate image
+            if (empty($_FILES['imgFile']['name'])) {
+                $data['imgError'] = 'Pease chose file';
             }
 
             if (empty($data['titleError']) && empty($data['contentError'])) {
@@ -70,7 +78,9 @@ class Posts extends Controller
                 'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'priv' => '0',
                 'title' => '',
+                'imgName' => '',
                 'content' => '',
+                'imgError' => '',
                 'titleError' => '',
                 'contentError' => ''
             ];
