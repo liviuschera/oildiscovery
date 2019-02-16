@@ -49,16 +49,15 @@ class Post
                 'INSERT INTO post_body (postID, content) VALUES (:postID, :content);'
             );
             $this->db->bindVal(':postID', $last_post_id);
-            // $this->db->bindVal(':postID', $_SESSION['last_id']);
             $this->db->bindVal(':content', $data['content']);
+
             $this->db->executeStmt();
-            // Execute the prepared statement
+
             $this->db->commitTransaction();
-            // return true;
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
-            echo "Failed to execute ADD post transaction: " . $e->getMessage();
-            // return false;
+            // echo "Failed to execute ADD post transaction: " . $e->getMessage();
+            die("Failed to execute ADD post transaction: {$e->getMessage()}");
         }
     }
 
@@ -87,6 +86,7 @@ class Post
             $this->db->commitTransaction();
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
+            // throw new Exception($e->getMessage());
             die(
                 "Failed to execute UPDATE post transaction: {$e->getMessage()}"
             );

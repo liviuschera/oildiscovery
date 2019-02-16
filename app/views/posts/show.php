@@ -6,7 +6,7 @@
       <div class="blog-post">
          <main class="blog-post__main">
             <!-- ~~~ BLOG POST CARD  start -->
-            <!-- <figure class="card card--full-width-blogpost">
+            <figure class="card card--full-width-blogpost">
                <div class="card__content card__content--for-3col-blog">
                   <div
                      class="card__img-wrapper card__img-wrapper--full-width-blogpost"
@@ -21,7 +21,7 @@
                   </div>
 
                   <a href="" class="card__heading-link">
-                     <h6 class="heading6 u-txt-uppercase u-color-primary">
+                     <h6 class="h-6 u-txt-uppercase u-color-primary">
                         <?php echo $data['post']->title; ?>
                      </h6>
                   </a>
@@ -55,18 +55,18 @@
                            <a class="card__link u-txt-bold" href="">3 </a>
                         </p>
                      </div>
+               </div>
                  
-                  <p class="paragraph">
                   <?php echo $data['post']->content; ?>
-                  </p>
-                  <p class="paragraph">
+                  
+                  <!-- <p class="paragraph">
                      In recognition of this, the World Health Organisation (WHO)
                      recommends adults and children limit their intake of “free
                      sugars” to less than 10% of their total energy intake.
                      Below 5% is even better and carries additional health
                      benefits.
-                  </p>
-                  <div
+                  </p> -->
+                  <!-- <div
                      class="card__img-wrapper card__img-wrapper--full-width-blogpost"
                   >
                      <a href="">
@@ -76,8 +76,8 @@
                            class="card__img card__img--full-width-blogpost"
                         />
                      </a>
-                  </div>
-                  <p class="paragraph">
+                  </div> -->
+                  <!-- <p class="paragraph">
                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
                      Hic est ad eum aut maiores dolorem, expedita id tenetur
                      explicabo mollitia magni ea cupiditate. Iste, laborum
@@ -86,11 +86,10 @@
                      corrupti debitis quod? Sunt non magni fuga, quia facere
                      similique cumque asperiores qui excepturi odio corporis ex
                      dolor, dicta ullam atque?
-                  </p>
-               </div>
-            </figure> -->
+                  </p> -->
+            </figure>
             <!-- ~~~ BLOG POST CARD end -->
-            <?php echo $data['post']->content; ?>
+            <!-- <?php echo $data['post']->content; ?> -->
             
             <!-- ~~~ Display Edit and Delete buttons START -->
 
