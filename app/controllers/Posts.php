@@ -31,11 +31,14 @@ class Posts extends Controller
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             var_dump($_POST);
             var_dump($_FILES);
+            $file_name = $_FILES['imgFile']['name'] ?? '';
+            $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
+
             $data = [
                 'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'priv' => trim($_POST['priv']),
                 'title' => trim($_POST['title']),
-                'imgName' => $_FILES['imgFile']['name'] ?? '',
+                'imgName' => $file_name,
                 'content' => trim($_POST['content']),
                 'loggedUserId' => $_SESSION['login_user_id'],
                 'postID' => '',
@@ -55,29 +58,31 @@ class Posts extends Controller
             }
 
             // Validate image
-            if (empty($_FILES['imgFile']['name'])) {
+            if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';
             } else {
-                $target_dir = URLROOT . '/images/blog/';
-                $target_file_path = "{$target_dir}{$_FILES['imgFile']['name']}";
+                $target_file_path = IMG_DIR . $file_name;
                 $file_type = strtolower(
                     pathinfo($target_file_path, PATHINFO_EXTENSION)
                 );
-                // $file_is_image = getimagesize($_FILES["imgFile"]["tmp_name"]);
-                // Allow only certain extension type
-                // $allowed_img_ext = ['jpg', 'png', 'jpeg'];
+                // Allow only certain extension types
                 $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
-                $file_mime_type = mime_content_type(
-                    $_FILES['imgFile']['tmp_name']
-                );
+                $file_mime_type = mime_content_type($file_temp);
                 var_dump(
+                    $file_temp,
                     $target_file_path,
                     $file_type,
                     $file_mime_type,
                     in_array($file_mime_type, $image_mime_types)
                 );
 
-                if (!in_array($file_mime_type, $image_mime_types)) {
+                if (in_array($file_mime_type, $image_mime_types)) {
+                    // Upload image file to server
+                    move_uploaded_file($file_temp, $target_file_path) ??
+                        ($data[
+                            'imgError'
+                        ] = "The uploading of {$file_name} failed");
+                } else {
                     $data['imgError'] =
                         "Only " .
                         implode(', ', $image_mime_types) .
@@ -87,6 +92,7 @@ class Posts extends Controller
 
             if (empty($data['titleError']) && empty($data['contentError'])) {
                 try {
+                    // Insert image file name into database
                     $this->postModel->addPost($data);
                     flash('post_message', "Post added.");
                     redirectTo('posts');

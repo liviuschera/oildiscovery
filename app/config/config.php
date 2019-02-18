@@ -9,7 +9,7 @@ define('DB_NAME', 'oildiscovery');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root
-define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
+define('URLROOT', 'http://localhost/oildiscovery/');
 
 // Website Name
 
@@ -19,4 +19,8 @@ define('ADMIN_DASHBOARD_NAME', 'Oil Discovery Admin Dashboard');
 // Pagination
 define('ROWS_PER_PAGE_USERS', 2);
 define('ROWS_PER_PAGE_POSTS', 6);
+
+// Path for uploaded images
+$target_dir = URLROOT . '/images/blog/';
+define('IMG_DIR', 'images/blog/');
 ?>

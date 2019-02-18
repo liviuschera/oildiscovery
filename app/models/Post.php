@@ -13,7 +13,9 @@ class Post
         $rows = 'SELECT *
         FROM users
         JOIN posts ON users.id=posts.userID
-        JOIN post_body ON posts.id = post_body.postID ORDER BY posts.createdAt DESC';
+        JOIN post_body ON posts.id = post_body.postID
+        JOIN post_images ON posts.id = post_images.post_id 
+        ORDER BY posts.createdAt DESC';
 
         // First get the row count
         $this->db->queryDB($rows);
@@ -31,7 +33,7 @@ class Post
     {
         try {
             $this->db->startTransaction();
-            // Query database
+            // Query posts database
             $this->db->queryDB(
                 "INSERT INTO posts (userID, title, active, priv) VALUES (:loggedUserId, :title, :active, :priv);"
             );
@@ -45,11 +47,21 @@ class Post
             $this->db->executeStmt();
             $last_post_id = $this->db->retrieveLastInsertId();
 
+            // Query post_body database
             $this->db->queryDB(
                 'INSERT INTO post_body (postID, content) VALUES (:postID, :content);'
             );
             $this->db->bindVal(':postID', $last_post_id);
             $this->db->bindVal(':content', $data['content']);
+
+            $this->db->executeStmt();
+
+            // Query post_images database
+            $this->db->queryDB(
+                "INSERT INTO post_images (post_id, img_name) VALUES (:post_id, :img_name);"
+            );
+            $this->db->bindVal(':post_id', $last_post_id);
+            $this->db->bindVal(':img_name', $data['imgName']);
 
             $this->db->executeStmt();
 
@@ -127,10 +139,13 @@ class Post
         posts.modified AS postModified, 
         posts.priv AS postPriv, 
         posts.active AS postActive,
-        post_body.content AS content
+        post_body.content AS content,
+        post_images.img_name AS imgName
         FROM users
         JOIN posts ON users.id = posts.userID
-        JOIN post_body ON posts.id = post_body.postID WHERE posts.id =:id;');
+        JOIN post_body ON posts.id = post_body.postID 
+        JOIN post_images ON posts.id = post_images.post_id 
+        WHERE posts.id =:id;');
 
         $this->db->bindVal(':id', $id);
 

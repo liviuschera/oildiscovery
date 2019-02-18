@@ -17,7 +17,9 @@
                   <div class="card__img-wrapper">
                      <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>">
                         <img
-                           src="images/pages/events-01-390x289.jpg"
+                           src="<?php echo URLROOT .
+                               IMG_DIR .
+                               $post->img_name; ?>"
                            alt=""
                            class="card__img card__img--for-3col-blog"
                         />

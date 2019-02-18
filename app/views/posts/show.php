@@ -13,7 +13,9 @@
                   >
                      <a href="">
                         <img
-                           src="<?php echo URLROOT; ?>/images/blog/post-06-770x480.jpg"
+                           src="<?php echo URLROOT .
+                               IMG_DIR .
+                               $data['post']->imgName; ?>"
                            alt=""
                            class="card__img card__img--full-width-blogpost"
                         />
