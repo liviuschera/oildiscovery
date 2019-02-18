@@ -14,7 +14,7 @@
                </a>
             </li>
             <li class="side-nav__item">
-               <a class="side-nav__link " href="<?php echo URLROOT; ?>/posts/add">Add page</a>
+               <a class="side-nav__link " href="<?php echo URLROOT; ?>/posts/add">Add post</a>
             </li>
             <li class="side-nav__item">
                <a class="side-nav__link" href="<?php echo URLROOT; ?>/users/search">Search users</a>

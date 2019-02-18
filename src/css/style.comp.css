@@ -628,8 +628,7 @@ body {
     justify-content: center;
     flex-wrap: wrap; }
     .full-width-section__row--for-3col-blog {
-      margin-bottom: 3rem;
-      align-content: flex-start; }
+      margin-bottom: 3rem; }
   .full-width-section .img-testimonials {
     height: 27rem; }
   .full-width-section__contact-details {
@@ -836,8 +835,6 @@ body {
   height: 100vh;
   width: 100vw;
   font-size: 1.4rem; }
-  .admin span {
-    font-weight: 700; }
   .admin__content {
     display: flex; }
   .admin__header {
@@ -857,6 +854,8 @@ body {
       font-size: 1.5rem; }
   .admin__user-name {
     padding-right: 2rem; }
+    .admin__user-name span {
+      font-weight: 700; }
   .admin .sidebar {
     display: flex;
     flex: 0 0 15%;

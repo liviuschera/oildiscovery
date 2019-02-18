@@ -56,7 +56,33 @@ class Posts extends Controller
 
             // Validate image
             if (empty($_FILES['imgFile']['name'])) {
-                $data['imgError'] = 'Pease chose file';
+                $data['imgError'] = 'Please chose a file';
+            } else {
+                $target_dir = URLROOT . '/images/blog/';
+                $target_file_path = "{$target_dir}{$_FILES['imgFile']['name']}";
+                $file_type = strtolower(
+                    pathinfo($target_file_path, PATHINFO_EXTENSION)
+                );
+                // $file_is_image = getimagesize($_FILES["imgFile"]["tmp_name"]);
+                // Allow only certain extension type
+                // $allowed_img_ext = ['jpg', 'png', 'jpeg'];
+                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
+                $file_mime_type = mime_content_type(
+                    $_FILES['imgFile']['tmp_name']
+                );
+                var_dump(
+                    $target_file_path,
+                    $file_type,
+                    $file_mime_type,
+                    in_array($file_mime_type, $image_mime_types)
+                );
+
+                if (!in_array($file_mime_type, $image_mime_types)) {
+                    $data['imgError'] =
+                        "Only " .
+                        implode(', ', $image_mime_types) .
+                        " file types allowed.";
+                }
             }
 
             if (empty($data['titleError']) && empty($data['contentError'])) {

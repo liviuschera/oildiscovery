@@ -3,9 +3,6 @@
    width: 100vw;
    font-size: 1.4rem;
 
-   span {
-      font-weight: 700;
-   }
    &__content {
       display: flex;
    }
@@ -33,6 +30,9 @@
 
    &__user-name {
       padding-right: 2rem;
+      span {
+         font-weight: 700;
+      }
    }
 
    .sidebar {
