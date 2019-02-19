@@ -109,7 +109,7 @@ class Post
     {
         try {
             //Query database
-            $this->db->queryDB(" DELETE FROM posts WHERE id = : postID;
+            $this->db->queryDB(" DELETE FROM posts WHERE id = :postID;
             ");
             // Bind values
             $this->db->bindVal(':postID', $id);

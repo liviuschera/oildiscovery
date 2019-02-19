@@ -10,6 +10,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root
 define('URLROOT', 'http://localhost/oildiscovery/');
+// define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
 
 // Website Name
 

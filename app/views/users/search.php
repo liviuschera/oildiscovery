@@ -1,5 +1,5 @@
-<?php require APPROOT . '../views/includes/header_admin.php'; ?> 
-<?php require APPROOT . '../views/includes/navbar_admin.php'; ?> 
+<?php require APPROOT . '/views/includes/header_admin.php'; ?> 
+<?php require APPROOT . '/views/includes/navbar_admin.php'; ?> 
      
    <main class="admin__main">
    <?php flash('user_message'); ?>
@@ -18,4 +18,4 @@
       <?php endif; ?>
    </main>
    
-<?php require APPROOT . '../views/includes/footer_admin.php'; ?> 
+<?php require APPROOT . '/views/includes/footer_admin.php'; ?> 

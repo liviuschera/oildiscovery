@@ -354,13 +354,11 @@ body {
     overflow: hidden; }
     .card__img-wrapper--full-width-blogpost {
       width: 78.5rem;
-      height: 48rem;
       transition: none;
-      justify-self: center;
       margin-bottom: 3rem; }
   .card__img {
-    width: inherit;
-    height: inherit;
+    width: 100%;
+    height: 100%;
     transition: all 0.5s ease-in-out;
     position: relative; }
     .card__img--for-3col-blog:hover {

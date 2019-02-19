@@ -91,18 +91,19 @@
 
       &--full-width-blogpost {
          width: 78.5rem;
-         height: 48rem;
+         // height: 48rem;
          transition: none;
-         justify-self: center;
+         // justify-self: center;
          margin-bottom: 3rem;
       }
    }
 
    &__img {
-      width: inherit;
-      height: inherit;
+      width: 100%;
+      height: 100%;
       transition: all 0.5s ease-in-out;
       position: relative;
+      // object-fit: cover;
 
       &--for-3col-blog {
          &:hover {
