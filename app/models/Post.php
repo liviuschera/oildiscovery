@@ -95,6 +95,14 @@ class Post
             $this->db->bindVal(':postID', $data['postID']);
             $this->db->bindVal(':content', $data['content']);
             $this->db->executeStmt();
+
+            $this->db->queryDB(
+                "UPDATE post_images SET img_name = :img_name WHERE post_id = :post_id;"
+            );
+            $this->db->bindVal(':post_id', $data['postID']);
+            $this->db->bindVal(':img_name', $data['imgName']);
+            $this->db->executeStmt();
+
             $this->db->commitTransaction();
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
@@ -153,4 +161,3 @@ class Post
         return $row;
     }
 }
-?>

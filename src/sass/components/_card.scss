@@ -95,6 +95,7 @@
          transition: none;
          // justify-self: center;
          margin-bottom: 3rem;
+         height: 100%;
       }
    }
 
@@ -103,7 +104,7 @@
       height: 100%;
       transition: all 0.5s ease-in-out;
       position: relative;
-      // object-fit: cover;
+      object-fit: cover;
 
       &--for-3col-blog {
          &:hover {
@@ -174,6 +175,10 @@
    &__heading-link {
       text-decoration: none;
       margin-left: 2rem;
+
+      &--full-width-blogpost {
+         margin-top: 2rem;
+      }
       .h-6 {
          transition: all 0.3s;
          &:hover {

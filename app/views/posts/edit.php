@@ -9,6 +9,7 @@
    action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['postID']; ?>"
    class="form u-div-center u-txt-align-center"
    method="post"
+   enctype="multipart/form-data"
 >
    <h2 class="h-2">Edit Post</h2>
    <p class="paragraph">Please fill out all the fields.</p>
@@ -61,6 +62,19 @@
       </select>
       <label for="priv">Privilege:</label>
    </div>
+   </div>
+
+   <!-- Post IMAGE -->
+   <div class="form__row">
+      
+      <div class="form__group">
+         <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
+             'imgName'
+         ]; ?>">
+         <span class="form__failed-feedback"><?php echo $data[
+             'imgError'
+         ]; ?></span>
+      </div>
    </div>
 
    <!-- Post CONTENT -->

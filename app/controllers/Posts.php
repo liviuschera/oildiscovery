@@ -70,6 +70,7 @@ class Posts extends Controller
                 $file_mime_type = mime_content_type($file_temp);
                 var_dump(
                     $file_temp,
+                    $file_name,
                     $target_file_path,
                     $file_type,
                     $file_mime_type,
@@ -90,7 +91,11 @@ class Posts extends Controller
                 }
             }
 
-            if (empty($data['titleError']) && empty($data['contentError'])) {
+            if (
+                empty($data['titleError']) &&
+                empty($data['contentError']) &&
+                empty($data['imgError'])
+            ) {
                 try {
                     // Insert image file name into database
                     $this->postModel->addPost($data);
@@ -126,16 +131,21 @@ class Posts extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            var_dump($_POST);
+            var_dump($_FILES);
+            $file_name = $_FILES['imgFile']['name'] ?? '';
+            $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             $data = [
                 // 'active' => $_POST['active'],
                 'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'priv' => $_POST['priv'],
                 'title' => trim($_POST['title']),
+                'imgName' => $file_name,
                 'content' => trim($_POST['content']),
                 'loggedUserId' => $_SESSION['login_user_id'],
                 'postID' => $id,
                 'titleError' => '',
+                'imgError' => '',
                 'contentError' => ''
             ];
 
@@ -149,8 +159,45 @@ class Posts extends Controller
                 $data['contentError'] = 'Please enter content';
             }
 
+            // Validate image
+            if (empty($file_name)) {
+                $data['imgError'] = 'Please chose a file';
+            } else {
+                $target_file_path = IMG_DIR . $file_name;
+                $file_type = strtolower(
+                    pathinfo($target_file_path, PATHINFO_EXTENSION)
+                );
+                // Allow only certain extension types
+                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
+                $file_mime_type = mime_content_type($file_temp);
+                var_dump(
+                    $file_temp,
+                    $target_file_path,
+                    $file_type,
+                    $file_mime_type,
+                    in_array($file_mime_type, $image_mime_types)
+                );
+
+                if (in_array($file_mime_type, $image_mime_types)) {
+                    // Upload image file to server
+                    move_uploaded_file($file_temp, $target_file_path) ??
+                        ($data[
+                            'imgError'
+                        ] = "The uploading of {$file_name} failed");
+                } else {
+                    $data['imgError'] =
+                        "Only " .
+                        implode(', ', $image_mime_types) .
+                        " file types allowed.";
+                }
+            }
+
             // If there are no errors update the post
-            if (empty($data['titleError']) && empty($data['contentError'])) {
+            if (
+                empty($data['titleError']) &&
+                empty($data['contentError']) &&
+                empty($data['imgError'])
+            ) {
                 try {
                     $this->postModel->updatePost($data);
                     flash('post_message', "Post updated");
@@ -176,8 +223,10 @@ class Posts extends Controller
                 'active' => $post->postActive,
                 'priv' => $post->postPriv,
                 'title' => $post->title,
+                'imgName' => $post->imgName,
                 'content' => $post->content,
                 'titleError' => '',
+                'imgError' => '',
                 'contentError' => ''
             ];
         }
@@ -208,4 +257,3 @@ class Posts extends Controller
         }
     }
 }
-?>
