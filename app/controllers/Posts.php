@@ -256,4 +256,45 @@ class Posts extends Controller
             redirectTo('posts');
         }
     }
+
+    public function comment($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init comment data
+            $data = [
+                'comment' => trim($_POST['comment']),
+                'commentError' => ''
+            ];
+
+            // Validate comment
+            if (empty($data['comment'])) {
+                $data['commentError'] = "Please enter some text.";
+            }
+
+            // If comment is error free then:
+            if (empty($data['commentError'])) {
+                try {
+                    var_dump($data);
+                    // $this->postModel->addComment($id);
+                    flash('post_message', "Comment added");
+                    redirectTo('posts/show/' . $id);
+                } catch (Throwable $e) {
+                    echo "<strong>Failed to add comment:</strong> {$e->getMessage()}";
+                }
+            } else {
+                // Load the views with errors
+                $this->view('posts/show', $data);
+            }
+        } else {
+            $data = [
+                'comment' => '',
+                'commentError' => ''
+            ];
+
+            // Load views
+            $this->view('posts/show', $data);
+        }
+    }
 }

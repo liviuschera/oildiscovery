@@ -25,8 +25,6 @@ class Users extends Controller
 
         // Check for post
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Process the form
-
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -418,4 +416,3 @@ class Users extends Controller
         redirectTo('users/login');
     }
 }
-?>

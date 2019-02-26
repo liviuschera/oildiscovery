@@ -52,34 +52,6 @@
 
             <?php echo $data['post']->content; ?>
 
-            <!-- <p class="paragraph">
-                     In recognition of this, the World Health Organisation (WHO)
-                     recommends adults and children limit their intake of “free
-                     sugars” to less than 10% of their total energy intake.
-                     Below 5% is even better and carries additional health
-                     benefits.
-                  </p> -->
-            <!-- <div
-                     class="card__img-wrapper card__img-wrapper--full-width-blogpost"
-                  >
-                     <a href="">
-                        <img
-                           src="<?php echo URLROOT; ?>/images/blog/post-06-770x480.jpg"
-                           alt=""
-                           class="card__img card__img--full-width-blogpost"
-                        />
-                     </a>
-                  </div> -->
-            <!-- <p class="paragraph">
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                     Hic est ad eum aut maiores dolorem, expedita id tenetur
-                     explicabo mollitia magni ea cupiditate. Iste, laborum
-                     eligendi! Reprehenderit aut corporis voluptates? Lorem
-                     ipsum dolor sit amet consectetur adipisicing elit. Sunt
-                     corrupti debitis quod? Sunt non magni fuga, quia facere
-                     similique cumque asperiores qui excepturi odio corporis ex
-                     dolor, dicta ullam atque?
-                  </p> -->
         </figure>
         <!-- ~~~ BLOG POST CARD end -->
         <!-- <?php echo $data['post']->content; ?> -->
@@ -144,7 +116,7 @@
 
         <!-- ~~~ BLOG POST NAV SOCIAL end -->
 
-        <!-- ~~~ BLOG POST USER COMMENTS  start -->
+        <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
         <section class="user-comments">
             <h3 class="heading-tertiary">3 Comments</h3>
             <ul class="user-comments__comments">
@@ -269,7 +241,27 @@
                 </li>
             </ul>
         </section>
-        <!-- ~~~ BLOG POST USER COMMENTS  end -->
+        <!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
+
+        <!-- ~~~ BLOG POST ADD USER COMMENTS  start -->
+
+        <form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/users/show/<?php echo $_SESSION[
+    'login_user_id'
+]; ?>" method="post">
+            <h3 class="h-3 u-txt-align-center u-mb-big">Leave a Comment</h3>
+            <div class="form__group">
+                <textarea rows="3" class="form__textarea  <?php echo !empty(
+                    $data['commentError']
+                )
+                    ? 'form__invalid'
+                    : ''; ?>" placeholder="Leave a comment" name="comment" id="comment"></textarea>
+                <span class="form__failed-feedback">
+                    <?php echo $data['commentError'] ?? ''; ?></span>
+            </div>
+            <input class="button" type="submit" value="Send comment">
+        </form>
+
+        <!-- ~~~ BLOG POST ADD USER COMMENTS  end -->
 
         <!-- ~~~ BLOG POST CARD  end -->
     </main>
