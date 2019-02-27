@@ -118,91 +118,12 @@
 
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
         <section class="user-comments">
-            <h3 class="heading-tertiary">3 Comments</h3>
+            <h3 class="h-3 u-mb-big u-txt-align-center">
+                <?php echo !empty($data['comments'])
+                    ? count($data['comments'])
+                    : 0; ?> Comments</h3>
             <ul class="user-comments__comments">
-                <li class="user-comments__comment">
-                    <div class="user-comments__avatar">
-                        <img src="<?php echo URLROOT; ?>/images/users/user-alan-smith-70x71.jpg" alt="" />
-                    </div>
-                    <div class="user-comments__content">
-                        <header>
-                            <p class="paragraph">
-                                <a href="" class="user-comments__user-link">John</a>
-                                <span class="user-comments__like">
-                                    <a href=""> Like </a>
-                                    <svg>
-                                        <use href="images/sprite.svg#icon-thumbs-up"></use>
-                                    </svg>
-                                </span>
-                                <span class="user-comments__reply">
-                                    <a href=""> Reply </a>
-                                    <svg>
-                                        <use href="images/sprite.svg#icon-chat"></use>
-                                    </svg>
-                                </span>
-                                <span class="user-comments__published-date">Feb 16, 7:42 PM
-                                    <svg>
-                                        <use href="images/sprite.svg#icon-clock"></use>
-                                    </svg>
-                                </span>
-                            </p>
-                        </header>
-                        <p class="paragraph">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Iusto a quam reiciendis, temporibus earum
-                            dolorum sunt blanditiis possimus, dolor deleniti
-                            adipisci veritatis praesentium voluptatum. Illo
-                            nostrum nihil obcaecati fugiat tempora.
-                        </p>
-                        <p class="paragraph">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Vero sint maiores animi maxime possimus
-                            nesciunt et incidunt temporibus vel accusantium
-                            quisquam omnis, dolorem, aliquid explicabo sed facere
-                            earum, ab velit?
-                        </p>
-                    </div>
-
-                    <ul class="user-comments__reply">
-                        <li class="user-comments__comment">
-                            <div class="user-comments__avatar">
-                                <img src="<?php echo URLROOT; ?>/images/users/user-jessica-priston-151x151.jpg" alt="" />
-                            </div>
-                            <div class="user-comments__content">
-                                <header>
-                                    <p class="paragraph">
-                                        <a href="" class="user-comments__user-link">John</a>
-                                        <span class="user-comments__like">
-                                            <a href=""> Like </a>
-                                            <svg>
-                                                <use href="images/sprite.svg#icon-thumbs-up"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="user-comments__reply">
-                                            <a href=""> Reply </a>
-                                            <svg>
-                                                <use href="images/sprite.svg#icon-chat"></use>
-                                            </svg>
-                                        </span>
-                                        <span class="user-comments__published-date">Feb 16, 7:42 PM
-                                            <svg>
-                                                <use href="images/sprite.svg#icon-clock"></use>
-                                            </svg>
-                                        </span>
-                                    </p>
-                                </header>
-                                <p class="paragraph">
-                                    Lorem ipsum dolor, sit amet consectetur
-                                    adipisicing elit. Iusto a quam reiciendis,
-                                    temporibus earum dolorum sunt blanditiis
-                                    possimus, dolor deleniti adipisci veritatis
-                                    praesentium voluptatum. Illo nostrum nihil
-                                    obcaecati fugiat tempora.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                <?php foreach ($data['comments'] as $comment): ?>
                 <li class="user-comments__comment">
                     <div class="user-comments__avatar">
                         <img src="<?php echo URLROOT; ?>/images/users/user-mila-moa-70x71.jpg" alt="" />
@@ -210,7 +131,10 @@
                     <div class="user-comments__content">
                         <header>
                             <p class="paragraph">
-                                <a href="" class="user-comments__user-link">John</a>
+                                <a href="" class="user-comments__user-link">
+                                    <?php echo $comment->commenter_fname .
+                                        " " .
+                                        $comment->commenter_lname; ?></a>
                                 <span class="user-comments__like">
                                     <a href=""> Like </a>
                                     <svg>
@@ -223,7 +147,11 @@
                                         <use href="images/sprite.svg#icon-chat"></use>
                                     </svg>
                                 </span>
-                                <span class="user-comments__published-date">Feb 16, 7:42 PM
+                                <span class="user-comments__published-date">
+                                    <?php echo formatDate(
+                                        $comment->created_at,
+                                        'd-M-Y, H:i'
+                                    ); ?>
                                     <svg>
                                         <use href="images/sprite.svg#icon-clock"></use>
                                     </svg>
@@ -239,24 +167,25 @@
                         </p>
                     </div>
                 </li>
+                <?php endforeach; ?>
             </ul>
         </section>
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
 
         <!-- ~~~ BLOG POST ADD USER COMMENTS  start -->
 
-        <form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/users/show/<?php echo $_SESSION[
-    'login_user_id'
-]; ?>" method="post">
+        <form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
+    'post'
+]->postID; ?>" method="post">
             <h3 class="h-3 u-txt-align-center u-mb-big">Leave a Comment</h3>
             <div class="form__group">
                 <textarea rows="3" class="form__textarea  <?php echo !empty(
-                    $data['commentError']
+                    $data['post']->commentError
                 )
                     ? 'form__invalid'
                     : ''; ?>" placeholder="Leave a comment" name="comment" id="comment"></textarea>
                 <span class="form__failed-feedback">
-                    <?php echo $data['commentError'] ?? ''; ?></span>
+                    <?php echo $data['post']->commentError ?? ''; ?></span>
             </div>
             <input class="button" type="submit" value="Send comment">
         </form>

@@ -160,4 +160,40 @@ class Post
         $row = $this->db->getSingleResult();
         return $row;
     }
+
+    public function addComment($data)
+    {
+        try {
+            $this->db->queryDB(
+                "INSERT INTO comments (commenter_id, commenter_fname, commenter_lname, post_id, comment) VALUES (:commenter_id, :commenter_fname, :commenter_lname, :post_id, :comment);"
+            );
+
+            $this->db->bindVal(':commenter_id', $_SESSION['login_user_id']);
+            $this->db->bindVal(
+                ':commenter_fname',
+                $_SESSION['login_user_fname']
+            );
+            $this->db->bindVal(
+                ':commenter_lname',
+                $_SESSION['login_user_lname']
+            );
+            $this->db->bindVal(':post_id', $data['post']->postID);
+            $this->db->bindVal(':comment', $data['post']->comment);
+
+            $this->db->executeStmt();
+        } catch (Throwable $e) {
+            die("Failed to execute addComment: {$e->getMessage()}");
+        }
+    }
+
+    public function getCommentsByPostId($id)
+    {
+        $this->db->queryDB("SELECT * FROM comments WHERE post_id = :post_id;");
+
+        $this->db->bindVal(':post_id', $id);
+
+        $comments = $this->db->getResultSet();
+
+        return $comments;
+    }
 }

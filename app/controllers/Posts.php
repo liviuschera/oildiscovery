@@ -234,13 +234,6 @@ class Posts extends Controller
         $this->view('posts/edit', $data);
     }
 
-    public function show($id)
-    {
-        $post = $this->postModel->getPostById($id);
-        $data = ['post' => $post];
-        $this->view('posts/show', $data);
-    }
-
     public function delete($id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -254,6 +247,62 @@ class Posts extends Controller
             }
         } else {
             redirectTo('posts');
+        }
+    }
+
+    public function show($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['comment'])) {
+            // if (isset($_POST['comment'])) {
+            $post = $this->postModel->getPostById($id);
+            // Init comment data
+            $data = [
+                // 'comment' => trim($_POST['comment']),
+                // 'commentError' => '',
+                'post' => $post
+            ];
+            $data['post']->comment = trim($_POST['comment']);
+            $data['post']->commentError = '';
+            var_dump($data);
+
+            // Validate comment
+            if (empty($data['post']->comment)) {
+                $data['post']->commentError = "Please enter some text.";
+                // $data['commentError'] = "Please enter some text.";
+            }
+
+            // If comment is error free then:
+            if (empty($data['post']->commentError)) {
+                // if (empty($data['commentError'])) {
+                try {
+                    $this->postModel->addComment($data);
+                    flash('post_message', "Comment added");
+                    redirectTo('posts/show/' . $data['post']->postID);
+                } catch (Throwable $e) {
+                    echo "<strong>Failed to add comment:</strong> {$e->getMessage()}";
+                }
+            } else {
+                // Load the views with errors
+                var_dump($data);
+
+                $this->view('posts/show', $data);
+            }
+        } else {
+            // $data = [
+            //     'comment' => '',
+            //     'commentError' => ''
+            // ];
+
+            // // Load views
+            // $this->view('posts/show', $data);
+            $comments = $this->postModel->getCommentsByPostId($id);
+            var_dump($comments);
+            $post = $this->postModel->getPostById($id);
+            $data = [
+                'post' => $post,
+                'comments' => $comments
+            ];
+            $this->view('posts/show', $data);
         }
     }
 

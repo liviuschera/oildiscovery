@@ -402,7 +402,8 @@ class Users extends Controller
         $_SESSION['login_user_id'] = $user->id;
         $_SESSION['login_user_priv'] = $user->priv;
         $_SESSION['login_user_email'] = $user->email;
-        $_SESSION['login_user_name'] = $user->firstName;
+        $_SESSION['login_user_fname'] = $user->firstName;
+        $_SESSION['login_user_lname'] = $user->lastName;
         redirectTo('posts');
     }
 
@@ -411,7 +412,8 @@ class Users extends Controller
         unset($_SESSION['login_user_id']);
         unset($_SESSION['login_user_priv']);
         unset($_SESSION['login_user_email']);
-        unset($_SESSION['login_user_name']);
+        unset($_SESSION['login_user_fname']);
+        unset($_SESSION['login_user_lname']);
         session_destroy();
         redirectTo('users/login');
     }
