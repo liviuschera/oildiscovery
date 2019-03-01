@@ -11,7 +11,7 @@
                 <div class="card__img-wrapper card__img-wrapper--full-width-blogpost">
                     <a href="">
                         <img src="<?php echo URLROOT .
-                            IMG_DIR .
+                            BLOG_IMG_DIR .
                             $data['post']
                                 ->imgName; ?>" alt="" class="card__img card__img--full-width-blogpost" />
                     </a>
@@ -159,11 +159,7 @@
                             </p>
                         </header>
                         <p class="paragraph">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Iusto a quam reiciendis, temporibus earum
-                            dolorum sunt blanditiis possimus, dolor deleniti
-                            adipisci veritatis praesentium voluptatum. Illo
-                            nostrum nihil obcaecati fugiat tempora.
+                            <?php echo $comment->comment; ?>
                         </p>
                     </div>
                 </li>
@@ -200,7 +196,7 @@
         </form>
 
         <div class="blog-post__about">
-            <h3 class="heading-tertiary">About</h3>
+            <h3 class="h-3">About</h3>
             <p class="paragraph">
                 I am a Certified Health Coach, focused on women's health,
                 bringing you super-practical support to help you feel great,

@@ -27,7 +27,10 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            var_dump($_POST);
+            var_dump($_FILES);
+            $file_name = $_FILES['imgFile']['name'] ?? '';
+            $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
             $data = [
                 'firstName' => trim($_POST['firstName']),
@@ -36,12 +39,14 @@ class Users extends Controller
                 'phone' => trim($_POST['phone']),
                 'passw' => trim($_POST['passw']),
                 'confirmPassw' => trim($_POST['confirmPassw']),
+                'imgName' => $file_name,
                 'firstNameError' => '',
                 'lastNameError' => '',
                 'emailError' => '',
                 'phoneError' => '',
                 'passwError' => '',
-                'confirmPasswError' => ''
+                'confirmPasswError' => '',
+                'imgError' => ''
             ];
 
             // Validate first name
@@ -81,6 +86,40 @@ class Users extends Controller
             } else {
                 if ($data['passw'] !== $data['confirmPassw']) {
                     $data['confirmPasswError'] = "Password do not match.";
+                }
+            }
+
+            // Validate image
+            if (empty($file_name)) {
+                $data['imgError'] = 'Please chose a file';
+            } else {
+                $target_file_path = USER_IMG_DIR . $file_name;
+                $file_type = strtolower(
+                    pathinfo($target_file_path, PATHINFO_EXTENSION)
+                );
+                // Allow only certain extension types
+                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
+                $file_mime_type = mime_content_type($file_temp);
+                var_dump(
+                    $file_temp,
+                    $file_name,
+                    $target_file_path,
+                    $file_type,
+                    $file_mime_type,
+                    in_array($file_mime_type, $image_mime_types)
+                );
+
+                if (in_array($file_mime_type, $image_mime_types)) {
+                    // Upload image file to server
+                    move_uploaded_file($file_temp, $target_file_path) ??
+                        ($data[
+                            'imgError'
+                        ] = "The uploading of {$file_name} failed");
+                } else {
+                    $data['imgError'] =
+                        "Only " .
+                        implode(', ', $image_mime_types) .
+                        " file types allowed.";
                 }
             }
 
@@ -125,12 +164,14 @@ class Users extends Controller
                 'phone' => '',
                 'passw' => '',
                 'confirmPassw' => '',
+                'imgName' => '',
                 'firstNameError' => '',
                 'lastNameError' => '',
                 'emailError' => '',
                 'phoneError' => '',
                 'passwError' => '',
-                'confirmPasswError' => ''
+                'confirmPasswError' => '',
+                'imgError' => ''
             ];
 
             // Load view;

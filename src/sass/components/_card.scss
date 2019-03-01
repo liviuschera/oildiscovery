@@ -5,7 +5,7 @@
    background-color: var(--color-white);
    overflow: hidden;
    grid-template-rows: repeat(3, 1fr);
-   box-shadow: 0 0 0 rgba(black, 0.1);
+   box-shadow: var(--shadow-card);
    transition: box-shadow 0.5s;
    margin: 1.5rem;
    color: var(--color-grey-dark-1);
@@ -277,7 +277,7 @@
    }
 
    &:hover {
-      box-shadow: 0 0 1rem rgba(black, 0.1);
+      box-shadow: var(--shadow-card-hover);
    }
    &--full-width-blogpost:hover {
       box-shadow: none;

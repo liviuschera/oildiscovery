@@ -3,7 +3,7 @@
 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 
-<form action="<?php echo URLROOT; ?>/users/register" class="form u-div-center u-txt-align-center" method="post">
+<form action="<?php echo URLROOT; ?>/users/register" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">
     <h3 class="h-2">Create an account</h3>
     <p class="paragraph">Please fill out this form to register.</p>
     <div class="form__row">
@@ -79,6 +79,16 @@
                 <?php echo $data['confirmPasswError']; ?></span>
         </div>
     </div>
+
+    <!-- Add user IMAGE -->
+    <div class="form__group u-mb-small">
+        <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
+            'imgName'
+        ]; ?>">
+        <span class="form__failed-feedback">
+            <?php echo $data['imgError']; ?></span>
+    </div>
+
     <div class="form__row">
         <input class="button" type="submit" value="Register">
         <a class="button" href="<?php echo URLROOT; ?>/users/login" type="submit">

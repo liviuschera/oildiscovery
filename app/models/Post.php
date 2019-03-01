@@ -47,7 +47,7 @@ class Post
             $this->db->executeStmt();
             $last_post_id = $this->db->retrieveLastInsertId();
 
-            // Query post_body database
+            // Query post_body table
             $this->db->queryDB(
                 'INSERT INTO post_body (postID, content) VALUES (:postID, :content);'
             );
@@ -56,7 +56,7 @@ class Post
 
             $this->db->executeStmt();
 
-            // Query post_images database
+            // Query post_images table
             $this->db->queryDB(
                 "INSERT INTO post_images (post_id, img_name) VALUES (:post_id, :img_name);"
             );

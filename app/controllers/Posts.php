@@ -61,7 +61,7 @@ class Posts extends Controller
             if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';
             } else {
-                $target_file_path = IMG_DIR . $file_name;
+                $target_file_path = BLOG_IMG_DIR . $file_name;
                 $file_type = strtolower(
                     pathinfo($target_file_path, PATHINFO_EXTENSION)
                 );
@@ -163,7 +163,7 @@ class Posts extends Controller
             if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';
             } else {
-                $target_file_path = IMG_DIR . $file_name;
+                $target_file_path = BLOG_IMG_DIR . $file_name;
                 $file_type = strtolower(
                     pathinfo($target_file_path, PATHINFO_EXTENSION)
                 );
@@ -263,7 +263,6 @@ class Posts extends Controller
             ];
             $data['post']->comment = trim($_POST['comment']);
             $data['post']->commentError = '';
-            var_dump($data);
 
             // Validate comment
             if (empty($data['post']->comment)) {
@@ -283,7 +282,6 @@ class Posts extends Controller
                 }
             } else {
                 // Load the views with errors
-                var_dump($data);
 
                 $this->view('posts/show', $data);
             }
@@ -296,7 +294,6 @@ class Posts extends Controller
             // // Load views
             // $this->view('posts/show', $data);
             $comments = $this->postModel->getCommentsByPostId($id);
-            var_dump($comments);
             $post = $this->postModel->getPostById($id);
             $data = [
                 'post' => $post,

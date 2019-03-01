@@ -12,9 +12,10 @@ class User
     public function registerUser($data)
     {
         try {
+            $this->db->startTransaction();
             // Query database
             $this->db->queryDB(
-                'INSERT INTO users (firstName, lastName, email, phone, passw) VALUES (:firstName, :lastName, :email, :phone, :passw)'
+                "INSERT INTO users (firstName, lastName, email, phone, passw) VALUES (:firstName, :lastName, :email, :phone, :passw);"
             );
             // Bind values
             $this->db->bindVal(':firstName', $data['firstName']);
@@ -25,10 +26,23 @@ class User
 
             // Execute the prepared statement
             $this->db->executeStmt();
-            return true;
+            $last_user_id = $this->db->retrieveLastInsertId();
+
+            // Query user_images table
+            $this->db->queryDB(
+                "INSERT INTO user_images (user_id, img_name) VALUES (:user_id, :img_name);"
+            );
+            $this->db->bindVal(':user_id', $last_user_id);
+            $this->db->bindVal(':img_name', $data['imgName']);
+
+            $this->db->executeStmt();
+
+            $this->db->commitTransaction();
         } catch (Exception $e) {
-            echo "Failed to execute statement: " . $e->getMessage();
-            return false;
+            $this->db->rollBackTransaction();
+            die(
+                "Failed to execute REGISTER user transaction: {$e->getMessage()}"
+            );
         }
     }
     // Edit user
@@ -123,8 +137,14 @@ class User
             users.createdAt AS createdAt,
             users.modified AS modified,
             users.priv AS priv,
-            users.active AS active 
-             FROM users WHERE 
+            users.active AS active,
+            user_images.user_id as imgUserId,
+            user_images.img_name as imgName,
+            user_images.uploaded_on as imgDate,
+            user_images.status as imgStatus
+             FROM users 
+             JOIN user_images ON users.id = user_images.user_id
+             WHERE 
                 (lower(firstName) LIKE :search 
                 OR lower(lastName) LIKE :search 
                 OR lower(email) LIKE :search) 
@@ -169,4 +189,3 @@ class User
         }
     }
 }
-?>

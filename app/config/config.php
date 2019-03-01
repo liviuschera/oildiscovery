@@ -22,6 +22,5 @@ define('ROWS_PER_PAGE_USERS', 2);
 define('ROWS_PER_PAGE_POSTS', 6);
 
 // Path for uploaded images
-$target_dir = URLROOT . '/images/blog/';
-define('IMG_DIR', 'images/blog/');
-?>
+define('BLOG_IMG_DIR', 'images/blog/');
+define('USER_IMG_DIR', 'images/users/');

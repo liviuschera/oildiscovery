@@ -65,9 +65,7 @@
    </div>
 
    <!-- Post IMAGE -->
-   <div class="form__row">
-      
-      <div class="form__group">
+      <div class="form__group u-mb-small">
          <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
              'imgName'
          ]; ?>">
@@ -75,7 +73,6 @@
              'imgError'
          ]; ?></span>
       </div>
-   </div>
    
    <!-- Post CONTENT -->
    <div class="form__group">
