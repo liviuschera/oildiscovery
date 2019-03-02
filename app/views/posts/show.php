@@ -125,7 +125,7 @@
             <ul class="user-comments__comments">
                 <?php foreach ($data['comments'] as $comment): ?>
                 <li class="user-comments__comment">
-                    <div class="user-comments__avatar">
+                    <div class="avatar">
                         <img src="<?php echo URLROOT; ?>/images/users/user-mila-moa-70x71.jpg" alt="" />
                     </div>
                     <div class="user-comments__content">
@@ -135,18 +135,7 @@
                                     <?php echo $comment->commenter_fname .
                                         " " .
                                         $comment->commenter_lname; ?></a>
-                                <span class="user-comments__like">
-                                    <a href=""> Like </a>
-                                    <svg>
-                                        <use href="images/sprite.svg#icon-thumbs-up"></use>
-                                    </svg>
-                                </span>
-                                <span class="user-comments__reply">
-                                    <a href=""> Reply </a>
-                                    <svg>
-                                        <use href="images/sprite.svg#icon-chat"></use>
-                                    </svg>
-                                </span>
+
                                 <span class="user-comments__published-date">
                                     <?php echo formatDate(
                                         $comment->created_at,

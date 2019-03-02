@@ -2,7 +2,6 @@
 
 function showUserTable($data)
 {
-    var_dump($data);
     if (!empty($data)): ?>
 
 <table class="table u-div-center table--users u-mt-big">
@@ -73,6 +72,6 @@ function showUserTable($data)
     </tbody>
 </table>
 <?php echo paginate($_SESSION['row_count_users']); ?>
-<?php endif;?>
+<?php endif; ?>
 <?php
 } ?> 

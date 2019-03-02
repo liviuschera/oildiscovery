@@ -5,7 +5,7 @@
 
 <form action="<?php echo URLROOT; ?>/users/edit/<?php echo $data[
     'id'
-]; ?>" class="form u-div-center u-txt-align-center" method="post">
+]; ?>" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">
     <h3 class="h-2">Edit an username</h3>
     <p class="paragraph">Edit the necessary fields.</p>
     <div class="form__row">
@@ -98,11 +98,10 @@
         <!-- User PRIV -->
         <div class="form__group">
             <select id="priv" name="priv" class="form__select">
-                <?php // Set an array contining user privilege levels
-// Set an array contining user privilege levels
-?>
-                $privArray = ['0' => 'User', '1' => 'Admin', '2' => 'Owner']; // display the values in the form
+                <?php
+                $privArray = ['0' => 'User', '1' => 'Admin', '2' => 'Owner']; // Set an array contining user privilege levels
                 foreach ($privArray as $key => $value) {
+                    // display the values in the form
                     echo "<option value={$key}";
                     if ((string) $data['priv'] === (string) $key) {
                         echo " selected";
@@ -112,6 +111,15 @@
                 ?>
             </select>
             <label for="priv">Privilege:</label>
+        </div>
+
+        <!-- Change user IMAGE -->
+        <div class="form__group u-mb-small">
+            <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
+                'imgName'
+            ]; ?>">
+            <span class="form__failed-feedback">
+                <?php echo $data['imgError']; ?></span>
         </div>
 
     </div>

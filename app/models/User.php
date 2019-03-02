@@ -49,6 +49,7 @@ class User
     public function editUser($data)
     {
         try {
+            $this->db->startTransaction();
             // Query database
             $this->db->queryDB(
                 'UPDATE users SET firstName = :firstName, lastName = :lastName, email = :email, phone = :phone, passw = :passw, priv = :priv, active = :active, modified = now() WHERE id = :id'
@@ -65,10 +66,22 @@ class User
 
             // Execute the prepared statement
             $this->db->executeStmt();
-            return true;
+
+            // Update user photo
+            $this->db->queryDB(
+                "UPDATE user_images SET img_name=:img_name, uploaded_on=now() WHERE user_id=:user_id;"
+            );
+            $this->db->bindVal(':img_name', $data['imgName']);
+            $this->db->bindVal(':user_id', $data['id']);
+
+            $this->db->executeStmt();
+
+            $this->db->commitTransaction();
         } catch (Exception $e) {
-            echo "Failed to execute statement: " . $e->getMessage();
-            return false;
+            $this->db->rollBackTransaction();
+            die(
+                "Failed to execute UPDATE user transaction: {$e->getMessage()}"
+            );
         }
     }
 
@@ -111,7 +124,11 @@ class User
     public function getUserById($id)
     {
         // Query Database
-        $this->db->queryDB('SELECT * FROM users WHERE id = :id');
+        $this->db->queryDB(
+            'SELECT * FROM users 
+            JOIN user_images ON users.id = user_images.user_id 
+            WHERE users.id = :id;'
+        );
         // Bind value
         $this->db->bindVal(':id', $id);
         // Retrieve from database
@@ -141,7 +158,7 @@ class User
             user_images.user_id as imgUserId,
             user_images.img_name as imgName,
             user_images.uploaded_on as imgDate,
-            user_images.status as imgStatus
+            user_images.active as imgActive
              FROM users 
              JOIN user_images ON users.id = user_images.user_id
              WHERE 

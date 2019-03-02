@@ -33,6 +33,7 @@ class Users extends Controller
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
             $data = [
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'firstName' => trim($_POST['firstName']),
                 'lastName' => trim($_POST['lastName']),
                 'email' => trim($_POST['email']),
@@ -158,6 +159,7 @@ class Users extends Controller
         } else {
             // Init data
             $data = [
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'firstName' => '',
                 'lastName' => '',
                 'email' => '',
@@ -186,9 +188,13 @@ class Users extends Controller
 
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            var_dump($_POST);
+            var_dump($_FILES);
+            $file_name = $_FILES['imgFile']['name'] ?? '';
+            $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
             $data = [
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
                 'id' => $id,
                 'firstName' => trim($_POST['firstName']),
                 'lastName' => trim($_POST['lastName']),
@@ -197,13 +203,14 @@ class Users extends Controller
                 'passw' => trim($_POST['passw']),
                 'confirmPassw' => trim($_POST['confirmPassw']),
                 'priv' => trim($_POST['priv']),
-                'active' => trim($_POST['active']),
+                'imgName' => $file_name,
                 'firstNameError' => '',
                 'lastNameError' => '',
                 'emailError' => '',
                 'phoneError' => '',
                 'passwError' => '',
-                'confirmPasswError' => ''
+                'confirmPasswError' => '',
+                'imgError' => ''
             ];
 
             // Validate first name
@@ -253,6 +260,40 @@ class Users extends Controller
             } else {
                 if ($data['passw'] !== $data['confirmPassw']) {
                     $data['confirmPasswError'] = "passws do not match.";
+                }
+            }
+
+            // Validate image
+            if (empty($file_name)) {
+                $data['imgError'] = 'Please chose a file';
+            } else {
+                $target_file_path = USER_IMG_DIR . $file_name;
+                $file_type = strtolower(
+                    pathinfo($target_file_path, PATHINFO_EXTENSION)
+                );
+                // Allow only certain extension types
+                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
+                $file_mime_type = mime_content_type($file_temp);
+                // var_dump(
+                //     $file_temp,
+                //     $file_name,
+                //     $target_file_path,
+                //     $file_type,
+                //     $file_mime_type,
+                //     in_array($file_mime_type, $image_mime_types)
+                // );
+
+                if (in_array($file_mime_type, $image_mime_types)) {
+                    // Upload image file to server
+                    move_uploaded_file($file_temp, $target_file_path) ??
+                        ($data[
+                            'imgError'
+                        ] = "The uploading of {$file_name} failed");
+                } else {
+                    $data['imgError'] =
+                        "Only " .
+                        implode(', ', $image_mime_types) .
+                        " file types allowed.";
                 }
             }
 
@@ -309,16 +350,18 @@ class Users extends Controller
                 'lastName' => $user->lastName,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'passw' => '',
+                'passw' => $user->passw,
                 'priv' => $user->priv,
                 'active' => $user->active,
-                'confirmPassw' => '',
+                'confirmPassw' => $user->passw,
+                'imgName' => $user->img_name,
                 'firstNameError' => '',
                 'lastNameError' => '',
                 'emailError' => '',
                 'phoneError' => '',
                 'passwError' => '',
-                'confirmPasswError' => ''
+                'confirmPasswError' => '',
+                'imgError' => ''
             ];
 
             // Load view;

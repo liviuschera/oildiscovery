@@ -1,0 +1,22 @@
+.avatar {
+   position: absolute;
+   left: 0;
+   height: 7rem;
+   width: 7rem;
+   box-shadow: 0rem 0.2rem 0.2rem rgba($color-black, 0.1) inset,
+      0.2rem 0rem 0.5rem rgba($color-black, 0.1) inset;
+   border-radius: 50%;
+
+   img {
+      position: relative;
+      height: inherit;
+      width: inherit;
+      border-radius: 50%;
+      z-index: -1;
+   }
+
+   &--navbar {
+      height: 3rem;
+      width: 3rem;
+   }
+}
