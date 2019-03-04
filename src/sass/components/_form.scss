@@ -82,7 +82,7 @@
                width: var(--font-paragraph-size);
                border-radius: inherit;
                color: var(--color-primary);
-               padding-left: 3px;
+               padding-right: 3px;
                padding-top: 2px;
                background-color: var(--color-grey-light-1);
                opacity: 0;
@@ -120,6 +120,16 @@
       padding-right: 1rem;
       font-size: 1rem;
       color: $color-danger;
+   }
+
+   &__successful-feedback {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding-top: 0.3rem;
+      padding-right: 1rem;
+      font-size: 1rem;
+      color: $color-success;
    }
 
    &__alert-success,

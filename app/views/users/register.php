@@ -82,9 +82,7 @@
 
     <!-- Add user IMAGE -->
     <div class="form__group u-mb-small">
-        <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
-            'imgName'
-        ]; ?>">
+        <input class="form__input" type="file" name="imgFile" id="imgFile" value="">
         <span class="form__failed-feedback">
             <?php echo $data['imgError']; ?></span>
     </div>

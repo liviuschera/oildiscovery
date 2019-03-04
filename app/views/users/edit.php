@@ -2,7 +2,7 @@
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
 
 <!-- ~~~ EDIT FORM start ~~~ -->
-
+<?php var_dump($_SESSION['user_edit_imgname'], $data); ?>
 <form action="<?php echo URLROOT; ?>/users/edit/<?php echo $data[
     'id'
 ]; ?>" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">
@@ -87,11 +87,11 @@
         <!-- User ACTIVE -->
         <div class="form__group">
             <div class="form__checkbox">
-                <input type="checkbox" name="active" id="active" value="y" <?php echo $data[
+                <input type="checkbox" name="active" id="active" value="<?php echo $data[
                     'active'
-                ] === 'y'
-                    ? 'checked'
-                    : ''; ?>/>
+                ]; ?>" <?php echo $data['active'] === 'y'
+    ? 'checked'
+    : ''; ?> />
                 <label for="active"><span></span>Active user</label>
             </div>
         </div>
@@ -112,16 +112,13 @@
             </select>
             <label for="priv">Privilege:</label>
         </div>
+    </div>
 
-        <!-- Change user IMAGE -->
-        <div class="form__group u-mb-small">
-            <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
-                'imgName'
-            ]; ?>">
-            <span class="form__failed-feedback">
-                <?php echo $data['imgError']; ?></span>
-        </div>
-
+    <!-- Change user IMAGE -->
+    <div class="form__group u-mb-small">
+        <input class="form__input" type="file" name="imgFile" id="imgFile" value="">
+        <span class="form__failed-feedback">
+            <?php echo $data['imgError']; ?></span>
     </div>
     <div class="form__row">
         <input class="button" type="submit" value="Edit">

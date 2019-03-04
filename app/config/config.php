@@ -21,6 +21,9 @@ define('ADMIN_DASHBOARD_NAME', 'Oil Discovery Admin Dashboard');
 define('ROWS_PER_PAGE_USERS', 2);
 define('ROWS_PER_PAGE_POSTS', 6);
 
+// Site root
+define('PUBLICROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/');
+
 // Path for uploaded images
 define('BLOG_IMG_DIR', 'images/blog/');
 define('USER_IMG_DIR', 'images/users/');

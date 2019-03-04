@@ -111,13 +111,20 @@ class User
         // Retrieve row from database
         $row = $this->db->getSingleResult();
         return $row;
-        // //   Check if DB has any record with the $email
-        // if ($this->db->getRowCount() > 0) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-        //   $this->db->getRowCount() > 0 ? true : false;
+    }
+
+    // Find if there is another user image with same name
+    public function findUserImageByImageName($img_name)
+    {
+        // Query database
+        $this->db->queryDB(
+            'SELECT * FROM user_images WHERE img_name = :img_name'
+        );
+        // Bind value
+        $this->db->bindVal(':img_name', $img_name);
+        // Retrieve row from database
+        $row = $this->db->getSingleResult();
+        return $row;
     }
 
     // Get user by id
@@ -158,7 +165,7 @@ class User
             user_images.user_id as imgUserId,
             user_images.img_name as imgName,
             user_images.uploaded_on as imgDate,
-            user_images.active as imgActive
+            user_images.status as imgStatus
              FROM users 
              JOIN user_images ON users.id = user_images.user_id
              WHERE 

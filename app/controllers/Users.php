@@ -89,26 +89,21 @@ class Users extends Controller
                     $data['confirmPasswError'] = "Password do not match.";
                 }
             }
-
+            var_dump(
+                $this->userModel->findUserImageByImageName($file_name),
+                $file_name
+            );
             // Validate image
             if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';
+            } elseif ($this->userModel->findUserImageByImageName($file_name)) {
+                $data['imgError'] = "$file_name is already taken.";
             } else {
                 $target_file_path = USER_IMG_DIR . $file_name;
-                $file_type = strtolower(
-                    pathinfo($target_file_path, PATHINFO_EXTENSION)
-                );
+
                 // Allow only certain extension types
                 $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
                 $file_mime_type = mime_content_type($file_temp);
-                var_dump(
-                    $file_temp,
-                    $file_name,
-                    $target_file_path,
-                    $file_type,
-                    $file_mime_type,
-                    in_array($file_mime_type, $image_mime_types)
-                );
 
                 if (in_array($file_mime_type, $image_mime_types)) {
                     // Upload image file to server
@@ -131,7 +126,8 @@ class Users extends Controller
                 empty($data['emailError']) &&
                 empty($data['phoneError']) &&
                 empty($data['passwError']) &&
-                empty($data['confirmPasswError'])
+                empty($data['confirmPasswError']) &&
+                empty($data['imgError'])
             ) {
                 // Successfully validated
                 // Hash the password
@@ -194,7 +190,7 @@ class Users extends Controller
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
             $data = [
-                'active' => !isset($_POST['active']) ? 'n' : 'y',
+                'active' => $_POST['active'],
                 'id' => $id,
                 'firstName' => trim($_POST['firstName']),
                 'lastName' => trim($_POST['lastName']),
@@ -230,13 +226,7 @@ class Users extends Controller
                 $check_if_email_exists = $this->userModel->findUserByEmail(
                     $data['email']
                 );
-                echo "email exists";
-                var_dump($check_if_email_exists);
-                var_dump(empty($check_if_email_exists));
-                if (
-                    // !empty($check_if_email_exists) &&
-                    $id !== $check_if_email_exists->id
-                ) {
+                if ($id !== $check_if_email_exists->id) {
                     $data['emailError'] = "Email is already taken.";
                 }
             }
@@ -262,30 +252,38 @@ class Users extends Controller
                     $data['confirmPasswError'] = "passws do not match.";
                 }
             }
-
             // Validate image
+            var_dump($file_name, $file_temp);
             if (empty($file_name)) {
-                $data['imgError'] = 'Please chose a file';
+                // $data['imgError'] = 'Please chose a file';
+                $file_name = $_SESSION['user_edit_imgname'];
+                unset($_SESSION['user_edit_imgname']);
+            } elseif (
+                !empty(
+                    $this->userModel->findUserImageByImageName($file_name)
+                ) &&
+                $this->userModel->findUserImageByImageName($file_name)->id !==
+                    $id
+            ) {
+                $data['imgError'] = "$file_name is already taken.";
             } else {
                 $target_file_path = USER_IMG_DIR . $file_name;
-                $file_type = strtolower(
-                    pathinfo($target_file_path, PATHINFO_EXTENSION)
-                );
+
                 // Allow only certain extension types
                 $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
-                $file_mime_type = mime_content_type($file_temp);
+                // $file_mime_type = mime_content_type($file_temp);
+                $file_mime_type = mime_content_type($file_name);
                 // var_dump(
                 //     $file_temp,
                 //     $file_name,
                 //     $target_file_path,
-                //     $file_type,
                 //     $file_mime_type,
                 //     in_array($file_mime_type, $image_mime_types)
                 // );
 
                 if (in_array($file_mime_type, $image_mime_types)) {
                     // Upload image file to server
-                    move_uploaded_file($file_temp, $target_file_path) ??
+                    move_uploaded_file($file_name, $target_file_path) ??
                         ($data[
                             'imgError'
                         ] = "The uploading of {$file_name} failed");
@@ -296,7 +294,6 @@ class Users extends Controller
                         " file types allowed.";
                 }
             }
-
             // Make sure errors are empty
             if (
                 empty($data['firstNameError']) &&
@@ -304,19 +301,24 @@ class Users extends Controller
                 empty($data['emailError']) &&
                 empty($data['phoneError']) &&
                 empty($data['passwError']) &&
-                empty($data['confirmPasswError'])
+                empty($data['confirmPasswError']) &&
+                empty($data['imgError'])
             ) {
                 // Successfully validated
-                // Hash the password
-                $data['passw'] = password_hash(
-                    $data['passw'],
-                    PASSWORD_DEFAULT
-                );
+
+                // Don't hash the password if user didn't changed it
+                if ($_SESSION['user_edit_passw'] !== $data['passw']) {
+                    // Hash the password
+                    $data['passw'] = password_hash(
+                        $data['passw'],
+                        PASSWORD_DEFAULT
+                    );
+                }
 
                 // Register user
                 try {
                     $this->userModel->editUser($data);
-                    flash('edit_success', 'Edit successful');
+                    flash('user_message', 'Updated user info successfully');
                     redirectTo('users/search');
                 } catch (Exception $e) {
                     $this->error = $e->getMessage();
@@ -329,6 +331,24 @@ class Users extends Controller
         } else {
             // Find user
             $user = $this->userModel->getUserById($id);
+            var_dump(PUBLICROOT);
+            var_dump(APPROOT);
+            var_dump(
+                $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/',
+                $_SERVER['HTTP_HOST']
+            );
+            var_dump(URLROOT . USER_IMG_DIR . $user->img_name);
+            var_dump(is_writable(URLROOT . USER_IMG_DIR . $user->img_name));
+            var_dump(is_writable(PUBLICROOT . USER_IMG_DIR . $user->img_name));
+            var_dump(file_exists(URLROOT . USER_IMG_DIR . $user->img_name));
+            var_dump(
+                file_exists(
+                    $_SERVER['DOCUMENT_ROOT'] .
+                        '/oildiscovery/public/' .
+                        USER_IMG_DIR .
+                        $user->img_name
+                )
+            );
 
             // Check for if user has the right to edit
             if (
@@ -350,9 +370,9 @@ class Users extends Controller
                 'lastName' => $user->lastName,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'passw' => $user->passw,
                 'priv' => $user->priv,
                 'active' => $user->active,
+                'passw' => $user->passw,
                 'confirmPassw' => $user->passw,
                 'imgName' => $user->img_name,
                 'firstNameError' => '',
@@ -363,6 +383,8 @@ class Users extends Controller
                 'confirmPasswError' => '',
                 'imgError' => ''
             ];
+            $_SESSION['user_edit_passw'] = $user->passw;
+            $_SESSION['user_edit_imgname'] = $user->img_name;
 
             // Load view;
             $this->view('users/edit', $data);
@@ -469,6 +491,11 @@ class Users extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+                $user = $this->userModel->getUserById($id);
+                $img_file = PUBLICROOT . USER_IMG_DIR . $user->img_name;
+                if (is_writable($img_file)) {
+                    unlink($img_file);
+                }
                 $this->userModel->deleteUser($id);
                 flash('user_message', "User deleted");
                 redirectTo('users/search');

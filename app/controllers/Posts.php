@@ -213,6 +213,7 @@ class Posts extends Controller
         } else {
             // Check for owner
             $post = $this->postModel->getPostById($id);
+            var_dump($post);
             if ($post->userID !== $_SESSION['login_user_id']) {
                 redirectTo('posts');
             }
@@ -238,6 +239,11 @@ class Posts extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
+                $post = $this->postModel->getPostById($id);
+                $img_file = PUBLICROOT . BLOG_IMG_DIR . $post->imgName;
+                if (is_writable($img_file)) {
+                    unlink($img_file);
+                }
                 $this->postModel->deletePost($id);
                 flash('post_message', "Post deleted");
                 redirectTo('posts');
