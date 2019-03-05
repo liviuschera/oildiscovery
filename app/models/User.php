@@ -66,15 +66,16 @@ class User
 
             // Execute the prepared statement
             $this->db->executeStmt();
+            if (!empty($data['imgName'])) {
+                // Update user photo
+                $this->db->queryDB(
+                    "UPDATE user_images SET img_name=:img_name, uploaded_on=now() WHERE user_id=:user_id;"
+                );
+                $this->db->bindVal(':img_name', $data['imgName']);
+                $this->db->bindVal(':user_id', $data['id']);
 
-            // Update user photo
-            $this->db->queryDB(
-                "UPDATE user_images SET img_name=:img_name, uploaded_on=now() WHERE user_id=:user_id;"
-            );
-            $this->db->bindVal(':img_name', $data['imgName']);
-            $this->db->bindVal(':user_id', $data['id']);
-
-            $this->db->executeStmt();
+                $this->db->executeStmt();
+            }
 
             $this->db->commitTransaction();
         } catch (Exception $e) {
@@ -127,7 +128,7 @@ class User
         return $row;
     }
 
-    // Get user by id
+    // Retrieve user by id
     public function getUserById($id)
     {
         // Query Database

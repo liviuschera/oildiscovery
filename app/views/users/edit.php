@@ -2,7 +2,6 @@
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
 
 <!-- ~~~ EDIT FORM start ~~~ -->
-<?php var_dump($_SESSION['user_edit_imgname'], $data); ?>
 <form action="<?php echo URLROOT; ?>/users/edit/<?php echo $data[
     'id'
 ]; ?>" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">

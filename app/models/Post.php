@@ -95,13 +95,14 @@ class Post
             $this->db->bindVal(':postID', $data['postID']);
             $this->db->bindVal(':content', $data['content']);
             $this->db->executeStmt();
-
-            $this->db->queryDB(
-                "UPDATE post_images SET img_name = :img_name WHERE post_id = :post_id;"
-            );
-            $this->db->bindVal(':post_id', $data['postID']);
-            $this->db->bindVal(':img_name', $data['imgName']);
-            $this->db->executeStmt();
+            if (!empty($data['imgName'])) {
+                $this->db->queryDB(
+                    "UPDATE post_images SET img_name = :img_name WHERE post_id = :post_id;"
+                );
+                $this->db->bindVal(':post_id', $data['postID']);
+                $this->db->bindVal(':img_name', $data['imgName']);
+                $this->db->executeStmt();
+            }
 
             $this->db->commitTransaction();
         } catch (Exception $e) {
@@ -195,5 +196,19 @@ class Post
         $comments = $this->db->getResultSet();
 
         return $comments;
+    }
+
+    // Find if there is another post image with same name
+    public function findPostImageByImageName($img_name)
+    {
+        // Query database
+        $this->db->queryDB(
+            'SELECT * FROM post_images WHERE img_name = :img_name;'
+        );
+        // Bind img_name
+        $this->db->bindVal(':img_name', $img_name);
+        // Retrieve row from db
+        $row = $this->db->getSingleResult();
+        return $row;
     }
 }

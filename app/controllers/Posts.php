@@ -158,37 +158,52 @@ class Posts extends Controller
             if (empty($data['content'])) {
                 $data['contentError'] = 'Please enter content';
             }
-
+            var_dump(
+                $file_name,
+                $this->postModel->findPostImageByImageName($file_name)
+            );
             // Validate image
-            if (empty($file_name)) {
-                $data['imgError'] = 'Please chose a file';
-            } else {
-                $target_file_path = BLOG_IMG_DIR . $file_name;
-                $file_type = strtolower(
-                    pathinfo($target_file_path, PATHINFO_EXTENSION)
-                );
-                // Allow only certain extension types
-                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
-                $file_mime_type = mime_content_type($file_temp);
-                var_dump(
-                    $file_temp,
-                    $target_file_path,
-                    $file_type,
-                    $file_mime_type,
-                    in_array($file_mime_type, $image_mime_types)
-                );
-
-                if (in_array($file_mime_type, $image_mime_types)) {
-                    // Upload image file to server
-                    move_uploaded_file($file_temp, $target_file_path) ??
-                        ($data[
-                            'imgError'
-                        ] = "The uploading of {$file_name} failed");
+            if (!empty($file_name)) {
+                if (
+                    !empty(
+                        $this->postModel->findPostImageByImageName($file_name)
+                    ) &&
+                    $this->postModel->findPostImageByImageName($file_name)
+                        ->id !== $id
+                ) {
+                    $data['imgError'] = "$file_name is already taken.";
                 } else {
-                    $data['imgError'] =
-                        "Only " .
-                        implode(', ', $image_mime_types) .
-                        " file types allowed.";
+                    $target_file_path = BLOG_IMG_DIR . $file_name;
+                    $file_type = strtolower(
+                        pathinfo($target_file_path, PATHINFO_EXTENSION)
+                    );
+                    // Allow only certain extension types
+                    $image_mime_types = [
+                        'image/png',
+                        'image/gif',
+                        'image/jpeg'
+                    ];
+                    $file_mime_type = mime_content_type($file_temp);
+                    var_dump(
+                        $file_temp,
+                        $target_file_path,
+                        $file_type,
+                        $file_mime_type,
+                        in_array($file_mime_type, $image_mime_types)
+                    );
+
+                    if (in_array($file_mime_type, $image_mime_types)) {
+                        // Upload image file to server
+                        move_uploaded_file($file_temp, $target_file_path) ??
+                            ($data[
+                                'imgError'
+                            ] = "The uploading of {$file_name} failed");
+                    } else {
+                        $data['imgError'] =
+                            "Only " .
+                            implode(', ', $image_mime_types) .
+                            " file types allowed.";
+                    }
                 }
             }
 

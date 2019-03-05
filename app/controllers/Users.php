@@ -254,44 +254,38 @@ class Users extends Controller
             }
             // Validate image
             var_dump($file_name, $file_temp);
-            if (empty($file_name)) {
-                // $data['imgError'] = 'Please chose a file';
-                $file_name = $_SESSION['user_edit_imgname'];
-                unset($_SESSION['user_edit_imgname']);
-            } elseif (
-                !empty(
+            if (!empty($file_name)) {
+                if (
+                    !empty(
+                        $this->userModel->findUserImageByImageName($file_name)
+                    ) &&
                     $this->userModel->findUserImageByImageName($file_name)
-                ) &&
-                $this->userModel->findUserImageByImageName($file_name)->id !==
-                    $id
-            ) {
-                $data['imgError'] = "$file_name is already taken.";
-            } else {
-                $target_file_path = USER_IMG_DIR . $file_name;
-
-                // Allow only certain extension types
-                $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
-                // $file_mime_type = mime_content_type($file_temp);
-                $file_mime_type = mime_content_type($file_name);
-                // var_dump(
-                //     $file_temp,
-                //     $file_name,
-                //     $target_file_path,
-                //     $file_mime_type,
-                //     in_array($file_mime_type, $image_mime_types)
-                // );
-
-                if (in_array($file_mime_type, $image_mime_types)) {
-                    // Upload image file to server
-                    move_uploaded_file($file_name, $target_file_path) ??
-                        ($data[
-                            'imgError'
-                        ] = "The uploading of {$file_name} failed");
+                        ->id !== $id
+                ) {
+                    $data['imgError'] = "$file_name is already taken.";
                 } else {
-                    $data['imgError'] =
-                        "Only " .
-                        implode(', ', $image_mime_types) .
-                        " file types allowed.";
+                    $target_file_path = USER_IMG_DIR . $file_name;
+
+                    // Allow only certain extension types
+                    $image_mime_types = [
+                        'image/png',
+                        'image/gif',
+                        'image/jpeg'
+                    ];
+                    $file_mime_type = mime_content_type($file_temp);
+
+                    if (in_array($file_mime_type, $image_mime_types)) {
+                        // Upload image file to server
+                        move_uploaded_file($file_temp, $target_file_path) ??
+                            ($data[
+                                'imgError'
+                            ] = "The uploading of {$file_name} failed");
+                    } else {
+                        $data['imgError'] =
+                            "Only " .
+                            implode(', ', $image_mime_types) .
+                            " file types allowed.";
+                    }
                 }
             }
             // Make sure errors are empty
@@ -308,7 +302,7 @@ class Users extends Controller
 
                 // Don't hash the password if user didn't changed it
                 if ($_SESSION['user_edit_passw'] !== $data['passw']) {
-                    // Hash the password
+                    // Hash the password if changed
                     $data['passw'] = password_hash(
                         $data['passw'],
                         PASSWORD_DEFAULT
@@ -331,24 +325,6 @@ class Users extends Controller
         } else {
             // Find user
             $user = $this->userModel->getUserById($id);
-            var_dump(PUBLICROOT);
-            var_dump(APPROOT);
-            var_dump(
-                $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/',
-                $_SERVER['HTTP_HOST']
-            );
-            var_dump(URLROOT . USER_IMG_DIR . $user->img_name);
-            var_dump(is_writable(URLROOT . USER_IMG_DIR . $user->img_name));
-            var_dump(is_writable(PUBLICROOT . USER_IMG_DIR . $user->img_name));
-            var_dump(file_exists(URLROOT . USER_IMG_DIR . $user->img_name));
-            var_dump(
-                file_exists(
-                    $_SERVER['DOCUMENT_ROOT'] .
-                        '/oildiscovery/public/' .
-                        USER_IMG_DIR .
-                        $user->img_name
-                )
-            );
 
             // Check for if user has the right to edit
             if (
@@ -384,7 +360,6 @@ class Users extends Controller
                 'imgError' => ''
             ];
             $_SESSION['user_edit_passw'] = $user->passw;
-            $_SESSION['user_edit_imgname'] = $user->img_name;
 
             // Load view;
             $this->view('users/edit', $data);
@@ -476,7 +451,7 @@ class Users extends Controller
             $data = [
                 'keyword' =>
                     $_POST['search'] ??
-                        trim($_POST['search'] ?? $_SESSION['search']),
+                    trim($_POST['search'] ?? $_SESSION['search']),
                 'offset' => $_POST['page'] ?? 0
             ];
 
