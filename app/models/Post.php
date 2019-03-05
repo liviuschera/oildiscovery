@@ -189,8 +189,18 @@ class Post
 
     public function getCommentsByPostId($id)
     {
-        $this->db->queryDB("SELECT * FROM comments WHERE post_id = :post_id;");
-
+        $this->db->queryDB(
+            "SELECT 
+        comments.commenter_fname AS firstName,
+        comments.commenter_lname AS lastName,
+        comments.comment AS comment,
+        comments.created_at AS createdAt,
+        user_images.img_name AS userImgName
+        FROM comments 
+        JOIN user_images ON user_images.user_id = comments.commenter_id 
+        WHERE comments.post_id = :post_id 
+        ORDER BY createdAt DESC;"
+        );
         $this->db->bindVal(':post_id', $id);
 
         $comments = $this->db->getResultSet();

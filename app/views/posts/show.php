@@ -7,6 +7,7 @@
     <main class="blog-post__main">
         <!-- ~~~ BLOG POST CARD  start -->
         <figure class="card card--full-width-blogpost">
+            <?php flash('post_message'); ?>
             <div class="card__content card__content--for-3col-blog">
                 <div class="card__img-wrapper card__img-wrapper--full-width-blogpost">
                     <a href="">
@@ -123,22 +124,24 @@
                     ? count($data['comments'])
                     : 0; ?> Comments</h3>
             <ul class="user-comments__comments">
-                <?php foreach ($data['comments'] as $comment): ?>
+                <?php foreach ($data['comments'] as $commenter): ?>
                 <li class="user-comments__comment">
                     <div class="avatar">
-                        <img src="<?php echo URLROOT; ?>/images/users/user-mila-moa-70x71.jpg" alt="" />
+                        <img src="<?php echo URLROOT .
+                            USER_IMG_DIR .
+                            $commenter->userImgName; ?>" alt="" />
                     </div>
                     <div class="user-comments__content">
                         <header>
                             <p class="paragraph">
                                 <a href="" class="user-comments__user-link">
-                                    <?php echo $comment->commenter_fname .
+                                    <?php echo $commenter->firstName .
                                         " " .
-                                        $comment->commenter_lname; ?></a>
+                                        $commenter->lastName; ?></a>
 
                                 <span class="user-comments__published-date">
                                     <?php echo formatDate(
-                                        $comment->created_at,
+                                        $commenter->createdAt,
                                         'd-M-Y, H:i'
                                     ); ?>
                                     <svg>
@@ -148,7 +151,7 @@
                             </p>
                         </header>
                         <p class="paragraph">
-                            <?php echo $comment->comment; ?>
+                            <?php echo $commenter->comment; ?>
                         </p>
                     </div>
                 </li>

@@ -1,8 +1,10 @@
 <div class="admin">
     <header class="admin__header">
         <div class="admin__logo">Oil Discovery <span>Admin</span></div>
-        <div class="admin__user-name">G'day, <span>
-                <?php echo $_SESSION['login_user_fname']; ?></span>!</div>
+        <div class="admin__user-name">
+            G'day, <span>
+                <?php echo $_SESSION['login_user_fname']; ?></span>!
+        </div>
     </header>
     <div class="admin__content">
         <nav class="sidebar">
