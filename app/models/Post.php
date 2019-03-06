@@ -10,21 +10,30 @@ class Post
 
     public function getPosts($offset = 0)
     {
-        $rows = 'SELECT *
+        $query = 'SELECT
+        users.firstName AS firstName,
+        users.lastName AS lastName,
+        posts.userID AS userID,
+        posts.title AS title,
+        posts.createdAt AS createdAt,
+        post_body.postID AS postID,
+        post_body.content AS content,
+        post_images.img_name AS imgName,
+        (SELECT count(*) FROM comments WHERE comments.post_id = posts.id) AS commentCount
         FROM users
-        JOIN posts ON users.id=posts.userID
+        JOIN posts ON users.id = posts.userID
         JOIN post_body ON posts.id = post_body.postID
-        JOIN post_images ON posts.id = post_images.post_id 
+        JOIN post_images ON posts.id = post_images.post_id
         ORDER BY posts.createdAt DESC';
 
         // First get the row count
-        $this->db->queryDB($rows);
+        $this->db->queryDB($query);
         $this->db->executeStmt();
         $_SESSION['row_count_posts'] = $this->db->getRowCount();
 
         // Now add the LIMIT clause
         $limit = " LIMIT " . $offset . "," . ROWS_PER_PAGE_POSTS;
-        $this->db->queryDB($rows . $limit);
+        $this->db->queryDB($query . $limit);
         $results = $this->db->getResultSet();
         return $results;
     }

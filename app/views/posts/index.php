@@ -1,7 +1,6 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
 
-
 <!-- ~~~ BLOG ARTICLES SECTION  start~~~ -->
 <section class="full-width-section">
     <section class="full-width-section__content">
@@ -16,7 +15,7 @@
                             <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>">
                                 <img src="<?php echo URLROOT .
                                     BLOG_IMG_DIR .
-                                    $post->img_name; ?>" alt="" class="card__img card__img--for-3col-blog" />
+                                    $post->imgName; ?>" alt="" class="card__img card__img--for-3col-blog" />
                             </a>
                         </div>
 
@@ -53,7 +52,7 @@
                                     <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-chat"></use>
                                 </svg>
                                 <span class="card__comments"> Comments: </span>
-                                <a class="card__link u-txt-bold" href="">3 </a>
+                                <a class="card__link u-txt-bold" href=""><?php echo $post->commentCount; ?></a>
                             </p>
                         </div>
 

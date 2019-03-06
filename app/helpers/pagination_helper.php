@@ -18,12 +18,14 @@ function paginate($row_count)
     ) {
         $row_count = $_SESSION['row_count_users'];
         $max_row_per_page = ROWS_PER_PAGE_USERS;
+        // unset($_SESSION['row_count_users']);
     } elseif (
         isset($_SESSION['row_count_posts']) &&
         $row_count === $_SESSION['row_count_posts']
     ) {
         $row_count = $_SESSION['row_count_posts'];
         $max_row_per_page = ROWS_PER_PAGE_POSTS;
+        // unset($_SESSION['row_count_posts']);
     }
 
     if (!empty($_POST['page'])) {
@@ -56,4 +58,3 @@ function paginate($row_count)
 
     return $html;
 }
-?>

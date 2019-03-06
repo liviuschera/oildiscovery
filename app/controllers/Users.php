@@ -89,10 +89,7 @@ class Users extends Controller
                     $data['confirmPasswError'] = "Password do not match.";
                 }
             }
-            var_dump(
-                $this->userModel->findUserImageByImageName($file_name),
-                $file_name
-            );
+
             // Validate image
             if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';

@@ -21,6 +21,7 @@ class Posts extends Controller
         }
         $posts = $this->postModel->getPosts($offset);
         $data = ['posts' => $posts];
+
         $this->view('posts/index', $data);
     }
 
@@ -60,6 +61,8 @@ class Posts extends Controller
             // Validate image
             if (empty($file_name)) {
                 $data['imgError'] = 'Please chose a file';
+            } elseif ($this->postModel->findPostImageByImageName($file_name)) {
+                $data['imgError'] = "$file_name is already taken.";
             } else {
                 $target_file_path = BLOG_IMG_DIR . $file_name;
                 $file_type = strtolower(
@@ -68,14 +71,6 @@ class Posts extends Controller
                 // Allow only certain extension types
                 $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
                 $file_mime_type = mime_content_type($file_temp);
-                var_dump(
-                    $file_temp,
-                    $file_name,
-                    $target_file_path,
-                    $file_type,
-                    $file_mime_type,
-                    in_array($file_mime_type, $image_mime_types)
-                );
 
                 if (in_array($file_mime_type, $image_mime_types)) {
                     // Upload image file to server
@@ -278,8 +273,6 @@ class Posts extends Controller
             $post = $this->postModel->getPostById($id);
             // Init comment data
             $data = [
-                // 'comment' => trim($_POST['comment']),
-                // 'commentError' => '',
                 'post' => $post
             ];
             $data['post']->comment = trim($_POST['comment']);

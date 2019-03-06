@@ -46,7 +46,11 @@
                             <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-chat"></use>
                         </svg>
                         <span class="card__comments"> Comments: </span>
-                        <a class="card__link u-txt-bold" href="">3 </a>
+                        <a class="card__link u-txt-bold" href=""><?php echo !empty(
+                            $data['comments']
+                        )
+                            ? count($data['comments'])
+                            : 0; ?></a>
                     </p>
                 </div>
             </div>
