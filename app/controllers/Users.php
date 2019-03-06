@@ -27,8 +27,8 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            var_dump($_POST);
-            var_dump($_FILES);
+            // var_dump($_POST);
+            // var_dump($_FILES);
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
@@ -181,8 +181,8 @@ class Users extends Controller
 
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            var_dump($_POST);
-            var_dump($_FILES);
+            // var_dump($_POST);
+            // var_dump($_FILES);
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             // Init data
@@ -250,7 +250,6 @@ class Users extends Controller
                 }
             }
             // Validate image
-            var_dump($file_name, $file_temp);
             if (!empty($file_name)) {
                 if (
                     !empty(

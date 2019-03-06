@@ -1,6 +1,4 @@
 <?php
-// ob_start(); // output buffering is turned on
-session_start();
 // Flash message helper
 // Example: flash('register_success, 'Your are registered');
 // Display in View: echo flash('register_success');

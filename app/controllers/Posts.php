@@ -30,8 +30,8 @@ class Posts extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            var_dump($_POST);
-            var_dump($_FILES);
+            // var_dump($_POST);
+            // var_dump($_FILES);
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
 
@@ -126,8 +126,8 @@ class Posts extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            var_dump($_POST);
-            var_dump($_FILES);
+            // var_dump($_POST);
+            // var_dump($_FILES);
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             $data = [
@@ -153,10 +153,6 @@ class Posts extends Controller
             if (empty($data['content'])) {
                 $data['contentError'] = 'Please enter content';
             }
-            var_dump(
-                $file_name,
-                $this->postModel->findPostImageByImageName($file_name)
-            );
             // Validate image
             if (!empty($file_name)) {
                 if (
@@ -179,13 +175,6 @@ class Posts extends Controller
                         'image/jpeg'
                     ];
                     $file_mime_type = mime_content_type($file_temp);
-                    var_dump(
-                        $file_temp,
-                        $target_file_path,
-                        $file_type,
-                        $file_mime_type,
-                        in_array($file_mime_type, $image_mime_types)
-                    );
 
                     if (in_array($file_mime_type, $image_mime_types)) {
                         // Upload image file to server
@@ -223,7 +212,6 @@ class Posts extends Controller
         } else {
             // Check for owner
             $post = $this->postModel->getPostById($id);
-            var_dump($post);
             if ($post->userID !== $_SESSION['login_user_id']) {
                 redirectTo('posts');
             }
@@ -336,7 +324,6 @@ class Posts extends Controller
             // If comment is error free then:
             if (empty($data['commentError'])) {
                 try {
-                    var_dump($data);
                     // $this->postModel->addComment($id);
                     flash('post_message', "Comment added");
                     redirectTo('posts/show/' . $id);

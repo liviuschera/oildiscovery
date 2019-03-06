@@ -1,6 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
-<!-- <?php var_dump($data['post']); ?> -->
 
 <!-- ~~~ BLOG POST SECTION  start~~~ -->
 <div class="blog-post">

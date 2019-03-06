@@ -3,7 +3,6 @@
 <?php require APPROOT . '/views/includes/navbar_admin.php'; ?> 
 
 <main class="admin__main">
-  <?php var_dump($data); ?> 
 <!-- ~~~ REGISTRATION FORM start ~~~ -->
 <form
    action="<?php echo URLROOT; ?>/posts/add"
