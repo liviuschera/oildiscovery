@@ -42,6 +42,12 @@
       align-items: center;
    }
 
+   &__row-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+   }
+
    @include social-buttons;
 
    &__nav-site {

@@ -1,6 +1,11 @@
 <div class="admin">
     <header class="admin__header">
         <div class="admin__logo">Oil Discovery <span>Admin</span></div>
+        <?php if (isset($_SESSION['login_user_id'])): ?>
+        <a class="button  button--login-out" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+        <?php else: ?>
+        <a class="button  button--login-out" href="<?php echo URLROOT; ?>/users/login">Login</a>
+        <?php endif; ?>
         <div class="admin__user-name">
             G'day, <span>
                 <?php echo $_SESSION['login_user_fname']; ?></span>!

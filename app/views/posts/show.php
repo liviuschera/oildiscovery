@@ -1,6 +1,18 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
 
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <!-- ~~~ BLOG POST SECTION  start~~~ -->
 <div class="blog-post">
     <main class="blog-post__main">
@@ -62,7 +74,10 @@
 
         <!-- ~~~ Display Edit and Delete buttons START -->
 
-        <?php if ($data['post']->userID === $_SESSION['login_user_id']): ?>
+        <?php if (
+            isset($_SESSION['login_user_id']) &&
+            $data['post']->userID === $_SESSION['login_user_id']
+        ): ?>
         <div class="buttons-wrapper">
             <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
     ->postID; ?>" class="button button--success">Edit</a>
@@ -78,20 +93,13 @@
 
         <!-- ~~~ Display Edit and Delete buttons END -->
 
-        <!-- ~~~ BLOG POST NAV SOCIAL start -->
+        <!-- ~~~ BLOG POST NAV SOCIAL start
 
-        <section class="social-media-buttons">
+        <section class="social-media-buttons u-mt-big">
             <div class="social-media-buttons__wrapper">
                 <h6 class="h-6 u-txt-bold">Share this post:</h6>
                 <nav class="social-buttons">
                     <ul>
-                        <li>
-                            <a class="link" href="">
-                                <svg class="icon">
-                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-youtube"></use>
-                                </svg>
-                            </a>
-                        </li>
                         <li>
                             <a class="link" href="">
                                 <svg class="icon">
@@ -102,24 +110,23 @@
                         <li>
                             <a class="link" href="">
                                 <svg class="icon">
-                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-envelope"></use>
+                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-instagram"></use>
                                 </svg>
                             </a>
                         </li>
-                        <li>
-                            <a class="link" href="">
-                                <svg class="icon">
-                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-paw"></use>
-                                </svg>
-                            </a>
-                        </li>
+
                     </ul>
                 </nav>
             </div>
-        </section>
+        </section> -->
 
         <!-- ~~~ BLOG POST NAV SOCIAL end -->
 
+        <!-- Your share button code -->
+        <div class="fb-share-button" data-href="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
+    'post'
+]->postID; ?>" data-layout="button_count" data-size="large">
+        </div>
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
         <section class="user-comments">
             <h3 class="h-3 u-mb-big u-txt-align-center">
@@ -163,6 +170,8 @@
         </section>
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
 
+        <?php if (isLoggedIn()): ?>
+
         <!-- ~~~ BLOG POST ADD USER COMMENTS  start -->
 
         <form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
@@ -182,7 +191,13 @@
         </form>
 
         <!-- ~~~ BLOG POST ADD USER COMMENTS  end -->
+        <?php else: ?>
 
+        <div class="form__alert-info">
+            In order to post comments you need to be logged in.
+        </div>
+
+        <?php endif; ?>
         <!-- ~~~ BLOG POST CARD  end -->
     </main>
     <aside class="blog-post__aside">

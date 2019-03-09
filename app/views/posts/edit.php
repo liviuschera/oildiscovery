@@ -42,16 +42,19 @@
             <div class="form__group">
                 <select id="priv" name="priv" class="form__select">
                     <?php
-// Set an array contining user privilege levels
-// Set an array contining user privilege levels
-?>
                     $privArray = [
-                    '0' => 'User',
-                    '1' => 'Admin',
-                    '2' => 'Owner'
-                    ]; // display the values in the form
+                        '0' => 'User',
+                        '1' => 'Admin',
+                        '2' => 'Owner'
+                    ]; // Set an array contining user privilege levels // display the values in the form
                     foreach ($privArray as $key => $value) {
-                    echo "<option value={$key}"; if ((string) $data['priv']===(string) $key) { echo " selected" ; } echo ">{$value}</option>" ; } ?>
+                        echo "<option value={$key}";
+                        if ((string) $data['priv'] === (string) $key) {
+                            echo " selected";
+                        }
+                        echo ">{$value}</option>";
+                    }
+                    ?>
                 </select>
                 <label for="priv">Privilege:</label>
             </div>

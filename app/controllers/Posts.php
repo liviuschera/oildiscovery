@@ -4,9 +4,9 @@ class Posts extends Controller
 {
     public function __construct()
     {
-        if (!isLoggedIn()) {
-            redirectTo('users/login');
-        }
+        // if (!isLoggedIn()) {
+        //     redirectTo('users/login');
+        // }
 
         $this->postModel = $this->model('Post');
     }
@@ -27,6 +27,8 @@ class Posts extends Controller
 
     public function add()
     {
+        checkIfUserHasAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -123,6 +125,8 @@ class Posts extends Controller
 
     public function edit($id)
     {
+        checkIfUserHasAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -235,6 +239,8 @@ class Posts extends Controller
 
     public function delete($id)
     {
+        checkIfUserHasAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
                 $post = $this->postModel->getPostById($id);
@@ -288,13 +294,6 @@ class Posts extends Controller
                 $this->view('posts/show', $data);
             }
         } else {
-            // $data = [
-            //     'comment' => '',
-            //     'commentError' => ''
-            // ];
-
-            // // Load views
-            // $this->view('posts/show', $data);
             $comments = $this->postModel->getCommentsByPostId($id);
             $post = $this->postModel->getPostById($id);
             $data = [
@@ -307,6 +306,8 @@ class Posts extends Controller
 
     public function comment($id)
     {
+        checkIfUserHasAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 

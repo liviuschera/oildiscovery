@@ -40,6 +40,15 @@
       padding: 0.3rem 1.1rem;
    }
 
+   &--login-out {
+      background-color: var(--color-grey-light-1);
+      color: var(--color-primary);
+      &:hover {
+         background-color: var(--color-primary);
+         color: var(--color-white);
+      }
+   }
+
    &--tag {
       border: 0.2rem solid var(--color-grey-light-1);
       padding: 0.5rem 1.5rem;
