@@ -23,6 +23,8 @@ define('ROWS_PER_PAGE_POSTS', 6);
 
 // Site root
 define('PUBLICROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/');
+// Vendor dir
+define('VENDORROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/vendor/');
 
 // Path for uploaded images
 define('BLOG_IMG_DIR', 'images/blog/');

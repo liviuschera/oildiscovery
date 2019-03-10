@@ -107,3 +107,16 @@
 .u-max-content {
    width: max-content;
 }
+
+.highlight {
+   transition: all 0.2s;
+   border-bottom: 2px solid grey;
+   position: absolute;
+   top: 0;
+   background: salmon;
+   left: 0;
+   z-index: -1;
+   border-radius: 20px;
+   display: block;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
