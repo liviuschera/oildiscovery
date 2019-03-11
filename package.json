@@ -10,8 +10,10 @@
       "compile:sass": "node-sass src/sass/main.scss src/css/style.comp.css",
       "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o src/css/styles.css",
       "build:css": "npm-run-all compile:sass prefix:css",
+      "copy:css": "cpx \"src/css/styles.css\" public/css --watch",
       "surge:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.comp.css -o build/css/styles.css",
-      "surge": "npm-run-all compile:sass surge:css"
+      "surge": "npm-run-all compile:sass surge:css",
+      "php:server": "http-server -a localhost -p 80 -c-1"
    },
    "repository": {
       "type": "git",

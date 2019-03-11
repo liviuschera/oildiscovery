@@ -216,6 +216,7 @@ body {
   padding: 0; }
 
 .u-div-center {
+  display: block;
   margin: 0 auto; }
 
 .u-no-hover {
@@ -241,6 +242,18 @@ body {
 
 .u-max-content {
   width: max-content; }
+
+.highlight {
+  transition: all 0.2s;
+  border-bottom: 2px solid grey;
+  position: absolute;
+  top: 0;
+  background: salmon;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
 
 .avatar {
   position: absolute;
@@ -290,10 +303,16 @@ body {
     margin: 3rem auto 0; }
   .button--thin {
     padding: 0.3rem 1.1rem; }
-  .button--login-out {
+  .button--login {
     background-color: var(--color-grey-light-1);
     color: var(--color-primary); }
-    .button--login-out:hover {
+    .button--login .icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      fill: #517cc8;
+      align-self: center;
+      margin-right: -0.3rem; }
+    .button--login:hover {
       background-color: var(--color-primary);
       color: var(--color-white); }
   .button--tag, .button__pagination, .button__pagination:link, .button__pagination:visited {
@@ -954,6 +973,11 @@ body {
   .admin__main {
     flex-grow: 1;
     background-color: var(--color-admin-bg); }
+
+.facebook-login {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1); }
 
 .blog-post {
   grid-template-columns: 80rem 40rem;

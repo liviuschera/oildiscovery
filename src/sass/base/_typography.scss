@@ -34,49 +34,12 @@ body {
 [class^="h-"] {
    font-weight: 400;
 }
-// .heading-primary,
-// .heading-secondary,
-// .heading-tertiary,
-// .paragraph,
-// // .heading6
-//  {
-//    // text-align: center;
-//    // justify-self: center;
-//    margin-bottom: 2.5rem;
-// }
-
-// .heading-primary,
-// .heading-secondary,
-// .heading-tertiary,
-// .quote::before,
-// .cursive {
-//    color: var(--color-grey-dark-1);
-//    font-family: "Oregano", cursive;
-//    font-weight: 400;
-// }
-
-// .heading-secondary {
-//    font-size: var(--font-heding-secondary-size);
-// }
-
-// .heading-tertiary {
-//    font-size: var(--font-heding-tertiary-size);
-// }
 
 .paragraph {
    font-size: var(--font-size-p);
    color: var(--color-grey-light-2);
    margin-bottom: 1.5rem;
 }
-
-// .heading6 {
-//    font-size: var(--font-heading6-size);
-//    &--contact {
-//       text-align: left;
-//       font-weight: 700;
-//       // margin-bottom: 1rem;
-//    }
-// }
 
 .quote {
    padding-left: 3rem;
@@ -99,8 +62,6 @@ body {
    &:link,
    &:visited {
       text-decoration: none;
-      // color: var(--color-primary);
-      // font-size: var(--default-font-size);
    }
 
    // &:hover {

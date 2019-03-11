@@ -40,9 +40,16 @@
       padding: 0.3rem 1.1rem;
    }
 
-   &--login-out {
+   &--login {
       background-color: var(--color-grey-light-1);
       color: var(--color-primary);
+      .icon {
+         height: 1.5rem;
+         width: 1.5rem;
+         fill: $color-info;
+         align-self: center;
+         margin-right: -0.3rem;
+      }
       &:hover {
          background-color: var(--color-primary);
          color: var(--color-white);

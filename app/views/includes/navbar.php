@@ -10,9 +10,9 @@
                 <div class="header__row-container">
                     <div class="header__login-out">
                         <?php if (isset($_SESSION['login_user_id'])): ?>
-                        <a class="button  button--login-out" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+                        <a class="button  button--login" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
                         <?php else: ?>
-                        <a class="button  button--login-out" href="<?php echo URLROOT; ?>/users/login">Login</a>
+                        <a class="button  button--login" href="<?php echo URLROOT; ?>/users/login">Login</a>
                         <?php endif; ?>
                     </div>
                     <!-- If user has enough privilege show link to admin area -->
@@ -21,7 +21,7 @@
                         $_SESSION['login_user_priv'] > 0
                     ): ?>
 
-                    <div><a class="button  button--login-out" href="<?php echo URLROOT; ?>/admins">Go to Admin area</a></div>
+                    <div><a class="button  button--login" href="<?php echo URLROOT; ?>/admins">Go to Admin area</a></div>
                     <?php endif; ?>
                     <nav class="header__nav-social">
                         <ul>

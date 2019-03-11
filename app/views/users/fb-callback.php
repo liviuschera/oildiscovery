@@ -1,8 +1,7 @@
 <?php
-
-require_once __DIR__ . '/vendor/autoload.php';
+require_once VENDORROOT . 'autoload.php';
 $fb = new Facebook\Facebook([
-    'app_id' => '548221059031502', // Replace 548221059031502 with your app id
+    'app_id' => '548221059031502',
     'app_secret' => '78649a9365addd45aa8cf0f7c90efbf6',
     'default_graph_version' => 'v2.2'
 ]);
