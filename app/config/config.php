@@ -9,8 +9,7 @@ define('DB_NAME', 'oildiscovery');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root
-define('URLROOT', 'http://localhost/oildiscovery/');
-// define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
+define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
 
 // Website Name
 
@@ -27,5 +26,11 @@ define('PUBLICROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/');
 define('VENDORROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/vendor/');
 
 // Path for uploaded images
-define('BLOG_IMG_DIR', 'images/blog/');
-define('USER_IMG_DIR', 'images/users/');
+define('BLOG_IMG_DIR', '/images/blog/');
+define('USER_IMG_DIR', '/images/users/');
+
+// Facebook initialization
+define('FB_APP_ID', '548221059031502');
+define('FB_APP_SECRET', '78649a9365addd45aa8cf0f7c90efbf6');
+define('FB_APP_GRAPH_VERSION', 'v3.2');
+define('FB_APP_CALLBACK_URL', 'http://localhost/oildiscovery/users/index.php');

@@ -38,7 +38,7 @@ function hasPrivLevel($priv_level = 0)
     return $_SESSION['login_user_priv'] >= $priv_level ? true : false;
 }
 
-function checkIfUserHasAccess()
+function userHasAccess()
 {
     if (!isLoggedIn() || !hasPrivLevel(1)) {
         redirectTo('users/login');

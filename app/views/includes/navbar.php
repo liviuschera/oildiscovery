@@ -7,12 +7,40 @@
                 </a>
 
                 <!-- Login/Logout  -->
+
+                <!-- Facebook login start -->
                 <div class="header__row-container">
-                    <div class="header__login-out">
-                        <?php if (isset($_SESSION['login_user_id'])): ?>
-                        <a class="button  button--login" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+                    <div class="header__login-fb">
+                        <?php if (!isset($_SESSION['fb_access_token'])):
+
+                            $fb = initFacebook();
+                            $helper = $fb->getRedirectLoginHelper();
+                            $permissions = ['email']; // Optional permissions
+                            $loginUrl = $helper->getLoginUrl(
+                                FB_APP_CALLBACK_URL,
+                                $permissions
+                            );
+                            ?>
+                        <a class="button button--login" href="<?php echo htmlspecialchars(
+                            $loginUrl
+                        ); ?>">
+                            Log in with
+                            <svg class="icon">
+                                <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-facebook"></use>
+                            </svg>acebook!</a>
+                        <?php
+                        endif; ?>
+                    </div>
+                    <!-- Facebook login end -->
+
+                    <div class="header__login-email">
+                        <?php if (
+                            isset($_SESSION['login_user_id']) ||
+                            isset($_SESSION['fb_access_token'])
+                        ): ?>
+                        <a class="button button--login" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
                         <?php else: ?>
-                        <a class="button  button--login" href="<?php echo URLROOT; ?>/users/login">Login</a>
+                        <a class="button  button--login" href="<?php echo URLROOT; ?>/users/login">Log in or Register</a>
                         <?php endif; ?>
                     </div>
                     <!-- If user has enough privilege show link to admin area -->

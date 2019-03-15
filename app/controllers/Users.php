@@ -9,8 +9,108 @@ class Users extends Controller
 
     public function index()
     {
-        // $users = $this->userModel();
-        $data = ['title' => 'Index title'];
+        $fb = initFacebook();
+        $helper = $fb->getRedirectLoginHelper();
+        // if (isset($_GET['state'])) {
+        //     $helper->getPersistentDataHandler()->set('state', $_GET['state']);
+        // }
+        try {
+            $accessToken = $helper->getAccessToken();
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            // When Graph returns an error
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit();
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            // When validation fails or other local issues
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit();
+        }
+
+        if (!isset($accessToken)) {
+            if ($helper->getError()) {
+                header('HTTP/1.0 401 Unauthorized');
+                echo "Error: " . $helper->getError() . "\n";
+                echo "Error Code: " . $helper->getErrorCode() . "\n";
+                echo "Error Reason: " . $helper->getErrorReason() . "\n";
+                echo "Error Description: " .
+                    $helper->getErrorDescription() .
+                    "\n";
+            } else {
+                header('HTTP/1.0 400 Bad Request');
+                echo 'Bad request';
+            }
+            exit();
+        }
+
+        // Logged in
+        echo '<h3>Access Token</h3>';
+        // var_dump($accessToken->getValue());
+
+        // The OAuth 2.0 client handler helps us manage access tokens
+        $oAuth2Client = $fb->getOAuth2Client();
+
+        // Get the access token metadata from /debug_token
+        $tokenMetadata = $oAuth2Client->debugToken($accessToken);
+        echo '<h3 class="h-4">Metadata</h3>';
+        // var_dump($tokenMetadata);
+
+        // Validation (these will throw FacebookSDKException's when they fail)
+        $tokenMetadata->validateAppId(FB_APP_ID); // Replace 548221059031502 with your app id
+        // If you know the user ID this access token belongs to, you can validate it here
+        //$tokenMetadata->validateUserId('123');
+        $tokenMetadata->validateExpiration();
+
+        if (!$accessToken->isLongLived()) {
+            // Exchanges a short-lived access token for a long-lived one
+            try {
+                $accessToken = $oAuth2Client->getLongLivedAccessToken(
+                    $accessToken
+                );
+            } catch (Facebook\Exceptions\FacebookSDKException $e) {
+                echo "<p ='paragraph'>Error getting long-lived access token: " .
+                    $e->getMessage() .
+                    "</p>\n\n";
+                exit();
+            }
+
+            echo '<h3 class="h-4>Long-lived</h3>';
+            var_dump($accessToken->getValue());
+        }
+
+        $_SESSION['fb_access_token'] = (string) $accessToken;
+        // User is logged in with a long-lived access token.
+        // You can redirect them to a members-only page.
+        //header('Location: https://example.com/members.php');
+        try {
+            // Returns a `Facebook\FacebookResponse` object
+            // $response = $fb->get('/me/feed', $_SESSION['fb_access_token']);
+            $response = $fb->get(
+                '/me?fields=id,name,email,cover,gender,picture,link,friends,posts',
+                $_SESSION['fb_access_token']
+            );
+        } catch (Facebook\Exceptions\FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit();
+        } catch (Facebook\Exceptions\FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit();
+        }
+        $user = $response->getGraphUser();
+        $_SESSION['fb_user_name'] = $user->getName();
+
+        var_dump($user);
+        var_dump($user['picture']);
+        var_dump($user->getName());
+        var_dump($user->getFirstName());
+        var_dump($user->getLink());
+        var_dump($user->getPicture());
+        if ($_SESSION['fb_access_token']) {
+            redirectTo('pages');
+            header('Location: ' . URLROOT . '/pages');
+        }
+        $data = [
+            'title' => 'Index title'
+        ];
         $this->view('users/index', $data);
     }
 
@@ -423,7 +523,8 @@ class Users extends Controller
                 'email' => '',
                 'passw' => '',
                 'emailError' => '',
-                'passwError' => ''
+                'passwError' => '',
+                'fb_token' => $_SESSION['fb_access_token'] ?? 'No BF token'
             ];
 
             // Load view;
@@ -433,7 +534,7 @@ class Users extends Controller
 
     public function search()
     {
-        checkIfUserHasAccess();
+        userHasAccess();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -489,12 +590,23 @@ class Users extends Controller
 
     public function logout()
     {
-        unset($_SESSION['login_user_id']);
-        unset($_SESSION['login_user_priv']);
-        unset($_SESSION['login_user_email']);
-        unset($_SESSION['login_user_fname']);
-        unset($_SESSION['login_user_lname']);
-        session_destroy();
-        redirectTo('users/login');
+        if (isset($_SESSION['fb_access_token'])) {
+            $url =
+                'https://www.facebook.com/logout.php?next=' .
+                URLROOT .
+                '&access_token=' .
+                $_SESSION['fb_access_token'];
+            unset($_SESSION['fb_access_token']);
+            session_destroy();
+            header('Location: ' . $url);
+        } else {
+            unset($_SESSION['login_user_id']);
+            unset($_SESSION['login_user_priv']);
+            unset($_SESSION['login_user_email']);
+            unset($_SESSION['login_user_fname']);
+            unset($_SESSION['login_user_lname']);
+            session_destroy();
+            redirectTo('pages');
+        }
     }
 }

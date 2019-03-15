@@ -27,7 +27,7 @@ class Posts extends Controller
 
     public function add()
     {
-        checkIfUserHasAccess();
+        userHasAccess();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
@@ -125,7 +125,7 @@ class Posts extends Controller
 
     public function edit($id)
     {
-        checkIfUserHasAccess();
+        userHasAccess();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
@@ -239,7 +239,7 @@ class Posts extends Controller
 
     public function delete($id)
     {
-        checkIfUserHasAccess();
+        userHasAccess();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             try {
@@ -306,7 +306,7 @@ class Posts extends Controller
 
     public function comment($id)
     {
-        checkIfUserHasAccess();
+        userHasAccess();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

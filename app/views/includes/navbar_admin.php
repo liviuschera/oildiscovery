@@ -8,7 +8,9 @@
         <?php endif; ?>
         <div class="admin__user-name">
             G'day, <span>
-                <?php echo $_SESSION['login_user_fname']; ?></span>!
+                <?php echo $_SESSION['login_user_fname'] ??
+                    $_SESSION['fb_access_token'] ??
+                    "No user"; ?></span>!
         </div>
     </header>
     <div class="admin__content">
