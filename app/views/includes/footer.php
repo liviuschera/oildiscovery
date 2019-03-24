@@ -24,17 +24,18 @@
                 <form action="" class="form">
                     <h6 class="h-6 u-txt-align-center u-txt-bold u-mb-big">Get in touch</h6>
                     <div class="form__row">
-                        <input type="text" class="form__input" placeholder="First name" id="first-name" required />
+                        <input type="text" class="form__input" placeholder="First name" id="first-name" required/>
 
-                        <input type="text" class="form__input" placeholder="Last name" id="last-name" required />
+                        <input type="text" class="form__input" placeholder="Last name" id="last-name" required/>
                     </div>
                     <div class="form__row">
-                        <input type="email" class="form__input" placeholder="Email" id="email" required />
+                        <input type="email" class="form__input" placeholder="Email" id="email" required/>
 
-                        <input type="tel" class="form__input" placeholder="Phone" id="phone" required />
+                        <input type="tel" class="form__input" placeholder="Phone" id="phone" required/>
                     </div>
 
-                    <textarea name="message" id="textarea" rows="7" class="form__textarea" placeholder="Message"></textarea>
+                    <textarea name="message" id="textarea" rows="7" class="form__textarea"
+                              placeholder="Message"></textarea>
                     <button class="button" type="submit">
                         Send a message
                     </button>
@@ -44,12 +45,24 @@
                 <aside class="full-width-section__photo-galery">
                     <h6 class="h-6 u-txt-align-center u-txt-bold u-mb-big">Flikr</h6>
                     <div class="full-width-section__photo-galery--container">
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
-                        <a href="" class="link"><img src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt="" class="thumbnail" /></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
+                        <a href="" class="link"><img
+                                    src="http://farm6.staticflickr.com/5747/30641860501_9524acf10b_q.jpg" alt=""
+                                    class="thumbnail"/></a>
                     </div>
                 </aside>
             </div>

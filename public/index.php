@@ -1,7 +1,6 @@
 <?php
 require_once "../app/bootstrap.php";
 
-// Instatiate Core Library
+// Instantiate Core Library
 
 $core = new Core();
-?>

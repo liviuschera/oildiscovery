@@ -1,5 +1,5 @@
-<?php require APPROOT . '/views/includes/header.php'; ?>
-<?php require APPROOT . '/views/includes/navbar.php'; ?>
+<?php require APPROOT . '/views/includes/header.php';?>
+<?php require APPROOT . '/views/includes/navbar.php';?>
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
@@ -18,18 +18,17 @@
     <main class="blog-post__main">
         <!-- ~~~ BLOG POST CARD  start -->
         <figure class="card card--full-width-blogpost">
-            <?php flash('post_message'); ?>
+            <?php flash('post_message');?>
             <div class="card__content card__content--for-3col-blog">
                 <div class="card__img-wrapper card__img-wrapper--full-width-blogpost">
-                    <a href="">
+                    <a href="#">
                         <img src="<?php echo URLROOT .
-                            BLOG_IMG_DIR .
-                            $data['post']
-                                ->imgName; ?>" alt="" class="card__img card__img--full-width-blogpost" />
+BLOG_IMG_DIR .
+$data['post']->imgName; ?>" alt="" class="card__img card__img--full-width-blogpost" />
                     </a>
                 </div>
 
-                <a href="" class="card__heading-link card__heading-link--full-width-blogpost">
+                <a href="#" class="card__heading-link card__heading-link--full-width-blogpost">
                     <h6 class="h-6 u-txt-uppercase u-color-primary">
                         <?php echo $data['post']->title; ?>
                     </h6>
@@ -42,26 +41,26 @@
                         By:
                         <a class="card__link" href="">
                             <?php echo $data['post']->fName .
-                                ' ' .
-                                $data['post']->lName; ?> </a>
+' ' .
+$data['post']->lName; ?> </a>
                     </span>
                     <span class="card__date">
                         <svg class="card__icon-post">
                             <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-calendar"></use>
                         </svg>
                         <?php echo formatDate(
-                            $data['post']->postCreatedAt
-                        ); ?></span>
+    $data['post']->postCreatedAt
+); ?></span>
                     <p class="paragraph u-txt-align-left">
                         <svg class="card__icon-post">
                             <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-chat"></use>
                         </svg>
                         <span class="card__comments"> Comments: </span>
                         <a class="card__link u-txt-bold" href=""><?php echo !empty(
-                            $data['comments']
-                        )
-                            ? count($data['comments'])
-                            : 0; ?></a>
+    $data['comments']
+)
+? count($data['comments'])
+: 0; ?></a>
                     </p>
                 </div>
             </div>
@@ -75,9 +74,9 @@
         <!-- ~~~ Display Edit and Delete buttons START -->
 
         <?php if (
-            isset($_SESSION['login_user_id']) &&
-            $data['post']->userID === $_SESSION['login_user_id']
-        ): ?>
+    isset($_SESSION['login_user_id']) &&
+    $data['post']->userID === $_SESSION['login_user_id']
+): ?>
         <div class="buttons-wrapper">
             <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
     ->postID; ?>" class="button button--success">Edit</a>
@@ -89,7 +88,7 @@
             </form>
         </div>
 
-        <?php endif; ?>
+        <?php endif;?>
 
         <!-- ~~~ Display Edit and Delete buttons END -->
 
@@ -122,38 +121,39 @@
 
         <!-- ~~~ BLOG POST NAV SOCIAL end -->
 
-        <!-- Your share button code -->
-        <div class="fb-share-button" data-href="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
-    'post'
-]->postID; ?>" data-layout="button_count" data-size="large">
+        <!-- Your share button code start-->
+        <div class="fb-share-button" data-href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']->postID; ?>/" data-layout="button_count" data-size="large">
         </div>
+        <!-- Your share button code end-->
+
+
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
         <section class="user-comments">
             <h3 class="h-3 u-mb-big u-txt-align-center">
                 <?php echo !empty($data['comments'])
-                    ? count($data['comments'])
-                    : 0; ?> Comments</h3>
+? count($data['comments'])
+: 0; ?> Comments</h3>
             <ul class="user-comments__comments">
                 <?php foreach ($data['comments'] as $commenter): ?>
                 <li class="user-comments__comment">
                     <div class="avatar">
                         <img src="<?php echo URLROOT .
-                            USER_IMG_DIR .
-                            $commenter->userImgName; ?>" alt="" />
+USER_IMG_DIR .
+$commenter->userImgName; ?>" alt="" />
                     </div>
                     <div class="user-comments__content">
                         <header>
                             <p class="paragraph">
                                 <a href="" class="user-comments__user-link">
                                     <?php echo $commenter->firstName .
-                                        " " .
-                                        $commenter->lastName; ?></a>
+" " .
+$commenter->lastName; ?></a>
 
                                 <span class="user-comments__published-date">
                                     <?php echo formatDate(
-                                        $commenter->createdAt,
-                                        'd-M-Y, H:i'
-                                    ); ?>
+    $commenter->createdAt,
+    'd-M-Y, H:i'
+); ?>
                                     <svg>
                                         <use href="images/sprite.svg#icon-clock"></use>
                                     </svg>
@@ -165,7 +165,7 @@
                         </p>
                     </div>
                 </li>
-                <?php endforeach; ?>
+                <?php endforeach;?>
             </ul>
         </section>
         <!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
@@ -180,10 +180,10 @@
             <h3 class="h-3 u-txt-align-center u-mb-big">Leave a Comment</h3>
             <div class="form__group">
                 <textarea rows="3" class="form__textarea  <?php echo !empty(
-                    $data['post']->commentError
-                )
-                    ? 'form__invalid'
-                    : ''; ?>" placeholder="Leave a comment" name="comment" id="comment"></textarea>
+    $data['post']->commentError
+)
+? 'form__invalid'
+: ''; ?>" placeholder="Leave a comment" name="comment" id="comment"></textarea>
                 <span class="form__failed-feedback">
                     <?php echo $data['post']->commentError ?? ''; ?></span>
             </div>
@@ -197,7 +197,7 @@
             In order to post comments you need to be logged in.
         </div>
 
-        <?php endif; ?>
+        <?php endif;?>
         <!-- ~~~ BLOG POST CARD  end -->
     </main>
     <aside class="blog-post__aside">
@@ -220,4 +220,4 @@
 
 <!-- ~~~ BLOG POST SECTION  end~~~ -->
 
-<?php require APPROOT . '/views/includes/footer.php'; ?> 
+<?php require APPROOT . '/views/includes/footer.php';?>

@@ -1,8 +1,8 @@
 <?php
-/* 
+/*
 App Core Class
 Creates URL & loads core controller
-URL format: /controller/method/params 
+URL format: /controller/method/params
  */
 class Core
 {
@@ -29,7 +29,7 @@ class Core
         // instantiate controller class
         $this->currentController = new $this->currentController();
 
-        // Checks for second value of $url array
+        // Checks for second value of $url array -> the method
         if (isset($url[1])) {
             // checks to see if method exists in the controller
             if (method_exists($this->currentController, $url[1])) {
@@ -59,4 +59,3 @@ class Core
         }
     }
 }
-?>

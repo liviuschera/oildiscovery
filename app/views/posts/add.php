@@ -3,35 +3,29 @@
 
 <main class="admin__main">
     <!-- ~~~ REGISTRATION FORM start ~~~ -->
-    <form action="<?php echo URLROOT; ?>/posts/add" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">
+    <form action="<?php echo URLROOT; ?>/posts/add" class="form u-div-center u-txt-align-center" method="post"
+          enctype="multipart/form-data">
         <h2 class="h-2">Add Post</h2>
         <p class="paragraph">Please fill out all the fields.</p>
-
 
 
         <!-- Post TITLE -->
         <div class="form__group">
             <input type="text" class="form__input <?php echo !empty(
-                $data['titleError']
+            $data['titleError']
             )
-                ? 'form__invalid'
-                : ''; ?>" value="<?php echo $data[
-    'title'
-]; ?>" placeholder="Title" name="title" id="title" />
-            <span class="form__failed-feedback"><?php echo $data[
-                'titleError'
-            ]; ?></span>
+               ? 'form__invalid'
+               : ''; ?>" value="<?php echo $data['title']; ?>" placeholder="Title" name="title" id="title"/>
+            <span class="form__failed-feedback"><?php echo $data['titleError']; ?></span>
         </div>
         <div class="form__row">
 
             <!-- Post ACTIVE -->
             <div class="form__group">
                 <div class="form__checkbox">
-                    <input type="checkbox" name="active" id="active" value="y" <?php echo $data[
-                        'active'
-                    ] === 'y'
-                        ? 'checked'
-                        : ''; ?> />
+                    <input type="checkbox" name="active" id="active" value="y" <?php echo $data['active'] === 'y'
+                       ? 'checked'
+                       : ''; ?> />
                     <label for="active"><span></span>Active Post</label>
                 </div>
             </div>
@@ -39,20 +33,20 @@
             <!-- Post PRIV -->
             <div class="form__group">
                 <select id="priv" name="priv" class="form__select">
-                    <?php
-                    $privArray = [
-                        '0' => 'User',
-                        '1' => 'Admin',
-                        '2' => 'Owner'
-                    ]; // Set an array contining user privilege levels // display the values in the form
-                    foreach ($privArray as $key => $value) {
-                        echo "<option value={$key}";
-                        if ((string) $data['priv'] === (string) $key) {
-                            echo " selected";
-                        }
-                        echo ">{$value}</option>";
-                    }
-                    ?>
+                   <?php
+                   $privArray = [
+                      '0' => 'User',
+                      '1' => 'Admin',
+                      '2' => 'Owner'
+                   ]; // Set an array contining user privilege levels // display the values in the form
+                   foreach ($privArray as $key => $value) {
+                      echo "<option value={$key}";
+                      if ((string)$data['priv'] === (string)$key) {
+                         echo " selected";
+                      }
+                      echo ">{$value}</option>";
+                   }
+                   ?>
                 </select>
                 <label for="priv">Privilege:</label>
             </div>
@@ -60,26 +54,19 @@
 
         <!-- Post IMAGE -->
         <div class="form__group u-mb-small">
-            <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data[
-                'imgName'
-            ]; ?>">
-            <span class="form__failed-feedback"><?php echo $data[
-                'imgError'
-            ]; ?></span>
+            <input class="form__input" type="file" name="imgFile" id="imgFile" value="<?php echo $data['imgName']; ?>">
+            <span class="form__failed-feedback"><?php echo $data['imgError']; ?></span>
         </div>
 
         <!-- Post CONTENT -->
         <div class="form__group">
             <textarea rows="7" class="form__textarea  <?php echo !empty(
-                $data['contentError']
+            $data['contentError']
             )
-                ? 'form__invalid'
-                : ''; ?>" placeholder="Post Content" name="content" id="content"><?php echo $data[
-    'content'
-]; ?></textarea>
-            <span class="form__failed-feedback"><?php echo $data[
-                'contentError'
-            ]; ?></span>
+               ? 'form__invalid'
+               : ''; ?>" placeholder="Post Content" name="content"
+                      id="content"><?php echo $data['content']; ?></textarea>
+            <span class="form__failed-feedback"><?php echo $data['contentError']; ?></span>
         </div>
 
         <div class="form__row">

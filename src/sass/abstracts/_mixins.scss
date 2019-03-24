@@ -36,3 +36,31 @@
       }
    }
 }
+
+@mixin menu {
+   background-color: white;
+   position: sticky;
+   top: 0;
+   width: var(--site-width);
+   display: grid;
+   font-size: var(--header-menu-fontsize);
+   font-weight: 700;
+   background-color: var(--color-white);
+   z-index: 1111;
+
+   ul {
+      grid-template-columns: repeat(auto-fit, minmax(3rem, max-content));
+      justify-content: space-between;
+      padding: 1rem 0;
+
+      li:not(:last-child) {
+         border-right: 1px solid var(--color-grey-light-1);
+         padding: 1.8rem 5rem 1.8rem 0;
+      }
+
+      a {
+         // background-color: hsla(173, 77%, 77%, 0.2);
+         color: var(--color-grey-dark-1);
+      }
+   }
+}

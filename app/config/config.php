@@ -9,7 +9,7 @@ define('DB_NAME', 'oildiscovery');
 define('APPROOT', dirname(dirname(__FILE__)));
 
 // URL root
-define('URLROOT', rtrim('http://localhost/oildiscovery/', '/'));
+define('URLROOT', 'http://localhost/oildiscovery');
 
 // Website Name
 
