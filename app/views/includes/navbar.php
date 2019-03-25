@@ -88,19 +88,23 @@
                 </div>
             </div>
         </div>
-
         <nav class="header__menu">
+
             <ul>
                 <?php $_SESSION['pages'] ?? redirectTo(''); ?>
                 <?php foreach ($_SESSION['pages'] as $page): ?>
                 <li>
-                    <a class="<?php echo getCurrentURL() === $page->link ? 'active-link' : '';?>"
+                    <a class=""
                         href="<?php echo URLROOT . $page->link; ?>">
                         <?php echo $page->navbar_title; ?></a>
                 </li>
                 <?php endforeach; ?>
 
             </ul>
+
         </nav>
     </div>
+
 </header>
+<?php
+// echo getCurrentURL() === $page->link ? 'active-link' : '';

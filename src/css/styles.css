@@ -29,7 +29,10 @@
   --shadow-table: 0 1rem 4rem -1rem rgba(0, 0, 0, 0.23);
   --shadow-card: 0 0 0 rgba(0, 0, 0, 0.1);
   --shadow-card-hover: 0 0 1rem rgba(0, 0, 0, 0.1);
-  --shadow-tooltip-hover: 1rem 1rem 3rem rgba(0, 0, 0, 0.3); }
+  --shadow-tooltip-hover: 1rem 1rem 3rem rgba(0, 0, 0, 0.3);
+  --bg-breadcrumbs: url(../images/backgrounds/background-01-1920x900.jpg);
+  --bg-cta: linear-gradient(rgba(black, 0.5), rgba(black, 0.5)),
+      url(../images/backgrounds/background-15-1920x900.jpg); }
 
 @keyframes imageAnimation {
   0% {
@@ -107,6 +110,12 @@ html {
 body {
   box-sizing: border-box; }
 
+a, a:link, a:visited,
+.link,
+.link:link,
+.link:visited {
+  text-decoration: none; }
+
 body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -155,9 +164,6 @@ body {
   font-size: 10rem;
   top: 0;
   left: -1rem; }
-
-.link, .link:link, .link:visited {
-  text-decoration: none; }
 
 .u-txt-bold {
   font-weight: 700; }
@@ -266,6 +272,15 @@ body {
   .avatar--navbar {
     height: 3rem;
     width: 3rem; }
+
+.breadcrumbs {
+  display: flex;
+  color: var(--color-white);
+  font-size: var(--font-size-h6);
+  padding: 5rem 0; }
+  .breadcrumbs__link, .breadcrumbs__link:link, .breadcrumbs__link:visited {
+    color: currentColor;
+    padding: 0 1rem; }
 
 .button {
   display: flex;
@@ -448,7 +463,6 @@ body {
     left: -3.3rem;
     vertical-align: middle; }
   .card__heading-link {
-    text-decoration: none;
     margin-left: 2rem; }
     .card__heading-link--full-width-blogpost {
       margin-top: 2rem; }
@@ -626,6 +640,11 @@ body {
   width: 100%; }
   .full-width-section--grey-light-bg {
     background: var(--color-grey-light-1); }
+  .full-width-section--bg-breadcrumbs {
+    background-image: var(--bg-breadcrumbs);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
   .full-width-section--bg-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/backgrounds/background-15-1920x900.jpg);
     background-blend-mode: multiply;
@@ -841,8 +860,6 @@ body {
     display: grid;
     align-items: center;
     list-style: none; }
-  .header a {
-    text-decoration: none; }
   .header__upper-half {
     display: grid;
     align-content: center;
@@ -970,7 +987,6 @@ body {
     .admin .side-nav__link:link, .admin .side-nav__link:visited {
       display: block;
       color: var(--color-grey-dark-1);
-      text-decoration: none;
       padding: 1rem 0;
       margin: 0.5rem 0;
       transition: all 0.2s; }
@@ -1049,8 +1065,7 @@ body {
     .blog-post .user-comments ul {
       list-style: none; }
     .blog-post .user-comments a {
-      color: var(--color-grey-dark-1);
-      text-decoration: none; }
+      color: var(--color-grey-dark-1); }
     .blog-post .user-comments a:hover {
       text-decoration: underline; }
     .blog-post .user-comments__content {

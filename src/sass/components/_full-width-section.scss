@@ -7,6 +7,14 @@
       background: var(--color-grey-light-1);
    }
 
+   &--bg-breadcrumbs {
+      background-image: var(--bg-breadcrumbs);
+      // background-blend-mode: multiply;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+
    &--bg-image {
       // height: 56rem;
       background-image: linear-gradient(rgba(black, 0.5), rgba(black, 0.5)),

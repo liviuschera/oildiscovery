@@ -28,3 +28,12 @@ body {
    // min-height: 100vh;
    // flex-direction: column;
 }
+
+a,
+.link {
+   &,
+   &:link,
+   &:visited {
+      text-decoration: none;
+   }
+}

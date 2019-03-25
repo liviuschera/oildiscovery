@@ -1,0 +1,14 @@
+.breadcrumbs {
+   display: flex;
+   color: var(--color-white);
+   font-size: var(--font-size-h6);
+   padding: 5rem 0;
+   &__link {
+      &,
+      &:link,
+      &:visited {
+         color: currentColor;
+         padding: 0 1rem;
+      }
+   }
+}
