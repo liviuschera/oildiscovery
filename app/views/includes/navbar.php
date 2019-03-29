@@ -5,7 +5,7 @@
                 <a href="<?php echo URLROOT; ?>">
                     <img class="header__logo"
                         src="<?php echo URLROOT; ?>/images/logo-536x84.png"
-                        alt="Logo of Oildiscovery websi te" />
+                        alt="Logo of Oildiscovery website" />
                 </a>
 
                 <!-- Login/Logout  -->
@@ -94,7 +94,7 @@
                 <?php $_SESSION['pages'] ?? redirectTo(''); ?>
                 <?php foreach ($_SESSION['pages'] as $page): ?>
                 <li>
-                    <a class=""
+                    <a class="<?php echo getCurrentURL() === $page->link ? 'active-link' : '';?>"
                         href="<?php echo URLROOT . $page->link; ?>">
                         <?php echo $page->navbar_title; ?></a>
                 </li>

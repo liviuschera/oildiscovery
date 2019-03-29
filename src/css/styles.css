@@ -374,12 +374,12 @@ body {
     grid-template-rows: repeat(auto-fit, repeat(1rem, min-content)); }
   .card--with-icons {
     height: var(--card-with-icons-height);
-    padding: 4rem 6.5rem; }
+    padding: 4rem 3.5rem; }
   .card--with-blogpost {
     height: var(--card-with-blogpost-height); }
   .card--with-invisible-bg {
     background-color: transparent;
-    height: min-content;
+    display: flex;
     width: max-content;
     padding: 0 1rem; }
     .card--with-invisible-bg .card__icon {
@@ -392,7 +392,18 @@ body {
       line-height: 3rem; }
   .card--for-3col-blog {
     height: var(--card--for-3col-blog-height);
-    border: 0.1rem solid var(--color-grey-light-1); }
+    border: 0.1rem solid var(--color-grey-light-1);
+    position: relative; }
+    .card--for-3col-blog::after {
+      content: "";
+      position: absolute;
+      bottom: -0.7rem;
+      left: 0;
+      width: 100%;
+      height: 15%;
+      background-image: linear-gradient(to top, white 0%, rgba(255, 255, 255, 0.9) 80%, rgba(255, 255, 255, 0.3) 90%, transparent 100%);
+      background-size: 100%;
+      z-index: 1; }
   .card--full-width-blogpost {
     display: flex;
     flex-direction: column;
@@ -506,7 +517,8 @@ body {
     margin-top: 2rem;
     margin-left: 1rem;
     display: flex;
-    flex-direction: row; }
+    flex-direction: row;
+    z-index: 2; }
   .card:hover .card__content {
     transform: translateY(-3rem); }
     .card:hover .card__content--for-3col-blog {

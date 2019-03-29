@@ -26,7 +26,7 @@
 
    &--with-icons {
       height: var(--card-with-icons-height);
-      padding: 4rem 6.5rem;
+      padding: 4rem 3.5rem;
    }
    // /////////////////////////////////
 
@@ -37,7 +37,7 @@
 
    &--with-invisible-bg {
       background-color: transparent;
-      height: min-content;
+      display: flex;
       width: max-content;
       padding: 0 1rem;
 
@@ -60,6 +60,25 @@
    &--for-3col-blog {
       height: var(--card--for-3col-blog-height);
       border: 0.1rem solid var(--color-grey-light-1);
+      position: relative;
+
+      &::after {
+         content: "";
+         position: absolute;
+         bottom: -0.7rem;
+         left: 0;
+         width: 100%;
+         height: 15%;
+         background-image: linear-gradient(
+            to top,
+            rgba($color-white, 1) 0%,
+            rgba($color-white, 0.9) 80%,
+            rgba($color-white, 0.3) 90%,
+            transparent 100%
+         );
+         background-size: 100%;
+         z-index: 1;
+      }
    }
    // /////////////////////////////////
    &--full-width-blogpost {
@@ -239,6 +258,7 @@
          // margin-top: 1rem;
          opacity: 1;
          height: 12rem;
+         // overflow: hidden;
 
          .paragraph {
             text-align: left;
@@ -257,6 +277,7 @@
       margin-left: 1rem;
       display: flex;
       flex-direction: row;
+      z-index: 2;
    }
 
    &:hover &__content {
