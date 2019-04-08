@@ -4,26 +4,24 @@
    display: grid;
    grid-template-rows: 8rem 1fr;
    width: 100vw;
+   height: var(--header-height);
    background-color: white;
+   margin: 0 auto;
+   z-index: 11111;
 
    &__wrapper {
       width: var(--site-width);
+
+      @include respond-to(1200px){
+         --site-width: 100%;
+      }
    }
-
-   height: var(--header-height);
-   margin: 0 auto;
-   // background-color: hsla(233, 77%, 77%, 0.1);
-   z-index: 11111;
-
+   
    ul {
       display: grid;
       align-items: center;
       list-style: none;
    }
-
-   // a {
-   //    text-decoration: none;
-   // }
 
    &__upper-half {
       display: grid;
@@ -32,7 +30,7 @@
    }
 
    &__logo {
-      margin: 2rem 0;
+      margin: 1.8rem 0;
       height: var(--logo-height);
    }
 
@@ -55,31 +53,46 @@
       position: sticky;
       top: 0;
       width: var(--site-width);
+      height: 100%; 
       display: grid;
       font-size: var(--header-menu-fontsize);
       font-weight: 700;
       background-color: var(--color-white);
       z-index: 1111;
+      padding: 0;
+      margin: 0;
 
       ul {
-         grid-template-columns: repeat(auto-fit, minmax(3rem, max-content));
+         display: flex;
          justify-content: space-between;
-         padding: 1rem 0;
-
+         align-content: center;
+         // padding: 1rem 0;
+         // padding-top: 1rem;
+         
+         li{
+            // background-color: rgba(#000000, 0.2);
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            
+         }
          li:not(:last-child) {
             border-right: 1px solid var(--color-grey-light-1);
-            padding: 1.8rem 5rem 1.8rem 0;
+            padding: 1.8rem 0;
+            
          }
-
+         
          a {
-            position: relative;
+            // background-color: rgba(#0ff, 0.1);
             color: var(--color-grey-dark-1);
             transition: all 0.3s;
+            text-align: center;
+            
 
             &:hover,
             &:focus {
                color: var(--color-primary);
-               // color: var(--color-grey-light-2);
             }
 
             &::before {

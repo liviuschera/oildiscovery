@@ -14,10 +14,10 @@
 
     <!-- Open Graph tags to customize link previews -->
     <?php
-   $fb_graph_url = 'https://oildiscovery.com.au/posts/show/13';
-   $fb_graph_title = 'DAILY SINK SCRUB';
-   $fb_graph_description = "Let's do the yukky stuff so looking at our sinks sparks joy😂 Thanks Maria Kondo❤.";
-   $fb_graph_image = 'https://oildiscovery.com.au/images/blog/53764592_2138249226219015_6742750478901182464_o.jpg';
+   $fb_graph_url = '';
+   $fb_graph_title = '';
+   $fb_graph_description = '';
+   $fb_graph_image = '';
    
    if (isset($data['post'])) {
        $fb_graph_url = trim(URLROOT . "/posts/show/" . $data['post']->postID);
@@ -27,7 +27,7 @@
    }
    ?>
     <meta property="og:url" content="<?php echo $fb_graph_url; ?>" />
-    <meta property="og:type" content="blog" />
+    <meta property="og:type" content="website" />
     <meta property="og:title"
         content="<?php echo $fb_graph_title; ?>" />
     <meta property="og:description"

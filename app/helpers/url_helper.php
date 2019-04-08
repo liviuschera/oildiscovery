@@ -11,3 +11,9 @@ function getCurrentURL()
     $current_url = str_replace('/oildiscovery', '', $url);
     return $current_url === '/' ? '/pages': $current_url;
 }
+
+function makeLinkSEOFriendly($link)
+{
+    $link = preg_replace('/\W+/', '-', strtolower($link));
+    return trim($link, '-');
+}

@@ -5,19 +5,19 @@
    }
    16% {
       opacity: 1;
-      transform: scale(1.05);
+      // transform: scale(1.05);
       animation-timing-function: ease-out;
    }
    33% {
       opacity: 1;
-      transform: scale(1.1);
+      // transform: scale(1.1);
    }
    49% {
-      opacity: 0;
+      opacity: 1;
       // transform: scale(1.1) translateY(-20%);
    }
    66% {
-      opacity: 0;
+      opacity: 1;
       // transform: scale(1.1) translateY(-100%);
    }
    100% {
@@ -40,7 +40,12 @@
    }
    49% {
       opacity: 0;
-      transform: translateY(100%);
+      transform: translateY(0%);
+      z-index: -1;
+   }
+   50% {
+      opacity: 0;
+      // transform: translateY(100%);
    }
    66% {
       opacity: 0;

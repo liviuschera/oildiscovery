@@ -4,7 +4,8 @@
 
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
-<script>
+<script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=<?php echo FB_APP_ID; ?>&autoLogAppEvents=1">
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -101,137 +102,111 @@ $data['post']->lName; ?> </a>
 
         <!-- ~~~ Display Edit and Delete buttons END -->
 
-        <!-- ~~~ BLOG POST NAV SOCIAL start
 
-        <section class="social-media-buttons u-mt-big">
-            <div class="social-media-buttons__wrapper">
-                <h6 class="h-6 u-txt-bold">Share this post:</h6>
-                <nav class="social-buttons">
-                    <ul>
-                        <li>
-                            <a class="link" href="">
-                                <svg class="icon">
-                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-facebook">
-        </use>
-        </svg>
-        </a>
-        </li>
-        <li>
-            <a class="link" href="">
-                <svg class="icon">
-                    <use
-                        href="<?php echo URLROOT; ?>/images/sprite.svg#icon-instagram">
-                    </use>
-                </svg>
+        <!-- Your share button code start-->
+
+        <div class="fb-share-button"
+            data-href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']->postID; ?>/"
+            data-layout="button_count" data-size="large">
+            <a target="_blank"
+                href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']->postID; ?>"
+                class="fb-xfbml-parse-ignore">Share
             </a>
-        </li>
+        </div>
+        <!-- Your share button code end-->
 
-        </ul>
-        </nav>
-</div>
-</section> -->
-
-<!-- ~~~ BLOG POST NAV SOCIAL end -->
-
-<!-- Your share button code start-->
-<div class="fb-share-button"
-    data-href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']->postID; ?>/"
-    data-layout="button_count" data-size="large">
-</div>
-<!-- Your share button code end-->
-
-<!-- <?php var_dump($_SESSION['fb_user_name']); ?>
-<?php var_dump($_SESSION['fb_user_email']); ?>
--->
-<!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
-<section class="user-comments">
-    <h3 class="h-3 u-mb-big u-txt-align-center">
-        <?php echo !empty($data['comments'])
+        <!-- <?php var_dump($_SESSION['fb_user_name']); ?>
+        <?php var_dump($_SESSION['fb_user_email']); ?>
+        -->
+        <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
+        <section class="user-comments">
+            <h3 class="h-3 u-mb-big u-txt-align-center">
+                <?php echo !empty($data['comments'])
 ? count($data['comments'])
 : 0; ?> Comments</h3>
-    <ul class="user-comments__comments">
-        <?php foreach ($data['comments'] as $commenter): ?>
-        <li class="user-comments__comment">
-            <div class="avatar">
-                <img src="<?php echo URLROOT .
+            <ul class="user-comments__comments">
+                <?php foreach ($data['comments'] as $commenter): ?>
+                <li class="user-comments__comment">
+                    <div class="avatar">
+                        <img src="<?php echo URLROOT .
 USER_IMG_DIR .
 $commenter->userImgName; ?>" alt="" />
-            </div>
-            <div class="user-comments__content">
-                <header>
-                    <p class="paragraph">
-                        <a href="" class="user-comments__user-link">
-                            <?php echo $commenter->firstName .
+                    </div>
+                    <div class="user-comments__content">
+                        <header>
+                            <p class="paragraph">
+                                <a href="" class="user-comments__user-link">
+                                    <?php echo $commenter->firstName .
 " " .
 $commenter->lastName; ?></a>
 
-                        <span class="user-comments__published-date">
-                            <?php echo formatDate(
+                                <span class="user-comments__published-date">
+                                    <?php echo formatDate(
     $commenter->createdAt,
     'd-M-Y, H:i'
 ); ?>
-                            <svg>
-                                <use href="images/sprite.svg#icon-clock"></use>
-                            </svg>
-                        </span>
-                    </p>
-                </header>
-                <p class="paragraph">
-                    <?php echo $commenter->comment; ?>
-                </p>
-            </div>
-        </li>
-        <?php endforeach;?>
-    </ul>
-</section>
-<!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
+                                    <svg>
+                                        <use href="images/sprite.svg#icon-clock"></use>
+                                    </svg>
+                                </span>
+                            </p>
+                        </header>
+                        <p class="paragraph">
+                            <?php echo $commenter->comment; ?>
+                        </p>
+                    </div>
+                </li>
+                <?php endforeach;?>
+            </ul>
+        </section>
+        <!-- ~~~ BLOG POST SHOW USER COMMENTS  end -->
 
-<?php if (isLoggedIn()): ?>
+        <?php if (isLoggedIn()): ?>
 
-<!-- ~~~ BLOG POST ADD USER COMMENTS  start -->
+        <!-- ~~~ BLOG POST ADD USER COMMENTS  start -->
 
-<form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
+        <form class="form u-div-center u-mt-big u-mb-big" action="<?php echo URLROOT; ?>/posts/show/<?php echo $data[
     'post'
 ]->postID; ?>" method="post">
-    <h3 class="h-3 u-txt-align-center u-mb-big">Leave a Comment</h3>
-    <div class="form__group">
-        <textarea rows="3" class="form__textarea  <?php echo !empty(
+            <h3 class="h-3 u-txt-align-center u-mb-big">Leave a Comment</h3>
+            <div class="form__group">
+                <textarea rows="3" class="form__textarea  <?php echo !empty(
     $data['post']->commentError
 )
 ? 'form__invalid'
 : ''; ?>" placeholder="Leave a comment" name="comment" id="comment"></textarea>
-        <span class="form__failed-feedback">
-            <?php echo $data['post']->commentError ?? ''; ?></span>
-    </div>
-    <input class="button" type="submit" value="Send comment">
-</form>
+                <span class="form__failed-feedback">
+                    <?php echo $data['post']->commentError ?? ''; ?></span>
+            </div>
+            <input class="button" type="submit" value="Send comment">
+        </form>
 
-<!-- ~~~ BLOG POST ADD USER COMMENTS  end -->
-<?php else: ?>
+        <!-- ~~~ BLOG POST ADD USER COMMENTS  end -->
+        <?php else: ?>
 
-<div class="form__alert-info">
-    In order to post comments you need to be logged in.
-</div>
+        <div class="form__alert-info">
+            In order to post comments you need to be logged in.
+        </div>
 
-<?php endif;?>
-<!-- ~~~ BLOG POST CARD  end -->
-</main>
-<aside class="blog-post__aside">
-    <form action="" class="form form--search">
-        <input type="text" class="form__input" placeholder="First name" id="first-name" required />
-    </form>
+        <?php endif;?>
+        <!-- ~~~ BLOG POST CARD  end -->
+    </main>
+    <aside class="blog-post__aside">
+        <form action="" class="form form--search">
+            <input type="text" class="form__input" placeholder="First name" id="first-name" required />
+        </form>
 
-    <div class="blog-post__about">
-        <h3 class="h-3">About</h3>
-        <p class="paragraph">
-            I am a Certified Health Coach, focused on women's health,
-            bringing you super-practical support to help you feel great,
-            take care of your body, and actually enjoy the process. I
-            don’t tell my clients what to do, I teach them what to do.
-        </p>
-        <button class="button">Read more</button>
-    </div>
-</aside>
+        <div class="blog-post__about">
+            <h3 class="h-3">About</h3>
+            <p class="paragraph">
+                I am a Certified Health Coach, focused on women's health,
+                bringing you super-practical support to help you feel great,
+                take care of your body, and actually enjoy the process. I
+                don’t tell my clients what to do, I teach them what to do.
+            </p>
+            <button class="button">Read more</button>
+        </div>
+    </aside>
 </div>
 
 <!-- ~~~ BLOG POST SECTION  end~~~ -->

@@ -14,7 +14,7 @@
                     <div class="card__content card__content--for-3col-blog">
                         <div class="card__img-wrapper">
                             <a
-                                href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>">
+                                href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>/<?php echo makeLinkSEOFriendly($post->title); ?>">
                                 <img src="<?php echo URLROOT .
                                       BLOG_IMG_DIR .
                                       $post->imgName; ?>" alt=""
@@ -28,7 +28,7 @@
                             </svg>
                         </div>
 
-                        <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>"
+                        <a href="<?php echo URLROOT; ?>/posts/show/<?php echo $post->postID; ?>/<?php echo makeLinkSEOFriendly($post->title); ?>"
                             class="card__heading-link">
                             <h6 class="h-6 u-txt-bold u-txt-uppercase  u-color-primary">
                                 <?php echo $post->title; ?>

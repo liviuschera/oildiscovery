@@ -1,21 +1,6 @@
-// const triggers = document.querySelectorAll("a");
-// const highlight = document.createElement("span");
-// highlight.classList.add("highlight");
-// document.body.appendChild(highlight);
+// Shortcut for `document.querySelector` Ex: $('h3')
+const $ = element => document.querySelector(element);
 
-// function highlightLink() {
-//    const linkCoords = this.getBoundingClientRect();
-//    console.log(linkCoords);
-//    const coords = {
-//       width: linkCoords.width,
-//       height: linkCoords.height,
-//       top: linkCoords.top + window.scrollY,
-//       left: linkCoords.left + window.scrollX
-//    };
+// Shortcut for `document.querySelectorAll` Ex: $$('h3')
+const $$ = elements => Array.from(document.querySelectorAll(elements));
 
-//    highlight.style.width = `${coords.width}px`;
-//    highlight.style.height = `${coords.height}px`;
-//    highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
-// }
-
-// triggers.forEach(a => a.addEventListener("mouseenter", highlightLink));
