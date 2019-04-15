@@ -200,7 +200,7 @@ body {
   color: var(--color-grey-dark-1); }
 
 .u-border-color-white {
-  margin: 0.5rem;
+  margin: 0 1rem;
   border: 1px solid var(--color-white); }
 
 .u-background-white {
@@ -378,9 +378,6 @@ body {
     height: var(--card-with-icons-height);
     padding: 4rem 3.5rem;
     transition: all 0.2s; }
-    @media only screen and (max-width: 1200px) {
-      .card--with-icons {
-        padding: 3.9rem 3.4rem; } }
   .card--with-blogpost {
     height: var(--card-with-blogpost-height); }
   .card--with-invisible-bg {
@@ -720,8 +717,8 @@ body {
       max-width: 100%;
       object-fit: contain; }
     .full-width-section__col-img--welcome img {
-      width: 57rem;
-      height: 35rem; }
+      max-width: 57rem;
+      max-height: 35rem; }
       @media only screen and (max-width: 1200px) {
         .full-width-section__col-img--welcome img {
           margin: 1rem auto; } }
@@ -878,7 +875,7 @@ body {
   .footer .paragraph {
     margin-bottom: 0; }
 
-.header {
+.navigation {
   position: sticky;
   top: -8rem;
   display: grid;
@@ -888,35 +885,35 @@ body {
   background-color: white;
   margin: 0 auto;
   z-index: 11111; }
-  .header__wrapper {
+  .navigation__wrapper {
     width: var(--site-width); }
     @media only screen and (max-width: 1200px) {
-      .header__wrapper {
+      .navigation__wrapper {
         --site-width: 100%; } }
-  .header ul {
+  .navigation ul {
     display: grid;
     align-items: center;
     list-style: none; }
-  .header__upper-half {
+  .navigation__upper-half {
     display: grid;
     align-content: center;
     border-bottom: 1px solid var(--color-grey-light-1); }
-  .header__logo {
+  .navigation__logo {
     margin: 1.8rem 0;
     height: var(--logo-height); }
-  .header__row {
+  .navigation__row {
     display: flex;
     justify-content: space-between;
     align-items: center; }
-  .header__row-container {
+  .navigation__row-container {
     display: flex;
     justify-content: flex-end;
     align-items: center; }
-  .header ul {
+  .navigation ul {
     display: flex;
     justify-content: flex-end;
     list-style: none; }
-    .header ul .link {
+    .navigation ul .link {
       display: block;
       margin-right: 1rem;
       height: 3rem;
@@ -926,10 +923,10 @@ body {
       position: relative;
       color: var(--color-primary);
       transition: all 0.3s; }
-      .header ul .link:hover {
+      .navigation ul .link:hover {
         background-color: var(--color-primary);
         color: var(--color-white); }
-      .header ul .link .icon {
+      .navigation ul .link .icon {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -937,7 +934,7 @@ body {
         height: 1.5rem;
         width: 1.5rem;
         fill: currentColor; }
-  .header__menu {
+  .navigation__menu {
     background-color: white;
     position: sticky;
     top: 0;
@@ -950,25 +947,25 @@ body {
     z-index: 1111;
     padding: 0;
     margin: 0; }
-    .header__menu ul {
+    .navigation__menu ul {
       display: flex;
       justify-content: space-between;
       align-content: center; }
-      .header__menu ul li {
+      .navigation__menu ul li {
         width: 100%;
         position: relative;
         display: flex;
         justify-content: center; }
-      .header__menu ul li:not(:last-child) {
+      .navigation__menu ul li:not(:last-child) {
         border-right: 1px solid var(--color-grey-light-1);
         padding: 1.8rem 0; }
-      .header__menu ul a {
+      .navigation__menu ul a {
         color: var(--color-grey-dark-1);
         transition: all 0.3s;
         text-align: center; }
-        .header__menu ul a:hover, .header__menu ul a:focus {
+        .navigation__menu ul a:hover, .navigation__menu ul a:focus {
           color: var(--color-primary); }
-        .header__menu ul a::before {
+        .navigation__menu ul a::before {
           content: "";
           position: absolute;
           bottom: -0.7rem;
@@ -980,10 +977,10 @@ body {
           transform-origin: 0% 50%;
           transition: transform 0.3s;
           transition-timing-function: cubic-bezier(1, 0.68, 0.16, 0.9); }
-        .header__menu ul a.active-link {
+        .navigation__menu ul a.active-link {
           color: var(--color-primary);
           transition: all 0.3s; }
-          .header__menu ul a.active-link::before {
+          .navigation__menu ul a.active-link::before {
             transform: scale3d(1, 1, 1); }
 
 .admin {

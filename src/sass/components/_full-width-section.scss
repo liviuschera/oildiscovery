@@ -150,8 +150,8 @@
       }
       &--welcome {
          img {
-            width: 57rem;
-            height: 35rem;
+            max-width: 57rem;
+            max-height: 35rem;
             @include respond-to(1200px) {
                margin: 1rem auto;
             }

@@ -28,9 +28,6 @@
       height: var(--card-with-icons-height);
       padding: 4rem 3.5rem;
       transition: all 0.2s;
-      @include respond-to(1200px) {
-         padding: 3.9rem 3.4rem;
-      }
    }
    // /////////////////////////////////
 
