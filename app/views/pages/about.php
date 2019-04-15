@@ -4,4 +4,6 @@
 
 <h1>aBOUT</h1>
 
-<?php require APPROOT . '/views/includes/footer.php'; ?>
+<?php phpinfo(); ?>
+
+<?php require APPROOT . '/views/includes/footer.php';

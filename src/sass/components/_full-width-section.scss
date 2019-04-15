@@ -143,20 +143,19 @@
       justify-self: center;
 
       img {
-         height: 100%;
-         width: 100%;
+         max-height: 100%;
+         max-width: 100%;
          // object-fit: scale-down;
          object-fit: contain;
       }
       &--welcome {
-         // grid-column: 2/3;
-
-         // @include respond-to(1200px) {
-         //    // grid-column: 1/2;
-         //    // grid-row: 1/2;
-         //    width: 60%;
-         //    height: 60%;
-         // }
+         img {
+            width: 57rem;
+            height: 35rem;
+            @include respond-to(1200px) {
+               margin: 1rem auto;
+            }
+         }
       }
    }
 
@@ -167,9 +166,9 @@
 
       &--for-3col-blog {
          margin-bottom: 3rem;
-         // align-items: flex-start;
-         // align-content: flex-start;
-         // justify-content: flex-start;
+         max-width: var(--site-width);
+         justify-items: center;
+         margin: 0 auto;
       }
    }
 
@@ -180,12 +179,7 @@
    &__contact-details {
       display: flex;
       flex-direction: column;
-      // display: grid;
-      // grid-template-columns: 100%;
-      // grid-template-rows: repeat(3, 1fr);
       width: max-content;
-      // width: 32rem;
-      // margin-right: 10%;
       .link {
          color: var(--color-primary);
          transition: all 0.2s;

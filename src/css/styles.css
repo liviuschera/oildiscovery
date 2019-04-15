@@ -200,6 +200,7 @@ body {
   color: var(--color-grey-dark-1); }
 
 .u-border-color-white {
+  margin: 0.5rem;
   border: 1px solid var(--color-white); }
 
 .u-background-white {
@@ -375,7 +376,11 @@ body {
     grid-template-rows: repeat(auto-fit, repeat(1rem, min-content)); }
   .card--with-icons {
     height: var(--card-with-icons-height);
-    padding: 4rem 3.5rem; }
+    padding: 4rem 3.5rem;
+    transition: all 0.2s; }
+    @media only screen and (max-width: 1200px) {
+      .card--with-icons {
+        padding: 3.9rem 3.4rem; } }
   .card--with-blogpost {
     height: var(--card-with-blogpost-height); }
   .card--with-invisible-bg {
@@ -472,7 +477,7 @@ body {
     height: 1.6rem;
     fill: var(--color-grey-dark-1);
     transition: fill 0.3s;
-    margin-left: .3rem; }
+    margin-left: 0.3rem; }
   .card__heading-link {
     margin-left: 2rem; }
     .card__heading-link--full-width-blogpost {
@@ -711,15 +716,24 @@ body {
     transition: all 0.3s;
     justify-self: center; }
     .full-width-section__col-img img {
-      height: 100%;
-      width: 100%;
+      max-height: 100%;
+      max-width: 100%;
       object-fit: contain; }
+    .full-width-section__col-img--welcome img {
+      width: 57rem;
+      height: 35rem; }
+      @media only screen and (max-width: 1200px) {
+        .full-width-section__col-img--welcome img {
+          margin: 1rem auto; } }
   .full-width-section__row {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; }
     .full-width-section__row--for-3col-blog {
-      margin-bottom: 3rem; }
+      margin-bottom: 3rem;
+      max-width: var(--site-width);
+      justify-items: center;
+      margin: 0 auto; }
   .full-width-section .img-testimonials {
     height: 27rem; }
   .full-width-section__contact-details {
