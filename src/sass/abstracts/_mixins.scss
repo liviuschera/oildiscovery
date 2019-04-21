@@ -14,7 +14,6 @@
    }
 }
 
-
 @mixin absCenter {
    position: absolute;
    top: 50%;
@@ -27,7 +26,7 @@
       display: flex;
       justify-content: flex-end;
       list-style: none;
-      // align-content: center;
+      margin-right: 1.5rem;
 
       .link {
          display: block;
@@ -64,6 +63,10 @@
    font-weight: 700;
    background-color: var(--color-white);
    z-index: 1111;
+
+   @include respond-to(700px) {
+      --site-width: 100%;
+   }
 
    ul {
       grid-template-columns: repeat(auto-fit, minmax(3rem, max-content));

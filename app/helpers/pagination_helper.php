@@ -42,7 +42,7 @@ function paginate($row_count)
             //   Display pagination only if number of table rows is greater than ROWS_PER_PAGE_USERS
             for ($i = 1; $i <= $page_count; $i++) {
                 if ($i == $page) {
-                    $html .= "<form action='' method='post' class='u-mt-big'>
+                    $html .= "<form action='' method='post' class='pagination u-mt-big'>
                     <input type='submit' name='page' value={$i} class='button button__pagination button__pagination--active' />
                     </form>
                     ";

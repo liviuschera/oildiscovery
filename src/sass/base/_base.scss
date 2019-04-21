@@ -13,20 +13,25 @@ html {
    //1 rem = 10px; 10px/16px = 62.5%
    font-size: 62.5%;
 
-   // @include respond-to(600px) {
-   //    font-size: 56.25%; //1 rem = 9px
-   // }
-
    // @include respond-to(1800px, false) {
    //    font-size: 75%; //1rem = 12, 12/16
    // }
+
+   // @include respond-to(750px) {
+   //    // width: 100%;
+   //    // overflow-x: hidden;
+   // }
+
+   @include respond-to(600px) {
+      font-size: 56.25%; //1 rem = 9px
+
+      // max-width: 100%;
+      // min-width: 100vh;
+   }
 }
 
 body {
    box-sizing: border-box;
-   // display: flex;
-   // min-height: 100vh;
-   // flex-direction: column;
 }
 
 a,
@@ -36,4 +41,11 @@ a,
    &:visited {
       text-decoration: none;
    }
+}
+
+.pagination {
+   display: grid;
+   // input {
+   //    display: flex;
+   // }
 }

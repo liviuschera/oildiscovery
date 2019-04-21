@@ -1,7 +1,29 @@
+.contact {
+   width: 90%;
+   margin: 0 auto;
+
+   &__details {
+      display: flex;
+      flex-direction: column;
+      width: max-content;
+
+      .link {
+         color: var(--color-primary);
+         transition: all 0.2s;
+
+         &:hover {
+            color: var(--color-grey-dark-1);
+         }
+      }
+   }
+}
+
 .footer {
    padding: 1.5rem;
    background-color: var(--color-grey-light-1);
    vertical-align: middle;
+   text-align: center;
+
    .paragraph {
       margin-bottom: 0;
    }

@@ -1,0 +1,126 @@
+/* Slideshow container */
+.slideshow {
+   position: relative;
+   width: 100%;
+   height: var(--slider-height);
+   // overflow: hidden;
+   color: $color-white;
+   // z-index: 1;
+
+   @include respond-to(700px) {
+      width: 100%;
+   }
+
+   &__img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      object-fit: cover;
+      background-position: 50% 50%;
+      background-repeat: none;
+      // backface-visibility: hidden;
+      // // animation: fadeIn 2s linear infinite 0s;
+   }
+
+   &__title {
+      position: absolute;
+      top: 15rem;
+      left: 11rem;
+      font-family: "Oregano", "Arial Narrow", Arial, sans-serif;
+      font-size: 10rem;
+      font-weight: 400;
+      width: 100%;
+      z-index: 1;
+      // -webkit-transition: all 0.6s ease;
+      // transition: all 0.6s ease;
+      @include respond-to(750px) {
+         left: 1rem;
+         font-size: 8rem;
+      }
+
+      @include respond-to(600px) {
+         font-size: 6rem;
+      }
+   }
+
+   &__text {
+      width: 57rem;
+      // width: 50%;
+      position: absolute;
+      top: 29rem;
+      left: 12rem;
+      z-index: 1;
+      // -webkit-transition: all 0.6s ease;
+      // transition: all 0.6s ease;
+
+      @include respond-to(750px) {
+         left: 1rem;
+         width: 90%;
+         padding-right: 1rem;
+      }
+      @include respond-to(450px) {
+         font-size: 2rem;
+      }
+   }
+
+   &__button {
+      position: absolute;
+      top: 37rem;
+      left: 11rem;
+      z-index: 1;
+
+      @include respond-to(750px) {
+         left: 1rem;
+      }
+   }
+}
+
+/* The dots/bullets/indicators */
+.dots {
+   width: 7rem;
+   height: 2rem;
+   position: absolute;
+   bottom: 7rem;
+   right: 11rem;
+   .dot {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin: 0 0.2rem;
+      background-color: $color-primary-light;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+   }
+   .active-dot {
+      background-color: $color-primary-dark;
+   }
+}
+
+.fadeIn {
+   -webkit-animation-name: fadeIn;
+   -webkit-animation-duration: 1s;
+   animation-name: fadeIn;
+   animation-duration: 1s;
+}
+// .fadeOut {
+//    -webkit-animation-name: fadeOut;
+//    animation-name: fadeOut;
+//    -webkit-animation-duration: 1s;
+//    animation-duration: 1s;
+//    -webkit-animation-fill-mode: both;
+//    animation-fill-mode: both;
+// }
+.topFadeOut {
+   -webkit-animation-name: topFadeOut;
+   -webkit-animation-duration: 2s;
+   animation-name: topFadeOut;
+   animation-duration: 2;
+}
+.bottomFadeOut {
+   -webkit-animation-name: bottomFadeOut;
+   -webkit-animation-duration: 2s;
+   animation-name: bottomFadeOut;
+   animation-duration: 2;
+}

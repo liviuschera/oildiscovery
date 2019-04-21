@@ -10,6 +10,11 @@
    margin: 1.5rem;
    color: var(--color-grey-dark-1);
 
+   @include respond-to(750px) {
+      margin: 1.5rem auto;
+      width: 90%;
+   }
+
    .paragraph {
       color: var(--color-grey-dark-1);
    }
@@ -40,7 +45,12 @@
       background-color: transparent;
       display: flex;
       width: max-content;
+      justify-content: center;
       padding: 0 1rem;
+
+      @include respond-to(750px) {
+         width: 90%;
+      }
 
       .card__icon {
          fill: var(--color-white);
@@ -110,6 +120,10 @@
       width: 37rem;
       height: 26rem;
       overflow: hidden;
+
+      @include respond-to(750px) {
+         width: 100%;
+      }
 
       &--full-width-blogpost {
          width: 78.5rem;

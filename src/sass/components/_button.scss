@@ -50,6 +50,13 @@
          align-self: center;
          margin-right: -0.3rem;
       }
+
+      @include respond-to(750px) {
+         // height: 1rem;
+         padding: 0.7rem 1rem;
+         // align-self: center;
+      }
+
       &:hover {
          background-color: var(--color-primary);
          color: var(--color-white);
@@ -79,11 +86,16 @@
          transition: all 0.3s ease-in-out;
          padding: 1.5rem 2rem;
          font-weight: 700;
+
+         @include respond-to(750px) {
+            font-size: 1.1rem;
+            padding: 0.9rem 1.3rem;
+         }
       }
 
       &--active {
          background-color: $color-primary-dark;
-         color: var(--color-white);
+         color: $color-white;
       }
    }
 

@@ -24,11 +24,28 @@
       background-repeat: no-repeat;
       background-size: cover;
 
+      @include respond-to(750px) {
+         .button {
+            align-self: center;
+            margin: 1rem 0;
+         }
+         .h-6 {
+            width: 95%;
+         }
+      }
+
       .paragraph-title {
          width: 80%;
       }
+
       .full-width-section__content {
          padding: 9.5rem 0;
+         figure:not(:last-child) {
+            @include respond-to(750px) {
+               padding-bottom: 5rem;
+               border-bottom: 1px solid rgba($color-white, 0.3);
+            }
+         }
       }
 
       // .link {
@@ -42,7 +59,6 @@
    &__2col-wrapper,
    &__col-text,
    &__col-img,
-   &__row,
    &__wrapper {
       display: grid;
    }
@@ -105,7 +121,13 @@
       @include respond-to(1200px) {
          // grid-template-columns: 1fr;
          flex-direction: column-reverse;
-         width: 80%;
+         --site-width: 100%;
+         // width: 80%;
+      }
+      @include respond-to(800px) {
+         // grid-template-columns: 1fr;
+         flex-direction: column-reverse;
+         // width: 100%;
       }
    }
    .img-testimonials,
@@ -116,13 +138,7 @@
    }
 
    &__col-text {
-      // padding: 0 6.5rem;
-
       align-content: flex-start;
-      // @include respond-to(1200px) {
-      //    // grid-template-columns: 1fr;
-      //    width: 100%;
-      // }
 
       &--welcome {
          // grid-column: 1/2;
@@ -145,15 +161,20 @@
       img {
          max-height: 100%;
          max-width: 100%;
-         // object-fit: scale-down;
          object-fit: contain;
       }
       &--welcome {
          img {
             max-width: 57rem;
             max-height: 35rem;
+
             @include respond-to(1200px) {
                margin: 1rem auto;
+            }
+
+            @include respond-to(600px) {
+               // margin: 1rem auto;
+               width: 95%;
             }
          }
       }
@@ -164,6 +185,12 @@
       justify-content: center;
       flex-wrap: wrap;
 
+      @include respond-to(750px) {
+         width: 100%;
+         flex-direction: column;
+         margin-bottom: 2rem;
+      }
+
       &--for-3col-blog {
          margin-bottom: 3rem;
          max-width: var(--site-width);
@@ -172,78 +199,96 @@
       }
    }
 
+   // &__photo-galery {
+   //    margin-left: 3rem;
+   //    &--container {
+   //       display: grid;
+   //       grid-gap: 0.3rem;
+   //       grid-template-columns: repeat(3, minmax(1rem, 8.5rem));
+   //       .thumbnail {
+   //          width: 8.5rem;
+   //          height: 8.5rem;
+   //          transition: all 0.25s;
+
+   //          &:hover {
+   //             transform: scale(1.01);
+   //             box-shadow: var(--shadow-subtle);
+   //          }
+   //       }
+   //    }
+   // }
    .img-testimonials {
       height: 27rem;
+      object-fit: contain;
+
+      @include respond-to(750px) {
+         margin-bottom: 2rem;
+      }
    }
+   .testimonials {
+      &__carousel {
+         width: calc(var(--site-width) / 2);
 
-   &__contact-details {
-      display: flex;
-      flex-direction: column;
-      width: max-content;
-      .link {
-         color: var(--color-primary);
-         transition: all 0.2s;
-
-         &:hover {
-            color: var(--color-grey-dark-1);
+         @include respond-to(750px) {
+            margin: 0 auto;
+            width: 90%;
          }
-      }
-   }
 
-   &__photo-galery {
-      margin-left: 3rem;
-      &--container {
-         display: grid;
-         grid-gap: 0.3rem;
-         grid-template-columns: repeat(3, minmax(1rem, 8.5rem));
-         // grid-template-columns: repeat(autofit, minmax(8rem, 1fr));
-         .thumbnail {
-            width: 8.5rem;
-            height: 8.5rem;
-            transition: all 0.25s;
-
-            &:hover {
-               transform: scale(1.01);
-               box-shadow: 0 1rem 2rem rgba(black, 0.2);
-               // box-shadow: var(--shadow-subtle);
-            }
+         & .paragraph {
+            width: 100%;
+            text-align: justify;
          }
-      }
-   }
 
-   &__carousel {
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: repeat(4, 1fr);
-      width: calc(var(--site-width) / 2);
-      height: 31rem;
-      // background-color: hsla(33, 77%, 55%, 0.3);
+         & span {
+            display: block;
+         }
 
-      & > :nth-child(n + 2):nth-child(-n + 4),
-      & > :nth-child(3) p {
-         width: 100%;
-         text-align: justify;
+         & blockquote {
+            background: $color-grey-light-1;
+            border-left: 1rem solid #ccc;
+            margin: 1.5rem 1rem;
+            padding: 0.5rem 1rem;
+            quotes: "\201C""\201D""\2018""\2019";
+         }
+         & blockquote:before {
+            font-family: "Oregano";
+            color: #ccc;
+            content: open-quote;
+            font-size: 8rem;
+            line-height: 0.1rem;
+            margin-right: 0.25rem;
+            vertical-align: -3rem;
+         }
+         & blockquote p {
+            display: inline;
+         }
+
+         // & > :nth-child(n + 2):nth-child(-n + 4),
+         // & > :nth-child(3) p {
+         //    width: 100%;
+         //    text-align: justify;
+         // }
+         // &__title {
+         //    grid-row: 1/2;
+         // }
+         // &__desc {
+         //    grid-row: 2/3;
+         // }
+         // &__quote {
+         //    grid-row: 3/4;
+         // }
+         // &__author {
+         //    grid-row: 4/5;
+         // }
+         // & > :nth-child(4) .occupation {
+         //    display: block;
+         // }
+         // cite{
+         //    transition: color .3s;
+         // }
+         // cite:hover {
+         //    color: var(--color-primary)
+         // }
       }
-      & > :nth-child(1) {
-         grid-row: 1/2;
-      }
-      & > :nth-child(2) {
-         grid-row: 2/3;
-      }
-      .quote {
-         grid-row: 3/4;
-      }
-      & > :nth-child(4) {
-         grid-row: 4/5;
-      }
-      & > :nth-child(4) .occupation {
-         display: block;
-      }
-      // cite{
-      //    transition: color .3s;
-      // }
-      // cite:hover {
-      //    color: var(--color-primary)
-      // }
    }
 }

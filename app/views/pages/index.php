@@ -1,31 +1,46 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 <?php require APPROOT . '/views/includes/navbar.php'; ?>
-<!-- ~~~~~~~~~~~~~~ SLIDER ~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~ SLIDESHOW ~~~~~~~~~~~~~~ -->
 
-<section class="slider">
-    <ul>
-        <li class="slider__item">
-            <span class="slider__image">Image 01</span>
-            <div class="slider__title-wrapper">
-                <h3 class="slider__title">Chose Your Oil</h3>
-            </div>
-            <div class="slider__button-wrapper"></div>
-        </li>
-        <li class="slider__item">
-            <span class="slider__image">Image 02</span>
-            <div class="slider__title-wrapper">
-                <h3 class="slider__title">Enjoy a Heathy Life</h3>
-            </div>
-            <div class="slider__button-wrapper"></div>
-        </li>
-        <li class="slider__item">
-            <span class="slider__image">Image 03</span>
-            <div class="slider__title-wrapper">
-                <h3 class="slider__title">Best Oils Available</h3>
-            </div>
-            <div class="slider__button-wrapper"></div>
-        </li>
-    </ul>
+<section class="slideshow">
+    <div class="slideshow__slide fadeIn">
+        <img class="slideshow__img" src="images/backgrounds/background-01-1920x900.jpg" alt="" />
+        <h3 class="slideshow__title h-3 topFadeOut">Chose Your Oil</h3>
+        <h6 class="slideshow__text h-6 fadeIn">
+            I can help you make your life healthier and your body stronger in
+            no time.
+        </h6>
+        <a href="" class="slideshow__button button button--hollow bottomFadeOut">
+            Subscribe
+        </a>
+    </div>
+    <div class="slideshow__slide fadeIn">
+        <img class="slideshow__img" src="images/backgrounds/background-11-1920x900.jpg" alt="" />
+        <h3 class="slideshow__title h-3 topFadeOut">Enjoy a Heathy Life</h3>
+        <h6 class="slideshow__text h-6 fadeIn">
+            With advice and methods available here, you can easily improve
+            your life!
+        </h6>
+        <a href="" class="slideshow__button button button--hollow bottomFadeOut">
+            Subscribe
+        </a>
+    </div>
+    <div class="slideshow__slide fadeIn">
+        <img class="slideshow__img" src="images/backgrounds/background-13-1920x900.jpg" alt="" />
+        <h3 class="slideshow__title h-3 topFadeOut">Best Oils Available</h3>
+        <h6 class="slideshow__text h-6 fadeIn">
+            Health and Wellness Coach. Wellness advocate. Parent. Pet
+            Stylist.
+        </h6>
+        <a href="" class="slideshow__button button button--hollow bottomFadeOut">
+            Subscribe
+        </a>
+    </div>
+    <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
 </section>
 
 <!-- ~~~ WELCOME SECTION ~~~ -->
@@ -52,8 +67,7 @@
                 </button>
             </div>
             <div class="full-width-section__col-img full-width-section__col-img--welcome">
-                <img src="<?php echo URLROOT; ?>/images/pages/home-01-570x350.jpg"
-                    alt="" class="" />
+                <img src="<?php echo URLROOT; ?>/images/pages/home-01-570x350.jpg" alt="" class="" />
             </div>
         </div>
     </div>
@@ -81,8 +95,7 @@
                 <figure class="card card--with-icons">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
                             </use>
                         </svg>
                         <h6 class="h-6 u-txt-align-center u-color-primary u-txt-bold">
@@ -103,8 +116,7 @@
                 <figure class="card card--with-icons">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
                             </use>
                         </svg>
                         <p class="h-6 u-txt-align-center u-color-primary u-txt-bold">
@@ -125,8 +137,7 @@
                 <figure class="card card--with-icons">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-coffee">
                             </use>
                         </svg>
                         <h6 class="h-6 u-txt-align-center u-color-primary u-txt-bold">
@@ -185,15 +196,13 @@
                     <div class="card__content">
                         <div class="card__img-wrapper">
                             <a href="">
-                                <img src="<?php echo URLROOT; ?>/images/pages/events-01-390x289.jpg"
-                                    alt="" class="card__img" />
+                                <img src="<?php echo URLROOT; ?>/images/pages/events-01-390x289.jpg" alt="" class="card__img" />
                             </a>
                         </div>
                         <div class="card__details-wrapper">
                             <a class="card__link bold" href="">Street Workout
                                 <svg class="card__icon-post">
-                                    <use
-                                        href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
+                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
                                     </use>
                                 </svg>
                             </a>
@@ -216,15 +225,13 @@
                     <div class="card__content">
                         <div class="card__img-wrapper">
                             <a href="">
-                                <img src="<?php echo URLROOT; ?>/images/pages/events-02-390x289.jpg"
-                                    alt="" class="card__img" />
+                                <img src="<?php echo URLROOT; ?>/images/pages/events-02-390x289.jpg" alt="" class="card__img" />
                             </a>
                         </div>
                         <div class="card__details-wrapper">
                             <a class="card__link bold" href="">Seasonal Diet
                                 <svg class="card__icon-post">
-                                    <use
-                                        href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
+                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
                                     </use>
                                 </svg>
                             </a>
@@ -247,16 +254,14 @@
                     <div class="card__content">
                         <div class="card__img-wrapper">
                             <a href="">
-                                <img src="<?php echo URLROOT; ?>/images/pages/events-03-390x289.jpg"
-                                    alt="" class="card__img" />
+                                <img src="<?php echo URLROOT; ?>/images/pages/events-03-390x289.jpg" alt="" class="card__img" />
                             </a>
                         </div>
 
                         <div class="card__details-wrapper">
                             <a class="card__link bold" href="">How to eat
                                 <svg class="card__icon-post">
-                                    <use
-                                        href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
+                                    <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-camera">
                                     </use>
                                 </svg>
                             </a>
@@ -290,8 +295,7 @@
                 <figure class="card card--with-invisible-bg u-no-hover">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-diamond">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-diamond">
                             </use>
                         </svg>
                         <h2 class="h-1 u-txt-align-center u-color-white">12</h2>
@@ -304,8 +308,7 @@
                 <figure class="card card--with-invisible-bg u-no-hover">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-portfolio">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-portfolio">
                             </use>
                         </svg>
                         <h2 class="h-1 u-txt-align-center u-color-white">15</h2>
@@ -318,8 +321,7 @@
                 <figure class="card card--with-invisible-bg u-no-hover">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-sportive">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-sportive">
                             </use>
                         </svg>
                         <h2 class="h-1 u-txt-align-center u-color-white">7</h2>
@@ -334,8 +336,7 @@
                 <figure class="card card--with-invisible-bg u-no-hover">
                     <div class="card__content">
                         <svg class="card__icon">
-                            <use
-                                href="<?php echo URLROOT; ?>/images/sprite.svg#icon-user2">
+                            <use href="<?php echo URLROOT; ?>/images/sprite.svg#icon-user2">
                             </use>
                         </svg>
                         <h2 class="h-1 u-txt-align-center u-color-white">2377</h2>
@@ -352,20 +353,18 @@
 
 <!-- ~~~ TESTIMONIALS SECTION start~~~ -->
 
-<section class="full-width-section">
+<section class="full-width-section testimonials">
     <div class="full-width-section__content">
         <div class="full-width-section__wrapper">
             <h2 class="h-2 u-txt-align-center u-mb-big">Success Stories</h2>
             <div class="full-width-section__row">
-                <img src="<?php echo URLROOT; ?>/images/pages/praise-01-269x278.jpg"
-                    alt="" class="img-testimonials" />
-                <img src="<?php echo URLROOT; ?>/images/pages/praise-02-269x278.jpg"
-                    alt="" class="img-testimonials" />
-                <article class="full-width-section__carousel">
-                    <h6 class="h-6 u-txt-align-center u-txt-bold u-color-primary">
+                <img src="<?php echo URLROOT; ?>/images/pages/praise-01-269x278.jpg" alt="" class="img-testimonials" />
+                <img src="<?php echo URLROOT; ?>/images/pages/praise-02-269x278.jpg" alt="" class="img-testimonials" />
+                <article class="testimonials__carousel">
+                    <h6 class=" testimonials__title h-6 u-txt-align-center u-txt-bold u-color-primary u-mb-medium">
                         Rita Jefferson lost 10 pounds and 1 size
                     </h6>
-                    <p class="paragraph">
+                    <p class="testimonials__desc paragraph">
                         Joanna is unlike most nutritionists. She allows you to use
                         foods that work with your lifestyle to address your concerns.
                         I felt that I had a choice in what I ate and how I ate it
@@ -373,7 +372,7 @@
                         support, offering recipe recommendations or checking to make
                         sure I was staying on track.
                     </p>
-                    <blockquote class="quote">
+                    <blockquote class="testimonials__quote">
                         <p class="paragraph u-color-grey-dark-1">
                             Working with her changed the way I look at food - I not
                             only feel better and healthier, but I also enjoy going to
@@ -383,11 +382,11 @@
                             enjoyed every session.
                         </p>
                     </blockquote>
-                    <cite class="paragraph u-txt-bold">
+                    <cite class="testimonials__author paragraph u-txt-bold">
                         <a class="link u-color-grey-dark-1" href="">
                             Rita Jefferson
                         </a>
-                        <span class="occupation u-txt-normal">actress</span>
+                        <span class="testimonial__occupation u-txt-normal">actress</span>
                     </cite>
                 </article>
             </div>
