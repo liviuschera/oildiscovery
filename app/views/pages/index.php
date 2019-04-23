@@ -5,7 +5,7 @@
 <section class="slideshow">
     <div class="slideshow__slide fadeIn">
         <img class="slideshow__img" src="images/backgrounds/background-01-1920x900.jpg" alt="" />
-        <h3 class="slideshow__title h-3 topFadeOut">Chose Your Oil</h3>
+        <h3 class="slideshow__title h-3 topFadeOut">Choose Your Oil</h3>
         <h6 class="slideshow__text h-6 fadeIn">
             I can help you make your life healthier and your body stronger in
             no time.
