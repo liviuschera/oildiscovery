@@ -3,21 +3,19 @@
 class Page
 {
    private $db;
-   
+
    function __construct()
    {
       $this->db = new Database();
    }
-   
-   public function getPages()
+
+   public function getNavbar()
    {
       // Query database
-      $this->db->queryDB('SELECT * FROM pages ORDER BY navbar_order ASC;');
-      
-      //   Fetch the pages
+      $this->db->queryDB('SELECT * FROM navbar ORDER BY navbar_order ASC;');
+
+      //   Fetch the navbar
       $results = $this->db->getResultSet();
       return $results;
    }
 }
-
-?>

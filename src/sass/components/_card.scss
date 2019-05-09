@@ -18,11 +18,13 @@
    .paragraph {
       color: var(--color-grey-dark-1);
    }
+
    &,
    &__content {
       display: grid;
       grid-template-rows: repeat(auto-fit, repeat(1rem, min-content));
    }
+
    // /////////////////////////////////
    //
    // card modifiers - start
@@ -34,11 +36,13 @@
       padding: 4rem 3.5rem;
       transition: all 0.2s;
    }
+
    // /////////////////////////////////
 
    &--with-blogpost {
       height: var(--card-with-blogpost-height);
    }
+
    // /////////////////////////////////
 
    &--with-invisible-bg {
@@ -66,6 +70,7 @@
          line-height: 3rem;
       }
    }
+
    // /////////////////////////////////
 
    &--for-3col-blog {
@@ -80,17 +85,16 @@
          left: 0;
          width: 100%;
          height: 15%;
-         background-image: linear-gradient(
-            to top,
-            rgba($color-white, 1) 0%,
-            rgba($color-white, 0.9) 80%,
-            rgba($color-white, 0.3) 90%,
-            transparent 100%
-         );
+         background-image: linear-gradient(to top,
+               rgba($color-white, 1) 0%,
+               rgba($color-white, 0.9) 80%,
+               rgba($color-white, 0.3) 90%,
+               transparent 100%);
          background-size: 100%;
          z-index: 1;
       }
    }
+
    // /////////////////////////////////
    &--full-width-blogpost {
       display: flex;
@@ -103,6 +107,7 @@
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--color-grey-light-1);
    }
+
    // /////////////////////////////////
    //
    // card modifiers - end
@@ -111,6 +116,7 @@
 
    &__content {
       transition: transform 0.3s ease-in-out, opacity 0.6s;
+
       .h-6 {
          margin-bottom: 0;
       }
@@ -126,7 +132,8 @@
       }
 
       &--full-width-blogpost {
-         width: 78.5rem;
+         // width: 78.5rem;
+         width: 100%;
          // height: 48rem;
          transition: none;
          // justify-self: center;
@@ -193,6 +200,7 @@
       &--full-width-blogpost {
          margin-bottom: 2.5rem;
       }
+
       .paragraph {
          margin-bottom: 0;
          justify-self: left;
@@ -219,8 +227,10 @@
       &--full-width-blogpost {
          margin-top: 2rem;
       }
+
       .h-6 {
          transition: all 0.3s;
+
          &:hover {
             color: var(--color-grey-dark-1);
          }
@@ -228,6 +238,7 @@
    }
 
    &__link {
+
       &,
       &:link,
       &:visited {
@@ -253,6 +264,7 @@
       width: 100%;
       font-weight: 700;
    }
+
    // /////////////////////////////////
    // info date/time/author start
    // /////////////////////////////////
@@ -301,6 +313,7 @@
 
    &:hover &__content {
       transform: translateY(-3rem);
+
       &--for-3col-blog {
          transform: translateY(0);
       }
@@ -309,6 +322,7 @@
    &:hover &__elipsis {
       opacity: 0;
    }
+
    &:hover &__info {
       opacity: 1;
       transform: translatey(-7rem);
@@ -321,6 +335,7 @@
    &:hover {
       box-shadow: var(--shadow-card-hover);
    }
+
    &--full-width-blogpost:hover {
       box-shadow: none;
    }

@@ -424,7 +424,7 @@ body {
       .card__img-wrapper {
         width: 100%; } }
     .card__img-wrapper--full-width-blogpost {
-      width: 78.5rem;
+      width: 100%;
       transition: none;
       margin-bottom: 3rem;
       height: 100%; }
@@ -1224,7 +1224,7 @@ body {
   margin-bottom: 7rem; }
 
 .blog-post {
-  grid-template-columns: 80rem 40rem;
+  grid-template-columns: 1fr;
   width: var(--site-width);
   margin: 0 auto; }
   .blog-post, .blog-post__main, .blog-post__about {
@@ -1328,12 +1328,3 @@ body {
         width: 1.2rem;
         height: 1.2rem;
         fill: var(--color-grey-light-2); }
-  .blog-post__aside {
-    margin-right: 4rem;
-    width: 100%;
-    align-self: flex-start; }
-    .blog-post__aside .form {
-      width: 100%; }
-  .blog-post__about {
-    margin-top: 3rem;
-    justify-items: center; }

@@ -1,4 +1,5 @@
 .blog-post {
+
    &,
    &__main,
    // &__aside,
@@ -6,7 +7,8 @@
       display: grid;
    }
 
-   grid-template-columns: 80rem 40rem;
+   grid-template-columns: 1fr;
+   // grid-template-columns: 80rem 40rem;
    width: var(--site-width);
    margin: 0 auto;
 
@@ -23,8 +25,10 @@
          display: flex;
          justify-content: space-between;
       }
+
       @include social-buttons;
    }
+
    // /////////////////////////////////
    // social media buttons - end
    // /////////////////////////////////
@@ -46,19 +50,24 @@
          padding-left: 9rem;
          margin-bottom: 3rem;
       }
+
       p {
          text-align: left;
       }
+
       ul {
          list-style: none;
       }
+
       a {
          color: var(--color-grey-dark-1);
          // text-decoration: none;
       }
+
       a:hover {
          text-decoration: underline;
       }
+
       // .avatar
 
       &__content {
@@ -80,6 +89,7 @@
             // transform: translateY(50%);
             // border-left: 10px solid transparent;
          }
+
          &::before {
             content: "";
             position: absolute;
@@ -92,6 +102,7 @@
             background-color: transparent;
             // border-left: 10px solid transparent;
          }
+
          header {
             p {
                display: flex;
@@ -100,6 +111,7 @@
             }
          }
       }
+
       &__user-link {
          font-weight: 700;
       }
@@ -110,6 +122,7 @@
 
          a {
             transition: all 0.3s;
+
             &:hover {
                color: var(--color-primary);
             }
@@ -121,6 +134,7 @@
             fill: var(--color-primary);
          }
       }
+
       &__published-date {
          justify-self: end;
          margin-left: auto;
@@ -132,30 +146,32 @@
          }
       }
    }
+
    // /////////////////////////////////
    //
    // user comments - end
    //
    // /////////////////////////////////
 
-   &__aside {
-      margin-right: 4rem;
-      // display: bl
-      width: 100%;
-      align-self: flex-start;
-      // margin: 0 auto;
-      // justify-self: center;
-      // justify-items: center;
-      // justify-content: center;
-      .form {
-         // justify-self: center;
-         width: 100%;
-      }
-   }
+   // &__aside {
+   //    margin-right: 4rem;
+   //    // display: bl
+   //    width: 100%;
+   //    align-self: flex-start;
 
-   &__about {
-      margin-top: 3rem;
-      // align-content: start;
-      justify-items: center;
-   }
+   //    // margin: 0 auto;
+   //    // justify-self: center;
+   //    // justify-items: center;
+   //    // justify-content: center;
+   //    .form {
+   //       // justify-self: center;
+   //       width: 100%;
+   //    }
+   // }
+
+   // &__about {
+   //    margin-top: 3rem;
+   //    // align-content: start;
+   //    justify-items: center;
+   // }
 }
