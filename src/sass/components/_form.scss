@@ -53,7 +53,7 @@
       appearance: none;
    }
 
-   &__select + label {
+   &__select+label {
       align-self: center;
       position: absolute;
       font-size: var(--font-paragraph-size);
@@ -69,6 +69,7 @@
 
       label {
          cursor: pointer;
+
          span {
             margin-bottom: -0.3rem;
             margin-right: 0.6rem;
@@ -99,7 +100,8 @@
             }
          }
       }
-      input:checked + label span::before {
+
+      input:checked+label span::before {
          opacity: 1;
       }
    }
@@ -150,6 +152,7 @@
       font-size: 1.6rem;
       // box-shadow: 0 0.5rem 1rem rgba(#000000, 0.1);
    }
+
    &__alert-success {
       margin: 3rem 0;
       background-color: rgba($color-success, 0.1);
@@ -163,6 +166,7 @@
       color: $color-info;
       border: 0.1rem solid rgba($color-info, 0.5);
    }
+
    &__alert-failed {
       background-color: rgba($color-danger, 0.1);
       color: $color-danger;

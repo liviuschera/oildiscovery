@@ -887,7 +887,8 @@ body {
 
 .table {
   border-collapse: collapse;
-  box-shadow: var(--shadow-table); }
+  box-shadow: var(--shadow-table);
+  margin: 4rem auto; }
   .table td,
   .table th {
     border: 1px solid var(--color-grey-light-2);
