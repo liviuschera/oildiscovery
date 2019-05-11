@@ -27,7 +27,7 @@ $data['post']->imgName) ?>
          <div class="card__content card__content--for-3col-blog">
             <div class="card__img-wrapper card__img-wrapper--full-width-blogpost">
                <a href="#">
-                  <img src="<?php echo PUBLICROOT .
+                  <img src="<?php echo URLROOT .
 BLOG_IMG_DIR .
 $data['post']->imgName; ?>" alt="" class="card__img card__img--full-width-blogpost" />
                </a>
@@ -78,7 +78,7 @@ $data['post']->lName; ?> </a>
       </figure>
       <!-- ~~~ BLOG POST CARD end -->
       <!-- <?php echo $data['post']->content; ?>
-        -->
+      -->
 
       <!-- ~~~ Display Edit and Delete buttons START -->
 
@@ -113,8 +113,8 @@ $data['post']->lName; ?> </a>
       <!-- Your share button code end-->
 
       <!-- <?php var_dump($_SESSION['fb_user_name']); ?>
-        <?php var_dump($_SESSION['fb_user_email']); ?>
-        -->
+      <?php var_dump($_SESSION['fb_user_email']); ?>
+      -->
       <!-- ~~~ BLOG POST SHOW USER COMMENTS  start -->
       <section class="user-comments">
          <h3 class="h-3 u-mb-big u-txt-align-center">
