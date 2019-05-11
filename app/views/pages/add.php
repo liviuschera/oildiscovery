@@ -16,7 +16,7 @@
          <input type="text" class="form__input <?php echo !empty($data['titleError'])
                                                    ? 'form__invalid'
                                                    : ''; ?>" value="<?php echo $data['menutitle']; ?>"
-            placeholder="Menu Title" name="menutitle" />
+            placeholder="Menu Title" name="menutitle" id="menutitle" />
          <span class="form__failed-feedback"><?php echo $data['menutitleError']; ?></span>
       </div>
 
@@ -25,7 +25,7 @@
          <!-- Menu ACTIVE -->
          <div class="form__group">
             <div class="form__checkbox">
-               <input type="checkbox" name="menuactive" value="y" <?php echo $data['active'] === 'y'
+               <input type="checkbox" name="menuactive" id="menuactive" value="y" <?php echo $data['menuactive'] === 'y'
                                                                      ? 'checked'
                                                                      : ''; ?> />
                <label for="menuactive"><span></span>Active Menu</label>
@@ -35,11 +35,13 @@
          <!-- Menu ORDER -->
          <div class="form__group">
             <label for="oder">Order:</label>
-            <input type="number" name="order" value="0" />
+            <input type="number" name="order" id="order" value="<?php echo $data['order']; ?>" <?php echo !empty($data['orderError'])
+                                                   ? 'form__invalid'
+                                                   : ''; ?> />
+            <span class="form__failed-feedback"><?php echo $data['orderError']; ?></span>
          </div>
       </div>
 
-      <hr class="u-mt-small u-mb-small">
       <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
       <!-- Nav-bar END -->
       <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -50,7 +52,7 @@
          <input type="text" class="form__input <?php echo !empty($data['titleError'])
                                                    ? 'form__invalid'
                                                    : ''; ?>" value="<?php echo $data['title']; ?>"
-            placeholder="Page Heading" name="title" />
+            placeholder="Page Heading" name="title" id="title" />
          <span class="form__failed-feedback"><?php echo $data['titleError']; ?></span>
       </div>
       <div class="form__row">

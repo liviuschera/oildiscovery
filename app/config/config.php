@@ -21,7 +21,7 @@ define('ROWS_PER_PAGE_USERS', 2);
 define('ROWS_PER_PAGE_POSTS', 6);
 
 // Site root
-define('PUBLICROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public/');
+define('PUBLICROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/public');
 // Vendor dir
 define('VENDORROOT', $_SERVER['DOCUMENT_ROOT'] . '/oildiscovery/vendor/');
 
