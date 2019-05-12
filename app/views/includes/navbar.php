@@ -22,11 +22,11 @@
                      isset($_SESSION['login_user_id']) ||
                      isset($_SESSION['fb_access_token'])
                   ) : ?>
-                  <a class="button button--login" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+                     <a class="button button--login" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
                   <?php else : ?>
-                  <a class="button  button--login" href="<?php echo URLROOT; ?>/users/login">Log
-                     in
-                     or Register</a>
+                     <a class="button  button--login" href="<?php echo URLROOT; ?>/users/login">Log
+                        in
+                        or Register</a>
                   <?php endif; ?>
                </div>
                <!-- If user has enough privilege show link to admin area -->
@@ -35,8 +35,9 @@
                   $_SESSION['login_user_priv'] > 0
                ) : ?>
 
-               <div>
-                  <a class="button button--login" href="<?php echo URLROOT; ?>/admins">Admin</a></div>
+                  <div>
+                     <a class="button button--login" href="<?php echo URLROOT; ?>/admins">Admin</a>
+                  </div>
                <?php endif; ?>
                <nav class="navigation__nav-social">
                   <ul>
@@ -65,13 +66,19 @@
             <ul class="nav-menu__list">
                <?php $_SESSION['pages'] ?? redirectTo(''); ?>
                <?php foreach ($_SESSION['pages'] as $page) : ?>
-               <?php if ($page->navbar_active === "y") : ?>
-               <li class="nav-menu__item">
-                  <a class="nav-menu__list <?php echo getCurrentURL() === $page->link ? 'active-link' : ''; ?>"
-                     href="<?php echo URLROOT . $page->link; ?>">
-                     <?php echo $page->navbar_title; ?></a>
-               </li>
-               <?php endif; ?>
+                  <?php if ($page->navbar_active === "y") : ?>
+                     <?php if ($page->link === '/pages' || $page->link === '/posts') : ?>
+                        <li class="nav-menu__item">
+                           <a class="nav-menu__list <?php echo getCurrentURL() === $page->link ? 'active-link' : ''; ?>" href="<?php echo URLROOT . $page->link; ?>">
+                              <?php echo $page->navbar_title; ?></a>
+                        </li>
+                     <?php else : ?>
+                        <li class="nav-menu__item">
+                           <a class="nav-menu__list <?php echo getCurrentURL() === $page->link ? 'active-link' : ''; ?>" href="<?php echo URLROOT . $page->link . $page->page_id . '/' . makeLinkSEOFriendly($page->navbar_title); ?>">
+                              <?php echo $page->navbar_title; ?></a>
+                        </li>
+                     <?php endif; ?>
+                  <?php endif; ?>
                <?php endforeach; ?>
 
             </ul>

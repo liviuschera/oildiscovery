@@ -38,17 +38,17 @@ class Posts extends Controller
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
 
             $data = [
-            'active' => !isset($_POST['active']) ? 'n' : 'y',
-            'priv' => trim($_POST['priv']),
-            'title' => trim($_POST['title']),
-            'imgName' => $file_name,
-            'content' => trim($_POST['content']),
-            'loggedUserId' => $_SESSION['login_user_id'],
-            'postID' => '',
-            'titleError' => '',
-            'imgError' => '',
-            'contentError' => ''
-         ];
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
+                'priv' => trim($_POST['priv']),
+                'title' => trim($_POST['title']),
+                'imgName' => $file_name,
+                'content' => trim($_POST['content']),
+                'loggedUserId' => $_SESSION['login_user_id'],
+                'postID' => '',
+                'titleError' => '',
+                'imgError' => '',
+                'contentError' => ''
+            ];
 
             // Validate title
             if (empty($data['title'])) {
@@ -69,28 +69,27 @@ class Posts extends Controller
                 $target_file_path = PUBLICROOT . BLOG_IMG_DIR . $file_name;
                 $file_type = strtolower(
                     pathinfo($target_file_path, PATHINFO_EXTENSION)
-            );
+                );
                 // Allow only certain extension types
                 $image_mime_types = ['image/png', 'image/gif', 'image/jpeg'];
                 $file_mime_type = mime_content_type($file_temp);
 
                 if (in_array($file_mime_type, $image_mime_types)) {
                     // Upload image file to server
-                    move_uploaded_file($file_temp, $target_file_path) ??
-               ($data['imgError'] = "The uploading of {$file_name} failed");
+                    move_uploaded_file($file_temp, $target_file_path) ?? ($data['imgError'] = "The uploading of {$file_name} failed");
                 } else {
                     $data['imgError'] =
-                  "Only " .
-                  implode(', ', $image_mime_types) .
-                  " file types allowed.";
+                        "Only " .
+                        implode(', ', $image_mime_types) .
+                        " file types allowed.";
                 }
             }
 
             if (
-            empty($data['titleError']) &&
-            empty($data['contentError']) &&
-            empty($data['imgError'])
-         ) {
+                empty($data['titleError']) &&
+                empty($data['contentError']) &&
+                empty($data['imgError'])
+            ) {
                 try {
                     // Insert image file name into database
                     $this->postModel->addPost($data);
@@ -107,15 +106,15 @@ class Posts extends Controller
         } else {
             // Display the blank form
             $data = [
-            'active' => !isset($_POST['active']) ? 'n' : 'y',
-            'priv' => '0',
-            'title' => '',
-            'imgName' => '',
-            'content' => '',
-            'imgError' => '',
-            'titleError' => '',
-            'contentError' => ''
-         ];
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
+                'priv' => '0',
+                'title' => '',
+                'imgName' => '',
+                'content' => '',
+                'imgError' => '',
+                'titleError' => '',
+                'contentError' => ''
+            ];
         }
 
         $this->view('posts/add', $data);
@@ -133,18 +132,18 @@ class Posts extends Controller
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
             $data = [
-            // 'active' => $_POST['active'],
-            'active' => !isset($_POST['active']) ? 'n' : 'y',
-            'priv' => $_POST['priv'],
-            'title' => trim($_POST['title']),
-            'imgName' => $file_name,
-            'content' => trim($_POST['content']),
-            'loggedUserId' => $_SESSION['login_user_id'],
-            'postID' => $id,
-            'titleError' => '',
-            'imgError' => '',
-            'contentError' => ''
-         ];
+                // 'active' => $_POST['active'],
+                'active' => !isset($_POST['active']) ? 'n' : 'y',
+                'priv' => $_POST['priv'],
+                'title' => trim($_POST['title']),
+                'imgName' => $file_name,
+                'content' => trim($_POST['content']),
+                'loggedUserId' => $_SESSION['login_user_id'],
+                'postID' => $id,
+                'titleError' => '',
+                'imgError' => '',
+                'contentError' => ''
+            ];
 
             // Validate title
             if (empty($data['title'])) {
@@ -158,45 +157,42 @@ class Posts extends Controller
             // Validate image
             if (!empty($file_name)) {
                 if (
-               !empty(
-               $this->postModel->findPostImageByImageName($file_name)
-               ) &&
-               $this->postModel->findPostImageByImageName($file_name)
-                  ->id !== $id
-            ) {
+                    !empty($this->postModel->findPostImageByImageName($file_name)) &&
+                    $this->postModel->findPostImageByImageName($file_name)
+                    ->id !== $id
+                ) {
                     $data['imgError'] = "$file_name is already taken.";
                 } else {
                     $target_file_path = BLOG_IMG_DIR . $file_name;
                     $file_type = strtolower(
                         pathinfo($target_file_path, PATHINFO_EXTENSION)
-               );
+                    );
                     // Allow only certain extension types
                     $image_mime_types = [
-                  'image/png',
-                  'image/gif',
-                  'image/jpeg'
-               ];
+                        'image/png',
+                        'image/gif',
+                        'image/jpeg'
+                    ];
                     $file_mime_type = mime_content_type($file_temp);
 
                     if (in_array($file_mime_type, $image_mime_types)) {
                         // Upload image file to server
-                        move_uploaded_file($file_temp, $target_file_path) ??
-                  ($data['imgError'] = "The uploading of {$file_name} failed");
+                        move_uploaded_file($file_temp, $target_file_path) ?? ($data['imgError'] = "The uploading of {$file_name} failed");
                     } else {
                         $data['imgError'] =
-                     "Only " .
-                     implode(', ', $image_mime_types) .
-                     " file types allowed.";
+                            "Only " .
+                            implode(', ', $image_mime_types) .
+                            " file types allowed.";
                     }
                 }
             }
 
             // If there are no errors update the post
             if (
-            empty($data['titleError']) &&
-            empty($data['contentError']) &&
-            empty($data['imgError'])
-         ) {
+                empty($data['titleError']) &&
+                empty($data['contentError']) &&
+                empty($data['imgError'])
+            ) {
                 try {
                     $this->postModel->updatePost($data);
                     flash('post_message', "Post updated");
@@ -217,17 +213,17 @@ class Posts extends Controller
             }
             // Display the blank form
             $data = [
-            'userID' => $post->userID,
-            'postID' => $post->postID,
-            'active' => $post->postActive,
-            'priv' => $post->postPriv,
-            'title' => $post->title,
-            'imgName' => $post->imgName,
-            'content' => $post->content,
-            'titleError' => '',
-            'imgError' => '',
-            'contentError' => ''
-         ];
+                'userID' => $post->userID,
+                'postID' => $post->postID,
+                'active' => $post->postActive,
+                'priv' => $post->postPriv,
+                'title' => $post->title,
+                'imgName' => $post->imgName,
+                'content' => $post->content,
+                'titleError' => '',
+                'imgError' => '',
+                'contentError' => ''
+            ];
         }
 
         $this->view('posts/edit', $data);
@@ -263,8 +259,8 @@ class Posts extends Controller
             $post = $this->postModel->getPostById($id);
             // Init comment data
             $data = [
-            'post' => $post
-         ];
+                'post' => $post
+            ];
             $data['post']->comment = trim($_POST['comment']);
             $data['post']->commentError = '';
 
@@ -293,9 +289,9 @@ class Posts extends Controller
             $comments = $this->postModel->getCommentsByPostId($id);
             $post = $this->postModel->getPostById($id);
             $data = [
-            'post' => $post,
-            'comments' => $comments
-         ];
+                'post' => $post,
+                'comments' => $comments
+            ];
             $this->view('posts/show', $data);
         }
     }
@@ -309,9 +305,9 @@ class Posts extends Controller
 
             // Init comment data
             $data = [
-            'comment' => trim($_POST['comment']),
-            'commentError' => ''
-         ];
+                'comment' => trim($_POST['comment']),
+                'commentError' => ''
+            ];
 
             // Validate comment
             if (empty($data['comment'])) {
@@ -333,9 +329,9 @@ class Posts extends Controller
             }
         } else {
             $data = [
-            'comment' => '',
-            'commentError' => ''
-         ];
+                'comment' => '',
+                'commentError' => ''
+            ];
 
             // Load views
             $this->view('posts/show', $data);

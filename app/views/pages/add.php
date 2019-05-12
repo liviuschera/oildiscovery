@@ -3,8 +3,7 @@
 
 <main class="admin__main">
    <!-- ~~~ ADD NEW MENU AND CONTENT FORM start ~~~ -->
-   <form action="<?php echo URLROOT; ?>/pages/add" class="form u-div-center u-txt-align-center" method="post"
-      enctype="multipart/form-data">
+   <form action="<?php echo URLROOT; ?>/pages/add" class="form u-div-center u-txt-align-center" method="post" enctype="multipart/form-data">
       <h2 class="h-2">Add Menu Item</h2>
       <p class="paragraph">Please fill out all the fields.</p>
 
@@ -15,8 +14,7 @@
       <div class="form__group">
          <input type="text" class="form__input <?php echo !empty($data['titleError'])
                                                    ? 'form__invalid'
-                                                   : ''; ?>" value="<?php echo $data['menutitle']; ?>"
-            placeholder="Menu Title" name="menutitle" id="menutitle" />
+                                                   : ''; ?>" value="<?php echo $data['menutitle']; ?>" placeholder="Menu Title" name="menutitle" id="menutitle" />
          <span class="form__failed-feedback"><?php echo $data['menutitleError']; ?></span>
       </div>
 
@@ -26,8 +24,8 @@
          <div class="form__group">
             <div class="form__checkbox">
                <input type="checkbox" name="menuactive" id="menuactive" value="y" <?php echo $data['menuactive'] === 'y'
-                                                                     ? 'checked'
-                                                                     : ''; ?> />
+                                                                                       ? ' checked'
+                                                                                       : ''; ?> />
                <label for="menuactive"><span></span>Active Menu</label>
             </div>
          </div>
@@ -36,8 +34,8 @@
          <div class="form__group">
             <label for="oder">Order:</label>
             <input type="number" name="order" id="order" value="<?php echo $data['order']; ?>" <?php echo !empty($data['orderError'])
-                                                   ? 'form__invalid'
-                                                   : ''; ?> />
+                                                                                                   ? 'form__invalid'
+                                                                                                   : ''; ?> />
             <span class="form__failed-feedback"><?php echo $data['orderError']; ?></span>
          </div>
       </div>
@@ -51,8 +49,7 @@
       <div class="form__group">
          <input type="text" class="form__input <?php echo !empty($data['titleError'])
                                                    ? 'form__invalid'
-                                                   : ''; ?>" value="<?php echo $data['title']; ?>"
-            placeholder="Page Heading" name="title" id="title" />
+                                                   : ''; ?>" value="<?php echo $data['title']; ?>" placeholder="Page Heading" name="title" id="title" />
          <span class="form__failed-feedback"><?php echo $data['titleError']; ?></span>
       </div>
       <div class="form__row">
@@ -77,11 +74,11 @@
                   '2' => 'Owner'
                ]; // Set an array contining user privilege levels // display the values in the form
                foreach ($privArray as $key => $value) {
-                   echo "<option value={$key}";
-                   if ((string)$data['priv'] === (string)$key) {
-                       echo " selected";
-                   }
-                   echo ">{$value}</option>";
+                  echo "<option value={$key}";
+                  if ((string)$data['priv'] === (string)$key) {
+                     echo " selected";
+                  }
+                  echo ">{$value}</option>";
                }
                ?>
             </select>
@@ -99,8 +96,7 @@
       <div class="form__group">
          <textarea rows="7" class="form__textarea  <?php echo !empty($data['contentError'])
                                                       ? 'form__invalid'
-                                                      : ''; ?>" placeholder="Post Content" name="content"
-            id="content"><?php echo $data['content']; ?></textarea>
+                                                      : ''; ?>" placeholder="Post Content" name="content" id="content"><?php echo $data['content']; ?></textarea>
          <span class="form__failed-feedback"><?php echo $data['contentError']; ?></span>
       </div>
 
@@ -115,7 +111,7 @@
       </div>
 
       <script>
-      CKEDITOR.replace('content');
+         CKEDITOR.replace('content');
       </script>
    </form>
    <!-- ~~~ ADD NEW MENU AND CONTENT FORM end ~~~ -->

@@ -2,9 +2,6 @@
 <?php require APPROOT . '/views/includes/navbar.php';?>
 <?php require APPROOT . '/views/includes/breadcrumbs.php';?>
 
-<?php var_dump(PUBLICROOT .
-BLOG_IMG_DIR .
-$data['post']->imgName) ?>
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous"
