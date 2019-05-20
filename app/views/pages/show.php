@@ -50,7 +50,7 @@
          $data['post']->userID === $_SESSION['login_user_id']
       ) : ?>
          <div class="buttons-wrapper">
-            <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
+            <a href="<?php echo URLROOT; ?>/pages/edit/<?php echo $data['post']
                                                             ->postID; ?>" class="button button--success">Edit</a>
 
             <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']->postID; ?>" method="POST">

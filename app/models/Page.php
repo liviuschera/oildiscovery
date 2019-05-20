@@ -63,7 +63,7 @@ class Page
             $this->db->bindVal(':page_id', $last_post_id);
             $this->db->bindVal(':navbar_title', $data['menutitle']);
             $this->db->bindVal(':navbar_order', $data['order']);
-            $this->db->bindVal(':navbar_active', $data['active']);
+            $this->db->bindVal(':navbar_active', $data['menuactive']);
             $this->db->bindVal(':link', $data['link']);
 
             $this->db->executeStmt();
@@ -82,7 +82,7 @@ class Page
             $this->db->startTransaction();
             // Query posts database
             $this->db->queryDB(
-                "UPDATE posts SET title = :title, active = :active, priv = :priv, isBlogpost = :isBlogpost), modified = now() WHERE id = :postID;"
+                "UPDATE posts SET title = :title, active = :active, priv = :priv, isBlogpost = :isBlogpost, modified = now() WHERE id = :postID;"
             );
 
             // Bind values
@@ -96,9 +96,9 @@ class Page
 
             // Query post_body table
             $this->db->queryDB(
-                'UPDATE post_body SET content = :content) WHERE postID = postID;'
+                'UPDATE post_body SET content = :content WHERE postID = :postID;'
             );
-            $this->db->bindVal(':postID', $date['postID']);
+            $this->db->bindVal(':postID', $data['postID']);
             $this->db->bindVal(':content', $data['content']);
 
             $this->db->executeStmt();
@@ -115,12 +115,12 @@ class Page
 
             // Query navbar table
             $this->db->queryDB(
-                "UPDATE navbar SET page_id, navbar_title = :navbar_title, navbar_order = :navbar_order, navbar_active = :navbar_active, link = :link WHERE page_id = :page_id;"
+                "UPDATE navbar SET navbar_title = :navbar_title, navbar_order = :navbar_order, navbar_active = :navbar_active, link = :link WHERE page_id = :page_id;"
             );
             $this->db->bindVal(':page_id', $data['postID']);
             $this->db->bindVal(':navbar_title', $data['menutitle']);
             $this->db->bindVal(':navbar_order', $data['order']);
-            $this->db->bindVal(':navbar_active', $data['active']);
+            $this->db->bindVal(':navbar_active', $data['menuactive']);
             $this->db->bindVal(':link', $data['link']);
 
             $this->db->executeStmt();
@@ -129,18 +129,13 @@ class Page
         } catch (Exception $e) {
             $this->db->rollBackTransaction();
             // echo "Failed to execute ADD post transaction: " . $e->getMessage();
-            die("Failed to execute ADD post transaction: {$e->getMessage()}");
+            die("Failed to execute UPDATE page transaction: {$e->getMessage()}");
         }
     }
 
     public function getPageById($id)
     {
         $this->db->queryDB('SELECT
-        navbar.page_id AS pageID,
-        navbar.navbar_title AS pageTitle,
-        navbar.navbar_order AS pageOrder,
-        navbar.navbar_active AS pageActive,
-        navbar.link AS pageLink,
         users.id AS userID,
         users.firstName AS fName,
         users.lastName AS lName,
@@ -154,12 +149,16 @@ class Page
         posts.modified AS postModified,
         posts.priv AS postPriv,
         posts.active AS postActive,
-        posts.isBlogpost AS isblogpost,
         post_body.content AS content,
         post_images.img_name AS imgName,
+        navbar.page_id AS pageID,
+        navbar.navbar_title AS pageTitle,
+        navbar.navbar_order AS pageOrder,
+        navbar.navbar_active AS pageActive,
+        navbar.link AS pageLink
         FROM users
         JOIN posts ON users.id = posts.userID
-        JOIN navbar ON users.id = navbar.page_id
+        JOIN navbar ON posts.id = navbar.page_id
         JOIN post_body ON posts.id = post_body.postID
         JOIN post_images ON posts.id = post_images.post_id
         WHERE posts.id =:id;');
@@ -167,6 +166,42 @@ class Page
         $this->db->bindVal(':id', $id);
 
         $row = $this->db->getSingleResult();
+        return $row;
+    }
+    public function getAllPages()
+    {
+        $this->db->queryDB('SELECT
+        users.id AS userID,
+        users.firstName AS fName,
+        users.lastName AS lName,
+        users.createdAt AS userCreatedAt,
+        users.modified AS userModified,
+        users.priv AS userPriv,
+        users.active AS userActive,
+        posts.id AS postID,
+        posts.title AS title,
+        posts.createdAt AS postCreatedAt,
+        posts.modified AS postModified,
+        posts.priv AS postPriv,
+        posts.active AS postActive,
+        post_body.content AS content,
+        post_images.img_name AS imgName,
+        navbar.id AS navID,
+        navbar.page_id AS navPageID,
+        navbar.navbar_title AS navTitle,
+        navbar.navbar_order AS navOrder,
+        navbar.navbar_active AS navActive,
+        navbar.created_at AS navCreatedAt,
+        navbar.modified_at AS navModifiedAt,
+        navbar.link AS navLink
+        FROM users
+        JOIN posts ON users.id = posts.userID
+        JOIN navbar ON posts.id = navbar.page_id
+        JOIN post_body ON posts.id = post_body.postID
+        JOIN post_images ON posts.id = post_images.post_id;');
+
+
+        $row = $this->db->getResultSet();
         return $row;
     }
 }

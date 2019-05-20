@@ -26,6 +26,10 @@
                   Menu/Page</a>
             </li>
             <li class="side-nav__item">
+               <a class="side-nav__link " href="<?php echo URLROOT; ?>/pages/list">List
+                  Menu/Page</a>
+            </li>
+            <li class="side-nav__item">
                <a class="side-nav__link " href="<?php echo URLROOT; ?>/posts/add">Add
                   Blog Post</a>
             </li>

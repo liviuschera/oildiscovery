@@ -249,7 +249,7 @@ class Pages extends Controller
                 }
             } else {
                 // Load the view with errors
-                $this->view('pages/add', $data);
+                $this->view('pages/edit', $data);
             }
         } else {
             // Check for owner
@@ -270,7 +270,7 @@ class Pages extends Controller
                 'content' => $page->content,
                 'order' => $page->pageOrder,
                 'link' => $page->pageLink,
-                'isBlogpost' => $page->isBlogpost,
+                'isBlogpost' => 'n',
                 'imgError' => '',
                 'titleError' => '',
                 'menutitleError' => '',
@@ -279,7 +279,7 @@ class Pages extends Controller
             ];
         }
 
-        $this->view('pages/add', $data);
+        $this->view('pages/edit', $data);
     }
 
 
@@ -288,5 +288,12 @@ class Pages extends Controller
         $post = $this->postModel->getPostById($id);
         $data = ['post' => $post];
         $this->view('pages/show', $data);
+    }
+
+    public function list(){
+        userHasAccess(1);
+        $page = $this->navbarModel->getAllPages();
+        $data = ['page'=> $page];
+        $this->view('pages/list', $data);
     }
 }
