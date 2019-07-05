@@ -10,11 +10,14 @@ class Pages extends Controller
 
     public function index()
     {
+        $posts = $this->postModel->getPosts(1);
+        $data = ['posts' => $posts];
+
         //   $pages = $this->navbarModel->getPages();
         // $GLOBALS['pages'] = $this->navbarModel->getPages();
         $_SESSION['pages'] = $this->navbarModel->getNavbar();
         //   $data = [$_SESSION['pages'] => $pages];
-        $this->view('/pages/index');
+        $this->view('/pages/index', $data);
         //   $this->view('pages/index', $_SESSION['pages']);
     }
 

@@ -21,6 +21,7 @@ html {
    //    // width: 100%;
    //    // overflow-x: hidden;
    // }
+   overflow-x: hidden;
 
    @include respond-to(600px) {
       font-size: 56.25%; //1 rem = 9px
@@ -36,6 +37,7 @@ body {
 
 a,
 .link {
+
    &,
    &:link,
    &:visited {

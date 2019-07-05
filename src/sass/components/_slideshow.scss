@@ -31,8 +31,9 @@
       font-family: "Oregano", "Arial Narrow", Arial, sans-serif;
       font-size: 10rem;
       font-weight: 400;
-      width: 100%;
+      width: max-content;
       z-index: 1;
+
       // -webkit-transition: all 0.6s ease;
       // transition: all 0.6s ease;
       @include respond-to(750px) {
@@ -60,6 +61,7 @@
          width: 90%;
          padding-right: 1rem;
       }
+
       @include respond-to(450px) {
          font-size: 2rem;
       }
@@ -84,6 +86,7 @@
    position: absolute;
    bottom: 7rem;
    right: 11rem;
+
    .dot {
       height: 1.5rem;
       width: 1.5rem;
@@ -93,6 +96,7 @@
       display: inline-block;
       transition: background-color 0.6s ease;
    }
+
    .active-dot {
       background-color: $color-primary-dark;
    }
@@ -104,6 +108,7 @@
    animation-name: fadeIn;
    animation-duration: 1s;
 }
+
 // .fadeOut {
 //    -webkit-animation-name: fadeOut;
 //    animation-name: fadeOut;
@@ -118,6 +123,7 @@
    animation-name: topFadeOut;
    animation-duration: 2;
 }
+
 .bottomFadeOut {
    -webkit-animation-name: bottomFadeOut;
    -webkit-animation-duration: 2s;
