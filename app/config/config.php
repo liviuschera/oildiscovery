@@ -2,8 +2,8 @@
 // DB Params
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', 'd');
-define('DB_NAME', 'oildiscovery');
+define('DB_PASS', 'r');
+define('DB_NAME', 'oildisco_db');
 
 // App root
 define('APPROOT', dirname(dirname(__FILE__)));

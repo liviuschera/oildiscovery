@@ -30,7 +30,7 @@ function flash($name = '', $message = '', $class = 'form__alert-success')
 
 function isLoggedIn()
 {
-    return isset($_SESSION['login_user_id']) ? true : false;
+    return isset($_SESSION['login_user_id']);
 }
 
 function hasPrivLevel($priv_level = 0)
