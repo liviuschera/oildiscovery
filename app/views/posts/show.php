@@ -74,18 +74,14 @@ $data['post']->lName; ?> </a>
 
       </figure>
       <!-- ~~~ BLOG POST CARD end -->
-      <!-- <?php echo $data['post']->content; ?>
-      -->
 
       <!-- ~~~ Display Edit and Delete buttons START -->
 
       <?php if (
-    isset($_SESSION['login_user_id']) &&
-    $data['post']->userID === $_SESSION['login_user_id']
+      (isset($_SESSION['login_user_id']) && $data['post']->userID === $_SESSION['login_user_id']) || hasPrivLevel(2)
 ): ?>
       <div class="buttons-wrapper">
-         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']
-    ->postID; ?>" class="button button--success">Edit</a>
+         <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->postID; ?>" class="button button--success">Edit</a>
 
          <form action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data[
     'post'

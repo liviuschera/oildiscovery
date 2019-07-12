@@ -40,13 +40,11 @@
 
       </figure>
       <!-- ~~~ BLOG POST CARD end -->
-      <!-- <?php echo $data['post']->content; ?>
-        -->
 
       <!-- ~~~ Display Edit and Delete buttons START -->
 
        <?php if (
-         $data['post']->userID === $_SESSION['login_user_id'] || hasPrivLevel(2)
+         (isset($_SESSION['login_user_id']) && $data['post']->userID === $_SESSION['login_user_id']) || hasPrivLevel(2)
       ) : ?> -->
          <div class="buttons-wrapper">
             <a href="<?php echo URLROOT; ?>/pages/edit/<?php echo $data['post']

@@ -30,12 +30,12 @@ function flash($name = '', $message = '', $class = 'form__alert-success')
 
 function isLoggedIn()
 {
-    return isset($_SESSION['login_user_id']);
+    return isset($_SESSION['login_user_id']) ? true : false;
 }
 
 function hasPrivLevel($priv_level = 0)
 {
-    return $_SESSION['login_user_priv'] >= $priv_level ? true : false;
+    return isset($_SESSION['login_user_priv']) && $_SESSION['login_user_priv'] >= $priv_level ? true : false;
 }
 
 function userHasAccess()

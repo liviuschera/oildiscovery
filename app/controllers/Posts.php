@@ -208,9 +208,7 @@ class Posts extends Controller
         } else {
             // Check for owner
             $post = $this->postModel->getPostById($id);
-            if ($post->userID !== $_SESSION['login_user_id']) {
-                redirectTo('posts');
-            }
+            if (hasPrivLevel(2) || $post->userID === $_SESSION['login_user_id']) {
             // Display the blank form
             $data = [
                 'userID' => $post->userID,
@@ -224,6 +222,9 @@ class Posts extends Controller
                 'imgError' => '',
                 'contentError' => ''
             ];
+            } else {
+                redirectTo('posts');
+            }
         }
 
         $this->view('posts/edit', $data);

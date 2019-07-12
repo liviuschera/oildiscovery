@@ -155,7 +155,7 @@ class Pages extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize POST array
             // $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-            var_dump($_POST);
+            // var_dump($_POST);
             // var_dump($_FILES);
             $file_name = $_FILES['imgFile']['name'] ?? '';
             $file_temp = $_FILES['imgFile']['tmp_name'] ?? '';
