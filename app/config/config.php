@@ -17,7 +17,7 @@ define('SITENAME', 'Oil Discovery with Michelle');
 define('ADMIN_DASHBOARD_NAME', 'Oil Discovery Admin Dashboard');
 
 // Pagination
-define('ROWS_PER_PAGE_USERS', 2);
+define('ROWS_PER_PAGE_USERS', 10);
 define('ROWS_PER_PAGE_POSTS', 6);
 
 // Site root

@@ -257,9 +257,8 @@ class Pages extends Controller
         } else {
             // Check for owner
             $page = $this->navbarModel->getPageById($id);
-            if ($page->userID !== $_SESSION['login_user_id']) {
-                redirectTo('');
-            }
+
+            if (hasPrivLevel(1) || $page->userID === $_SESSION['login_user_id']) {
             // Display the blank form
             $data = [
                 'userID' => $page->userID,
@@ -280,6 +279,9 @@ class Pages extends Controller
                 'contentError' => '',
                 'orderError' => ''
             ];
+            }else{
+                redirecTo('');
+            }
         }
 
         $this->view('pages/edit', $data);

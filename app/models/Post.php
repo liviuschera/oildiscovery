@@ -9,9 +9,11 @@ class Post
         $this->db = new Database();
     }
 
-    public function getPosts($offset = 0)
+    public function getPosts($page_number)
     {
-        $query = 'SELECT
+
+
+        $query = "SELECT
         users.firstName AS firstName,
         users.lastName AS lastName,
         posts.userID AS userID,
@@ -26,7 +28,8 @@ class Post
         JOIN posts ON users.id = posts.userID
         JOIN post_body ON posts.id = post_body.postID
         JOIN post_images ON posts.id = post_images.post_id
-        ORDER BY posts.createdAt DESC';
+        WHERE posts.active = 'y' AND isBlogpost = 'y'
+        ORDER BY posts.createdAt DESC";
 
         // First get the row count
         $this->db->queryDB($query);
@@ -34,7 +37,22 @@ class Post
         $_SESSION['row_count_posts'] = $this->db->getRowCount();
 
         // Now add the LIMIT clause
-        $limit = " LIMIT " . $offset . "," . ROWS_PER_PAGE_POSTS;
+        // if (isset($_SESSION['max_rows_limit']) && $_SESSION['max_rows_limit'] === $page_number) {
+        //     $max_rows = $_SESSION['row_count_posts'] - ($_SESSION['offset'] * ROWS_PER_PAGE_POSTS);
+        //     $limit = " LIMIT {$_SESSION['offset']}, {$max_rows}";
+        //     var_dump("limit max_rows: {$max_rows}");
+        // } else {
+            //     $set_offset = isset($_SESSION['offset']) ? $_SESSION['offset'] : 0;
+            //     $limit = " LIMIT {$set_offset}, " . ROWS_PER_PAGE_POSTS;
+            // }
+                // $set_offset = isset($_SESSION['offset']) ? $_SESSION['offset'] : 0;
+            // $limit = " LIMIT {$_SESSION['offset']}, " . ROWS_PER_PAGE_POSTS;
+            $limit = " LIMIT " . $page_number . "," . ROWS_PER_PAGE_POSTS;
+
+        // $limit = " LIMIT " . $_SESSION['offset'] . ROWS_PER_PAGE_POSTS;
+        // $rows_limit = ROWS_PER_PAGE_POSTS * $page_number - $_SESSION['offset'];
+        // $max_rows = $_SESSION['max_rows_limit'] === $page_number ? $rows_limit : ROWS_PER_PAGE_POSTS;
+        // var_dump("session max_rows_limit: {$_SESSION['max_rows_limit']}", "page_number: {$page_number}", "rows_limit: {$rows_limit}", "max_rows: {$max_rows}");
         $this->db->queryDB($query . $limit);
         $results = $this->db->getResultSet();
         return $results;

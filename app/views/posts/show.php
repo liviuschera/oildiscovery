@@ -78,7 +78,7 @@ $data['post']->lName; ?> </a>
       <!-- ~~~ Display Edit and Delete buttons START -->
 
       <?php if (
-      (isset($_SESSION['login_user_id']) && $data['post']->userID === $_SESSION['login_user_id']) || hasPrivLevel(2)
+      (isset($_SESSION['login_user_id']) && $data['post']->userID === $_SESSION['login_user_id']) || hasPrivLevel(1)
 ): ?>
       <div class="buttons-wrapper">
          <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']->postID; ?>" class="button button--success">Edit</a>

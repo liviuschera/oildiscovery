@@ -13,11 +13,30 @@ class Posts extends Controller
 
     public function index()
     {
+        // $offset = 0;
+        // $maximum_number_of_rows_to_fetch = 0;
+        // $page_count = ceil($_SESSION['row_count_posts'] / ROWS_PER_PAGE_POSTS);
+        // $_SESSION['offset'] = 0;
+        // $_SESSION['max_rows_limit'] = 0;
+        // if (!isset($_POST['page']) || (int)$_POST['page'] == 1) {
+        //     $offset = 0;
+        //     $maximum_number_of_rows_to_fetch = ROWS_PER_PAGE_POSTS;
+        // } elseif ($_SESSION['row_count_posts'] > ROWS_PER_PAGE_POSTS) {
+        //     // $offset = $_POST['page'];
+        //     $offset = $_SESSION['offset'];
+
+        // }
+        // var_dump((int)$_POST['page']);
+        // $page_no = isset($_POST['page']) ? (int)$_POST['page'] : 0;
+        // $posts = $this->postModel->getPosts($page_no);
+
+
+
         $offset = "";
         if (!isset($_POST['page']) || $_POST['page'] == '1') {
             $offset = 0;
         } else {
-            $offset = $_POST['page'];
+            $offset = (int)$_POST['page'];
         }
         $posts = $this->postModel->getPosts($offset);
         $data = ['posts' => $posts];
@@ -208,7 +227,7 @@ class Posts extends Controller
         } else {
             // Check for owner
             $post = $this->postModel->getPostById($id);
-            if (hasPrivLevel(2) || $post->userID === $_SESSION['login_user_id']) {
+            if (hasPrivLevel(1) || $post->userID === $_SESSION['login_user_id']) {
             // Display the blank form
             $data = [
                 'userID' => $post->userID,
